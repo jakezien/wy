@@ -11,10 +11,12 @@
     {% css style %}
     {% js app %}
   </head>
-  <body class="{{ page.bodyclass }}">
+  <body>
     {% include site-header.html %}
     
-    {{ content }}
+    <div id="content" class="{{ page.name }}">
+      {{ content }}
+    </div>
 
     {% include site-footer.html %}
   </body>

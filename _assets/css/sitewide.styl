@@ -1,9 +1,51 @@
+total-width = 100%;
+
 body
+  *
+    background-repeat no-repeat
   &.loading
     #site-nav
       pointer-events none    
     .page
       opacity 0
 
-.page
-  transition opacity 0.66s ease-in-out
+#content
+  transition opacity 1s ease-out
+  &.transitionOut
+    transition opacity .45s ease-in
+    opacity 0
+  &.transitionIn
+    opacity 0
+
+
+#site-header
+  width 100%
+  clearfix()
+
+#site-footer
+  width 100%
+  clearfix()
+  background-color #302624
+
+#site-nav
+  ul
+    list-style none
+    display block
+    margin 0 auto
+    text-align center
+  li
+    display inline-block
+    Brandon()
+    font-weight bold
+    text-transform uppercase
+    font-size 1.1em
+    letter-spacing 0.15em
+    line-height 4.25em
+
+    a
+      padding 1.5em 1em
+      color #000
+      text-decoration none
+      transition color 0.15s ease
+      &:hover, &.active
+        color #F22E60
