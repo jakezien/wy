@@ -48,7 +48,7 @@ $(function(){
         setTimeout(this.replacePage, 100);
         return;
       }
-      this.currentPage = WY.model.get('currentPage');
+      this.currentPage = WY.model.get('currentPage' + '.html');
       var dataDiv = $('<div />').html(WY.model.get('pageData'));
       var $newContent = $(dataDiv).find('#content');
       $newContent.addClass('transitionIn');
@@ -82,7 +82,7 @@ $(function(){
     fetchPage: function(page){
       this.set('currentPage', page);
       $.ajax({
-        url: page,
+        url: page + '.html',
         type: 'GET',
         success: this.onRequestSuccess,
         error: this.onRequestError
