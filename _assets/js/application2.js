@@ -16,6 +16,7 @@ $(function(){
       _.bindAll(this, 'replacePage');
       this.listenTo(WY.model, 'change:currentPage', this.transitionOut);
       this.listenTo(WY.model, 'change:pageData', this.replacePage);
+      this.menu = new WY.Menu({el: '#site-nav'});
     },
     navigate: function(e){
       e.preventDefault();
@@ -30,10 +31,13 @@ $(function(){
     },
     transitionOut: function(){
       $('#content').addClass('transitionOut');
+      $('#site-footer').addClass('transitionOut');
       this.isTransitioning = true;
     },
     transitionIn: function(){
+      window.scrollTo(0,0);
       $('#content').removeClass('transitionIn');
+      $('#site-footer').removeClass('transitionOut');
     },
     transitionEnded: function(e){
       this.isTransitioning = false;
@@ -51,7 +55,8 @@ $(function(){
       document.title = $(dataDiv).find('title').text();
       $('#content').replaceWith($newContent);
       setTimeout(this.transitionIn, 500);
-    }
+    },
+
   });
 
   WY.AppRouter = Backbone.Router.extend({
@@ -87,9 +92,64 @@ $(function(){
       WY.model.set('pageData', data);
     },
     onRequestError: function(data){
+      WY.model.set('pageData', null);
+      if (data.status === 404) {
+        WY.router.navigate('404',{'trigger':'true', 'replace':'true'});
+      }
       console.log('fail');
       console.log(data);
     },
+  });
+
+  WY.Menu = Backbone.View.extend({
+    isShowing: false,
+    events: {
+      'click #menu-btn': 'toggleMenu',
+      'click li': 'navClicked'
+    },
+    initialize: function(){
+      _.bindAll(this, 'show', 'hide', 'toggleMenu', 'navClicked', 'onScroll');
+      $(window).scroll(this.onScroll)
+    },
+    show: function(){
+      $(this.el).addClass('show');
+      $('body').addClass('menu-show');
+      this.isShowing = true;
+    },
+    hide: function(){
+      $(this.el).removeClass('show');
+      $('body').removeClass('menu-show');
+      this.isShowing = false;
+    },
+    scrollHide: function(){
+      $(this.el).addClass('scroll-hide');
+    },
+    scrollShow: function(){
+      $(this.el).removeClass('scroll-hide');
+    },
+    toggleMenu: function(){
+      if (this.isShowing) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    },
+    navClicked: function(){
+      if (this.isShowing) {
+        this.hide();
+      }
+    },
+    lastScrollTop: 0,
+    onScroll: function(e){
+      var st = Math.max(0, $(window).scrollTop());
+       if (st > this.lastScrollTop){
+           this.scrollHide();
+       } else {
+           this.scrollShow();
+       }
+       this.lastScrollTop = st;
+    }
+
   });
 
   WY.model = new WY.Page({currentPage:window.location.pathname});

@@ -1,6 +1,23 @@
 total-width = 100%;
+hotPink = #F22E60;
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {}
 
 body
+  height auto
   *
     background-repeat no-repeat
   &.loading
@@ -8,6 +25,8 @@ body
       pointer-events none    
     .page
       opacity 0
+  &.menu-show
+    overflow hidden
 
 #content
   transition opacity 1s ease-out
@@ -17,24 +36,51 @@ body
   &.transitionIn
     opacity 0
 
-
 #site-header
   width 100%
   clearfix()
+
+#menu-btn 
+  width 44px
+  height 44px
+  position fixed
+  cursor pointer
+  z-index 11
+  div
+    width 26px
+    height 3px
+    margin-left 9px
+    margin-bottom 7px
+    background-color #000
+    &:first-child
+      margin-top 11px
+    &:last-child
+      margin-bottom none
 
 #site-footer
   width 100%
   clearfix()
   background-color #302624
+  transition opacity 1s ease-out
+  &.transitionOut
+    transition opacity .45s ease-in
+    opacity 0
+  &.transitionIn
+    opacity 0
 
 #site-nav
+  position fixed
+  z-index 10
+  width 100%
+  height 100%
   ul
+    height 100%
+    display none
     list-style none
-    display block
     margin 0 auto
     text-align center
+    background-color hotPink
   li
-    display inline-block
     Brandon()
     font-weight bold
     text-transform uppercase
@@ -49,3 +95,60 @@ body
       transition color 0.15s ease
       &:hover, &.active
         color #F22E60
+
+  &.show
+    ul
+      display block
+
+
+section.cta
+  text-align center
+  a 
+    display inline-block
+    font-size 2.5em
+    FreightBigBold()
+    text-decoration none
+    color hotPink
+    transition color 0.15s
+    &:hover
+      color #CC1A1E
+
+
+@media only screen and (min-width: 768px)
+  
+  section.cta
+    font-size 1.2em
+
+  #site-nav
+    height auto
+    transition transform 0.2s ease-out
+
+    &.scroll-hide
+      transition transform 0.2s ease-in
+      transform translateY(-60px)
+
+    ul
+      margin 0 auto
+      text-align center
+      display block
+      background-color #fff
+
+    li
+      display inline-block
+      font-size 1.1em
+      letter-spacing 0.15em
+      line-height 4.25em
+
+      a
+        padding 1.5em 1em
+        color #000
+        text-decoration none
+        transition color 0.15s ease
+        &:hover, &.active
+          color #F22E60
+
+    
+
+  #menu-btn
+    position static
+    display none

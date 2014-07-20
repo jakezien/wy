@@ -3,18 +3,15 @@
   section
     color #302624
     width 100%
-    padding-top 5em
-    padding-bottom 5em
     clearfix()
-    .text
-      column(4)
-      push(1)
+    padding-top 2em
+    padding-bottom 2em
     .photo
       height 420px
       background-size cover
       background-position center center
-      column(5)
-      push(1)
+      width 100%
+      margin-bottom 2em
 
     h2 
       font-size 2em
@@ -24,40 +21,41 @@
       text-transform uppercase
       font-weight bold
       letter-spacing 0.06em
+      padding 0 1rem
     p
+      font-size 1.5rem
       Freight()
-      font-size 1.5em
+      padding 0 1rem
 
 
   #top 
-    height 525px
+    margin-top 60px
     background url('/images/string.jpg')
     background-size auto 75%
     background-position center center
     background-repeat no-repeat
     h1
       FreightBig()
-      font-size 10em
+      font-size 6.5em
       font-weight normal
       text-align center
       margin .5em 0 .25em 0
     p
       Freight()
-      font-size 2.5em
       text-align center
-      column(8)
-      push(2)
+      font-size 2em
 
   #schools
-    background-image url('/images/projects-schools@2x.jpg')
-    background-color #F22E60
-    background-blend-mode multiply
-    background-size cover
     position relative
-    height 525px
+    .bg
+      width 100%
+      height 400px
+      background-image url('/images/projects-schools@2x.jpg')
+      background-color #F22E60
+      background-blend-mode multiply
+      background-size cover
     .text
-      push(7)
-      color #fff
+      color #000
     .cta
       Brandon()
       margin-top 1.5em
@@ -75,9 +73,7 @@
       height 100%
       // background linear-gradient(top, #fff, rgba(255,255,255,0));
 
-  #energy
-    padding-top 8em
-    .photo
+  #energy .photo
       background-image url('/images/projects-energy@2x.jpg')
 
   #music .photo
@@ -94,3 +90,53 @@
 
   #math .photo
       background-image url('/images/projects-math@2x.jpg')
+
+// Tablet portrait and above
+@media only screen and (min-width: 768px)
+  .projects
+    section
+      padding-top 5em
+      padding-bottom 5em
+      h2
+        padding 0
+      p
+        padding 0
+        font-size 1.25rem
+      .text
+        column(4)
+        push(1)
+      .photo
+        column(5)
+        push(1)
+        margin-bottom none
+
+    #top
+      min-height 525px
+      padding-top 2em
+      h1
+        font-size 10em
+      p
+        font-size 2.5em
+        column(8)
+        push(2)
+
+    #schools
+      min-height 525px
+      .bg
+        position absolute
+        top 0
+        left 0
+        height 100%
+      .text
+        position relative
+        color #fff
+        push(7)
+
+    #energy
+      padding-top 8em
+        
+      
+
+    
+
+
