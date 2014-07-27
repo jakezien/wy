@@ -6,6 +6,7 @@
     padding-bottom 4em
     clearfix()
     h2 
+      padding 0 1rem
       font-size 2em
       font-weight 400
       line-height 1em
@@ -14,6 +15,7 @@
       font-weight bold
       letter-spacing 0.06em
     p
+      padding 0 1rem
       Freight()
       font-size 1.5em
 
@@ -25,7 +27,7 @@
     color #fff
     h1
       FreightBig()
-      font-size 10em
+      font-size 6.5em
       font-weight normal
       text-align center
       padding-top 60px
@@ -37,8 +39,8 @@
       column(8)
       push(2)
 
-  #intro
-    
+
+  #intro    
     .dropcap
       column(2)
       font-size 5em
@@ -49,20 +51,51 @@
       width .46em
       overflow visible
 
-    p
-      column(5)
-      &:first-child
-        push(1)
-
   #activities
     div
-      column(3.33)
-      &:first-child
-        push(1)
+      margin-bottom 4em
 
   #proceeds
     padding-top 0
     padding-bottom 8em
-    p
-      column(10)
-      push(1)
+
+
+@media only screen and (min-width: 768px)
+  .expeditions
+    section
+      h2
+        padding 0
+      p
+        padding 0
+        
+    #top
+      h1
+        font-size 10em
+
+    #intro    
+      .dropcap
+        column(2)
+        font-size 5em
+        line-height .8em
+        FreightBig()
+        position relative
+        left -0.1em
+        width .46em
+        overflow visible
+
+      p
+        column(5)
+        &:first-child
+          push(1)
+
+    #activities
+      div
+        margin-bottom 0
+        column(3.33)
+        &:first-child
+          push(1)
+
+    #proceeds
+      p
+        column(10)
+        push(1)

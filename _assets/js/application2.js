@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
 
   var WY = {};
 
@@ -48,7 +48,7 @@ $(function(){
         setTimeout(this.replacePage, 100);
         return;
       }
-      this.currentPage = WY.model.get('currentPage' + '.html');
+      this.currentPage = WY.model.get('currentPage');
       var dataDiv = $('<div />').html(WY.model.get('pageData'));
       var $newContent = $(dataDiv).find('#content');
       $newContent.addClass('transitionIn');
@@ -56,22 +56,36 @@ $(function(){
       $('#content').replaceWith($newContent);
       setTimeout(this.transitionIn, 500);
     },
-
   });
 
   WY.AppRouter = Backbone.Router.extend({
     routes: {
       '*page' : 'getPage'
     },
-    getPage: function(page){
+    initialize: function() {
+      _.bindAll(this, 'getPage', 'verifyPage');
+    },
+    getPage: function(page) {
       // if (page.slice(-1) === '/'){
       //   page = page.slice(0, -1);
       // }
-      if (!page) {
+      if (!page || !this.verifyPage(page)) {
         WY.model.fetchPage('index.html');
+      } else {
+        WY.model.fetchPage(page);
       }
-      WY.model.fetchPage(page);
     },
+    verifyPage: function(page) {
+      for (var index in this.knownPages) {
+        if (page === this.knownPages[index]) {
+          console.log(page + ' ' + this.knownPages[index]);
+          return true;
+        }
+      }
+      console.log(page + ' unknown');
+      return false;
+    },
+    knownPages: ['projects', 'expeditions', 'schools']
   });
 
   WY.Page = Backbone.Model.extend({
@@ -82,7 +96,7 @@ $(function(){
     fetchPage: function(page){
       this.set('currentPage', page);
       $.ajax({
-        url: page + '.html',
+        url: page,
         type: 'GET',
         success: this.onRequestSuccess,
         error: this.onRequestError
@@ -93,9 +107,9 @@ $(function(){
     },
     onRequestError: function(data){
       WY.model.set('pageData', null);
-      if (data.status === 404) {
-        WY.router.navigate('404',{'trigger':'true', 'replace':'true'});
-      }
+      // if (data.status === 404) {
+      //   WY.router.navigate('404',{'trigger':'true', 'replace':'true'});
+      // }
       console.log('fail');
       console.log(data);
     },
@@ -149,13 +163,11 @@ $(function(){
        }
        this.lastScrollTop = st;
     }
-
   });
 
   WY.model = new WY.Page({currentPage:window.location.pathname});
   WY.view = new WY.AppView({el: 'body', model: WY.model});
   WY.router = new WY.AppRouter();
-
   Backbone.history.start({pushState: true, silent: true, root: '/'});
 });
 
