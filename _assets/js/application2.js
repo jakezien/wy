@@ -1,6 +1,88 @@
 $(function() {
 
-  var WY = {};
+  var WY = { 
+    Views: {},
+    Extensions: (),
+    Router: null,
+
+    init: function() {
+      this.instance = new WY.Views.AppView();
+      Backbone.history.start({pushState: true, silent: true, root: '/'});
+    }
+  };
+
+  WY.Extensions.View = Backbone.View.extend({
+    initiaize: function(){
+      this.router = new WY.Router();
+    },
+    render: function(options) {
+      options = options || {};
+      if (options.page === true) {
+        this.$el.addClass('page');
+      }
+
+      return this;
+    },
+    transitionIn: function(callback) {
+      var view = this, delay;
+      var transitionIn = function() {
+        view.$el.addClass('is-visible');
+        view.$el.one('transitionend', function(){
+          if (_isFunction(callback)) {
+            callback();
+          }
+        });
+      };
+      _.delay(transitionIn, 20);
+    },
+    transitionOut: function(callback) {
+      var view = this;
+
+      view.$el.removeClass('is-visible');
+      view.$el.one('transitionend', function() {
+        if (_._isFunction(callback)) {
+          callback();
+        }
+      });
+    }
+  });
+
+  WY.Extensions.Router = Backbone.Router.extend({
+
+    routes: {
+      'expeditions': 'expeditions',
+      '': 'home'
+    },
+
+    home: function() {
+      var view = new App.Views.Home();
+      app.instance.goto(view);
+    },
+
+    expeditions: function() {
+      var view = new App.Views.Home();
+      app.instance.goto(view);
+    }
+  });
+
+  WY.Views.AppView = app.Extensions.View.extend({
+    el: 'body',
+    goto: function(view){
+      var previous = this.currentPage || null;
+      var next = view;
+
+      if (previous) {
+        previous.transitionOut(function() {
+          previous.remove();
+        });
+      }
+
+      next.render({page:true});
+      this.$el.append(next.$el);
+      next.transitionIn();
+      this.currentPage = next;
+    }
+  });
 
   WY.AppView = Backbone.View.extend({
     currentPage: null,
@@ -164,6 +246,8 @@ $(function() {
        this.lastScrollTop = st;
     }
   });
+
+
 
   WY.model = new WY.Page({currentPage:window.location.pathname});
   WY.view = new WY.AppView({el: 'body', model: WY.model});
