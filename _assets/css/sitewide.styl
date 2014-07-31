@@ -29,13 +29,13 @@ body
     overflow hidden
 
 #content
-  transition opacity 1s ease-out
-  &.transitionOut
+  .page
+    opacity 0
     transition opacity .45s ease-in
-    opacity 0
-  &.transitionIn
-    opacity 0
-
+    &.is-visible
+      transition opacity 1s ease-out
+      opacity 1
+    
 #site-header
   width 100%
   clearfix()

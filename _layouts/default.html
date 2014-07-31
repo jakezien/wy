@@ -14,10 +14,12 @@
   <body>
     {% include site-header.html %}
     
-    <div id="content" class="{{ page.name }}">
-      {{ content }}
+    <div id="content">
+      <div class="page {{ page.name }}">
+        {{ content }}
+        {% include site-footer.html %}
+      </div>
     </div>
 
-    {% include site-footer.html %}
   </body>
 </html>

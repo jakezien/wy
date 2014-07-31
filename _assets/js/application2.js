@@ -1,46 +1,78 @@
-$(function() {
+(function() {
 
   var WY = { 
     Views: {},
-    Extensions: (),
-    Router: null,
+    Extensions: {},
+    appRouter: null,
+    appInstance: null,
 
     init: function() {
-      this.instance = new WY.Views.AppView();
+      this.appRouter = new WY.Extensions.Router();
+      this.appInstance = new WY.Views.AppView();
+
       Backbone.history.start({pushState: true, silent: true, root: '/'});
+      
+      $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
+        var href = { prop: $(this).prop("href"), attr: $(this).attr("href") };
+        var root = location.protocol + "//" + location.host + '/';
+
+        if (href.prop.slice(0, root.length) === root) {
+          evt.preventDefault();
+          Backbone.history.navigate(href.attr, true);
+        }
+      });
     }
   };
 
+  $(function() {
+    WY.init(); // Kick off the party
+  });
+
   WY.Extensions.View = Backbone.View.extend({
-    initiaize: function(){
-      this.router = new WY.Router();
+    initialize: function(options) {
+      _.bindAll(this, 'modelReady');
+      this.model = new WY.PageModel();
+      if (options.page) {
+        this.model.fetchHTML(options.page);
+      }
     },
+
     render: function(options) {
       options = options || {};
-      if (options.page === true) {
-        this.$el.addClass('page');
-      }
+      // if (options.page === true) {
+        // this.$el.addClass('page');
+      // }
+      $.when(this.model.promise).then(this.modelReady, this.modelReady);
 
       return this;
     },
+
+    modelReady: function() {
+      console.log('when');
+      this.$el = this.model.get('template');
+      WY.appInstance.$contentEl.append(this.$el); // WALKER: is this ok?
+      this.transitionIn();
+    },
+
     transitionIn: function(callback) {
       var view = this, delay;
       var transitionIn = function() {
         view.$el.addClass('is-visible');
-        view.$el.one('transitionend', function(){
-          if (_isFunction(callback)) {
+        view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+          if (_.isFunction(callback)) {
             callback();
           }
         });
       };
+
       _.delay(transitionIn, 20);
     },
+
     transitionOut: function(callback) {
       var view = this;
-
       view.$el.removeClass('is-visible');
-      view.$el.one('transitionend', function() {
-        if (_._isFunction(callback)) {
+      view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+        if (_.isFunction(callback)) {
           callback();
         }
       });
@@ -50,23 +82,44 @@ $(function() {
   WY.Extensions.Router = Backbone.Router.extend({
 
     routes: {
+      'qeros': 'qeros',
+      'projects': 'projects',
       'expeditions': 'expeditions',
       '': 'home'
     },
 
     home: function() {
-      var view = new App.Views.Home();
-      app.instance.goto(view);
+      var view = new WY.Views.Home({page:'home'});
+      WY.appInstance.goto(view);
+    },
+
+    qeros: function() {
+      var view = new WY.Views.Qeros({page:'qeros'});
+      WY.appInstance.goto(view);
+    },
+
+    projects: function() {
+      var view = new WY.Views.Projects({page:'projects'});
+      WY.appInstance.goto(view);
     },
 
     expeditions: function() {
-      var view = new App.Views.Home();
-      app.instance.goto(view);
+      var view = new WY.Views.Expeditions({page:'expeditions'});
+      WY.appInstance.goto(view);
     }
   });
 
-  WY.Views.AppView = app.Extensions.View.extend({
+  WY.Views.AppView = WY.Extensions.View.extend({
     el: 'body',
+    events: {
+      // 'click a' : navigate
+    },
+    initialize: function(){
+      this.menu = new WY.Views.Menu({el: $('#site-nav')});
+      this.currentPage = new WY.Views.Home({el: $('#content .page')});
+      this.currentPage.transitionIn();
+      this.$contentEl = $(this.$el.children('#content'));
+    },
     goto: function(view){
       var previous = this.currentPage || null;
       var next = view;
@@ -74,130 +127,152 @@ $(function() {
       if (previous) {
         previous.transitionOut(function() {
           previous.remove();
+          next.render();
+          WY.appInstance.currentPage = next;
         });
-      }
-
-      next.render({page:true});
-      this.$el.append(next.$el);
-      next.transitionIn();
-      this.currentPage = next;
-    }
-  });
-
-  WY.AppView = Backbone.View.extend({
-    currentPage: null,
-    events: {
-      'click a': 'navigate',
-      'transitionEnd #content': 'transitionEnded',
-      'webkitTransitionEnd #content': 'transitionEnded',
-      'oTransitionEnd #content': 'transitionEnded',
-      'MSTransitionEnd #content': 'transitionEnded',
-    },
-    initialize: function(){
-      // stuff
-      _.bindAll(this, 'replacePage');
-      this.listenTo(WY.model, 'change:currentPage', this.transitionOut);
-      this.listenTo(WY.model, 'change:pageData', this.replacePage);
-      this.menu = new WY.Menu({el: '#site-nav'});
-    },
-    navigate: function(e){
-      e.preventDefault();
-      var dest = $(e.target).attr('href');
-      dest = _.last(dest.split('/'));
-      WY.router.navigate(dest, {'trigger':'true'});
-      this.updateNav(e.target);
-    },
-    updateNav: function(a){
-      $('#site-nav a').removeClass('active');
-      $(a).addClass('active');
-    },
-    transitionOut: function(){
-      $('#content').addClass('transitionOut');
-      $('#site-footer').addClass('transitionOut');
-      this.isTransitioning = true;
-    },
-    transitionIn: function(){
-      window.scrollTo(0,0);
-      $('#content').removeClass('transitionIn');
-      $('#site-footer').removeClass('transitionOut');
-    },
-    transitionEnded: function(e){
-      this.isTransitioning = false;
-      // console.log('trans end');
-    },
-    replacePage: function(){
-      if (this.isTransitioning) {
-        setTimeout(this.replacePage, 100);
-        return;
-      }
-      this.currentPage = WY.model.get('currentPage');
-      var dataDiv = $('<div />').html(WY.model.get('pageData'));
-      var $newContent = $(dataDiv).find('#content');
-      $newContent.addClass('transitionIn');
-      document.title = $(dataDiv).find('title').text();
-      $('#content').replaceWith($newContent);
-      setTimeout(this.transitionIn, 500);
-    },
-  });
-
-  WY.AppRouter = Backbone.Router.extend({
-    routes: {
-      '*page' : 'getPage'
-    },
-    initialize: function() {
-      _.bindAll(this, 'getPage', 'verifyPage');
-    },
-    getPage: function(page) {
-      // if (page.slice(-1) === '/'){
-      //   page = page.slice(0, -1);
-      // }
-      if (!page || !this.verifyPage(page)) {
-        WY.model.fetchPage('index.html');
       } else {
-        WY.model.fetchPage(page);
+        next.render();
+        this.currentPage = next;        
       }
     },
-    verifyPage: function(page) {
-      for (var index in this.knownPages) {
-        if (page === this.knownPages[index]) {
-          console.log(page + ' ' + this.knownPages[index]);
-          return true;
-        }
-      }
-      console.log(page + ' unknown');
-      return false;
-    },
-    knownPages: ['projects', 'expeditions', 'schools']
   });
 
-  WY.Page = Backbone.Model.extend({
-    defaults:{
-      currentPage: null,
-      pageData: null
+  WY.Views.Home = WY.Extensions.View.extend({
+    className: 'home'
+  });
+
+  WY.Views.Qeros = WY.Extensions.View.extend({
+    className: 'qeros'
+  });
+
+  WY.Views.Projects = WY.Extensions.View.extend({
+    className: 'projects'
+  });
+
+  WY.Views.Expeditions = WY.Extensions.View.extend({
+    className: 'expeditions'
+  });
+
+  // WY.AppView = Backbone.View.extend({
+  //   currentPage: null,
+  //   events: {
+  //     'click a': 'navigate',
+  //     'transitionEnd #content': 'transitionEnded',
+  //     'webkitTransitionEnd #content': 'transitionEnded',
+  //     'oTransitionEnd #content': 'transitionEnded',
+  //     'MSTransitionEnd #content': 'transitionEnded',
+  //   },
+  //   initialize: function(){
+  //     // stuff
+  //     _.bindAll(this, 'replacePage');
+  //     this.listenTo(WY.model, 'change:currentPage', this.transitionOut);
+  //     this.listenTo(WY.model, 'change:pageData', this.replacePage);
+  //     this.menu = new WY.Menu({el: '#site-nav'});
+  //   },
+  //   navigate: function(e){
+  //     e.preventDefault();
+  //     var dest = $(e.target).attr('href');
+  //     dest = _.last(dest.split('/'));
+  //     WY.router.navigate(dest, {'trigger':'true'});
+  //     this.updateNav(e.target);
+  //   },
+  //   updateNav: function(a){
+  //     $('#site-nav a').removeClass('active');
+  //     $(a).addClass('active');
+  //   },
+  //   transitionOut: function(){
+  //     $('#content').addClass('transitionOut');
+  //     $('#site-footer').addClass('transitionOut');
+  //     this.isTransitioning = true;
+  //   },
+  //   transitionIn: function(){
+  //     window.scrollTo(0,0);
+  //     $('#content').removeClass('transitionIn');
+  //     $('#site-footer').removeClass('transitionOut');
+  //   },
+  //   transitionEnded: function(e){
+  //     this.isTransitioning = false;
+  //     // console.log('trans end');
+  //   },
+  //   replacePage: function(){
+  //     if (this.isTransitioning) {
+  //       setTimeout(this.replacePage, 100);
+  //       return;
+  //     }
+  //     this.currentPage = WY.model.get('currentPage');
+  //     var dataDiv = $('<div />').html(WY.model.get('pageData'));
+  //     var $newContent = $(dataDiv).find('#content');
+  //     $newContent.addClass('transitionIn');
+  //     document.title = $(dataDiv).find('title').text();
+  //     $('#content').replaceWith($newContent);
+  //     setTimeout(this.transitionIn, 500);
+  //   },
+  // });
+
+  // WY.AppRouter = Backbone.Router.extend({
+  //   routes: {
+  //     '*page' : 'getPage'
+  //   },
+  //   initialize: function() {
+  //     _.bindAll(this, 'getPage', 'verifyPage');
+  //   },
+  //   getPage: function(page) {
+  //     // if (page.slice(-1) === '/'){
+  //     //   page = page.slice(0, -1);
+  //     // }
+  //     if (!page || !this.verifyPage(page)) {
+  //       WY.model.fetchPage('index.html');
+  //     } else {
+  //       WY.model.fetchPage(page);
+  //     }
+  //   },
+  //   verifyPage: function(page) {
+  //     for (var index in this.knownPages) {
+  //       if (page === this.knownPages[index]) {
+  //         console.log(page + ' ' + this.knownPages[index]);
+  //         return true;
+  //       }
+  //     }
+  //     console.log(page + ' unknown');
+  //     return false;
+  //   },
+  //   knownPages: ['projects', 'expeditions', 'schools']
+  // });
+
+  WY.PageModel = Backbone.Model.extend({
+    defaults: {template: null, rawHTML: null},
+
+    initialize: function() {
+      _.bindAll(this, 'onRequestSuccess', 'onRequestError');
     },
-    fetchPage: function(page){
-      this.set('currentPage', page);
-      $.ajax({
+
+    fetchHTML: function(page){
+      this.promise = $.ajax({
         url: page,
         type: 'GET',
         success: this.onRequestSuccess,
         error: this.onRequestError
       });
     }, 
+    
     onRequestSuccess: function(data){
-      WY.model.set('pageData', data);
+      var $dataDiv = $('<div />').html(data);
+      var $page = $dataDiv.find('#content .page');
+      this.set('rawHTML', data);
+      this.set('template', $page);
+      // console.log(data)
     },
+    
     onRequestError: function(data){
-      WY.model.set('pageData', null);
-      // if (data.status === 404) {
-      //   WY.router.navigate('404',{'trigger':'true', 'replace':'true'});
-      // }
+      var $dataDiv = $('<div />').html(data);
+      $dataDiv.addClass('page');
+      this.set('rawHTML', null);
+      this.set('template', $dataDiv);
       console.log('fail');
-      console.log(data);
-    },
+    }
   });
 
-  WY.Menu = Backbone.View.extend({
+  WY.Views.Menu = Backbone.View.extend({
     isShowing: false,
     events: {
       'click #menu-btn': 'toggleMenu',
@@ -249,9 +324,9 @@ $(function() {
 
 
 
-  WY.model = new WY.Page({currentPage:window.location.pathname});
-  WY.view = new WY.AppView({el: 'body', model: WY.model});
-  WY.router = new WY.AppRouter();
-  Backbone.history.start({pushState: true, silent: true, root: '/'});
-});
+  // WY.model = new WY.Page({currentPage:window.location.pathname});
+  // WY.view = new WY.AppView({el: 'body', model: WY.model});
+  // WY.router = new WY.AppRouter();
+  // Backbone.history.start({pushState: true, silent: true, root: '/'});
+}());
 

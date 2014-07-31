@@ -1465,10 +1465,10 @@
       var current = this.getFragment();
       // console.log(current)
       // console.log(this.fragment)
-      if (current.slice(-1) === '/') {
-        current = current.slice(0, -1);
-        console.log('sliced')
-      }
+      // if (current.slice(-1) === '/') {
+        // current = current.slice(0, -1);
+        // console.log('sliced')
+      // }
       if (current === this.fragment && this.iframe) {
         current = this.getFragment(this.getHash(this.iframe));
       }
