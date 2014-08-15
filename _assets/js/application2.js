@@ -28,30 +28,25 @@
     WY.init(); // Kick off the party
   });
 
+
+  // Extensions 
+  // ———————————————————————————————————————————
+
   WY.Extensions.View = Backbone.View.extend({
+
     initialize: function(options) {
-      _.bindAll(this, 'modelReady');
-      this.model = new WY.PageModel();
       if (options.page) {
-        this.model.fetchHTML(options.page);
+        this.className = this.page;
       }
+    },
+
+    buildEl: function(model){
+      this.$el = model.get('template');
     },
 
     render: function(options) {
       options = options || {};
-      // if (options.page === true) {
-        // this.$el.addClass('page');
-      // }
-      $.when(this.model.promise).then(this.modelReady, this.modelReady);
-
       return this;
-    },
-
-    modelReady: function() {
-      console.log('when');
-      this.$el = this.model.get('template');
-      WY.appInstance.$contentEl.append(this.$el); // WALKER: is this ok?
-      this.transitionIn();
     },
 
     transitionIn: function(callback) {
@@ -83,13 +78,15 @@
 
     routes: {
       'qeros': 'qeros',
-      'projects': 'projects',
-      'expeditions': 'expeditions',
+      'projects(/)': 'projects',
+      'schools(/)': 'schools',
+      'expeditions(/)': 'expeditions',
+      'about(/)': 'about',
       '': 'home'
     },
 
     home: function() {
-      var view = new WY.Views.Home({page:'home'});
+      var view = new WY.Views.Home({page:'index'});
       WY.appInstance.goto(view);
     },
 
@@ -103,55 +100,184 @@
       WY.appInstance.goto(view);
     },
 
+    schools: function() {
+      var view = new WY.Views.Schools({page:'schools'});
+      WY.appInstance.goto(view);
+    },
+
     expeditions: function() {
       var view = new WY.Views.Expeditions({page:'expeditions'});
+      WY.appInstance.goto(view);
+    },
+
+    about: function() {
+      var view = new WY.Views.About({page:'about'});
       WY.appInstance.goto(view);
     }
   });
 
+
+  // Model
+  // ———————————————————————————————————————————
+
+  WY.PageModel = Backbone.Model.extend({
+    defaults: {template: null, rawHTML: null},
+
+    initialize: function() {
+      _.bindAll(this, 'onRequestSuccess', 'onRequestError');
+    },
+
+    getUrl: function(page) {
+      return window.location.host + '/' + page;
+    },
+
+    fetchHTML: function(page){
+      this.promise = $.ajax({
+        url: '/' + page,
+        type: 'GET',
+        success: this.onRequestSuccess,
+        error: this.onRequestError
+      });
+    }, 
+    
+    onRequestSuccess: function(data){
+      var $dataDiv = $('<div />').html(data);
+      var $page = $dataDiv.find('#content .page');
+      var title = $dataDiv.find('title').text();
+
+      this.set('rawHTML', data);
+      this.set('template', $page);
+      this.set('title', title);
+    },
+    
+    onRequestError: function(data){
+      var $dataDiv = $('<div />').html(data);
+      $dataDiv.addClass('page');
+      this.set('rawHTML', data);
+      this.set('template', $dataDiv);
+      this.set('title', '404');
+      console.log('fail');
+    }
+  });
+
+
+  // Views
+  // ———————————————————————————————————————————
+
   WY.Views.AppView = WY.Extensions.View.extend({
     el: 'body',
-    events: {
-      // 'click a' : navigate
-    },
     initialize: function(){
       this.menu = new WY.Views.Menu({el: $('#site-nav')});
-      this.currentPage = new WY.Views.Home({el: $('#content .page')});
-      this.currentPage.transitionIn();
+      this.currentPageView = new WY.Views.Home({el: $('#content .page')});
+      this.currentPageView.transitionIn();
       this.$contentEl = $(this.$el.children('#content'));
     },
     goto: function(view){
-      var previous = this.currentPage || null;
-      var next = view;
+      var previousView = this.currentPageView || null;
+      var nextView = view;
 
-      if (previous) {
-        previous.transitionOut(function() {
-          previous.remove();
-          next.render();
-          WY.appInstance.currentPage = next;
+      this.currentPageModel = new WY.PageModel();
+      this.currentPageModel.fetchHTML(nextView.page);
+
+      var finishGoto = function(){
+        WY.appInstance.transitionInNextView(nextView);
+      };
+
+      if (previousView) {
+        previousView.transitionOut(function() {
+          previousView.remove();
+          WY.appInstance.currentPageModel.promise.then(finishGoto, finishGoto);
         });
       } else {
-        next.render();
-        this.currentPage = next;        
+        this.currentPageModel.promise.then(finishGoto, finishGoto);
       }
     },
+
+    transitionInNextView: function(nextView) {
+      nextView.buildEl(this.currentPageModel);
+      this.$contentEl.append(nextView.$el);
+      document.title = this.currentPageModel.get('title');
+      nextView.transitionIn();
+      this.currentPageView = nextView;
+    }
   });
 
   WY.Views.Home = WY.Extensions.View.extend({
-    className: 'home'
+    page: 'home'
   });
 
   WY.Views.Qeros = WY.Extensions.View.extend({
-    className: 'qeros'
+    page: 'qeros'
   });
 
   WY.Views.Projects = WY.Extensions.View.extend({
-    className: 'projects'
+    page: 'projects'
+  });
+
+  WY.Views.Schools = WY.Extensions.View.extend({
+    page: 'schools'
   });
 
   WY.Views.Expeditions = WY.Extensions.View.extend({
-    className: 'expeditions'
+    page: 'expeditions'
   });
+
+  WY.Views.About = WY.Extensions.View.extend({
+    page: 'about'
+  });
+
+  WY.Views.Menu = Backbone.View.extend({
+    isShowing: false,
+    events: {
+      'click #menu-btn': 'toggleMenu',
+      'click li': 'navClicked'
+    },
+    initialize: function(){
+      _.bindAll(this, 'show', 'hide', 'toggleMenu', 'navClicked', 'onScroll');
+      $(window).scroll(this.onScroll)
+      this.lastScrollTop = 0;
+    },
+    show: function(){
+      $(this.el).addClass('show');
+      $('body').addClass('menu-show');
+      this.isShowing = true;
+    },
+    hide: function(){
+      $(this.el).removeClass('show');
+      $('body').removeClass('menu-show');
+      this.isShowing = false;
+    },
+    scrollHide: function(){
+      $(this.el).addClass('scroll-hide');
+    },
+    scrollShow: function(){
+      $(this.el).removeClass('scroll-hide');
+    },
+    toggleMenu: function(){
+      if (this.isShowing) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    },
+    navClicked: function(e){
+      this.$el.find('a').removeClass('active');
+      $(e.target).addClass('active');
+      if (this.isShowing) {
+        this.hide();
+      }
+    },
+    onScroll: function(e){
+      var st = Math.max(0, $(window).scrollTop());
+       if (st > this.lastScrollTop){
+           this.scrollHide();
+       } else {
+           this.scrollShow();
+       }
+       this.lastScrollTop = st;
+    }
+  });
+
 
   // WY.AppView = Backbone.View.extend({
   //   currentPage: null,
@@ -238,90 +364,6 @@
   //   },
   //   knownPages: ['projects', 'expeditions', 'schools']
   // });
-
-  WY.PageModel = Backbone.Model.extend({
-    defaults: {template: null, rawHTML: null},
-
-    initialize: function() {
-      _.bindAll(this, 'onRequestSuccess', 'onRequestError');
-    },
-
-    fetchHTML: function(page){
-      this.promise = $.ajax({
-        url: page,
-        type: 'GET',
-        success: this.onRequestSuccess,
-        error: this.onRequestError
-      });
-    }, 
-    
-    onRequestSuccess: function(data){
-      var $dataDiv = $('<div />').html(data);
-      var $page = $dataDiv.find('#content .page');
-      this.set('rawHTML', data);
-      this.set('template', $page);
-      // console.log(data)
-    },
-    
-    onRequestError: function(data){
-      var $dataDiv = $('<div />').html(data);
-      $dataDiv.addClass('page');
-      this.set('rawHTML', null);
-      this.set('template', $dataDiv);
-      console.log('fail');
-    }
-  });
-
-  WY.Views.Menu = Backbone.View.extend({
-    isShowing: false,
-    events: {
-      'click #menu-btn': 'toggleMenu',
-      'click li': 'navClicked'
-    },
-    initialize: function(){
-      _.bindAll(this, 'show', 'hide', 'toggleMenu', 'navClicked', 'onScroll');
-      $(window).scroll(this.onScroll)
-    },
-    show: function(){
-      $(this.el).addClass('show');
-      $('body').addClass('menu-show');
-      this.isShowing = true;
-    },
-    hide: function(){
-      $(this.el).removeClass('show');
-      $('body').removeClass('menu-show');
-      this.isShowing = false;
-    },
-    scrollHide: function(){
-      $(this.el).addClass('scroll-hide');
-    },
-    scrollShow: function(){
-      $(this.el).removeClass('scroll-hide');
-    },
-    toggleMenu: function(){
-      if (this.isShowing) {
-        this.hide();
-      } else {
-        this.show();
-      }
-    },
-    navClicked: function(){
-      if (this.isShowing) {
-        this.hide();
-      }
-    },
-    lastScrollTop: 0,
-    onScroll: function(e){
-      var st = Math.max(0, $(window).scrollTop());
-       if (st > this.lastScrollTop){
-           this.scrollHide();
-       } else {
-           this.scrollShow();
-       }
-       this.lastScrollTop = st;
-    }
-  });
-
 
 
   // WY.model = new WY.Page({currentPage:window.location.pathname});
