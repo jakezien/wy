@@ -80,11 +80,10 @@ body
     text-align center
     background-color hotPink
   li
-    League()
-    font-weight bold
+    FranklinBold()
     text-transform uppercase
     font-size 1.25em
-    letter-spacing 0.15em
+    letter-spacing 0.25em
     line-height 4.25em
 
     a
@@ -100,7 +99,6 @@ body
     ul
       display block
 
-
 section.cta
   text-align center
   a 
@@ -113,6 +111,26 @@ section.cta
     &:hover
       color #CC1A1E
 
+.page
+  #top 
+    margin-top 60px
+    h1
+      FreightBig()
+      font-size 6.5em
+      font-weight normal
+      text-align center
+      margin .5em 0 .25em 0
+    h2
+      Franklin()
+      font-size 3.25em
+      text-align center
+      letter-spacing 0.2em
+      margin 0
+      text-transform uppercase
+    p
+      Freight()
+      text-align center
+      font-size 2em
 
 @media only screen and (min-width: 768px)
   
@@ -135,7 +153,7 @@ section.cta
 
     li
       display inline-block
-      letter-spacing 0.15em
+      letter-spacing 0.25em
       line-height 4.25em
 
       a
@@ -146,8 +164,18 @@ section.cta
         &:hover, &.active
           color #F22E60
 
-    
-
+  
   #menu-btn
     position static
     display none
+
+  .page
+    #top
+      min-height 66vh
+      padding-top 2em
+      h1
+        font-size 10em
+      p
+        font-size 2.5em
+        column(8)
+        push(2)

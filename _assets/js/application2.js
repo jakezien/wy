@@ -268,13 +268,19 @@
       }
     },
     onScroll: function(e){
+      var pageHeight = $('#content').innerHeight();
+      var windowHeight = $(window).innerHeight();
       var st = Math.max(0, $(window).scrollTop());
-       if (st > this.lastScrollTop){
-           this.scrollHide();
-       } else {
-           this.scrollShow();
-       }
-       this.lastScrollTop = st;
+      if (st + windowHeight >= pageHeight - 100) {
+        this.scrollShow();
+        return;
+      }
+      if (st > this.lastScrollTop){
+        this.scrollHide();
+      } else {
+        this.scrollShow();
+      }
+      this.lastScrollTop = st;
     }
   });
 
