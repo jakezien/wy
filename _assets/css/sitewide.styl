@@ -1,5 +1,7 @@
 total-width = 100%;
 hotPink = #F22E60;
+brown = #533B3A
+dkBrown = #241C1C
 
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {}
@@ -18,6 +20,7 @@ hotPink = #F22E60;
 
 body
   height auto
+  color brown
   *
     background-repeat no-repeat
   &.loading
@@ -60,7 +63,8 @@ body
 #site-footer
   width 100%
   clearfix()
-  background-color #302624
+  background-color dkBrown
+  color brown
   transition opacity 1s ease-out
   &.transitionOut
     transition opacity .45s ease-in
@@ -72,6 +76,7 @@ body
   position fixed
   z-index 10
   width 100%
+  color brown
   ul
     height 100%
     display none
@@ -88,7 +93,7 @@ body
 
     a
       padding 1.5em 1em
-      color #000
+      color brown
       text-decoration none
       transition color 0.15s ease
       &:hover, &.active
@@ -113,7 +118,12 @@ section.cta
 
 .page
   #top 
-    margin-top 60px
+    width 100%
+    display table
+    min-height 66vh
+    .cell
+      display table-cell
+      vertical-align middle   
     h1
       FreightBig()
       font-size 6.5em
@@ -158,7 +168,7 @@ section.cta
 
       a
         padding 1.5em 1em
-        color #000
+        color brown
         text-decoration none
         transition color 0.15s ease
         &:hover, &.active
