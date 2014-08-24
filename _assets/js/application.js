@@ -246,32 +246,44 @@
   });
 
   WY.Views.Qeros = WY.Extensions.View.extend({
+    initialize: function(){
+      this.render(0);
+    },
     page: 'qeros',
     render: function(currentScrollY){
       var pageHeight = $('#content').innerHeight();
       var windowHeight = $(window).innerHeight();
       var st = Math.max(0, currentScrollY);
 
+      $('.multiply .container').css('transform', 'translateY(' + -.95 * currentScrollY + 'px)');
+
       $('.page section').each(function(i,el){
         var $el = $(el);
-        var $bgEl = $($('.bg div')[i]);
-        var elHeight = $el.outerHeight();
+        var $bgEl = $($('.bg-imgs div')[i]);
         var elTop = $el.offset().top;
+        var elHeight = $el.outerHeight();
         var viewBottom = st + windowHeight;
         
-        var rangeMin = elTop;
-        var rangeMax = elTop + windowHeight/2;
+        var rangeMin = elTop + elHeight * .1;
+        var rangeMax = elTop + elHeight * 0.66;
 
-        // $bgEl.css('opacity', 0);
-
-        var ratio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
-        if (ratio > 3) {
+        var opacityRatio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
+        var transformRatio = (viewBottom - rangeMin) / (rangeMax + elHeight/2 - rangeMin);
+        if (opacityRatio > 5) {
           $bgEl.css('opacity', 0);
         } else {
-          ratio = Math.max(0, Math.min(ratio, 1))
-          $bgEl.css('opacity', ratio);
+          opacityRatio = Math.max(0, Math.min(opacityRatio, 1));
+          $bgEl.css({ 
+                      opacity: opacityRatio, 
+                      transform: 'translateY(-' + Math.min(2, transformRatio) * 5 + 'vh)'
+                    });
         }
       });
+
+
+      _.delay(function(){
+        $('.multiply').addClass('animate');
+      }, 1300)
     }
   });
 

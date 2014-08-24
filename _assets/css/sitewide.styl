@@ -1,5 +1,6 @@
 total-width = 100%;
 hotPink = #F22E60;
+// hotPink = #D83027;
 brown = #533B3A
 dkBrown = #241C1C
 
@@ -77,6 +78,7 @@ body
   z-index 10
   width 100%
   color brown
+  backface-visibility hidden
   ul
     height 100%
     display none
@@ -109,7 +111,7 @@ section.cta
   a 
     display inline-block
     font-size 2.5em
-    FreightBigBold()
+    GaramondDisplayBold()
     text-decoration none
     color hotPink
     transition color 0.15s
@@ -117,15 +119,15 @@ section.cta
       color #CC1A1E
 
 .page
+  .cell
+    display table-cell
+    vertical-align middle   
   #top 
     width 100%
     display table
     min-height 66vh
-    .cell
-      display table-cell
-      vertical-align middle   
     h1
-      FreightBig()
+      GaramondDisplay()
       font-size 6.5em
       font-weight normal
       text-align center
@@ -138,7 +140,7 @@ section.cta
       margin 0
       text-transform uppercase
     p
-      Freight()
+      Garamond()
       text-align center
       font-size 2em
 
