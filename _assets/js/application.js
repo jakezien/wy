@@ -304,6 +304,7 @@
         var $el = $(el);
         var $imgEl = $(el).find('.frame-img div');
         if (!$imgEl[0]) return;
+        
         var elTop = $el.offset().top;
         var imgTop = $imgEl.offset().top;
         var elHeight = $el.outerHeight();
@@ -359,6 +360,7 @@
         this.scrollShow();
         return;
       }
+      if (Math.abs(st - this.lastScrollTop) < 20) return;
       if (st > this.lastScrollTop){
         this.scrollHide();
       } else {
