@@ -1,80 +1,14 @@
 .qeros
 
-  .bg
-    position fixed
-    width 100vw
-    height 110vh
-    top -2vh
-    z-index -1
-
-    .bg-imgs
-      position absolute
-      width 100%
-      height 110%
-      backface-visibility hidden
-      
-      div
-        position absolute
-        height 100%
-        width 100%
-        background-size cover
-        background-position center center
-        backface-visibility hidden
-
-    .bg-top
-      background-image url('/images/qeros-cover@2x.jpg')
-    .bg-1
-      background-image url('/images/qeros-sonia@2x.jpg')
-    .bg-2
-      background-image url('/images/qeros-skywalk@2x.jpg')
-    .bg-3
-      background-image url('/images/qeros-ritual@2x.jpg')
-    .bg-4
-      background-image url('/images/qeros-three-men@2x.jpg')
-    .bg-5
-      background-image url('/images/qeros-sebastian@2x.jpg')
-    .bg-6
-      background-image url('/images/qeros-valley@2x.jpg')
-    .bg-7
-      background-image url('/images/qeros-llamas@2x.jpg')
-    .bg-8
-      background-image url('/images/qeros-silhouette@2x.jpg')
-
   .multiply 
     mix-blend-mode multiply
     overflow visible
     backface-visibility hidden
-    &.animate
-      .container div
-        animation-play-state running
-    .container
+    div
       backface-visibility hidden
       position absolute
+      background hotPink
       width 100%
-      height 100vh
-      top 2vh
-      div
-        backface-visibility hidden
-        mix-blend-mode multiply
-        position absolute
-        background hotPink
-        width 100%
-        height 5vh
-        animation-play-state paused
-        animation-timing-function ease-in-out
-        animation-fill-mode both
-
-        &:nth-child(even)
-          animation-name pull-left 
-        &:nth-child(odd)
-          animation-name pull-right
-
-        for i in (0..20)
-          ratio = (i / 20)
-          &:nth-child({i})
-            top i * 5vh - 5vh
-            animation-duration: .35s
-            animation-delay: .166s * (20 - i)
 
   .border
     position absolute
@@ -90,20 +24,181 @@
     display table
     position relative
     z-index 0
-    min-height 100vh !important
+    min-height 75vh !important
+    overflow hidden
 
     p
-      column(8)
-      push(2)
       Garamond()
-      font-size 2em
-      color #fff
+      font-size 1.66em
+      color brown
+      i
+        font-style italic
 
     h1, h2
       position relative
 
+    .bg
+      position absolute
+      top 0 
+      left 0
+      width 100%
+      height 100%
+      overflow hidden
+      .img, video
+        position absolute
+        top 0 
+        left 0
+        width 100%
+        height 100%
+        background-position center center
+        background-size cover
+      video
+        min-width 100%
+        min-height 100%
+        width auto
+        height auto
+        overflow hidden
+        transform translateX(-50%)
+        margin-left 50%
+
+    .frame-img
+      position absolute
+      &.move-h
+        div
+          width 150%
+          height 100%
+          background-size 100% auto
+      &.move-v
+        div
+          width 100%
+          height 120%
+          background-size auto 100% 
+
+      div
+        position absolute
+        height 110%
+        background-size auto 100% 
+        background-position center center
+        backface-visibility hidden
+
+    .caption
+      column(3)
+      position relative
+      background #fff
+      padding 2em 2em 4em 2em
+      p
+        margin 0
+      .dropcap
+        font-size 11em
+        line-height 0.66em
+        Franklin()
+      .keyline
+        width 100%
+        height 1px
+        background brown
+        margin 0 0 2em 0
+
+    &.video 
+      min-height 100vh
+      .bg 
+        position fixed
+      .caption
+        column(8)
+        push(2)
+        background transparent
+
   #top
     color #fff
+    .bg .img
+      position fixed
+      background-image url('/images/qeros-cover@2x.jpg')
+
+  .s-1
+    padding-top 20%
+    .frame-img
+      column(6)
+      push(1)
+      height 55%
+      div
+        background-image url('/images/qeros-sonia@2x.jpg')
+    .caption
+      margin-top 25%
+      column(4)
+      push(6)
+      padding-left 2em
+      span 
+        column(8)
+      .dropcap
+        column(3)
+
+  .s-2
+    .frame-img
+      column(7)
+      push(4)
+      height 80%
+      div
+        background-image url('/images/qeros-skywalk@2x.jpg')
+        background-size auto 100% !important
+        background-position bottom left
+    .caption
+      padding 0
+      column(2.5)
+      push(1)
+
+  .s-3
+    .frame-img
+      column(7)
+      push(1)
+      margin-top 18.75%
+      height 70%
+      div
+        background-image url('/images/qeros-ritual@2x.jpg')
+        background-position 66% bottom
+    .caption
+      padding-top 0
+      column(3)
+      push(8)
+
+  .s-4
+    .frame-img
+      column(6)
+      push(1)
+      height 55%
+      div
+        background-image url('/images/qeros-three-men@2x.jpg')
+  
+  .s-5
+    .frame-img
+      column(6)
+      push(1)
+      height 55%
+      div
+        background-image url('/images/qeros-sebastian@2x.jpg')
+
+  .s-6
+    .frame-img
+      column(6)
+      push(1)
+      height 55%
+      div
+        background-image url('/images/qeros-valley@2x.jpg')
+
+  .s-7
+    .frame-img
+      column(6)
+      push(1)
+      height 55%
+      div
+        background-image url('/images/qeros-llamas@2x.jpg')
+      
+  .s-8
+    .frame-img
+      column(6)
+      push(1)
+      height 55%
+      div
+        background-image url('/images/qeros-silhouette@2x.jpg')
+
 
 @keyframes pull-left
   0%

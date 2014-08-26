@@ -1,0 +1,117 @@
+.qeros-old
+
+  .bg
+    position fixed
+    width 100vw
+    height 110vh
+    top -2vh
+    z-index -1
+
+    .bg-imgs
+      position absolute
+      width 100%
+      height 110%
+      backface-visibility hidden
+      
+      div
+        position absolute
+        height 100%
+        width 100%
+        background-size cover
+        background-position center center
+        backface-visibility hidden
+
+    .bg-top
+      background-image url('/images/qeros-cover@2x.jpg')
+    .bg-1
+      background-image url('/images/qeros-sonia@2x.jpg')
+    .bg-2
+      background-image url('/images/qeros-skywalk@2x.jpg')
+    .bg-3
+      background-image url('/images/qeros-ritual@2x.jpg')
+    .bg-4
+      background-image url('/images/qeros-three-men@2x.jpg')
+    .bg-5
+      background-image url('/images/qeros-sebastian@2x.jpg')
+    .bg-6
+      background-image url('/images/qeros-valley@2x.jpg')
+    .bg-7
+      background-image url('/images/qeros-llamas@2x.jpg')
+    .bg-8
+      background-image url('/images/qeros-silhouette@2x.jpg')
+
+  .multiply 
+    mix-blend-mode multiply
+    overflow visible
+    backface-visibility hidden
+    &.animate
+      .container div
+        animation-play-state running
+    .container
+      backface-visibility hidden
+      position absolute
+      width 100%
+      height 100vh
+      top 2vh
+      div
+        backface-visibility hiddench
+        position absolute
+        background hotPink
+        width 100%
+        height 5.1vh
+        animation-play-state paused
+        animation-timing-function ease-in-out
+        animation-fill-mode both
+
+        &:nth-child(even)
+          animation-name pull-left 
+        &:nth-child(odd)
+          animation-name pull-right
+
+        for i in (0..20)
+          ratio = (i / 20)
+          &:nth-child({i})
+            top i * 5vh - 5vh
+            animation-duration: .2s
+            animation-delay: .15s * (20 - i)
+
+  .border
+    position absolute
+    top 2vh
+    width 100%
+    height 100vh
+    box-sizing border-box
+    border 40px solid #fff
+    border-width 2vw 2.5vw
+
+  section
+    width 100%
+    display table
+    position relative
+    z-index 0
+    min-height 100vh !important
+
+    p
+      column(8)
+      push(2)
+      Garamond()
+      font-size 2em
+      color #fff
+
+    h1, h2
+      position relative
+
+  #top
+    color #fff
+
+@keyframes pull-left
+  0%
+    transform translateX(0%)
+  100%
+    transform translateX(-100%)
+
+@keyframes pull-right
+  0%
+    transform translateX(0%)
+  100%
+    transform translateX(100%)

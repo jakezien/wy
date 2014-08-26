@@ -78,6 +78,7 @@
 
     routes: {
       'qeros(/)': 'qeros',
+      'qeros-old(/)': 'qerosOld',
       'projects(/)': 'projects',
       'schools(/)': 'schools',
       'expeditions(/)': 'expeditions',
@@ -92,6 +93,11 @@
 
     qeros: function() {
       var view = new WY.Views.Qeros({page:'qeros'});
+      WY.appInstance.goto(view);
+    },
+
+    qerosOld: function() {
+      var view = new WY.Views.QerosOld({page:'qeros-old'});
       WY.appInstance.goto(view);
     },
 
@@ -245,11 +251,11 @@
     page: 'home'
   });
 
-  WY.Views.Qeros = WY.Extensions.View.extend({
+  WY.Views.QerosOld = WY.Extensions.View.extend({
     initialize: function(){
       this.render(0);
     },
-    page: 'qeros',
+    page: 'qeros-old',
     render: function(currentScrollY){
       var pageHeight = $('#content').innerHeight();
       var windowHeight = $(window).innerHeight();
@@ -279,11 +285,43 @@
                     });
         }
       });
+    }
+  });
 
+  WY.Views.Qeros = WY.Extensions.View.extend({
+    initialize: function(){
+      this.render(0);
+    },
+    page: 'qeros',
+    render: function(currentScrollY){
+      var pageHeight = $('#content').innerHeight();
+      var windowHeight = $(window).innerHeight();
+      var st = Math.max(0, currentScrollY);
 
-      _.delay(function(){
-        $('.multiply').addClass('animate');
-      }, 1300)
+      $('.multiply .container').css('transform', 'translateY(' + -.95 * currentScrollY + 'px)');
+
+      $('.page section').each(function(i,el){
+        var $el = $(el);
+        var $imgEl = $(el).find('.frame-img div');
+        if (!$imgEl[0]) return;
+        var elTop = $el.offset().top;
+        var imgTop = $imgEl.offset().top;
+        var elHeight = $el.outerHeight();
+        var imgHeight = $imgEl.outerHeight();
+        var viewBottom = st + windowHeight;
+        
+        var rangeMin = imgTop;
+        var rangeMax = imgTop + imgHeight + windowHeight;
+
+        var ratio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
+
+        if ($imgEl.parent().hasClass('move-h')) {
+          $imgEl.css({transform: 'translateX(-' + ratio * 15 + '%)'});
+        } 
+        if ($imgEl.parent().hasClass('move-v')) {
+          $imgEl.css({transform: 'translateY(-' + ratio * 15 + '%)'});
+        }
+      });
     }
   });
 
