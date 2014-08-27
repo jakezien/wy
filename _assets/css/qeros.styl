@@ -27,6 +27,7 @@
     overflow hidden
     background #fff
 
+
     p
       Garamond()
       font-size 1.66em
@@ -44,7 +45,7 @@
       width 100%
       height 100%
       overflow hidden
-      .img, video
+      .img
         position absolute
         top 0 
         left 0
@@ -53,19 +54,38 @@
         background-position center center
         background-size cover
       video
+        pointer-events none
+        position fixed
+        top 0 
+        left 0
         min-width 100%
-        min-height 100%
+        min-height 110%
         width auto
         height auto
         overflow hidden
         transform translateX(-50%)
         margin-left 50%
+        z-index -100
+      .gradient-top, .gradient-bottom
+        position absolute
+        left 0
+        width 100%
+        background-size 100% 100%
+        background-repeat repeat-x
+      .gradient-top
+        top 0
+        height 30vh
+        background-image url('/images/gradient-top.png')
+      .gradient-bottom
+        bottom 0
+        height 75vh
+        background-image url('/images/gradient-bottom.png')
 
     .frame-img
       position absolute
       &.move-h
         div
-          width 150%
+          width 125%
           height 100%
           background-size 100% auto
       &.move-v
@@ -99,7 +119,7 @@
         margin 0 0 2em 0
 
     &.video 
-      height 120vh
+      height 180vh
       .bg
         .multiply
           height 100vh
@@ -108,18 +128,18 @@
             height 100%
             border 150px solid white
             box-sizing border-box
-        video
-          position fixed
-
-      .table
-        position absolute
-        height 100%
+      .caption
         background transparent
+        column(8)
+        push(2)
+        top -10vh
         p
-          column(6)
-          push(3)
-          color #fff
-          font-size 2.5em
+          font-size 3em
+          position relative
+        .keyline
+          background #fff
+          margin 3em 0
+          height 3px
 
   #top
     color #fff
@@ -127,6 +147,32 @@
     .bg .img
       position fixed
       background-image url('/images/qeros-cover@2x.jpg')
+
+  .string
+    width 100%
+    height 1463px
+    position absolute
+    top 100vh
+    left 10vw
+    .container
+      absolute100()
+      overflow hidden
+      div
+        position relative
+        background-size auto 100%
+        background-repeat no-repeat
+        &:nth-child(1)
+          background-image url('/images/qeros-string1@2x.png')
+          height 738px
+          width 571px
+
+        &:nth-child(2)
+          background-image url('/images/qeros-string2@2x.png')
+          height 725px
+          width 257px
+          left 420px
+
+
 
   .s-1
     padding-top 20%
@@ -141,6 +187,7 @@
       column(4)
       push(6)
       padding-left 2em
+      margin-bottom 50%
       span 
         column(8)
       .dropcap
@@ -176,19 +223,42 @@
 
   .s-4
     .frame-img
-      column(6)
-      push(1)
-      height 55%
+      column(8)
+      push(3)
+      height 130%      
+      overflow visible
       div
         background-image url('/images/qeros-three-men@2x.jpg')
+    .caption
+      push(1)
+      padding-left 0
+      margin-bottom 50%
+    &.post-video
+      overflow visible
+      .frame-img
+        top -18vh
+        &:after
+          content ''
+          width 100%
+          height 15vh
+          position absolute
+          bottom -15vh
+          background #fff
+      
   
   .s-5
+    padding-top 15vh
     .frame-img
-      column(6)
+      column(8)
       push(1)
-      height 55%
+      height 90%
       div
+        width 120%
+        left -10%
         background-image url('/images/qeros-sebastian@2x.jpg')
+    .caption
+      push(8)
+      top()
 
   .s-6
     .frame-img

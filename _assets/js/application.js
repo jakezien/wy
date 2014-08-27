@@ -42,6 +42,11 @@
 
     buildEl: function(model){
       this.$el = model.get('template');
+      this.beforeAppend();
+    },
+
+    beforeAppend: function(){
+
     },
 
     render: function(options) {
@@ -199,6 +204,7 @@
       if (this.firstLoad) {
         this.firstLoad = false;
         view.$el = $('#content .page');
+        view.beforeAppend();
         view.transitionIn();
         this.currentPageView = view;
         return;
@@ -292,36 +298,94 @@
     initialize: function(){
       this.render(0);
     },
+    
     page: 'qeros',
+    
+    beforeAppend: function() {
+      console.log('b4')
+      if (Modernizr.video) {
+        this.$el.find('.no-video').remove();
+        this.$el.find('.video').next().addClass('post-video')
+      } else {
+        this.$el.find('.video').remove();
+      }
+    },
+
     render: function(currentScrollY){
       var pageHeight = $('#content').innerHeight();
       var windowHeight = $(window).innerHeight();
       var st = Math.max(0, currentScrollY);
 
+      var $video = $('.video video');
+      var top = st - $video.offset().top;
+      // $video.css({transform: 'translateX(-50%) translateY(-' + top + 'px)'});
+
       $('.multiply .container').css('transform', 'translateY(' + -.95 * currentScrollY + 'px)');
 
       $('.page section').each(function(i,el){
         var $el = $(el);
-        var $imgEl = $(el).find('.frame-img div');
-        if (!$imgEl[0]) return;
-        
+        var $imgEl = $el.find('.frame-img div');
+        var $captionEl = $el.find('.caption');
+        var video = false;
+        if (!$imgEl[0]) {
+          $imgEl = $el.find('video');
+          if (!$imgEl[0]) return;
+          video = true;
+        }
+
         var elTop = $el.offset().top;
         var imgTop = $imgEl.offset().top;
         var elHeight = $el.outerHeight();
         var imgHeight = $imgEl.outerHeight();
         var viewBottom = st + windowHeight;
-        
+
         var rangeMin = imgTop;
         var rangeMax = imgTop + imgHeight + windowHeight;
 
         var ratio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
 
         if ($imgEl.parent().hasClass('move-h')) {
-          $imgEl.css({transform: 'translateX(-' + ratio * 15 + '%)'});
+          $imgEl.css({transform: 'translateX(-' + ratio * 5 + '%)'});
         } 
         if ($imgEl.parent().hasClass('move-v')) {
           $imgEl.css({transform: 'translateY(-' + ratio * 15 + '%)'});
         }
+        if (ratio > 0) {
+          $captionEl.css({transform: 'translateY(' + ratio * 25 + '%)'});
+        }
+        if (i === 1) {
+          var $stringEl = $('.string');
+          console.log('stringEl')
+          $stringEl.css({transform: 'translateY(' + ratio * 10 + '%)'});
+        }
+        if (video) {
+          rangeMin = elTop;
+          rangeMax = elTop + imgHeight + windowHeight;
+          transformRatio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
+
+          rangeMin = elTop + elHeight * 0.33;
+          rangeMax = elTop + elHeight * 0.4;
+          opacityRatio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
+
+          rangeMin = elTop - windowHeight;
+          rangeMax = elTop + elHeight + windowHeight;
+          captionRatio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
+          $captionEl.css({transform: 'translateY(' + Math.max(0, captionRatio) * 200 + '%)'});
+
+          scale = chroma.scale(['F22E60', '#fff']).mode('lab');
+          $captionEl.children('p').css({color: scale(opacityRatio).hex()});
+          
+          rangeMin = elTop + elHeight * 0.8;
+          rangeMax = elTop + elHeight;
+          opacityRatio2 = (viewBottom - rangeMin) / (rangeMax - rangeMin);
+
+          $imgEl.css({
+            transform: 'translateX(-50%) translateY(-' + transformRatio * 8 + '%)',
+            opacity: opacityRatio2 > 0 ? (1 - opacityRatio2) : opacityRatio/2
+          });
+        }
+
+
       });
     }
   });
