@@ -295,9 +295,6 @@
   });
 
   WY.Views.Qeros = WY.Extensions.View.extend({
-    initialize: function(){
-      this.render(0);
-    },
     
     page: 'qeros',
     
