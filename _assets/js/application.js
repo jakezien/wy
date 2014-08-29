@@ -341,20 +341,36 @@
 
         var ratio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
 
+        if (ratio < -0.2 || ratio > 1) return;
+
+        var opacityRatio = Math.max(0, Math.min(1, ratio * 3.5  -.3));
+        
+        $captionEl.css({
+          transform: 'translateY(' + ratio * 25 + '%)',  
+        });
+
+        // $captionEl.children().css({
+        //   opacity: Math.min(1, ratio * 3 - .5)
+        // });
+
         if ($imgEl.parent().hasClass('move-h')) {
-          $imgEl.css({transform: 'translateX(-' + ratio * 5 + '%)'});
+          $imgEl.css({
+            transform: 'translateX(-' + ratio * 5 + '%)',
+            opacity: opacityRatio
+          });
         } 
         if ($imgEl.parent().hasClass('move-v')) {
-          $imgEl.css({transform: 'translateY(-' + ratio * 15 + '%)'});
+          $imgEl.css({
+            transform: 'translateY(-' + ratio * 15 + '%)',
+            opacity: opacityRatio
+          });
         }
-        if (ratio > 0) {
-          $captionEl.css({transform: 'translateY(' + ratio * 25 + '%)'});
-        }
+
         if (i === 1) {
           var $stringEl = $('.string');
-          console.log('stringEl')
           $stringEl.css({transform: 'translateY(' + ratio * 10 + '%)'});
         }
+
         if (video) {
           rangeMin = elTop;
           rangeMax = elTop + imgHeight + windowHeight;

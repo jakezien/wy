@@ -65,7 +65,7 @@
         overflow hidden
         transform translateX(-50%)
         margin-left 50%
-        z-index -100
+        z-index 0
       .gradient-top, .gradient-bottom
         position absolute
         left 0
@@ -151,27 +151,31 @@
   .string
     backface-visibility hidden
     width 100%
-    height 1463px
+    height 1762px
     position absolute
     top 115vh
-    left 10vw
     .container
       absolute100()
       overflow hidden
       div
-        position relative
+        margin-left 10.5vw
+        position absolute
         background-size auto 100%
         background-repeat no-repeat
+
         &:nth-child(1)
           background-image url('/images/qeros-string1@2x.png')
+          width 689px
           height 738px
-          width 571px
+          top 0
+          right 376px
 
         &:nth-child(2)
           background-image url('/images/qeros-string2@2x.png')
-          height 725px
-          width 257px
-          left 420px
+          width 487px
+          height 1025px
+          top 738px
+          right 0
 
 
 
@@ -193,6 +197,8 @@
         column(8)
       .dropcap
         column(3)
+      *
+        opacity 1 !important
 
   .s-2
     .frame-img
@@ -207,6 +213,7 @@
       padding 0
       column(2.5)
       push(1)
+      margin-bottom 20%
 
   .s-3
     .frame-img
@@ -259,31 +266,50 @@
         background-image url('/images/qeros-sebastian@2x.jpg')
     .caption
       push(8)
-      top()
 
   .s-6
+    padding-top 40vh
     .frame-img
-      column(6)
+      column(10)
       push(1)
-      height 55%
+      height 80%
       div
         background-image url('/images/qeros-valley@2x.jpg')
+    .caption
+      push(1)
+      top -15vh
+      margin-bottom 50%
+      padding-left 0
+      padding-top 0
+
 
   .s-7
+    padding-top 40vh
     .frame-img
-      column(6)
+      column(7)
       push(1)
-      height 55%
+      height 60%
       div
         background-image url('/images/qeros-llamas@2x.jpg')
+    .caption
+      push(8)
+      padding-top 0
+      top -15vh
       
   .s-8
+    padding-top 20vh
+    margin-bottom 30vh
     .frame-img
-      column(6)
+      column(10)
       push(1)
-      height 55%
+      height 75%
       div
         background-image url('/images/qeros-silhouette@2x.jpg')
+    .caption
+      push(1)
+      margin-bottom 50%
+      padding-left 0
+
 
 
 @keyframes pull-left
