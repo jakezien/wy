@@ -318,13 +318,10 @@
 
       $('.page section').each(function(i,el){
         var $el = $(el);
-        var $imgEl = $el.find('.frame-img div');
+        var $imgEl = $el.find('.frame-img div, .bg .img, video');
         var $captionEl = $el.find('.caption');
-        var video = false;
         if (!$imgEl[0]) {
-          $imgEl = $el.find('video');
-          if (!$imgEl[0]) return;
-          video = true;
+          return;
         }
 
         var elTop = $el.offset().top;
@@ -338,7 +335,20 @@
 
         var ratio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
 
-        if (ratio < -0.2 || ratio > 1) return;
+        // Hide the top section if it's not scrolled into view
+        if ($el.attr('id') === 'top') {
+          var topRatio = (viewBottom - windowHeight) / (windowHeight * 2);
+          if (topRatio < -0.2 || topRatio > 1) {
+            $el.css({opacity: 0});
+          } else {
+            $el.css({opacity: 1});
+          }
+          return;
+        }
+
+        if (ratio < -0.2 || ratio > 1) {
+          return;
+        }
 
         var opacityRatio = Math.max(0, Math.min(1, ratio * 3.5  -.3));
         
@@ -374,7 +384,7 @@
           $stringEl.css({transform: 'translateY(' + ratio * 10 + '%)'});
         }
 
-        if (video) {
+        if ($el.hasClass('video')) {
           rangeMin = elTop;
           rangeMax = elTop + imgHeight + windowHeight;
           transformRatio = (viewBottom - rangeMin) / (rangeMax - rangeMin);
