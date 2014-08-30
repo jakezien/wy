@@ -233,6 +233,7 @@
     transitionInNextView: function(nextView) {
       nextView.buildEl(this.currentPageModel);
       this.$contentEl.append(nextView.$el);
+      window.scrollTo(0, 0);
       document.title = this.currentPageModel.get('title');
       nextView.transitionIn();
       this.currentPageView = nextView;
