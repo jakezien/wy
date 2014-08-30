@@ -306,9 +306,13 @@
       } else {
         this.$el.find('.video').remove();
       }
+      $('body').on('touchend', function(){
+        $('video')[0].play();
+      });
     },
 
     render: function(currentScrollY){
+      $.Event( "touchstart", { pageX:200, pageY:200 } )
       var pageHeight = $('#content').innerHeight();
       var pageWidth = $('#content').innerWidth();
       var windowHeight = $(window).innerHeight();

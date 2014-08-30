@@ -8,45 +8,20 @@ absolute100()
 Garamond()
   font-family "adobe-garamond-pro", "Garamond", "Georgia", "Times", serif
   font-weight normal
+  Kern()
+  OldstyleNums()
 
 GaramondDisplay()
   font-family "garamond-premier-pro-display", "Garamond", "Georgia", "Times", serif
   font-weight normal
+  Kern()
+  OldstyleNums()
 
 GaramondDisplayBold()
   font-family "garamond-premier-pro-display", "Garamond", "Georgia", "Times", serif
   font-weight bold
-
-
-FreightBig()
-  font-family "freight-big-pro", "Caslon", "Georgia", "Times", serif
   Kern()
-  Smooth()
-
-FreightBigBold()
-  font-family "freight-big-pro", "Caslon", "Georgia", "Times", serif
-  font-weight bold
-  Kern()
-  Smooth()
-
-Freight()
-  font-family "freight-text-pro", "Caslon", "Georgia", "Times", serif
-  Kern()
-
-FreightBold()
-  font-family "freight-text-pro", "Caslon", "Georgia", "Times", serif
-  font-weight bold
-  Kern()
-
-League()
-  font-family "league-gothic", "Helvetica Neue", "Helvetica", sans-serif
-  font-weight normal
-  Kern()
-
-Alternate()
-  font-family "alternate-gothic-no-1-d", "Helvetica Neue", "Helvetica", sans-serif
-  font-weight normal
-  Kern()
+  OldstyleNums()
 
 Franklin()
   font-family "franklin-gothic-ext-comp-urw", "Helvetica Neue", "Helvetica", sans-serif
@@ -68,12 +43,20 @@ SmallCaps()
   -webkit-font-feature-settings:"onum" 1, "kern" 1, "smcp" 1; 
   font-feature-settings:"onum" 1, "kern" 1, "smcp" 1; 
 
+OldstyleNums()
+  -moz-font-feature-settings:"onum" 1, "kern" 1; 
+  -moz-font-feature-settings:"onum=1 kern=1"; 
+  -ms-font-feature-settings:"onum" 1, "kern" 1;
+  -o-font-feature-settings:"onum" 1, "kern" 1;
+  -webkit-font-feature-settings:"onum" 1, "kern" 1;
+  font-feature-settings:"onum" 1, "kern" 1;
+
 NoLiga()
   font-feature-settings "liga" 0
 
 Kern()
   text-rendering optimizeLegibility
-  font-feature-settings "kern" 1
+  font-feature-settings "kern" 1 
 
 KernNoLiga()
   text-rendering optimizeLegibility
