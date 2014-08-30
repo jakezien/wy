@@ -81,7 +81,11 @@
         background-image url('/images/gradient-bottom.png')
 
     .frame-img
-      position absolute
+      column(12)
+      height 80vh
+      position relative
+      z-index 1
+      left 0
       &.move-h
         div
           width 125%
@@ -101,7 +105,6 @@
         backface-visibility hidden
 
     .caption
-      column(3)
       position relative
       background #fff
       padding 2em 2em 4em 2em
@@ -111,8 +114,9 @@
         font-size 11em
         line-height 0.66em
         Franklin()
+        max-width .3em
       .keyline
-        width 100%
+        column(12)
         height 1px
         background brown
         margin 0 0 2em 0
@@ -177,137 +181,183 @@
           right 0
 
   .s-1
-    padding-top 20%
+    padding-top 10%
     .frame-img
-      column(6)
-      push(1)
-      height 55%
+      margin-top 20%
       div
         background-image url('/images/qeros-sonia@2x.jpg')
     .caption
-      margin-top 25%
-      column(4)
-      push(6)
-      padding-left 2em
-      margin-bottom 50%
       span 
         column(8)
       .dropcap
-        column(3)
+        column(3) 
       *
         opacity 1 !important
 
   .s-2
     .frame-img
-      column(7)
-      push(4)
-      height 80%
+
       div
         background-image url('/images/qeros-skywalk@2x.jpg')
         background-size auto 100% !important
         background-position bottom left
-    .caption
-      padding 0
-      column(2.5)
-      push(1)
-      margin-bottom 20%
+
 
   .s-3
     .frame-img
-      column(7)
-      push(1)
-      margin-top 18.75%
-      height 70%
       div
         background-image url('/images/qeros-ritual@2x.jpg')
         background-position 66% bottom
-    .caption
-      padding-top 0
-      column(3)
-      push(8)
 
   .s-4
     .frame-img
-      column(8)
-      push(3)
-      height 130%      
-      overflow visible
       div
         background-image url('/images/qeros-three-men@2x.jpg')
-    .caption
-      push(1)
-      padding-left 0
-      margin-bottom 50%
-    &.post-video
-      overflow visible
-      .frame-img
-        top -18vh
-        &:after
-          content ''
-          width 100%
-          height 15vh
-          position absolute
-          bottom -15vh
-          background #fff
       
   .s-5
     padding-top 15vh
     .frame-img
-      column(8)
-      push(1)
-      height 90%
       div
         width 120%
         left -10%
         background-image url('/images/qeros-sebastian@2x.jpg')
-    .caption
-      push(8)
 
   .s-6
-    padding-top 40vh
     .frame-img
-      column(10)
-      push(1)
-      height 80%
       div
         background-image url('/images/qeros-valley@2x.jpg')
-    .caption
-      push(1)
-      top -15vh
-      margin-bottom 50%
-      padding-left 0
-      padding-top 0
+
 
   .s-7
-    padding-top 40vh
     .frame-img
-      column(7)
-      push(1)
-      height 60%
       div
         background-image url('/images/qeros-llamas@2x.jpg')
-    .caption
-      push(8)
-      padding-top 0
-      top -15vh
+
       
   .s-8
-    padding-top 20vh
     margin-bottom 30vh
     .frame-img
-      column(10)
-      push(1)
-      height 75%
       div
         background-image url('/images/qeros-silhouette@2x.jpg')
-    .caption
-      push(1)
-      margin-bottom 50%
-      padding-left 0
+
 
 @media only screen and (min-width: 768px) 
   .qeros
+    section
+      .frame-img
+        position absolute
+        height auto
+        z-index -1
+      .caption
+        column(3)
 
-    #top
-      h1
+    .s-1
+      padding-top 20%
+      .frame-img
+        column(6)
+        push(1)
+        height 55%
+        left 0
         margin-top 0
+
+      .caption
+        margin-top 25%
+        column(4)
+        push(6)
+        padding-left 2em
+        margin-bottom 50%
+        span 
+          column(8)
+        .dropcap
+          column(3) 
+
+    .s-2
+      .frame-img
+        column(7)
+        push(4)
+        height 80%        
+      .caption
+        padding 0
+        column(2.5)
+        push(1)
+        margin-bottom 20%
+
+    .s-3
+      .frame-img
+        column(7)
+        push(1)
+        margin-top 18.75%
+        height 70%
+      .caption
+        padding-top 0
+        column(3)
+        push(8)
+
+    .s-4
+      .frame-img
+        column(8)
+        push(3)
+        height 130%      
+        overflow visible
+      .caption
+        push(1)
+        padding-left 0
+        margin-bottom 50%
+
+      &.post-video
+        overflow visible
+        .frame-img
+          top -18vh
+          &:after
+            content ''
+            width 100%
+            height 15vh
+            position absolute
+            bottom -15vh
+            background #fff
+
+    .s-5
+      padding-top 15vh
+      .frame-img
+        column(8)
+        push(1)
+        height 90%
+      .caption
+        push(8)
+
+    .s-6
+      padding-top 40vh
+      .frame-img
+        column(10)
+        push(1)
+        height 80%
+      .caption
+        push(1)
+        top -15vh
+        margin-bottom 50%
+        padding-left 0
+        padding-top 0
+
+    .s-7
+      padding-top 40vh
+      .frame-img
+        column(7)
+        push(1)
+        height 60%
+
+      .caption
+        push(8)
+        padding-top 0
+        top -15vh
+
+    .s-8
+      padding-top 20vh
+      .frame-img
+        column(10)
+        push(1)
+        height 75%
+
+      .caption
+        push(1)
+        margin-bottom 50%
+        padding-left 0

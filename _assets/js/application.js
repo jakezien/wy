@@ -300,10 +300,9 @@
     page: 'qeros',
     
     beforeAppend: function() {
-      console.log('b4')
-      if (Modernizr.video) {
+      if (Modernizr.video && Detectizr.device.model !== "iphone") {
         this.$el.find('.no-video').remove();
-        this.$el.find('.video').next().addClass('post-video')
+        this.$el.find('.video').next().addClass('post-video');
       } else {
         this.$el.find('.video').remove();
       }
@@ -311,12 +310,9 @@
 
     render: function(currentScrollY){
       var pageHeight = $('#content').innerHeight();
+      var pageWidth = $('#content').innerWidth();
       var windowHeight = $(window).innerHeight();
       var st = Math.max(0, currentScrollY);
-
-      var $video = $('.video video');
-      var top = st - $video.offset().top;
-      // $video.css({transform: 'translateX(-50%) translateY(-' + top + 'px)'});
 
       $('.multiply .container').css('transform', 'translateY(' + -.95 * currentScrollY + 'px)');
 
@@ -346,25 +342,31 @@
 
         var opacityRatio = Math.max(0, Math.min(1, ratio * 3.5  -.3));
         
-        $captionEl.css({
-          transform: 'translateY(' + ratio * 25 + '%)',  
-        });
+        if (pageWidth >= 768) {
+          $captionEl.css({
+            transform: 'translateY(' + ratio * 25 + '%)',  
+          });
+        }
 
         // $captionEl.children().css({
         //   opacity: Math.min(1, ratio * 3 - .5)
         // });
 
         if ($imgEl.parent().hasClass('move-h')) {
-          $imgEl.css({
-            transform: 'translateX(-' + ratio * 5 + '%)',
-            opacity: opacityRatio
-          });
+          $imgEl.css({transform: 'translateX(-' + ratio * 5 + '%)'});
+          if (Detectizr.os.name === 'ios' && Detectizr.os.version.major < 8) {
+            return;
+          } else {
+            $imgEl.css({opacity: opacityRatio});
+          }
         } 
         if ($imgEl.parent().hasClass('move-v')) {
-          $imgEl.css({
-            transform: 'translateY(-' + ratio * 15 + '%)',
-            opacity: opacityRatio
-          });
+          $imgEl.css({transform: 'translateY(-' + ratio * 15 + '%)'});
+          if (Detectizr.os.name === 'ios' && Detectizr.os.version.major < 8) {
+            return;
+          } else {
+            $imgEl.css({opacity: opacityRatio});
+          }
         }
 
         if (i === 1) {

@@ -1,9 +1,10 @@
 # - GGS
 - modernizr.custom
-- underscore
-- backbone
-# - underscore-min
-# - backbone-min
+- detectizr.min
+# - underscore
+# - backbone
+- underscore-min
+- backbone-min
 - jquery.history
 # - instafeed.min
 # - masonry.pkgd.min
