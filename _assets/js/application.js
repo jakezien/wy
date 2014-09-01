@@ -45,9 +45,7 @@
       this.beforeAppend();
     },
 
-    beforeAppend: function(){
-
-    },
+    beforeAppend: function() {},
 
     render: function(options) {
       options = options || {};
@@ -76,7 +74,25 @@
           callback();
         }
       });
-    }
+    },
+
+    timelines: {},
+
+    seekTimelines: function(currentScrollY){
+      var windowHeight = window.innerHeight;
+      if (!windowHeight) {
+        windowHeight = document.documentElement.clientHeight;
+      }
+
+      for (var i in this.timelines) {
+        var timeline = this.timelines[i];
+        var $el = $('#' + i); 
+        var elTop = $el.offset().top;
+        var elHeight = $el.outerHeight();
+        var range = Math.max( 0, (currentScrollY - Math.max(0, elTop - windowHeight)) / (Math.min(windowHeight, elTop) + elHeight) );
+        timeline.seek(range * timeline.totalDuration(), false);
+      }
+    },
   });
 
   WY.Extensions.Router = Backbone.Router.extend({
@@ -309,10 +325,12 @@
       $('body').on('touchend', function(){
         $('video')[0].play();
       });
+      $('.frame-img').each(function(i, el){
+        ZoomImg = new WY.Views.ZoomImg({ el: el });
+      });
     },
 
     render: function(currentScrollY){
-      $.Event( "touchstart", { pageX:200, pageY:200 } )
       var pageHeight = $('#content').innerHeight();
       var pageWidth = $('#content').innerWidth();
       var windowHeight = $(window).innerHeight();
@@ -367,7 +385,7 @@
         // });
 
         if ($imgEl.parent().hasClass('move-h')) {
-          $imgEl.css({transform: 'translateX(-' + ratio * 5 + '%)'});
+          $imgEl.css({transform: 'translateX(-' + ratio * 8 + '%)'});
           if (Detectizr.os.name === 'ios' && Detectizr.os.version.major < 8) {
             return;
           } else {
@@ -421,7 +439,18 @@
   });
 
   WY.Views.Projects = WY.Extensions.View.extend({
-    page: 'projects'
+    page: 'projects',
+  
+    beforeAppend: function() {
+      $('.photo').each(function(i, el){
+        ZoomImg = new WY.Views.ZoomImg({ el: el });
+      });
+
+    },
+
+    render: function() {
+ 
+    }
   });
 
   WY.Views.Schools = WY.Extensions.View.extend({
@@ -429,7 +458,37 @@
   });
 
   WY.Views.Expeditions = WY.Extensions.View.extend({
-    page: 'expeditions'
+    page: 'expeditions',
+    initialize: function(){
+      _.bindAll(this, 'createTimelines');
+    },
+
+    beforeAppend: function(){
+      console.log('before')
+      this.createTimelines();
+    },
+
+    render: function(currentScrollY) {
+      console.log(this.timelines)
+      this.seekTimelines(currentScrollY);
+    },
+
+    createTimelines: function() {
+      var vh = 0.01 * $(window).innerHeight();
+
+      var createTopTL = function() {
+        var topTL = new TimelineLite({paused:true});
+        // buildTL.to($('#bg-container'), 5, {left:'50%', ease:Power2.easeOut});
+        topTL.to(this.$el.find('#top .bg .sky'), 5, {y:100 * vh, ease:Sine.easeIn}, 0);
+        topTL.to(this.$el.find('#top .bg .mountains'), 5, {y:12 * vh, ease:Power2.easeOut}, 0);
+        topTL.to(this.$el.find('#top .cell h1'), 5, {y:60 * vh, opacity:0, ease:Power0.easeIn}, 0);
+        topTL.to(this.$el.find('#top .cell p'), 1.2, {y:15 * vh, opacity:0, ease:Power0.easeIn}, 0);
+        // topTL.to({}, 12);
+        return topTL;
+      }.bind(this);
+
+      this.timelines.top = createTopTL();
+    }
   });
 
   WY.Views.About = WY.Extensions.View.extend({
@@ -491,6 +550,49 @@
       if (this.isShowing) {
         this.hide();
       }
+    }
+  });
+
+  WY.Views.ZoomImg = Backbone.View.extend({
+    initialize: function () {
+      _.bindAll(this, 'onMouseenter', 'onMouseleave', 'onMousemove');
+      this.$imgEl = this.$el.children().first();
+      this.$el.hover(this.onMouseenter, this.onMouseleave);
+      this.$el.on('mousemove', this.onMousemove);
+    },
+
+    onMouseenter: function() {
+      this.$el.addClass('zoom');
+      this.lastTransform = this.$imgEl.css('transform');
+      var transEvent = whichTransitionEvent();
+      var afterDelay = function() {
+        this.$el.removeClass('zoom');
+        console.log('remove')
+      }.bind(this);
+      _.delay(afterDelay, 500);
+    },
+
+    onMousemove: function(e) {
+      var elOffset = this.$el.offset();
+      var x = e.pageX - elOffset.left;
+      var y = e.pageY - elOffset.top;
+      var w = this.$el.outerWidth();
+      var h = this.$el.outerHeight();
+
+      var xOffset = (1 - x/w) * 100 - 50;
+      var yOffset = (1 - y/h) * 100 - 50;
+
+      this.$imgEl.css({ transform: 'translateX(' + xOffset + '%) translateY(' + yOffset + '%) scale(1.66)' });
+    },
+
+    onMouseleave: function() {
+      this.$el.addClass('zoom');
+      this.$imgEl.css({transform: 'scale(1)'});
+      var transEvent = whichTransitionEvent();
+      this.$el.one(transEvent, function(){
+          $(this).removeClass('zoom');
+      });
+
     }
   });
 }());

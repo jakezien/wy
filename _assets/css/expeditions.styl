@@ -20,23 +20,45 @@
       font-size 1.5em
 
   #top
-    background-image url('/images/expeditions-top@2x.jpg')
-    background-size cover
-    height 525px
+    position relative
+    overflow hidden
+    height 100vh
+    padding 0
     background-position center center
     color #fff
+    .bg
+      absolute100()
+      .sky
+        absolute100()
+        background-image url('/images/expeditions/sky@2x.jpg')
+        background-size cover
+        background-position center center
+      .bottom
+        position absolute
+        width 100%
+        height auto
+        bottom 0
+        font-size 0
+        line-height 0
+
+      .mountains, .tents
+        position relative
+        z-index 1
+        img
+          width 100%
+          height auto
     h1
-      GaramondDisplay()
-      font-size 6.5em
-      font-weight normal
-      text-align center
-      margin .5em 0 .25em 0
+      position relative
+      z-index0
+
     p
       Garamond()
       font-size 1.5em
       text-align center
       column(8)
       push(2)
+      position relative
+      z-index 2
 
 
   #intro

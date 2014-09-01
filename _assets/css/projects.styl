@@ -7,11 +7,17 @@
     padding-top 2em
     padding-bottom 2em
     .photo
+      position relative
       height 420px
-      background-size cover
-      background-position center center
       width 100%
       margin-bottom 2em
+      &.zoom
+        div
+          transition transform 0.5s ease
+      div
+        background-size cover
+        background-position center center
+        absolute100()
 
     h2 
       FranklinBold()
@@ -37,7 +43,7 @@
     .bg
       width 100%
       height 400px
-      background-image url('/images/projects-schools@2x.jpg')
+      background-image url('/images/projects/schools@2x.jpg')
       background-color #F22E60
       background-blend-mode multiply
       background-size cover
@@ -59,23 +65,23 @@
       height 100%
       // background linear-gradient(top, #fff, rgba(255,255,255,0));
 
-  #energy .photo
-      background-image url('/images/projects-energy@2x.jpg')
+  #energy .photo div
+      background-image url('/images/projects/energy@2x.jpg')
 
-  #music .photo
-      background-image url('/images/projects-music@2x.jpg')
+  #music .photo div
+      background-image url('/images/projects/music@2x.jpg')
 
-  #medicine .photo
-      background-image url('/images/projects-medicine.jpg')
+  #medicine .photo div
+      background-image url('/images/projects/medicine.jpg')
 
-  #weaving .photo
-      background-image url('/images/projects-weaving@2x.jpg')
+  #weaving .photo div
+      background-image url('/images/projects/weaving@2x.jpg')
 
-  #food .photo
-      background-image url('/images/projects-food@2x.jpg')
+  #food .photo div
+      background-image url('/images/projects/food@2x.jpg')
 
-  #math .photo
-      background-image url('/images/projects-math@2x.jpg')
+  #math .photo div
+      background-image url('/images/projects/math@2x.jpg')
 
 // Tablet portrait and above
 @media only screen and (min-width: 768px)

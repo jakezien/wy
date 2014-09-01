@@ -93,16 +93,22 @@
       position relative
       z-index 1
       left 0
+      &.zoom
+        div
+          transition transform 0.5s ease
+
       &.move-h
         div
           width 125%
           height 100%
           background-size 100% auto
+
       &.move-v
         div
           width 100%
           height 120%
           background-size auto 100% 
+
 
       div
         position absolute
@@ -131,6 +137,7 @@
 
     &.video 
       height 180vh
+      z-index -1
       .bg
         .multiply
           height 100vh
@@ -155,11 +162,12 @@
   #top
     color #fff
     min-height 100vh
+    z-index -1
     h1
       margin-top 0
     .bg .img
       position fixed
-      background-image url('/images/qeros-cover@2x.jpg')
+      background-image url('/images/qeros/cover@2x.jpg')
 
   .string
     backface-visibility hidden
@@ -167,6 +175,7 @@
     height 1762px
     position absolute
     top 115vh
+    pointer-events none
     .container
       absolute100()
       overflow hidden
@@ -177,14 +186,14 @@
         background-repeat no-repeat
 
         &:nth-child(1)
-          background-image url('/images/qeros-string1@2x.png')
+          background-image url('/images/qeros/string1@2x.png')
           width 689px
           height 738px
           top 0
           right 376px
 
         &:nth-child(2)
-          background-image url('/images/qeros-string2@2x.png')
+          background-image url('/images/qeros/string2@2x.png')
           width 487px
           height 1025px
           top 738px
@@ -195,7 +204,7 @@
     .frame-img
       margin-top 20%
       div
-        background-image url('/images/qeros-sonia@2x.jpg')
+        background-image url('/images/qeros/sonia@2x.jpg')
     .caption
       span 
         column(8)
@@ -208,7 +217,7 @@
     .frame-img
 
       div
-        background-image url('/images/qeros-skywalk@2x.jpg')
+        background-image url('/images/qeros/skywalk@2x.jpg')
         background-size auto 100% !important
         background-position bottom left
 
@@ -216,13 +225,13 @@
   .s-3
     .frame-img
       div
-        background-image url('/images/qeros-ritual@2x.jpg')
+        background-image url('/images/qeros/ritual@2x.jpg')
         background-position 66% bottom
 
   .s-4
     .frame-img
       div
-        background-image url('/images/qeros-three-men@2x.jpg')
+        background-image url('/images/qeros/three-men@2x.jpg')
       
   .s-5
     padding-top 15vh
@@ -230,25 +239,25 @@
       div
         width 120%
         left -10%
-        background-image url('/images/qeros-sebastian@2x.jpg')
+        background-image url('/images/qeros/sebastian@2x.jpg')
 
   .s-6
     .frame-img
       div
-        background-image url('/images/qeros-valley@2x.jpg')
+        background-image url('/images/qeros/valley@2x.jpg')
 
 
   .s-7
     .frame-img
       div
-        background-image url('/images/qeros-llamas@2x.jpg')
+        background-image url('/images/qeros/llamas@2x.jpg')
 
       
   .s-8
     margin-bottom 30vh
     .frame-img
       div
-        background-image url('/images/qeros-silhouette@2x.jpg')
+        background-image url('/images/qeros/silhouette@2x.jpg')
 
 
 @media only screen and (min-width: 768px) 
@@ -307,8 +316,7 @@
       .frame-img
         column(8)
         push(3)
-        height 130%      
-        overflow visible
+        height 130%
       .caption
         push(1)
         padding-left 0

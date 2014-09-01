@@ -10,4 +10,9 @@
 # - instafeed.min
 # - masonry.pkgd.min
 - chroma.min
+- TweenLite.min
+- TimelineLite.min
+- Draggable.min
+- ColorPropsPlugin.min
+- EasePack.min
 - application
