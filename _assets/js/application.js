@@ -194,7 +194,7 @@
   WY.Views.AppView = WY.Extensions.View.extend({
     el: 'body',
     initialize: function(){
-       _.bindAll(this, 'render', 'onScroll');
+       _.bindAll(this, 'render', 'onScroll', 'onResize');
 
       this.menu = new WY.Views.Menu({el: $('#site-nav')});
       this.$contentEl = $(this.$el.children('#content'));
@@ -205,7 +205,10 @@
       this.firstLoad = true;
 
       window.addEventListener('scroll', this.onScroll, false);
+      window.addEventListener('resize', this.onResize, false);
     },
+
+    createTimelines: function() {},
 
     render: function(){
       this.ticking = false;
@@ -261,6 +264,11 @@
         this.requestTick();
       }
     },
+
+    onResize: _.debounce(function(e) {
+      this.currentPageView.onResizeDebounced();
+    }, 100),
+
 
     requestTick: function() {
       if (!this.ticking) {
@@ -464,23 +472,22 @@
     },
 
     beforeAppend: function(){
-      console.log('before')
       this.createTimelines();
     },
 
     render: function(currentScrollY) {
-      console.log(this.timelines)
       this.seekTimelines(currentScrollY);
     },
 
     createTimelines: function() {
       var vh = 0.01 * $(window).innerHeight();
+      var vw = 0.01 * $(window).innerWidth();
 
       var createTopTL = function() {
         var topTL = new TimelineLite({paused:true});
         // buildTL.to($('#bg-container'), 5, {left:'50%', ease:Power2.easeOut});
-        topTL.to(this.$el.find('#top .bg .sky'), 5, {y:100 * vh, ease:Sine.easeIn}, 0);
-        topTL.to(this.$el.find('#top .bg .mountains'), 5, {y:12 * vh, ease:Power2.easeOut}, 0);
+        topTL.to(this.$el.find('#top .bg .sky'), 5, {y:100 * vh, ease:Power0.easeOut}, 0);
+        topTL.to(this.$el.find('#top .bg .mountains'), 5, {y:6 * vw, ease:Power2.easeOut}, 0);
         topTL.to(this.$el.find('#top .cell h1'), 5, {y:60 * vh, opacity:0, ease:Power0.easeIn}, 0);
         topTL.to(this.$el.find('#top .cell p'), 1.2, {y:15 * vh, opacity:0, ease:Power0.easeIn}, 0);
         // topTL.to({}, 12);
@@ -557,8 +564,8 @@
     initialize: function () {
       _.bindAll(this, 'onMouseenter', 'onMouseleave', 'onMousemove');
       this.$imgEl = this.$el.children().first();
-      this.$el.hover(this.onMouseenter, this.onMouseleave);
-      this.$el.on('mousemove', this.onMousemove);
+      // this.$el.hover(this.onMouseenter, this.onMouseleave);
+      // this.$el.on('mousemove', this.onMousemove);
     },
 
     onMouseenter: function() {
