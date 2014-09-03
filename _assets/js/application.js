@@ -93,6 +93,53 @@
         timeline.seek(range * timeline.totalDuration(), false);
       }
     },
+
+    preloadImg: function(el) {
+      var $el;
+      if (el.jquery) {
+        $el = el;
+      } else {
+        $el = $(el);
+      }
+
+      var isImg = $el.is('img');
+      var src = $el.data('src');
+
+      if (this.hiDpi && Detectizr.device.type !== 'mobile') {
+        src = src.replace('.', '@2x.');
+      }
+
+      $el.addClass('loading');
+      
+      if (isImg) {
+        $el.load(this.onImgLoad.bind(this));
+        $el.attr('src', src);
+      } else {
+        var tmpImg = new Image();
+        $(tmpImg).load({$el:$el}, this.onImgLoad.bind(this));
+        tmpImg.src = src;
+        $('#backstage').append(tmpImg)
+      }
+    },
+
+    onImgLoad: function(e) {
+      if (!e.target.complete || typeof e.target.naturalWidth == "undefined" || e.target.naturalWidth == 0) {
+        // handle error  
+      } 
+      if (e.data && e.data.$el) {
+        e.data.$el.css('background-image', 'url(' + e.target.src + ')');
+        e.data.$el.removeClass('loading');
+        this.onImgLoadCallback(e.data.$el);
+      } else {
+        $(e.target).removeClass('loading');
+        this.onImgLoadCallback($(e.target)); 
+      }
+    },
+
+    onImgLoadCallback: function($el) {},
+
+    onResizeDebounced: function() {}
+
   });
 
   WY.Extensions.Router = Backbone.Router.extend({
@@ -204,6 +251,8 @@
       this.scrollEffects = true;
       this.firstLoad = true;
 
+      this.hiDpi = Modernizr.hidpi;
+
       window.addEventListener('scroll', this.onScroll, false);
       window.addEventListener('resize', this.onResize, false);
     },
@@ -219,10 +268,10 @@
     },
 
     goto: function(view){
-
       if (this.firstLoad) {
         this.firstLoad = false;
         view.$el = $('#content .page');
+        view.hiDpi = this.hiDpi;
         view.beforeAppend();
         view.transitionIn();
         this.currentPageView = view;
@@ -250,6 +299,7 @@
     },
 
     transitionInNextView: function(nextView) {
+      nextView.hiDpi = this.hiDpi;
       nextView.buildEl(this.currentPageModel);
       this.$contentEl.append(nextView.$el);
       window.scrollTo(0, 0);
@@ -268,7 +318,6 @@
     onResize: _.debounce(function(e) {
       this.currentPageView.onResizeDebounced();
     }, 100),
-
 
     requestTick: function() {
       if (!this.ticking) {
@@ -448,16 +497,27 @@
 
   WY.Views.Projects = WY.Extensions.View.extend({
     page: 'projects',
-  
+    initialize: function() {
+      _.bindAll(this, 'createTimelines');
+    },
+
     beforeAppend: function() {
       $('.photo').each(function(i, el){
         ZoomImg = new WY.Views.ZoomImg({ el: el });
       });
-
+      this.createTimelines();
     },
 
-    render: function() {
- 
+    createTimelines: function() {
+      var createTopTL = function(){
+
+      }.bind(this);
+
+      this.timelines.top = createTopTL();
+    },
+
+    render: function(currentScrollY) {
+      this.seekTimelines(currentScrollY);
     }
   });
 
@@ -472,6 +532,9 @@
     },
 
     beforeAppend: function(){
+      this.$el.find('*[data-src]').each(function(i, el){
+        this.preloadImg(el);
+      }.bind(this));
       this.createTimelines();
     },
 
@@ -486,7 +549,7 @@
       var createTopTL = function() {
         var topTL = new TimelineLite({paused:true});
         // buildTL.to($('#bg-container'), 5, {left:'50%', ease:Power2.easeOut});
-        topTL.to(this.$el.find('#top .bg .sky'), 5, {y:100 * vh, ease:Power0.easeOut}, 0);
+        topTL.to(this.$el.find('#top .bg .sky'), 5, {y:80 * vh, ease:Power0.easeOut}, 0);
         topTL.to(this.$el.find('#top .bg .mountains'), 5, {y:6 * vw, ease:Power2.easeOut}, 0);
         topTL.to(this.$el.find('#top .cell h1'), 5, {y:60 * vh, opacity:0, ease:Power0.easeIn}, 0);
         topTL.to(this.$el.find('#top .cell p'), 1.2, {y:15 * vh, opacity:0, ease:Power0.easeIn}, 0);
@@ -495,6 +558,10 @@
       }.bind(this);
 
       this.timelines.top = createTopTL();
+    },
+
+    onImgLoadCallback: function($el) {
+      console.log($el)
     }
   });
 

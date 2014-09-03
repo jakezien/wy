@@ -2,11 +2,13 @@
 - util
 - modernizr.custom
 - detectizr.min
+- modernizr-hidpi
 # - underscore
 # - backbone
 - underscore-min
 - backbone-min
 - jquery.history
+- imagesloaded.pkgd.min
 # - instafeed.min
 # - masonry.pkgd.min
 - chroma.min
