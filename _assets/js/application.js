@@ -36,12 +36,16 @@
 
     initialize: function(options) {
       if (options.page) {
-        this.className = this.page;
+        this.page = options.page;
+      }
+      if (options.url) {
+        this.url = options.url;
       }
     },
 
     buildEl: function(model){
       this.$el = model.get('template');
+      this.$el.addClass(this.page);
       this.beforeAppend();
     },
 
@@ -139,7 +143,6 @@
     onImgLoadCallback: function($el) {},
 
     onResizeDebounced: function() {}
-
   });
 
   WY.Extensions.Router = Backbone.Router.extend({
@@ -151,8 +154,12 @@
       'schools(/)': 'schools',
       'expeditions(/)': 'expeditions',
       'about(/)': 'about',
+      'blog/*id': 'blog',
       'blog(/)': 'blog',
-      '': 'home'
+      'blog/*id': 'shop',
+      'shop(/)': 'shop',
+      '': 'home',
+      // '*default': 'blog'
     },
 
     home: function() {
@@ -175,11 +182,25 @@
       WY.appInstance.goto(view);
     },
 
-    blog: function() {
-      var view = new WY.Views.Blog({page:'blog'});
+    blog: function(id) {
+      var view;
+      if (id) {
+        view = new WY.Views.Blog({page:'post-page', url:'blog/' + id});
+      } else {
+        view = new WY.Views.Blog({page:'blog', url:id});
+      }
       WY.appInstance.goto(view);
     },
 
+    shop: function(id) {
+      var view;
+      if (id) {
+        view = new WY.Views.Blog({page:'item-page', url:id});
+      } else {
+        view = new WY.Views.Blog({page:'shop', url:id});
+      }
+      WY.appInstance.goto(view);
+    },
 
     schools: function() {
       var view = new WY.Views.Schools({page:'schools'});
@@ -213,6 +234,7 @@
     },
 
     fetchHTML: function(page){
+      console.log(page)
       this.promise = $.ajax({
         url: '/' + page,
         type: 'GET',
@@ -280,6 +302,7 @@
         view.$el = $('#content .page');
         view.hiDpi = this.hiDpi;
         view.beforeAppend();
+        view.$el.addClass(view.page);
         view.transitionIn();
         this.currentPageView = view;
         return;
@@ -289,7 +312,12 @@
       var nextView = view;
 
       this.currentPageModel = new WY.PageModel();
-      this.currentPageModel.fetchHTML(nextView.page);
+      if (nextView.url) {
+        console.log(nextView.url);
+        this.currentPageModel.fetchHTML(nextView.url);
+      } else {
+        this.currentPageModel.fetchHTML(nextView.page);
+      }
 
       var finishGoto = function(){
         WY.appInstance.transitionInNextView(nextView);
@@ -505,6 +533,7 @@
   WY.Views.Projects = WY.Extensions.View.extend({
     page: 'projects',
     initialize: function() {
+      this.constructor.__super__.initialize.apply(this, arguments);
       _.bindAll(this, 'createTimelines');
     },
 
@@ -535,6 +564,7 @@
   WY.Views.Expeditions = WY.Extensions.View.extend({
     page: 'expeditions',
     initialize: function(){
+      this.constructor.__super__.initialize.apply(this, arguments);
       _.bindAll(this, 'createTimelines');
     },
 
@@ -578,6 +608,10 @@
 
   WY.Views.Blog = WY.Extensions.View.extend({
     page: 'blog'
+  });
+
+  WY.Views.Shop = WY.Extensions.View.extend({
+    page: 'shop'
   });
 
   WY.Views.Menu = Backbone.View.extend({

@@ -1,4 +1,11 @@
 name: Willka Yachay
 markdown: redcarpet
-pygments: true
+highlighter: pygments
 permalink: pretty
+collections:
+  blogposts:
+    output: true
+    permalink: /blog/:path/
+  shopitems:
+    output: true
+    permalink: /shop/:path/

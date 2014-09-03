@@ -1,12 +1,10 @@
 ---
 layout: post
-title:  "Why We Do Our Work"
-date:   2014-09-03
+title: "Why We Do Our Work"
+date: 2014-9-5
 ---
 
 A Letter from our Director
-
-abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
 
 The indigenous Q’eros people of Peru practice unique, earth-centric textile, musical, agricultural, social and spiritual traditions, yet their way of life is threatened. They are striving to sustain their ancient Andean identity in the face of outward migration, large-scale mining, the arrival of a road and globalization.
 

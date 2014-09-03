@@ -1,4 +1,4 @@
-.blog
+.blog, .post-page
   
   #top
     padding-top 0
@@ -10,6 +10,7 @@
     line-height 1.45
     padding-left 1.5em
     padding-right 1.5em
+    margin-bottom 10em
     clearfix()
 
     &:last-of-type
@@ -33,14 +34,17 @@
       Smooth();
       margin-bottom 1em
 
+.post-page
+  padding-top 20vh
+
 @media only screen and (min-width: 480px) and (max-width: 767px) 
-  .blog
+  .blog, .post-page
     .post
       font-size 1.1em
 
 
 @media only screen and (min-width: 768px)
-  .blog
+  .blog, .post-page
     .post
       font-size 1.25em
       line-height 1.5

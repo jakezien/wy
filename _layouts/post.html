@@ -2,10 +2,10 @@
 layout: default
 ---
 
-<div id="post" class="page">
+<div class="post">
   <header class="wrapper">
-    <h2 class="title">{{ page.title }}</h2>
-    <p class="meta">{{ page.date | date: "%B %d, %Y" }}</p>
+    <h1 class="title"><a href="page.url">{{ page.title }}</a></h1>
+    <h3 class="meta">{{ page.date | date: "%B %d, %Y" }}</h3>
   </header>
 
   <div class="content wrapper">
