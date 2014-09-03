@@ -151,6 +151,7 @@
       'schools(/)': 'schools',
       'expeditions(/)': 'expeditions',
       'about(/)': 'about',
+      'blog(/)': 'blog',
       '': 'home'
     },
 
@@ -173,6 +174,12 @@
       var view = new WY.Views.Projects({page:'projects'});
       WY.appInstance.goto(view);
     },
+
+    blog: function() {
+      var view = new WY.Views.Blog({page:'blog'});
+      WY.appInstance.goto(view);
+    },
+
 
     schools: function() {
       var view = new WY.Views.Schools({page:'schools'});
@@ -567,6 +574,10 @@
 
   WY.Views.About = WY.Extensions.View.extend({
     page: 'about'
+  });
+
+  WY.Views.Blog = WY.Extensions.View.extend({
+    page: 'blog'
   });
 
   WY.Views.Menu = Backbone.View.extend({
