@@ -1,0 +1,51 @@
+.about
+  
+  Garamond()
+
+  section
+    clearfix()
+
+  .team, .advisors, .expedition-team, .allies
+    column(10)
+    push(1)
+    clearfix()
+
+    li
+      width 100%
+        &:after
+          content ''
+          display block
+          absolute100()
+          background hotPink
+          mix-blend-mode multiply
+      h3
+        font-weight normal
+        margin .5em 0
+      div
+        width 100%
+        position relative
+        background-size 100% 100%
+        background-color hotPink
+        background-blend-mode multiply
+        transition background-color 0.33s ease
+        &:hover
+          background-color #fff
+        &:before
+          content ''
+          display block
+          padding-top 100%
+
+  #story .text
+    column(10)
+    push(1)
+    clearfix()
+
+
+@media only screen and (min-width: 768px) 
+  .about
+    .team, .advisors, .expedition-team, .allies
+      li
+        column(3)
+        min-height 200px
+      h3
+        min-height 3em

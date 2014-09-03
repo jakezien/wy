@@ -156,7 +156,7 @@
       'about(/)': 'about',
       'blog/*id': 'blog',
       'blog(/)': 'blog',
-      'blog/*id': 'shop',
+      'shop/*id': 'shop',
       'shop(/)': 'shop',
       '': 'home',
       // '*default': 'blog'
@@ -187,7 +187,7 @@
       if (id) {
         view = new WY.Views.Blog({page:'post-page', url:'blog/' + id});
       } else {
-        view = new WY.Views.Blog({page:'blog', url:id});
+        view = new WY.Views.Blog({page:'blog'});
       }
       WY.appInstance.goto(view);
     },
@@ -197,7 +197,7 @@
       if (id) {
         view = new WY.Views.Blog({page:'item-page', url:id});
       } else {
-        view = new WY.Views.Blog({page:'shop', url:id});
+        view = new WY.Views.Blog({page:'shop'});
       }
       WY.appInstance.goto(view);
     },
@@ -603,7 +603,12 @@
   });
 
   WY.Views.About = WY.Extensions.View.extend({
-    page: 'about'
+    page: 'about',
+    beforeAppend: function(){
+      this.$el.find('*[data-src]').each(function(i, el){
+        this.preloadImg(el);
+      }.bind(this));
+    }
   });
 
   WY.Views.Blog = WY.Extensions.View.extend({
