@@ -534,26 +534,72 @@
     page: 'projects',
     initialize: function() {
       this.constructor.__super__.initialize.apply(this, arguments);
-      _.bindAll(this, 'createTimelines');
+      _.bindAll(this, 'createTimelines', 'snapScroll');
     },
 
     beforeAppend: function() {
-      $('.photo').each(function(i, el){
-        ZoomImg = new WY.Views.ZoomImg({ el: el });
-      });
       this.createTimelines();
     },
 
     createTimelines: function() {
-      var createTopTL = function(){
+    
+      var createTL = function(i, el) {
+        var $el = $(el);
+        var $bgEl = this.$el.find('.bg .bg-imgs .' + $el.attr('id'));
+        var $video = $bgEl.find('video');
+        var tl = new TimelineLite({paused:true});
 
+        if (!$video[0]) {
+          tl.to($bgEl, 5, {opacity:1});
+          tl.to($bgEl, 5, {});
+        } else {
+          tl.call(function(){
+            $video[0].currentTime = 0;
+            $video[0].pause();
+          });
+          tl.to($bgEl, 5, {opacity:1});
+          tl.call(function(){
+            $video[0].play();
+          });
+          tl.to($bgEl, 5, {}, 5.1);
+          tl.call(function(){
+            $video[0].pause();
+          });
+        }
+
+        this.timelines[$el.attr('id')] = tl;
       }.bind(this);
 
-      this.timelines.top = createTopTL();
+      this.$el.find('section').not('#top, .cta').each(createTL);
     },
 
     render: function(currentScrollY) {
       this.seekTimelines(currentScrollY);
+      this.latestKnownScrollY = currentScrollY;
+      if (this.snapScrollTimeout) {
+        clearTimeout(this.snapScrollTimeout);
+      }
+      this.snapScrollTimeout = setTimeout(this.snapScroll, 100);
+    },
+
+    snapScroll: function(){
+      var $window = $(window);
+      var windowHeight = $window.innerHeight();
+      var sections = this.$el.find('section').not('#top, .cta');
+
+      var checkSection = function(i, el){
+        var $el = $(el);
+        var elTop =  $el.offset().top;
+        var rangeTop = elTop - windowHeight * 0.5;
+        var rangeBottom = elTop + windowHeight * 0.5;
+        console.log('rangeTop: ' + rangeTop + '  scrollY: ' + this.latestKnownScrollY);
+        if (rangeTop < this.latestKnownScrollY && this.latestKnownScrollY < rangeBottom) {
+          console.log('snap!');
+          TweenLite.to(window, 0.75, {scrollTo:{y: elTop}, ease:Elastic.easeOut});
+        }  
+      }.bind(this);
+
+      sections.each(checkSection);
     }
   });
 
