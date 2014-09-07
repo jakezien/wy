@@ -564,6 +564,7 @@
           tl.to($bgEl, 5, {}, 5.1);
           tl.call(function(){
             $video[0].pause();
+            $video[0].currentTime = 0;
           });
         }
 
@@ -595,7 +596,7 @@
         console.log('rangeTop: ' + rangeTop + '  scrollY: ' + this.latestKnownScrollY);
         if (rangeTop < this.latestKnownScrollY && this.latestKnownScrollY < rangeBottom) {
           console.log('snap!');
-          TweenLite.to(window, 0.75, {scrollTo:{y: elTop}, ease:Elastic.easeOut});
+          TweenLite.to(window, 1, {scrollTo:{y: elTop}, ease:Elastic.easeOut});
         }  
       }.bind(this);
 
