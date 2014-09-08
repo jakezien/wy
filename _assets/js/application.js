@@ -59,6 +59,7 @@
     transitionIn: function(callback) {
       var view = this, delay;
       var transitionIn = function() {
+        view.render(window.scrollY);        
         view.$el.addClass('is-visible');
         view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
           if (_.isFunction(callback)) {
@@ -303,8 +304,8 @@
         view.hiDpi = this.hiDpi;
         view.beforeAppend();
         view.$el.addClass(view.page);
-        view.transitionIn();
         this.currentPageView = view;
+        this.currentPageView.transitionIn();
         return;
       }
 
@@ -534,10 +535,13 @@
     page: 'projects',
     initialize: function() {
       this.constructor.__super__.initialize.apply(this, arguments);
-      _.bindAll(this, 'createTimelines', 'snapScroll');
+      _.bindAll(this, 'createTimelines', 'snapScroll', 'transitionIn');
     },
 
     beforeAppend: function() {
+      this.$el.find('*[data-src]').each(function(i, el){
+        this.preloadImg(el);
+      }.bind(this));
       this.createTimelines();
     },
 
@@ -546,25 +550,32 @@
       var createTL = function(i, el) {
         var $el = $(el);
         var $bgEl = this.$el.find('.bg .bg-imgs .' + $el.attr('id'));
-        var $video = $bgEl.find('video');
+        var $textEl = $el.find('.text');
+        var video = $bgEl.find('video')[0];
         var tl = new TimelineLite({paused:true});
 
-        if (!$video[0]) {
+        if (!video) {
           tl.to($bgEl, 5, {opacity:1});
-          tl.to($bgEl, 5, {});
+          tl.to($textEl, 5, {opacity:1});
         } else {
           tl.call(function(){
-            $video[0].currentTime = 0;
-            $video[0].pause();
+            if (video.readyState > 1) {
+              video.currentTime = 0;
+              video.pause();
+            }
           });
           tl.to($bgEl, 5, {opacity:1});
           tl.call(function(){
-            $video[0].play();
+            if (video.readyState > 1) {
+              video.play();
+            }
           });
-          tl.to($bgEl, 5, {}, 5.1);
+          tl.to($textEl, 5, {opacity:0.1});
           tl.call(function(){
-            $video[0].pause();
-            $video[0].currentTime = 0;
+            if (video.readyState > 1) {
+              video.pause();
+              video.currentTime = 0;
+            }
           });
         }
 
@@ -588,15 +599,26 @@
       var windowHeight = $window.innerHeight();
       var sections = this.$el.find('section').not('#top, .cta');
 
+      var endSnap = function(){
+        _.delay(function(){
+          this.isSnapping = false;
+        }.bind(this), 500);
+      }.bind(this);
+
+
       var checkSection = function(i, el){
+        if (this.isSnapping) return;
+
         var $el = $(el);
         var elTop =  $el.offset().top;
-        var rangeTop = elTop - windowHeight * 0.5;
-        var rangeBottom = elTop + windowHeight * 0.5;
-        console.log('rangeTop: ' + rangeTop + '  scrollY: ' + this.latestKnownScrollY);
+        var rangeTop = elTop - windowHeight * 0.66;
+        var rangeBottom = elTop + windowHeight * 0.25;
+        // console.log('rangeTop: ' + rangeTop + '  scrollY: ' + this.latestKnownScrollY);
         if (rangeTop < this.latestKnownScrollY && this.latestKnownScrollY < rangeBottom) {
-          console.log('snap!');
-          TweenLite.to(window, 1, {scrollTo:{y: elTop}, ease:Elastic.easeOut});
+          this.isSnapping = true;
+          var tl = new TimelineLite();
+          tl.to(window, 1, {scrollTo:{y: elTop}, ease:Back.easeOut});
+          tl.call(endSnap);
         }  
       }.bind(this);
 
@@ -677,6 +699,8 @@
       this.lastScrollTop = 0;
     },
     render : function(currentScrollY){
+      if (!WY.appInstance.currentPageView || WY.appInstance.currentPageView.isSnapping) return;
+
       var pageHeight = $('#content').innerHeight();
       var windowHeight = $(window).innerHeight();
       var st = Math.max(0, currentScrollY);
