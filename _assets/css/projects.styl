@@ -1,7 +1,7 @@
 cloud = rgba(250,250,255,0.985)
 white = rgb(250,250,255)
 
-.projects
+.projects    
 
   .bg
     absolute100()
@@ -110,8 +110,8 @@ white = rgb(250,250,255)
     background-repeat no-repeat
     min-height 100vh
 
-  #energy, #food, #cultural, #music
-    margin-top 20vh
+  // #energy, #food, #cultural, #music
+  //   margin-top 20vh
 
   #music, #medicine
     .text
@@ -127,6 +127,9 @@ white = rgb(250,250,255)
 // Tablet portrait and above
 @media only screen and (min-width: 768px)
   .projects
+    
+    &.scrolling
+      pointer-events none
     
     section
       .text
@@ -157,13 +160,13 @@ white = rgb(250,250,255)
           column(12)
           margin-bottom 1em
         
-        &:hover
-          p
-            color brown
-          .cta .line
-            background brown
-          .scrim 
-            opacity 0.95
+        // &:hover
+        //   p
+        //     color brown
+        //   .cta .line
+        //     background brown
+        //   .scrim 
+        //     opacity 0.95
 
 
       .col

@@ -29,122 +29,54 @@
   });
 
 
-  // Extensions 
+  // Model
   // ———————————————————————————————————————————
 
-  WY.Extensions.View = Backbone.View.extend({
+  WY.PageModel = Backbone.Model.extend({
+    defaults: {template: null, rawHTML: null},
 
-    initialize: function(options) {
-      if (options.page) {
-        this.page = options.page;
-      }
-      if (options.url) {
-        this.url = options.url;
-      }
+    initialize: function() {
+      _.bindAll(this, 'onRequestSuccess', 'onRequestError');
     },
 
-    buildEl: function(model){
-      this.$el = model.get('template');
-      this.$el.addClass(this.page);
-      this.beforeAppend();
+    getUrl: function(page) {
+      return window.location.host + '/' + page;
     },
 
-    beforeAppend: function() {},
-
-    render: function(options) {
-      options = options || {};
-      return this;
-    },
-
-    transitionIn: function(callback) {
-      var view = this, delay;
-      var transitionIn = function() {
-        view.render(window.scrollY);        
-        view.$el.addClass('is-visible');
-        view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
-          if (_.isFunction(callback)) {
-            callback();
-          }
-        });
-      };
-
-      _.delay(transitionIn, 20);
-    },
-
-    transitionOut: function(callback) {
-      var view = this;
-      view.$el.removeClass('is-visible');
-      view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
-        if (_.isFunction(callback)) {
-          callback();
-        }
+    fetchHTML: function(page){
+      console.log(page)
+      this.promise = $.ajax({
+        url: '/' + page,
+        type: 'GET',
+        success: this.onRequestSuccess,
+        error: this.onRequestError
       });
+    }, 
+    
+    onRequestSuccess: function(data){
+      var $dataDiv = $('<div />').html(data);
+      var $page = $dataDiv.find('#content .page');
+      var title = $dataDiv.find('title').text();
+
+      this.set('rawHTML', data);
+      this.set('template', $page);
+      this.set('title', title);
     },
-
-    timelines: {},
-
-    seekTimelines: function(currentScrollY){
-      var windowHeight = window.innerHeight;
-      if (!windowHeight) {
-        windowHeight = document.documentElement.clientHeight;
-      }
-
-      for (var i in this.timelines) {
-        var timeline = this.timelines[i];
-        var $el = $('#' + i); 
-        var elTop = $el.offset().top;
-        var elHeight = $el.outerHeight();
-        var range = Math.max( 0, (currentScrollY - Math.max(0, elTop - windowHeight)) / (Math.min(windowHeight, elTop) + elHeight) );
-        timeline.seek(range * timeline.totalDuration(), false);
-      }
-    },
-
-    preloadImg: function(el) {
-      var $el;
-      if (el.jquery) {
-        $el = el;
-      } else {
-        $el = $(el);
-      }
-
-      var isImg = $el.is('img');
-      var src = $el.data('src');
-
-      if (this.hiDpi && Detectizr.device.type !== 'mobile') {
-        src = src.replace('.', '@2x.');
-      }
-
-      $el.addClass('loading');
-      
-      if (isImg) {
-        $el.load(this.onImgLoad.bind(this));
-        $el.attr('src', src);
-      } else {
-        var tmpImg = new Image();
-        $(tmpImg).load({$el:$el}, this.onImgLoad.bind(this));
-        tmpImg.src = src;
-        $('#backstage').append(tmpImg)
-      }
-    },
-
-    onImgLoad: function(e) {
-      if (!e.target.complete || typeof e.target.naturalWidth == "undefined" || e.target.naturalWidth == 0) {
-        // handle error  
-      } 
-      if (e.data && e.data.$el) {
-        e.data.$el.css('background-image', 'url(' + e.target.src + ')');
-        e.data.$el.removeClass('loading');
-        this.onImgLoadCallback(e.data.$el);
-      } else {
-        $(e.target).removeClass('loading');
-        this.onImgLoadCallback($(e.target)); 
-      }
-    },
-
-    onImgLoadCallback: function($el) {},
-
-    onResizeDebounced: function() {}
+    
+    onRequestError: function(data){
+      var $dataDiv = $('<div />').html(data);
+      $dataDiv.addClass('page');
+      this.set('rawHTML', data);
+      this.set('template', $dataDiv);
+      this.set('title', '404');
+      console.log('fail');
+    }
   });
+
+
+
+  // Extensions 
+  // ———————————————————————————————————————————
 
   WY.Extensions.Router = Backbone.Router.extend({
 
@@ -219,50 +151,122 @@
     }
   });
 
+  WY.Extensions.View = Backbone.View.extend({
 
-  // Model
-  // ———————————————————————————————————————————
-
-  WY.PageModel = Backbone.Model.extend({
-    defaults: {template: null, rawHTML: null},
-
-    initialize: function() {
-      _.bindAll(this, 'onRequestSuccess', 'onRequestError');
+    initialize: function(options) {
+      if (options.page) {
+        this.page = options.page;
+      }
+      if (options.url) {
+        this.url = options.url;
+      }
     },
 
-    getUrl: function(page) {
-      return window.location.host + '/' + page;
+    buildEl: function(model){
+      this.$el = model.get('template');
+      this.$el.addClass(this.page);
+      this.beforeAppend();
     },
 
-    fetchHTML: function(page){
-      console.log(page)
-      this.promise = $.ajax({
-        url: '/' + page,
-        type: 'GET',
-        success: this.onRequestSuccess,
-        error: this.onRequestError
+    beforeAppend: function() {},
+
+    render: function(options) {
+      options = options || {};
+      return this;
+    },
+
+    transitionIn: function(callback) {
+      var view = this, delay;
+      var transitionIn = function() {
+        view.render(window.scrollY);        
+        view.$el.addClass('is-visible');
+        view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+          if (_.isFunction(callback)) {
+            callback();
+          }
+        });
+      };
+
+      _.delay(transitionIn, 20);
+    },
+
+    transitionOut: function(callback) {
+      var view = this;
+      view.$el.removeClass('is-visible');
+      view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+        if (_.isFunction(callback)) {
+          callback();
+        }
       });
-    }, 
-    
-    onRequestSuccess: function(data){
-      var $dataDiv = $('<div />').html(data);
-      var $page = $dataDiv.find('#content .page');
-      var title = $dataDiv.find('title').text();
-
-      this.set('rawHTML', data);
-      this.set('template', $page);
-      this.set('title', title);
     },
-    
-    onRequestError: function(data){
-      var $dataDiv = $('<div />').html(data);
-      $dataDiv.addClass('page');
-      this.set('rawHTML', data);
-      this.set('template', $dataDiv);
-      this.set('title', '404');
-      console.log('fail');
-    }
+
+    timelines: {},
+
+    seekTimelines: function(currentScrollY){
+      var windowHeight = window.innerHeight;
+      if (!windowHeight) {
+        windowHeight = document.documentElement.clientHeight;
+      }
+
+      for (var i in this.timelines) {
+        var timeline = this.timelines[i];
+        var $el = $('#' + i);
+        if (!$el[0]) return;
+
+        var elTop = $el.offset().top;
+        var elHeight = $el.outerHeight();
+        var range = Math.max( 0, (currentScrollY - Math.max(0, elTop - windowHeight)) / (Math.min(windowHeight, elTop) + elHeight) );
+        timeline.seek(range * timeline.totalDuration(), false);
+      }
+    },
+
+    preloadImg: function(el) {
+      var $el;
+      if (el.jquery) {
+        $el = el;
+      } else {
+        $el = $(el);
+      }
+
+      var isImg = $el.is('img');
+      var src = $el.data('src');
+
+      if (this.hiDpi && Detectizr.device.type !== 'mobile') {
+        src = src.replace('.', '@2x.');
+      }
+
+      $el.addClass('loading');
+      
+      if (isImg) {
+        $el.load(this.onImgLoad.bind(this));
+        $el.attr('src', src);
+      } else {
+        var tmpImg = new Image();
+        $(tmpImg).load({$el:$el}, this.onImgLoad.bind(this));
+        tmpImg.src = src;
+        $('#backstage').append(tmpImg)
+      }
+    },
+
+    onImgLoad: function(e) {
+      if (!e.target.complete || typeof e.target.naturalWidth == "undefined" || e.target.naturalWidth == 0) {
+        // handle error  
+      } 
+      if (e.data && e.data.$el) {
+        e.data.$el.css('background-image', 'url(' + e.target.src + ')');
+        e.data.$el.removeClass('loading');
+        this.onImgLoadCallback(e.data.$el);
+      } else {
+        $(e.target).removeClass('loading');
+        this.onImgLoadCallback($(e.target)); 
+      }
+    },
+
+    onImgLoadCallback: function($el) {},
+
+    onResizeDebounced: function() {}
   });
+
 
 
   // Views
@@ -335,25 +339,25 @@
     },
 
     transitionInNextView: function(nextView) {
+      this.currentPageView = nextView;
       nextView.hiDpi = this.hiDpi;
       nextView.buildEl(this.currentPageModel);
       this.$contentEl.append(nextView.$el);
       window.scrollTo(0, 0);
       document.title = this.currentPageModel.get('title');
       nextView.transitionIn();
-      this.currentPageView = nextView;
     },
 
+    onResize: _.debounce(function(e) {
+      this.currentPageView.onResizeDebounced();
+    }, 100),
+    
     onScroll: function(){
       this.latestKnownScrollY = window.scrollY;
       if (this.scrollEffects) {
         this.requestTick();
       }
     },
-
-    onResize: _.debounce(function(e) {
-      this.currentPageView.onResizeDebounced();
-    }, 100),
 
     requestTick: function() {
       if (!this.ticking) {
@@ -536,6 +540,7 @@
     initialize: function() {
       this.constructor.__super__.initialize.apply(this, arguments);
       _.bindAll(this, 'createTimelines', 'snapScroll', 'transitionIn');
+      this.isScrolling = false;
     },
 
     beforeAppend: function() {
@@ -546,6 +551,8 @@
     },
 
     createTimelines: function() {
+
+      this.timelines = {};
     
       var createTL = function(i, el) {
         var $el = $(el);
@@ -587,6 +594,7 @@
 
     render: function(currentScrollY) {
       this.seekTimelines(currentScrollY);
+      this.lastKnownScrollY = this.latestKnownScrollY;
       this.latestKnownScrollY = currentScrollY;
       if (this.snapScrollTimeout) {
         clearTimeout(this.snapScrollTimeout);
@@ -597,7 +605,7 @@
     snapScroll: function(){
       var $window = $(window);
       var windowHeight = $window.innerHeight();
-      var sections = this.$el.find('section').not('#top, .cta');
+      var sections = this.$el.find('section').not('.cta');
 
       var endSnap = function(){
         _.delay(function(){
@@ -606,20 +614,39 @@
       }.bind(this);
 
 
+
       var checkSection = function(i, el){
         if (this.isSnapping) return;
 
         var $el = $(el);
-        var elTop =  $el.offset().top;
-        var rangeTop = elTop - windowHeight * 0.66;
-        var rangeBottom = elTop + windowHeight * 0.25;
+        var rangeTop, rangeBottom;
+        var offset = $el.offset();
+        var elTop = offset.top;
+
+        if (this.lastKnownScrollY === this.latestKnownScrollY) {
+          console.log(this.lastKnownScrollY)
+        }
+
+        if (this.lastKnownScrollY < this.latestKnownScrollY) {
+          rangeTop = elTop - windowHeight;
+          rangeBottom = elTop;
+        } else if (this.lastKnownScrollY > this.latestKnownScrollY) {
+          rangeTop = elTop;
+          rangeBottom = elTop + windowHeight;
+        }
+
         // console.log('rangeTop: ' + rangeTop + '  scrollY: ' + this.latestKnownScrollY);
-        if (rangeTop < this.latestKnownScrollY && this.latestKnownScrollY < rangeBottom) {
+        if (rangeTop <= this.latestKnownScrollY && this.latestKnownScrollY < rangeBottom) {
           this.isSnapping = true;
           var tl = new TimelineLite();
           tl.to(window, 1, {scrollTo:{y: elTop}, ease:Back.easeOut});
           tl.call(endSnap);
-        }  
+        } else {
+          console.log(rangeTop)
+          console.log(this.latestKnownScrollY)
+          console.log(rangeBottom)
+          console.log('\n')
+        }
       }.bind(this);
 
       sections.each(checkSection);
@@ -649,6 +676,7 @@
     },
 
     createTimelines: function() {
+      this.timelines = {};
       var vh = 0.01 * $(window).innerHeight();
       var vw = 0.01 * $(window).innerWidth();
 
@@ -664,6 +692,7 @@
       }.bind(this);
 
       this.timelines.top = createTopTL();
+      console.log('expeditions create tl')
     },
 
     onImgLoadCallback: function($el) {
