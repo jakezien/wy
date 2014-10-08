@@ -1,4 +1,6 @@
 .qeros
+  
+  background white
 
   .multiply 
     mix-blend-mode multiply
@@ -16,16 +18,16 @@
     width 100%
     height 100vh
     box-sizing border-box
-    border 40px solid #fff
+    border 40px solid white
     border-width 2vw 2.5vw
 
   section
     width 100%
     position relative
-    z-index 0
+    z-index 1
     min-height 75vh
     overflow hidden
-    background #fff
+    background white
 
     p
       Garamond()
@@ -66,12 +68,12 @@
         transform translateX(-50%)
         margin-left 50%
         z-index 0
-        background #fff
+        background white
       .border
         absolute100()
         height 100vh
         box-sizing border-box
-        border 20px solid #fff
+        border 20px solid white
         position fixed
       .gradient-top, .gradient-bottom
         position absolute
@@ -122,7 +124,7 @@
 
     .caption
       position relative
-      background #fff
+      background white
       padding 2em 2em 4em 2em
       p
         margin 0
@@ -140,7 +142,7 @@
 
     &.video 
       height 180vh
-      z-index -1
+      z-index 0
       .bg
         .multiply
           height 100vh
@@ -173,7 +175,7 @@
   #top
     color #fff
     min-height 100vh
-    z-index -1
+    z-index 0
     h1
       margin-top 0
     .bg .img
@@ -187,6 +189,7 @@
     position absolute
     top 115vh
     pointer-events none
+    z-index 1
     .container
       absolute100()
       overflow hidden
@@ -342,7 +345,7 @@
             height 15vh
             position absolute
             bottom -15vh
-            background #fff
+            background white
 
     .s-5
       padding-top 35vh
