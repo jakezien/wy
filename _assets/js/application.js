@@ -481,6 +481,7 @@
         //   opacity: Math.min(1, ratio * 3 - .5)
         // });
 
+
         if ($imgEl.parent().hasClass('move-h')) {
           $imgEl.css({transform: 'translateX(-' + ratio * 8 + '%)'});
           if (Detectizr.os.name === 'ios' && Detectizr.os.version.major < 8) {
@@ -553,6 +554,15 @@
     createTimelines: function() {
 
       this.timelines = {};
+
+      var createTopTL = function() {
+        $bgCover = $('.bg .bg-cover'); 
+
+        var tl = new TimelineLite({paused:true});
+        tl.to($bgCover, 10, {opacity:0});
+
+        return tl;
+      };
     
       var createTL = function(i, el) {
         var $el = $(el);
@@ -589,6 +599,7 @@
         this.timelines[$el.attr('id')] = tl;
       }.bind(this);
 
+      this.timelines['top'] = createTopTL();
       this.$el.find('section').not('#top, .cta').each(createTL);
     },
 
@@ -714,7 +725,10 @@
   });
 
   WY.Views.Shop = WY.Extensions.View.extend({
-    page: 'shop'
+    page: 'shop',
+    beforeAppend: function(){
+      // WY.appInstance.menu.transparent();
+    }
   });
 
   WY.Views.Menu = Backbone.View.extend({
@@ -760,6 +774,12 @@
     },
     scrollShow: function(){
       $(this.el).removeClass('scroll-hide');
+    },
+    transparent: function(){
+      $(this.el).addClass('transparent');
+    },
+    opaque: function(){
+      $(this.el).removeClass('transparent');
     },
     toggleMenu: function(){
       if (this.isShowing) {

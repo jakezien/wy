@@ -4,6 +4,8 @@ crimson = #D83027
 brown = #533B3A
 dkBrown = #241C1C
 clay = #C0817A
+cloud = rgba(250,250,255,0.985)
+white = rgb(250,250,255)
 
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {}
@@ -207,17 +209,20 @@ section.cta
 
   #site-nav
     height auto
-    transition transform 0.33s ease-out
+    transition transform 0.33s ease-out, background-color 0.33s ease
 
     &.scroll-hide
       transition transform 0.25s ease-in
       transform translateY(-120px)
 
+    &.transparent ul
+      background-color transparent
+
     ul
       margin 0 auto
       text-align center
       display block
-      background-color #fff
+      background-color white
 
     li
       display inline-block

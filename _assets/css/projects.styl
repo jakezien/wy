@@ -1,6 +1,3 @@
-cloud = rgba(250,250,255,0.985)
-white = rgb(250,250,255)
-
 .projects    
 
   .bg
@@ -20,6 +17,19 @@ white = rgb(250,250,255)
         background white
         background-size cover
         backface-visibility hidden
+
+        &.bg-gradient
+          opacity 1
+          background -webkit-gradient(radial, 100% 0%, 0, 100% 0%, 255, color-stop(0%, rgba(27, 21, 21, 0)), color-stop(100%, rgba(27, 21, 21, 0.5)))
+          background -webkit-radial-gradient(right top, farthest-corner, rgba(27, 21, 21, 0) 0%, rgba(27, 21, 21, 0.5) 100%)
+          background -moz-radial-gradient(right top, farthest-corner, rgba(27, 21, 21, 0) 0%, rgba(27, 21, 21, 0.5) 100%)
+          background -ms-radial-gradient(right top, farthest-corner, rgba(27, 21, 21, 0) 0%, rgba(27, 21, 21, 0.5) 100%)
+          background -o-radial-gradient(right top, farthest-corner, rgba(27, 21, 21, 0) 0%, rgba(27, 21, 21, 0.5) 100%)
+          background radial-gradient(farthest-corner at right top, rgba(27, 21, 21, 0) 0%, rgba(27, 21, 21, 0.5) 100%)
+
+        &.bg-cover
+          background white
+          opacity 1
 
       video
         pointer-events none
@@ -61,6 +71,7 @@ white = rgb(250,250,255)
       position relative
       z-index 1
       backface-visibility hidden
+      background gradien
 
     &.cta
       min-height 20vh
