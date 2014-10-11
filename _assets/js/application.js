@@ -21,6 +21,11 @@
           Backbone.history.navigate(href.attr, true);
         }
       });
+
+      Modernizr.load([ {
+        test: Modernizr.raf,
+        nope: ['/assets/js/polyfill-requestAnimationFrame.js'] 
+      } ]);
     }
   };
 
@@ -44,16 +49,20 @@
     },
 
     fetchHTML: function(page){
-      console.log(page)
+      console.log('fetch: ' + page);
       this.promise = $.ajax({
         url: '/' + page,
         type: 'GET',
-        success: this.onRequestSuccess,
-        error: this.onRequestError
-      });
+      })
+      .done(this.onRequestSuccess)
+      .fail(this.onRequestError)
+      .always(function(){console.log('FUCK')});
+      console.log(this.promise)
     }, 
     
     onRequestSuccess: function(data){
+      console.log('success');
+
       var $dataDiv = $('<div />').html(data);
       var $page = $dataDiv.find('#content .page');
       var title = $dataDiv.find('title').text();
@@ -61,9 +70,12 @@
       this.set('rawHTML', data);
       this.set('template', $page);
       this.set('title', title);
+      
+      console.log('success: ' + title);
     },
     
     onRequestError: function(data){
+      console.log('error');
       var $dataDiv = $('<div />').html(data);
       $dataDiv.addClass('page');
       this.set('rawHTML', data);
@@ -175,20 +187,20 @@
       return this;
     },
 
-    transitionIn: function(callback) {
+    transitionIn: function() {
       var view = this, delay;
       var transitionIn = function() {
         view.render(window.scrollY);        
         view.$el.addClass('is-visible');
         view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
-          if (_.isFunction(callback)) {
-            callback();
-          }
+          view.transitionInCallback();
         });
       };
 
       _.delay(transitionIn, 20);
     },
+
+    transitionInCallback: function(){},
 
     transitionOut: function(callback) {
       var view = this;
@@ -197,8 +209,11 @@
         if (_.isFunction(callback)) {
           callback();
         }
+        view.transitionOutCallback();
       });
     },
+
+    transitionOutCallback: function(){},
 
     timelines: {},
 
@@ -302,6 +317,13 @@
     },
 
     goto: function(view){
+      if (this.isTransitioning) {
+        console.log('nope')
+        // return;
+      }
+
+      this.isTransitioning = true;
+
       if (this.firstLoad) {
         this.firstLoad = false;
         view.$el = $('#content .page');
@@ -310,6 +332,8 @@
         view.$el.addClass(view.page);
         this.currentPageView = view;
         this.currentPageView.transitionIn();
+        window.scrollTo(0, 0);
+        this.isTransitioning = false;
         return;
       }
 
@@ -325,20 +349,23 @@
       }
 
       var finishGoto = function(){
+        console.log('finishGoto');
         WY.appInstance.transitionInNextView(nextView);
       };
 
       if (previousView) {
         previousView.transitionOut(function() {
           previousView.remove();
-          WY.appInstance.currentPageModel.promise.then(finishGoto, finishGoto);
-        });
+          this.currentPageModel.promise.always(function(){finishGoto();});
+          // WY.appInstance.currentPageModel.promise.always(finishGoto);
+        }.bind(this));
       } else {
-        this.currentPageModel.promise.then(finishGoto, finishGoto);
+        this.currentPageModel.promise.always(finishGoto);
       }
     },
 
     transitionInNextView: function(nextView) {
+      console.log('transitionIn')
       this.currentPageView = nextView;
       nextView.hiDpi = this.hiDpi;
       nextView.buildEl(this.currentPageModel);
@@ -346,6 +373,7 @@
       window.scrollTo(0, 0);
       document.title = this.currentPageModel.get('title');
       nextView.transitionIn();
+      this.isTransitioning = false;
     },
 
     onResize: _.debounce(function(e) {
@@ -422,9 +450,9 @@
       $('body').on('touchend', function(){
         $('video')[0].play();
       });
-      $('.frame-img').each(function(i, el){
-        ZoomImg = new WY.Views.ZoomImg({ el: el });
-      });
+      this.$el.find('*[data-src]').each(function(i, el){
+        this.preloadImg(el);
+      }.bind(this));
     },
 
     render: function(currentScrollY){
@@ -538,13 +566,25 @@
 
   WY.Views.Projects = WY.Extensions.View.extend({
     page: 'projects',
-    initialize: function() {
-      this.constructor.__super__.initialize.apply(this, arguments);
-      _.bindAll(this, 'createTimelines', 'snapScroll', 'transitionIn');
+    initialize: function(options) {
+      if (options.page) {
+        this.page = options.page;
+      }
+      if (options.url) {
+        this.url = options.url;
+      }
+      _.bindAll(this, 'createTimelines', 'snapScroll');
       this.isScrolling = false;
     },
 
     beforeAppend: function() {
+
+      if (Modernizr.video && Detectizr.device.model !== "iphone" && Detectizr.device.model !== "ipad") {
+        this.$el.find('.no-video').remove();
+      } else {
+        this.$el.find('video').remove();
+      }
+
       this.$el.find('*[data-src]').each(function(i, el){
         this.preloadImg(el);
       }.bind(this));
@@ -552,15 +592,15 @@
     },
 
     createTimelines: function() {
-
       this.timelines = {};
 
       var createTopTL = function() {
         $bgCover = $('.bg .bg-cover'); 
-
+        
         var tl = new TimelineLite({paused:true});
-        tl.to($bgCover, 10, {opacity:0});
-
+        $bgCover.css({opacity:1});
+        tl.to($bgCover, 5, {opacity:0}, 1);
+        
         return tl;
       };
     
@@ -580,19 +620,28 @@
               video.currentTime = 0;
               video.pause();
             }
+            $(video).off();
           });
           tl.to($bgEl, 5, {opacity:1});
           tl.call(function(){
-            if (video.readyState > 1) {
+            if (video.readyState > 3) {
               video.play();
+              console.log('play');
+            } else {
+              $(video).one('canplaythrough', function(){
+                this.play();
+              });
+              console.log('readyState: ' + video.readyState)
             }
           });
-          tl.to($textEl, 5, {opacity:0.1});
+          tl.to($textEl, 5, {opacity:0});
           tl.call(function(){
             if (video.readyState > 1) {
               video.pause();
               video.currentTime = 0;
             }
+            $(video).off();
+            $bgEl.css({opacity:0});
           });
         }
 
@@ -610,7 +659,9 @@
       if (this.snapScrollTimeout) {
         clearTimeout(this.snapScrollTimeout);
       }
-      this.snapScrollTimeout = setTimeout(this.snapScroll, 100);
+      if (Detectizr.device.type !== 'mobile') {
+        this.snapScrollTimeout = setTimeout(this.snapScroll, 100);
+      }
     },
 
     snapScroll: function(){
@@ -624,8 +675,6 @@
         }.bind(this), 500);
       }.bind(this);
 
-
-
       var checkSection = function(i, el){
         if (this.isSnapping) return;
 
@@ -635,7 +684,7 @@
         var elTop = offset.top;
 
         if (this.lastKnownScrollY === this.latestKnownScrollY) {
-          console.log(this.lastKnownScrollY)
+          console.log(this.lastKnownScrollY);
         }
 
         if (this.lastKnownScrollY < this.latestKnownScrollY) {
@@ -653,10 +702,10 @@
           tl.to(window, 1, {scrollTo:{y: elTop}, ease:Back.easeOut});
           tl.call(endSnap);
         } else {
-          console.log(rangeTop)
-          console.log(this.latestKnownScrollY)
-          console.log(rangeBottom)
-          console.log('\n')
+          // console.log(rangeTop)
+          // console.log(this.latestKnownScrollY)
+          // console.log(rangeBottom)
+          // console.log('\n')
         }
       }.bind(this);
 
@@ -665,7 +714,15 @@
   });
 
   WY.Views.Schools = WY.Extensions.View.extend({
-    page: 'schools'
+    page: 'schools',
+    beforeAppend: function() {
+      this.$el.find('*[data-src]').each(function(i, el){
+        this.preloadImg(el);
+      }.bind(this));
+    },
+    onImgLoadCallback: function($el) {
+      console.log('loaded')
+    }
   });
 
   WY.Views.Expeditions = WY.Extensions.View.extend({

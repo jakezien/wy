@@ -47,6 +47,9 @@
         background-size auto 100% 
         background-position center center
         backface-visibility hidden
+        transition opacity .25s ease-out
+        &.loading
+          opacity 0
     
     .caption
       position relative
@@ -73,47 +76,12 @@
       absolute100()
       backface-visibility hidden
     .img
-      background url('/images/schools/top@2x.jpg')
+      // background url('/images/schools/top@2x.jpg')
       background-size cover
       background-position center center
       background-repeat no-repeat
 
-  .s-1
-    .frame-img
-      div
-        background-image url('/images/schools/building@2x.jpg')
-
-  .s-2
-    .frame-img
-      div
-        background-image url('/images/schools/building-1@2x.jpg')
-
-  .s-3
-    .frame-img
-      div
-        background-image url('/images/schools/chalkboard@2x.jpg')
-
-  .s-4
-    .frame-img
-      div
-        background-image url('/images/schools/class@2x.jpg')
-
-  .preschool
-    .frame-img
-      div
-        background-image url('/images/schools/amor@2x.jpg')
-
-  .high-school
-    .frame-img
-      div
-        background-image url('/images/schools/painting@2x.jpg')
-
-  .math
-    .frame-img
-      div
-        background-image url('/images/schools/paz@2x.jpg')
-
-
+  
 
 
 @media only screen and (min-width: 768px)

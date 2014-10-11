@@ -3,6 +3,7 @@
   .bg
     absolute100()
     position fixed
+    z-index 0
 
     .multiply
       background hotPink
@@ -16,6 +17,7 @@
         opacity 0
         background white
         background-size cover
+        background-position center center
         backface-visibility hidden
 
         &.bg-gradient
@@ -29,11 +31,13 @@
 
         &.bg-cover
           background white
+
+        &.no-video
           opacity 1
 
       video
         pointer-events none
-        absolute100P{}
+        absolute100()
         width auto
         height auto
         min-width 100%
@@ -47,13 +51,15 @@
     .border
       absolute100()
 
+
   section
-    color brown
+    color white
     width 100%
     min-height 100vh
     box-sizing border-box
     position relative
-    clearfix()      
+    clearfix()
+    z-index 1   
       
     h2
       font-smoothing antialiased
@@ -120,6 +126,7 @@
     background-position center center
     background-repeat no-repeat
     min-height 100vh
+    color brown
 
   // #energy, #food, #cultural, #music
   //   margin-top 20vh
@@ -140,7 +147,7 @@
     
     section
       .text
-        color cloud
+        color white
         column(10)
         push(1)
         overflow visible
@@ -193,6 +200,7 @@
         clearfix()
 
       .scrim
+        display none
         position absolute
         width 100%
         height 88%

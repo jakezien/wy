@@ -3,6 +3,7 @@
 - modernizr.custom
 - detectizr.min
 - modernizr-hidpi
+- polyfill-requestAnimationFrame
 # - underscore
 # - backbone
 - underscore-min
