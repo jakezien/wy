@@ -32,10 +32,21 @@ body
       pointer-events none    
     .page
       opacity 0
-  &.menu-show
+  &.menu-show, &.donate-show
     overflow hidden
+  &.donate-show
+    #content
+      filter blur(24px)
+      -webkit-filter blur(24px)
+    #donate-btn
+      color hotPink
+
+
+
 
 #content
+  transition filter 1s ease, -webkit-filter 1s ease
+
   .page
     opacity 0
     transition opacity .45s ease-in
@@ -140,7 +151,7 @@ body
       text-decoration none
       transition color 0.15s ease
       &:hover, &.active
-        color #F22E60
+        color hotPink
 
   &.show
     height 100%

@@ -11,9 +11,18 @@
       this.appInstance = new WY.Views.AppView();
 
       Backbone.history.start({pushState: true, root: '/'});
+
+      if (Backbone.history.location.href.indexOf('#donate') > -1) {
+        _.delay(function(){
+          this.appInstance.showDonate();
+        }.bind(this), 1250);
+      }
       
       $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
-        var href = { prop: $(this).prop("href"), attr: $(this).attr("href") };
+        var href = { 
+          prop: $(this).prop("href"), 
+          attr: $(this).attr("href") 
+        };
         var root = location.protocol + "//" + location.host + '/';
 
         if (href.prop.slice(0, root.length) === root) {
@@ -21,6 +30,8 @@
           Backbone.history.navigate(href.attr, true);
         }
       });
+
+
 
       Modernizr.load([ {
         test: Modernizr.raf,
@@ -92,6 +103,12 @@
 
   WY.Extensions.Router = Backbone.Router.extend({
 
+    initialize: function() {
+      this.last = null;
+      _.bindAll(this, 'storeRoute', 'previous');
+      this.on('all', this.storeRoute);
+    },
+
     routes: {
       'qeros(/)': 'qeros',
       'qeros-old(/)': 'qerosOld',
@@ -99,12 +116,24 @@
       'schools(/)': 'schools',
       'expeditions(/)': 'expeditions',
       'about(/)': 'about',
+      // 'donate(/)': 'donate',
       'blog/*id': 'blog',
       'blog(/)': 'blog',
       'shop/*id': 'shop',
       'shop(/)': 'shop',
       '': 'home',
       // '*default': 'blog'
+    },
+
+    storeRoute: function(){
+      this.last = Backbone.history.fragment;
+      console.log('store ' + this.last)
+    },
+
+    previous: function() {
+      if (this.last) {
+        this.navigate(this.last);
+      }
     },
 
     home: function() {
@@ -160,8 +189,13 @@
     about: function() {
       var view = new WY.Views.About({page:'about'});
       WY.appInstance.goto(view);
+    },
+
+    donate: function() {
+      WY.appInstance.showDonate();
     }
   });
+
 
   WY.Extensions.View = Backbone.View.extend({
 
@@ -290,9 +324,20 @@
   WY.Views.AppView = WY.Extensions.View.extend({
     el: 'body',
     initialize: function(){
-       _.bindAll(this, 'render', 'onScroll', 'onResize');
+       _.bindAll(this, 'render', 'onScroll', 'onResize', 'hideDonate');
 
       this.menu = new WY.Views.Menu({el: $('#site-nav')});
+      this.donate = new WY.Views.Donate({
+        el: $('#donate'), 
+        donateBtn:$('#donate-btn')
+      });
+
+      this.menu.on('nav-clicked', function(){
+        if (this.donate.isShowing && !$('#donate-btn').hasClass('active')) {
+          this.hideDonate();
+        }
+      }.bind(this));
+
       this.$contentEl = $(this.$el.children('#content'));
 
       this.latestKnownScrollY = 0;
@@ -385,6 +430,14 @@
       if (this.scrollEffects) {
         this.requestTick();
       }
+    },
+
+    showDonate: function(){
+      this.donate.show();
+    },
+
+    hideDonate: function(){
+      this.donate.hide();
     },
 
     requestTick: function() {
@@ -789,6 +842,7 @@
   });
 
   WY.Views.Menu = Backbone.View.extend({
+
     isShowing: false,
     events: {
       'click #menu-btn': 'toggleMenu',
@@ -851,6 +905,59 @@
       if (this.isShowing) {
         this.hide();
       }
+      this.trigger('nav-clicked');
+    }
+  });
+
+  WY.Views.Donate = Backbone.View.extend({
+    isShowing: false,
+
+    initialize: function(opts){
+      this.$el.find('h1').click(function(){
+        WY.appRouter.previous();
+        this.hide();
+      }.bind(this));
+
+      _.bindAll(this, 'show', 'hide');
+
+      if (opts.donateBtn) {
+        this.donateBtn = opts.donateBtn;
+        this.donateBtn.click(this.show);
+      }
+
+      $('#donate .half-r').bind('mousewheel', function(e){
+        var scrollTo = -1 * e.originalEvent.wheelDelta + $('#donate .half-l').scrollTop();
+        $("#donate .half-l").scrollTop(scrollTo);
+      });
+
+      $('#donate .trigger').click(function(){
+        $('#donate form')[0].submit();
+      });
+    },
+
+    show: function(){
+      if (this.isTransitioning)
+        return;
+
+      this.isShowing = true;
+      this.$el.addClass('block');
+      _.delay(function(){
+        this.$el.addClass('show');
+        $('body').addClass('donate-show');
+      }.bind(this));
+    },
+
+    hide: function(){
+      this.isTransitioning = true;
+      this.$el.removeClass('show');
+      $('body').removeClass('donate-show');
+      this.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+        _.delay(function(){
+          this.$el.removeClass('block');
+          this.isShowing = false;
+          this.isTransitioning = false;
+        }.bind(this), 600)
+      }.bind(this));
     }
   });
 
