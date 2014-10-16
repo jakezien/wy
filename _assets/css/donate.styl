@@ -16,11 +16,15 @@
 
     .half-l, .half-r
       opacity 1
-
+    .half-l
+      transition opacity 0.5s ease-out 0.6s
     .half-r
       transition opacity 0.5s ease-out 0.7s
     .border
       border-width 20px
+    .hide-btn
+      opacity 1
+      transition opacity 0.5s ease 0.5s, background-color 0.15s ease
 
   .text
     absolute100()
@@ -83,7 +87,6 @@
     transition opacity 0.5s ease-in
 
   .half-l
-    transition opacity 0.5s ease-out 0.6s
     overflow scroll
     -webkit-overflow-scrolling touch
     height 100%
@@ -100,6 +103,27 @@
     .trigger
       background hotPink
 
+  .hide-btn
+    position absolute
+    top 0
+    left 0
+    width 60px
+    height 60px
+    opacity 0
+    transition opacity 0.5s ease, background-color 0.15s ease
+    svg
+      width 28px
+      height 28px
+      position relative
+      left 25%
+      top 25%
+      *
+        fill clay
+        transition fill 0.15s ease
+    &:hover 
+      svg
+        *
+          fill hotPink
 
 
 
@@ -152,4 +176,8 @@
               margin 0 auto
               border-bottom 4px solid
 
+    .hide
 
+    .hide-btn
+      top 69px
+      cursor pointer

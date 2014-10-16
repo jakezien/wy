@@ -332,12 +332,6 @@
         donateBtn:$('#donate-btn')
       });
 
-      this.menu.on('nav-clicked', function(){
-        if (this.donate.isShowing && !$('#donate-btn').hasClass('active')) {
-          this.hideDonate();
-        }
-      }.bind(this));
-
       this.$contentEl = $(this.$el.children('#content'));
 
       this.latestKnownScrollY = 0;
@@ -349,6 +343,12 @@
 
       window.addEventListener('scroll', this.onScroll, false);
       window.addEventListener('resize', this.onResize, false);
+
+      this.menu.on('nav-clicked', function(){
+        if (this.donate.isShowing && !$('#donate-btn').hasClass('active')) {
+          this.hideDonate();
+        }
+      }.bind(this));
     },
 
     createTimelines: function() {},
@@ -933,6 +933,8 @@
       $('#donate .trigger').click(function(){
         $('#donate form')[0].submit();
       });
+
+      $('#donate .hide-btn').click(this.hide);
     },
 
     show: function(){
