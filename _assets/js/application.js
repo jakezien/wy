@@ -216,6 +216,8 @@
 
     beforeAppend: function() {},
 
+    willTransitionOut: function() {},
+
     render: function(options) {
       options = options || {};
       return this;
@@ -295,6 +297,20 @@
         tmpImg.src = src;
         $('#backstage').append(tmpImg)
       }
+    },
+
+    preloadVideo: function(el) {
+      var $el;
+      if (el.jquery) {
+        $el = el;
+      } else {
+        $el = $(el);
+      }
+
+      if ($el.children().length > 0) return;
+      console.log(el)
+      var src = $el.data('src');
+      $el.append('<source src="' + src + '.mp4" type="video/mp4" >');
     },
 
     onImgLoad: function(e) {
@@ -384,6 +400,8 @@
 
       var previousView = this.currentPageView || null;
       var nextView = view;
+
+      previousView.willTransitionOut();
 
       this.currentPageModel = new WY.PageModel();
       if (nextView.url) {
@@ -638,10 +656,23 @@
         this.$el.find('video').remove();
       }
 
-      this.$el.find('*[data-src]').each(function(i, el){
+      this.$el.find('div[data-src]').each(function(i, el){
         this.preloadImg(el);
       }.bind(this));
+
       this.createTimelines();
+    },
+
+    willTransitionOut: function() {
+      if(window.stop !== undefined)
+      {
+           window.stop();
+           console.log('stopped!')
+      }
+      else if(document.execCommand !== undefined)
+      {
+           document.execCommand("Stop", false);
+      }
     },
 
     createTimelines: function() {
@@ -669,12 +700,17 @@
           tl.to($textEl, 5, {opacity:1});
         } else {
           tl.call(function(){
+            this.preloadVideo(video);
+          }.bind(this));
+
+          tl.call(function(){
             if (video.readyState > 1) {
               video.currentTime = 0;
               video.pause();
             }
             $(video).off();
           });
+
           tl.to($bgEl, 5, {opacity:1});
           tl.call(function(){
             if (video.readyState > 3) {
@@ -696,6 +732,9 @@
             $(video).off();
             $bgEl.css({opacity:0});
           });
+          tl.call(function(){
+            this.preloadVideo(video);
+          }.bind(this));
         }
 
         this.timelines[$el.attr('id')] = tl;
