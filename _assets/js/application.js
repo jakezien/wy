@@ -677,16 +677,6 @@
 
     createTimelines: function() {
       this.timelines = {};
-
-      var createTopTL = function() {
-        $bgCover = $('.bg .bg-cover'); 
-        
-        var tl = new TimelineLite({paused:true});
-        $bgCover.css({opacity:1});
-        tl.to($bgCover, 5, {opacity:0}, 1);
-        
-        return tl;
-      };
     
       var createTL = function(i, el) {
         var $el = $(el);
@@ -712,7 +702,16 @@
           });
 
           tl.to($bgEl, 5, {opacity:1});
+          
+          if ($bgEl.hasClass('schools')) {
+            tl.to($('.bg-gradient'), 5, {opacity:1}, '-=5');
+            tl.call(function(){ 
+              $('.bg-gradient').css({opacity:1});
+            });
+          }
+
           tl.call(function(){
+            // $('.bg-cover').css({opacity:0});
             if (video.readyState > 3) {
               video.play();
               console.log('play');
@@ -730,7 +729,6 @@
               video.currentTime = 0;
             }
             $(video).off();
-            $bgEl.css({opacity:0});
           });
           tl.call(function(){
             this.preloadVideo(video);
@@ -740,7 +738,6 @@
         this.timelines[$el.attr('id')] = tl;
       }.bind(this);
 
-      this.timelines['top'] = createTopTL();
       this.$el.find('section').not('#top, .cta').each(createTL);
     },
 
@@ -775,9 +772,7 @@
         var offset = $el.offset();
         var elTop = offset.top;
 
-        if (this.lastKnownScrollY === this.latestKnownScrollY) {
-          console.log(this.lastKnownScrollY);
-        }
+        if (this.lastKnownScrollY === this.latestKnownScrollY) {}
 
         if (this.lastKnownScrollY < this.latestKnownScrollY) {
           rangeTop = elTop - windowHeight;
@@ -791,7 +786,13 @@
         if (rangeTop <= this.latestKnownScrollY && this.latestKnownScrollY < rangeBottom) {
           this.isSnapping = true;
           var tl = new TimelineLite();
-          tl.to(window, 1, {scrollTo:{y: elTop}, ease:Back.easeOut});
+
+          if (this.latestKnownScrollY <= 30) {
+            tl.to(window, 1, {scrollTo:{y: 0}, ease:Back.easeOut});
+          } else {
+            tl.to(window, 1, {scrollTo:{y: elTop}, ease:Back.easeOut});
+          }
+
           tl.call(endSnap);
         } else {
           // console.log(rangeTop)
@@ -897,10 +898,13 @@
       var pageHeight = $('#content').innerHeight();
       var windowHeight = $(window).innerHeight();
       var st = Math.max(0, currentScrollY);
-      if (st + windowHeight >= pageHeight - 100) {
+
+      if (st <= 50 || st + windowHeight >= pageHeight - 100) {
+        // always show at top and bottom
         this.scrollShow();
         return;
       }
+
       if (Math.abs(st - this.lastScrollTop) < 20) return;
       if (st > this.lastScrollTop){
         this.scrollHide();
