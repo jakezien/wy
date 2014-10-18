@@ -311,6 +311,10 @@
       console.log(el)
       var src = $el.data('src');
       $el.append('<source src="' + src + '.mp4" type="video/mp4" >');
+      $el[0].play();
+      // _.delay(function(){
+      //   $el[0].pause();
+      // });
     },
 
     onImgLoad: function(e) {
@@ -701,6 +705,12 @@
             $(video).off();
           });
 
+          if ($bgEl.hasClass('schools')) {
+            tl.call(function(){ 
+              $('.bg-gradient').css({opacity:0});
+            });
+          }
+
           tl.to($bgEl, 5, {opacity:1});
           
           if ($bgEl.hasClass('schools')) {
@@ -716,7 +726,8 @@
               video.play();
               console.log('play');
             } else {
-              $(video).one('canplaythrough', function(){
+              $(video).one('canplay canplaythrough', function(){
+                console.log('PLAY THRU')
                 this.play();
               });
               console.log('readyState: ' + video.readyState)
@@ -758,7 +769,7 @@
       var windowHeight = $window.innerHeight();
       var sections = this.$el.find('section').not('.cta');
 
-      var endSnap = function(){
+      var endSnap = function($el){
         _.delay(function(){
           this.isSnapping = false;
         }.bind(this), 500);
@@ -793,7 +804,7 @@
             tl.to(window, 1, {scrollTo:{y: elTop}, ease:Back.easeOut});
           }
 
-          tl.call(endSnap);
+          tl.call(endSnap, [$el]);
         } else {
           // console.log(rangeTop)
           // console.log(this.latestKnownScrollY)

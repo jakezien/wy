@@ -4,6 +4,7 @@
     absolute100()
     position fixed
     z-index 0
+    background-color white
 
     .multiply
       background hotPink
@@ -90,8 +91,7 @@
       &:hover
         p
           color hotPink !important
-          transform translateX(0.5em)
-          transition transform 0.4s ease, color 0.25s ease 0.1s
+          transform translateX(0.25em)
         .line
           min-height 100%
 
@@ -104,7 +104,7 @@
         padding 0.714em 0 0.5em 0
         position relative
         z-index 1
-        transition transform 0.4s ease, color 0.25s ease
+        transition transform 0.4s ease, color 0.25s ease !important
 
       .line
         height 0
