@@ -1,15 +1,50 @@
-.home
+.home, .page.index
+  
+  section
+    position relative
+    z-index 1
+    Garamond()
+
+  .bg
+    absolute100()
+    position fixed
+
+    video
+      pointer-events none
+      absolute100()
+      width auto
+      height auto
+      min-width 100%
+      min-height 100%
+      overflow hidden
+      transform translateX(-50%)
+      margin-left 50%
+      z-index 0
+      background white
 
   #top
     margin-top 60px
-    background hotPink
-    color #fff
+    color brown
+    position relative
+    z-index 1
+
+    .logotype
+      width 80%
+      margin 0 auto
+      height auto
+
+      svg 
+        margin 25vh auto 30vh auto
+        *
+          fill cloud
+
     h1
       FreightBig()
       font-size 6.5em
       font-weight normal
       text-align center
       margin .5em 0 .25em 0
+
     p
       Freight()
       text-align center

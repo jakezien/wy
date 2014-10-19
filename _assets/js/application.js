@@ -137,7 +137,7 @@
     },
 
     home: function() {
-      var view = new WY.Views.Home({page:'index'});
+      var view = new WY.Views.Home({page:'home', url:'index.html'});
       WY.appInstance.goto(view);
     },
 
@@ -349,7 +349,7 @@
       this.menu = new WY.Views.Menu({el: $('#site-nav')});
       this.donate = new WY.Views.Donate({
         el: $('#donate'), 
-        donateBtn:$('#donate-btn')
+        donateBtn:$('.donate-btn a')
       });
 
       this.$contentEl = $(this.$el.children('#content'));
@@ -365,7 +365,7 @@
       window.addEventListener('resize', this.onResize, false);
 
       this.menu.on('nav-clicked', function(){
-        if (this.donate.isShowing && !$('#donate-btn').hasClass('active')) {
+        if (this.donate.isShowing && !$('.donate-btn a').hasClass('active')) {
           this.hideDonate();
         }
       }.bind(this));
@@ -471,7 +471,46 @@
   });
 
   WY.Views.Home = WY.Extensions.View.extend({
-    page: 'home'
+    page: 'home',
+    initialize: function(options) {
+      if (options.page) {
+        this.page = options.page;
+      }
+      if (options.url) {
+        this.url = options.url;
+      }
+      _.bindAll(this, 'createTimelines');
+    },
+
+    beforeAppend: function() {
+      if (Modernizr.video && Detectizr.device.model !== "iphone" && Detectizr.device.model !== "ipad") {
+        this.$el.find('.no-video').remove();
+      } else {
+        this.$el.find('video').remove();
+      }
+
+      this.$el.find('div[data-src]').each(function(i, el){
+        this.preloadImg(el);
+      }.bind(this));
+
+      this.createTimelines();
+    },
+
+    createTimelines: function() {
+      this.timelines = {};
+    
+      var createTopTL = function(i, el) {
+        var tl = new TimelineLite({paused:true});
+        tl.to($('.bg video'), 5, {opacity:0});
+        return tl;
+      }
+
+      this.timelines['top'] = createTopTL()
+    },
+
+    render: function(currentScrollY) {
+      this.seekTimelines(currentScrollY);
+    },
   });
 
   WY.Views.QerosOld = WY.Extensions.View.extend({
@@ -653,7 +692,6 @@
     },
 
     beforeAppend: function() {
-
       if (Modernizr.video && Detectizr.device.model !== "iphone" && Detectizr.device.model !== "ipad") {
         this.$el.find('.no-video').remove();
       } else {
@@ -997,6 +1035,7 @@
 
       this.isShowing = true;
       this.$el.addClass('block');
+      this.donateBtn.addClass('active');
       _.delay(function(){
         this.$el.addClass('show');
         $('body').addClass('donate-show');
@@ -1007,6 +1046,7 @@
       this.isTransitioning = true;
       this.$el.removeClass('show');
       $('body').removeClass('donate-show');
+      this.donateBtn.removeClass('active');
       this.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
         _.delay(function(){
           this.$el.removeClass('block');

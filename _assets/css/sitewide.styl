@@ -38,7 +38,7 @@ body
     #content
       filter blur(24px)
       -webkit-filter blur(24px)
-    #donate-btn
+    .donate-btn a
       color hotPink
 
 
@@ -93,6 +93,12 @@ body
   h2
     margin-bottom 4em
 
+  .social a
+    display inline-block
+    margin 0
+    padding 0 .5em
+    vertical-align center
+
   a 
     display block
     Garamond()
@@ -103,11 +109,7 @@ body
     transition 0.15s ease    
     &:hover
       color hotPink
-    &.social-icon
-      display inline-block
-      margin 0
-      padding 0 .5em
-      vertical-align center
+
     svg
       width 50px
       height 50px
@@ -152,6 +154,43 @@ body
       transition color 0.15s ease
       &:hover, &.active
         color hotPink
+
+  .logotype
+    float left
+    a
+      display block
+      width 80px
+      padding 0
+
+      &:hover
+        svg 
+          *
+            fill hotPink
+
+      svg
+        position relative
+        top 0.75em
+        height 36px
+        *
+          transition fill 0.15s ease
+          fill brown
+
+  .donate-btn
+    float right
+    a
+      border 1px solid
+      border-radius 1px
+      padding 0.75em 0.75em
+      margin 0.75em 1em 0.75em 0.25em
+      transition color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease
+      &:hover
+        color white !important
+        background-color hotPink
+        border-color hotPink
+
+      &.active
+        color hotPink
+      
 
   &.show
     height 100%
@@ -248,7 +287,24 @@ section.cta
         &:hover, &.active
           color #F22E60
 
+  #site-footer
+
   
+    .email
+      column(3)
+      push(1)
+      font-size 0.6em
+      text-align left
+
+    .social
+      column(4)
+
+    .copyright
+      column(3)
+      text-align left
+      font-size 0.75em
+    
+
   #menu-btn
     position static
     display none
