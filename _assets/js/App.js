@@ -36,10 +36,10 @@ define([
       }
     });
 
-    // Modernizr.load([ {
-    //   test: Modernizr.raf,
-    //   nope: ['/assets/js/vendor/modernizr/polyfill-requestAnimationFrame.js'] 
-    // } ]);
+    Modernizr.load([ {
+      test: Modernizr.raf,
+      nope: ['/assets/js/vendor/modernizr/polyfill-requestAnimationFrame.js'] 
+    } ]);
 
   };
 

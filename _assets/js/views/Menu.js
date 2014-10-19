@@ -12,6 +12,7 @@ define([
     initialize: function(){
       _.bindAll(this, 'show', 'hide', 'toggleMenu', 'navClicked');
       this.lastScrollTop = 0;
+      this.isWatchingScroll = true;
     },
     render : function(currentScrollY){
       if (!this.isWatchingScroll) return;

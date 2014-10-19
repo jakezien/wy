@@ -51,7 +51,6 @@ define([
 
     goto: function(view){
       if (this.isTransitioning) {
-        console.log('nope')
         // return;
       }
 
@@ -77,14 +76,12 @@ define([
 
       this.currentPageModel = new PageModel();
       if (nextView.url) {
-        console.log(nextView.url);
         this.currentPageModel.fetchHTML(nextView.url);
       } else {
         this.currentPageModel.fetchHTML(nextView.page);
       }
 
       var finishGoto = function(){
-        console.log('finishGoto');
         this.transitionInNextView(nextView);
       }.bind(this);
 
@@ -100,7 +97,6 @@ define([
     },
 
     transitionInNextView: function(nextView) {
-      console.log('transitionIn')
       this.currentPageView = nextView;
       nextView.hiDpi = this.hiDpi;
       nextView.buildEl(this.currentPageModel);
