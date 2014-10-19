@@ -14,7 +14,7 @@ define([
       this.lastScrollTop = 0;
     },
     render : function(currentScrollY){
-      // if (!WY.appInstance.currentPageView || WY.appInstance.currentPageView.isSnapping) return;
+      if (!this.isWatchingScroll) return;
 
       var pageHeight = $('#content').innerHeight();
       var windowHeight = $(window).innerHeight();
@@ -70,7 +70,14 @@ define([
         this.hide();
       }
       this.trigger('nav-clicked');
-    }   
+    },
+    watchScroll: function(){
+      this.isWatchingScroll = true;
+    },
+    ignoreScroll: function(){
+      this.isWatchingScroll = false;
+    }
+
   });
 
   return Menu;

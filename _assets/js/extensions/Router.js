@@ -63,7 +63,7 @@ define([
     },
 
     projects: function() {
-      var view = new Projects({page:'projects'});
+      var view = new Projects({page:'projects', menu:this.opts.appView.menu});
       this.opts.appView.goto(view);
     },
 

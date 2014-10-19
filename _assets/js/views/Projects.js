@@ -11,8 +11,10 @@ define([
       if (options.url) {
         this.url = options.url;
       }
+      this.opts = options;
       _.bindAll(this, 'createTimelines', 'snapScroll');
       this.isScrolling = false;
+
     },
 
     beforeAppend: function() {
@@ -134,6 +136,7 @@ define([
       var endSnap = function($el){
         _.delay(function(){
           this.isSnapping = false;
+          this.opts.menu.watchScroll();
         }.bind(this), 500);
       }.bind(this);
 
@@ -158,6 +161,7 @@ define([
         // console.log('rangeTop: ' + rangeTop + '  scrollY: ' + this.latestKnownScrollY);
         if (rangeTop <= this.latestKnownScrollY && this.latestKnownScrollY < rangeBottom) {
           this.isSnapping = true;
+          this.opts.menu.ignoreScroll();
           var tl = new TimelineLite();
 
           if (this.latestKnownScrollY <= 30) {
