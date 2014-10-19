@@ -6,7 +6,5 @@ define([
   'view'
 ], function($, _, Backbone, Modernizr, View){
 
-
-
   return {};
 });
