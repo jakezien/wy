@@ -1,3 +1,22 @@
-WY.Views.Schools = WY.Extensions.View.extend({
-  page: 'schools'
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'modernizr',
+  'view'
+], function($, _, Backbone, Modernizr, View){
+
+  var Schools = View.extend({
+    page: 'schools',
+    beforeAppend: function() {
+      this.$el.find('*[data-src]').each(function(i, el){
+        this.preloadImg(el);
+      }.bind(this));
+    },
+    onImgLoadCallback: function($el) {
+      console.log('loaded')
+    }
+  });
+
+  return Schools;
 });

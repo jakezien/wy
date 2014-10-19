@@ -1,68 +1,142 @@
-WY.Views.AppView = WY.Extensions.View.extend({
-  el: 'body',
-  initialize: function(){
-     _.bindAll(this, 'render', 'onScroll');
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'modernizr',
+  'view',
+  'views/Menu',
+  'views/Donate',
+  'pagemodel'
+], function($, _, Backbone, Modernizr, View, Menu, Donate, PageModel){
 
-    this.menu = new WY.Views.Menu({el: $('#site-nav')});
-    this.currentPageView = new WY.Views.Home({el: $('#content .page')});
-    this.currentPageView.transitionIn();
-    this.$contentEl = $(this.$el.children('#content'));
-    
-    this.latestKnownScrollY = 0;
-    this.ticking = false;
-    this.scrollEffects = true;
+  var AppView = View.extend({
+    el: 'body',
+    initialize: function(opts){
+       _.bindAll(this, 'render', 'onScroll', 'onResize', 'hideDonate');
 
-    window.addEventListener('scroll', this.onScroll, false);
-  },
-
-  render: function(){
-    this.ticking = false;
-    var currentScrollY = this.latestKnownScrollY;
-    // tell subviews to render
-    this.menu.render(currentScrollY);
-    this.currentPageView.render();
-  },
-
-  goto: function(view){
-    var previousView = this.currentPageView || null;
-    var nextView = view;
-
-    this.currentPageModel = new WY.PageModel();
-    this.currentPageModel.fetchHTML(nextView.page);
-
-    var finishGoto = function(){
-      WY.appInstance.transitionInNextView(nextView);
-    };
-
-    if (previousView) {
-      previousView.transitionOut(function() {
-        previousView.remove();
-        WY.appInstance.currentPageModel.promise.then(finishGoto, finishGoto);
+      this.menu = new Menu({el: $('#site-nav')});
+      this.donate = new Donate({
+        el: $('#donate'), 
+        donateBtn:$('.donate-btn a')
       });
-    } else {
-      this.currentPageModel.promise.then(finishGoto, finishGoto);
-    }
-  },
 
-  transitionInNextView: function(nextView) {
-    nextView.buildEl(this.currentPageModel);
-    this.$contentEl.append(nextView.$el);
-    document.title = this.currentPageModel.get('title');
-    nextView.transitionIn();
-    this.currentPageView = nextView;
-  },
+      this.$contentEl = $(this.$el.children('#content'));
 
-  onScroll: function(){
-    this.latestKnownScrollY = window.scrollY;
-    if (this.scrollEffects) {
-      this.requestTick();
-    }
-  },
+      this.latestKnownScrollY = 0;
+      this.ticking = false;
+      this.scrollEffects = true;
+      this.firstLoad = true;
 
-  requestTick: function() {
-    if (!this.ticking) {
-      requestAnimationFrame(this.render);
+      this.hiDpi = Modernizr.hidpi;
+
+      window.addEventListener('scroll', this.onScroll, false);
+      window.addEventListener('resize', this.onResize, false);
+
+      this.menu.on('nav-clicked', function(){
+        if (this.donate.isShowing && !$('.donate-btn a').hasClass('active')) {
+          this.hideDonate();
+        }
+      }.bind(this));
+    },
+
+    createTimelines: function() {},
+
+    render: function(){
+      this.ticking = false;
+      var currentScrollY = this.latestKnownScrollY;
+      // tell subviews to render
+      this.menu.render(currentScrollY);
+      this.currentPageView.render(currentScrollY);
+    },
+
+    goto: function(view){
+      if (this.isTransitioning) {
+        console.log('nope')
+        // return;
+      }
+
+      this.isTransitioning = true;
+
+      if (this.firstLoad) {
+        this.firstLoad = false;
+        view.$el = $('#content .page');
+        view.hiDpi = this.hiDpi;
+        view.beforeAppend();
+        view.$el.addClass(view.page);
+        this.currentPageView = view;
+        this.currentPageView.transitionIn();
+        window.scrollTo(0, 0);
+        this.isTransitioning = false;
+        return;
+      }
+
+      var previousView = this.currentPageView || null;
+      var nextView = view;
+
+      previousView.willTransitionOut();
+
+      this.currentPageModel = new PageModel();
+      if (nextView.url) {
+        console.log(nextView.url);
+        this.currentPageModel.fetchHTML(nextView.url);
+      } else {
+        this.currentPageModel.fetchHTML(nextView.page);
+      }
+
+      var finishGoto = function(){
+        console.log('finishGoto');
+        this.transitionInNextView(nextView);
+      }.bind(this);
+
+      if (previousView) {
+        previousView.transitionOut(function() {
+          previousView.remove();
+          this.currentPageModel.promise.always(function(){finishGoto();});
+          // WY.appInstance.currentPageModel.promise.always(finishGoto);
+        }.bind(this));
+      } else {
+        this.currentPageModel.promise.always(finishGoto);
+      }
+    },
+
+    transitionInNextView: function(nextView) {
+      console.log('transitionIn')
+      this.currentPageView = nextView;
+      nextView.hiDpi = this.hiDpi;
+      nextView.buildEl(this.currentPageModel);
+      this.$contentEl.append(nextView.$el);
+      window.scrollTo(0, 0);
+      document.title = this.currentPageModel.get('title');
+      nextView.transitionIn();
+      this.isTransitioning = false;
+    },
+
+    onResize: _.debounce(function(e) {
+      this.currentPageView.onResizeDebounced();
+    }, 100),
+    
+    onScroll: function(){
+      this.latestKnownScrollY = window.scrollY;
+      if (this.scrollEffects) {
+        this.requestTick();
+      }
+    },
+
+    showDonate: function(){
+      this.donate.show();
+    },
+
+    hideDonate: function(){
+      this.donate.hide();
+    },
+
+    requestTick: function() {
+      if (!this.ticking) {
+        requestAnimationFrame(this.render);
+      }
+      this.ticking = true;
     }
-    this.ticking = true;
-  }
+  });
+
+  return AppView;
 });

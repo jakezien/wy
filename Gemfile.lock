@@ -1,6 +1,7 @@
 GIT
-  remote: git://github.com/floored/jekyll_asset_bundle.git
-  revision: 91a07c1019cd77aa65d7f4cbbc1e2fc16253e932
+  remote: git://github.com/jakezien/jekyll_asset_bundle.git
+  revision: 473ba032c3a5a9c331632c0d3e1e0d13913497ed
+  branch: master
   specs:
     jekyll_asset_bundle (0.0.1)
       jekyll (>= 0.12)
@@ -74,7 +75,7 @@ GEM
     timers (1.1.0)
     toml (0.1.1)
       parslet (~> 1.5.0)
-    uglifier (2.4.0)
+    uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     yajl-ruby (1.1.0)

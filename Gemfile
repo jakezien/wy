@@ -4,5 +4,5 @@ gem 'json'
 
 group :development do
   gem 'jekyll'
-  gem 'jekyll_asset_bundle', :github => 'floored/jekyll_asset_bundle'
+  gem 'jekyll_asset_bundle', :github => 'jakezien/jekyll_asset_bundle', :branch => 'master'
 end

@@ -1,22 +1,40 @@
-# - GGS
 - util
-- modernizr.custom
-- detectizr.min
-- modernizr-hidpi
-- polyfill-requestAnimationFrame
-# - underscore
-# - backbone
-- underscore-min
-- backbone-min
-- jquery.history
-- imagesloaded.pkgd.min
-# - instafeed.min
-# - masonry.pkgd.min
-- chroma.min
-- TweenLite.min
-- TimelineLite.min
-- Draggable.min
-- ColorPropsPlugin.min
-- ScrollToPlugin.min
-- EasePack.min
+- main
+- app
+
+- vendor/require
+
+- vendor/modernizr/modernizr.custom
+- vendor/modernizr/detectizr.min
+- vendor/modernizr/modernizr-hidpi
+- vendor/modernizr/polyfill-requestAnimationFrame
+
+- vendor/underscore/underscore-min
+- vendor/backbone/backbone-min
+- vendor/jquery.history
+
+- vendor/chroma.min
+- vendor/greensock/TweenLite.min
+- vendor/greensock/TimelineLite.min
+- vendor/greensock/ColorPropsPlugin.min
+- vendor/greensock/ScrollToPlugin.min
+- vendor/greensock/EasePack.min
+
+- extensions/Router
+- extensions/View
+
+- models/PageModel
+
+- views/AppView
+- views/About
+- views/Blog
+- views/Donate
+- views/Expeditions
+- views/Home
+- views/Menu
+- views/Projects
+- views/Qeros
+- views/Schools
+- views/Shop
+
 - application
