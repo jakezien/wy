@@ -4,10 +4,78 @@
     position relative
     z-index 1
     Garamond()
+    clearfix()
+    min-height 100vh
+
+    .dropcap
+      font-size 11em
+      line-height 0.66em
+      Franklin()
+      max-width .3em
+      padding-bottom 0.1em
+
+
+    .frame-img
+      column(12)
+      margin 0
+      width 100%
+      height 80vh
+      position relative
+      z-index 1
+      left 0
+      
+      &.move-h
+        div
+          width 125%
+          height 100%
+          background-size 100% auto
+
+      &.move-v
+        div
+          width 100%
+          height 120%
+          background-size auto 100% 
+
+      div
+        position absolute
+        height 110%
+        width 100%
+        background-size auto 100% 
+        background-position center center
+        backface-visibility hidden
+
+    .caption
+      position relative
+      padding 2em 2em 4em 2em
+      backface-visibility hidden
+      h2
+        GaramondDisplay()
+        font-size 5em
+        line-height 1
+        text-transform none
+        letter-spacing -0.02em
+      p
+        margin 0
+      .dropcap
+        font-size 11em
+        line-height 0.66em
+        Franklin()
+        max-width .3em
+        padding-bottom 0.1em
+      .keyline
+        column(12)
+        height 1px
+        background brown
+        margin 0 0 2em 0
 
   .bg
     absolute100()
     position fixed
+
+    .bg-cover
+      absolute100()
+      background white
+      opacity 0
 
     video
       pointer-events none
@@ -20,7 +88,11 @@
       transform translateX(-50%)
       margin-left 50%
       z-index 0
-      background white
+
+  .keyline
+    background cloud
+    height 2px
+    clearfix()
 
   #top
     margin-top 60px
@@ -29,14 +101,14 @@
     z-index 1
 
     .logotype
-      width 80%
+      width 65%
       margin 0 auto
       height auto
 
       svg 
         margin 25vh auto 30vh auto
         *
-          fill cloud
+          fill white
 
     h1
       FreightBig()
@@ -49,3 +121,117 @@
       Freight()
       text-align center
       font-size 2em
+
+  #intro
+    min-height 10vh
+    .keyline
+      column(10)
+      push(1)
+    .text
+      column(10)
+      push(1)
+      color white
+      font-size 1.25em
+
+@media only screen and (min-width: 768px)
+  .home, .page.index
+
+    section
+      .frame-img
+        position absolute
+        height auto
+        z-index -1
+        backface-visibility hidden
+      .caption
+        column(3)
+
+    #intro 
+      padding-bottom 35vh
+      .text
+        font-size 1.5em
+        column(6)
+        push(1)
+
+
+    #home-qeros
+      .caption
+        column(3.5)
+        push(7)
+        position relative
+        top -30vh
+      .frame-img
+        column(6)
+        push(1) 
+        height 80%
+        div
+          background-position right center
+
+    #home-projects
+      .caption
+        column(3.5)
+        push(1)
+        position relative
+        top -10vh
+        padding-left 0
+      .frame-img
+        column(6)
+        push(5) 
+        height 80%
+        div
+          background-position right center
+
+    #home-schools
+      .caption
+        column(3.5)
+        push(7)
+        position relative
+        top -10vh
+      .frame-img
+        
+        column(6)
+        push(1) 
+        height 80%
+        div
+          background-position right center
+
+    #home-about
+      .caption
+        column(3.5)
+        push(1)
+        position relative
+        top -10vh
+        padding-left 0
+      .frame-img
+        column(6)
+        push(5) 
+        height 80%
+        div
+          background-position right center
+
+    #home-shop
+      .caption
+        column(3.5)
+        push(7)
+        position relative
+        top -10vh
+      .frame-img
+        
+        column(6)
+        push(1) 
+        height 80%
+        div
+          background-position right center
+
+    #home-donate
+      .caption
+        column(3.5)
+        push(1)
+        position relative
+        top -10vh
+        padding-left 0
+      .frame-img
+        column(6)
+        push(5) 
+        height 80%
+        div
+          background-position right center
