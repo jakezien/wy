@@ -3,11 +3,12 @@ define([
   'underscore',
   'backbone',
   'modernizr',
+  'vendor/modernizr/modernizr-hidpi',
   'view',
   'views/Menu',
   'views/Donate',
   'pagemodel'
-], function($, _, Backbone, Modernizr, View, Menu, Donate, PageModel){
+], function($, _, Backbone, Modernizr, HiDpi, View, Menu, Donate, PageModel){
 
   var AppView = View.extend({
     el: 'body',
