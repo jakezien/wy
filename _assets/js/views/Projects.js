@@ -51,6 +51,7 @@ define([
         var $bgEl = this.$el.find('.bg .bg-imgs .' + $el.attr('id'));
         var $textEl = $el.find('.text');
         var video = $bgEl.find('video')[0];
+        var $bgGradient = this.$el.find('.bg .bg-gradient');
         var tl = new TimelineLite({paused:true});
 
         if (!video) {
@@ -69,32 +70,20 @@ define([
             $(video).off();
           });
 
-          if ($bgEl.hasClass('schools')) {
-            tl.call(function(){ 
-              $('.bg-gradient').css({opacity:0});
-            });
-          }
-
           tl.to($bgEl, 5, {opacity:1});
           
           if ($bgEl.hasClass('schools')) {
-            tl.to($('.bg-gradient'), 5, {opacity:1}, '-=5');
-            tl.call(function(){ 
-              $('.bg-gradient').css({opacity:1});
-            });
+            tl.to($bgGradient, 5, {opacity:1}, '-=5');
           }
 
           tl.call(function(){
             // $('.bg-cover').css({opacity:0});
             if (video.readyState > 3) {
               video.play();
-              console.log('play');
             } else {
               $(video).one('canplay canplaythrough', function(){
-                console.log('PLAY THRU')
                 this.play();
               });
-              console.log('readyState: ' + video.readyState)
             }
           });
           tl.to($textEl, 5, {opacity:0});

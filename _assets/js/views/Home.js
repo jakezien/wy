@@ -16,6 +16,7 @@ define([
     },
 
     beforeAppend: function() {
+
       if (Modernizr.video && Detectizr.device.model !== "iphone" && Detectizr.device.model !== "ipad") {
         this.$el.find('.no-video').remove();
       } else {
@@ -31,14 +32,14 @@ define([
 
     createTimelines: function() {
       this.timelines = {};
-    
-      var createTopTL = function(i, el) {
-        var tl = new TimelineLite({paused:true});
-        tl.to($('.bg video'), 5, {opacity:0});
-        return tl;
-      }
 
-      this.timelines['top'] = createTopTL()
+      var createTopTL = function(i, el) {
+        var tl = new TimelineLite({paused: true});
+        tl.to(this.$el.find('.bg video'), 5, {opacity:0});
+        return tl;
+      }.bind(this);
+
+      this.timelines['top'] = createTopTL();
     },
 
     render: function(currentScrollY) {
