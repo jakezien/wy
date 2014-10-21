@@ -32,13 +32,10 @@ define([
     },
 
     willTransitionOut: function() {
-      if(window.stop !== undefined)
-      {
+      if(window.stop !== undefined) {
            window.stop();
-           console.log('stopped!')
       }
-      else if(document.execCommand !== undefined)
-      {
+      else if(document.execCommand !== undefined) {
            document.execCommand("Stop", false);
       }
     },
@@ -112,7 +109,7 @@ define([
       if (this.snapScrollTimeout) {
         clearTimeout(this.snapScrollTimeout);
       }
-      if (Detectizr.device.type !== 'mobile') {
+      if (Detectizr.device.type !== 'mobile' && Detectizr.device.type !== 'tablet') {
         this.snapScrollTimeout = setTimeout(this.snapScroll, 100);
       }
     },
@@ -124,6 +121,7 @@ define([
 
       var endSnap = function($el){
         _.delay(function(){
+          $('body').removeClass('stop-scroll');
           this.isSnapping = false;
           this.opts.menu.watchScroll();
         }.bind(this), 500);
@@ -154,9 +152,15 @@ define([
           var tl = new TimelineLite();
 
           if (this.latestKnownScrollY <= 30) {
+            console.log('yep')
             tl.to(window, 1, {scrollTo:{y: 0}, ease:Back.easeOut});
           } else {
+            $('body').addClass('stop-scroll');
             tl.to(window, 1, {scrollTo:{y: elTop}, ease:Back.easeOut});
+            var video = $('.bg .bg-imgs .' + $el.attr('id') + ' video')[0];
+            if (video) {
+              video.play();
+            }
           }
 
           tl.call(endSnap, [$el]);

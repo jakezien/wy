@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/jakezien/jekyll_asset_bundle.git
-  revision: 473ba032c3a5a9c331632c0d3e1e0d13913497ed
-  branch: master
+  revision: 25efd45e975d10ebf54b77a0432399ef096d04db
   specs:
     jekyll_asset_bundle (0.0.1)
       jekyll (>= 0.12)
