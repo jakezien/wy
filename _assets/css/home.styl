@@ -1,5 +1,7 @@
 .home, .page.index
   
+  background white
+
   section
     position relative
     z-index 1
@@ -50,12 +52,28 @@
       backface-visibility hidden
       h2
         GaramondDisplay()
-        font-size 5em
+        font-size 6em
         line-height 1
         text-transform none
         letter-spacing -0.02em
+        margin 1.5rem 0 1.25rem 0
+        position relative
+        left -0.2rem
+      h3
+        font-size 1.5em
+        font-weight 400
+        margin 0
+        color brown
       p
         margin 0
+        max-width 90%
+        font-size 1.25em
+      a
+        color clay
+        text-decoration none
+        display block
+        margin-top 1rem
+        font-size 1.25em
       .dropcap
         font-size 11em
         line-height 0.66em
@@ -63,10 +81,50 @@
         max-width .3em
         padding-bottom 0.1em
       .keyline
-        column(12)
+        width 100%
         height 1px
-        background brown
-        margin 0 0 2em 0
+        background brown  
+        margin 1em 0
+      .title
+        display block
+        color brown
+        margin 1em 0
+        padding 0
+        position relative
+        svg *
+          stroke brown
+          transition stroke 0.3s ease
+        &:hover
+          .hover
+            width 100%
+          .arrow-wrap
+            transform translateX(16px)
+            transition transform 0.3s ease-out 0.1s
+          svg *
+            stroke hotPink
+             
+      .title-inner
+        border-top 1px solid brown
+        border-bottom 1px solid brown
+        &.hover
+          absolute100()
+          width 0
+          height auto
+          border-top 1px solid hotPink
+          border-bottom 1px solid hotPink
+          color hotPink
+          transition width 0.3s ease
+          overflow hidden
+
+                  
+
+      .arrow-wrap
+        position absolute
+        right 0
+        width 32px
+        top 50%
+        margin-top -10px
+        transition transform 0.3s ease
 
   .bg
     absolute100()
@@ -137,16 +195,23 @@
   .home, .page.index
 
     section
+      margin-bottom 30vh
+      margin-top 0
       .frame-img
         position absolute
+        top 20vh
         height auto
         z-index -1
         backface-visibility hidden
       .caption
         column(3)
+        
+    #top
+      margin-bottom 0
 
     #intro 
-      padding-bottom 35vh
+      padding-bottom 0
+      margin-bottom 0
       .text
         font-size 1.5em
         column(6)
@@ -158,11 +223,11 @@
         column(3.5)
         push(7)
         position relative
-        top -30vh
       .frame-img
         column(6)
         push(1) 
         height 80%
+        top 30vh
         div
           background-position right center
 
@@ -174,11 +239,11 @@
         top -10vh
         padding-left 0
       .frame-img
-        column(6)
+        column(6.5)
         push(5) 
         height 80%
         div
-          background-position right center
+          background-position center bottom
 
     #home-schools
       .caption
@@ -192,7 +257,7 @@
         push(1) 
         height 80%
         div
-          background-position right center
+          background-position center bottom
 
     #home-about
       .caption
@@ -206,7 +271,7 @@
         push(5) 
         height 80%
         div
-          background-position right center
+          background-position center center
 
     #home-shop
       .caption
@@ -215,12 +280,13 @@
         position relative
         top -10vh
       .frame-img
-        
         column(6)
-        push(1) 
+        push(1)
+        
         height 80%
         div
-          background-position right center
+          background-position center center
+          height 100%
 
     #home-donate
       .caption
@@ -234,4 +300,4 @@
         push(5) 
         height 80%
         div
-          background-position right center
+          background-position center center
