@@ -53,37 +53,38 @@ define([
 
       var createQerosTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('#home-qeros .caption'), 5, {transform:'translateY(50vh)'}, Sine.easeOut);
+        tl.to(this.$el.find('#home-qeros .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
         return tl;
       }.bind(this);
 
       var createProjectsTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('#home-projects .caption'), 5, {transform:'translateY(50vh)'}, Sine.easeOut);
+        tl.to(this.$el.find('#home-projects .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
         return tl;
       }.bind(this);
 
       var createSchoolsTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('#home-schools .caption'), 5, {transform:'translateY(50vh)'}, Sine.easeOut);
+        tl.to(this.$el.find('#home-schools .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
         return tl;
       }.bind(this);
 
       var createAboutTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('#home-about .caption'), 5, {transform:'translateY(50vh)'}, Sine.easeOut);
+        tl.to(this.$el.find('#home-about .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
         return tl;
       }.bind(this);
 
       var createShopTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('#home-shop .caption'), 5, {transform:'translateY(50vh)'}, Sine.easeOut);
+        tl.to(this.$el.find('#home-shop .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
+        tl.fromTo(this.$el.find('#home-shop .frame-img'), 5, {rotation:5}, {rotation:-10}, Quad.easeInOut, 0);
         return tl;
       }.bind(this);
 
       var createDonateTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('#home-donate .caption'), 5, {transform:'translateY(50vh)'}, Sine.easeOut);
+        tl.to(this.$el.find('#home-donate .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
         return tl;
       }.bind(this);
 

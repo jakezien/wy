@@ -1,3 +1,15 @@
+html.cssfilters 
+  body.donate-show
+    #content
+      filter blur(24px)
+      -webkit-filter blur(24px)
+    #donate.show
+      background rgba(250,250,255,0.3)
+    
+body.donate-show
+  .donate-btn a
+    color hotPink
+
 #donate
   absolute100()
   position fixed
@@ -11,7 +23,7 @@
     display block
 
   &.show
-    background rgba(250,250,255,0.3)
+    background rgba(250,250,255,0.9)
     transition background-color 1s ease-out
 
     .half-l, .half-r
@@ -51,7 +63,7 @@
   .border
     absolute100()
     box-sizing border-box
-    border 0px solid cloud
+    border 0px solid white
     transition border-width 1s ease
 
   .btn-container
@@ -124,7 +136,6 @@
       svg
         *
           fill hotPink
-
 
 
 @media only screen and (min-width: 768px)

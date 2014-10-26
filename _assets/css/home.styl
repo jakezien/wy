@@ -96,7 +96,7 @@
           transition stroke 0.3s ease
         &:hover
           .hover
-            width 100%
+            min-width 100%
           .arrow-wrap
             transform translateX(16px)
             transition transform 0.3s ease-out 0.1s
@@ -109,11 +109,12 @@
         &.hover
           absolute100()
           width 0
+          min-width 0%
           height auto
           border-top 1px solid hotPink
           border-bottom 1px solid hotPink
           color hotPink
-          transition width 0.3s ease
+          transition min-width 0.35s ease-in-out
           overflow hidden
 
                   
@@ -166,7 +167,7 @@
       svg 
         margin 25vh auto 30vh auto
         *
-          fill white
+          fill cloud
 
     h1
       FreightBig()
@@ -203,8 +204,11 @@
         height auto
         z-index -1
         backface-visibility hidden
+        div
+          backface-visibility hidden
       .caption
         column(3)
+        backface-visibility hidden
         
     #top
       margin-bottom 0
@@ -282,10 +286,10 @@
       .frame-img
         column(6)
         push(1)
-        
         height 80%
+        margin-bottom 
         div
-          background-position center center
+          background-position 25% center
           height 100%
 
     #home-donate
