@@ -6,7 +6,6 @@ define([
   'view'
 ], function($, _, Backbone, Modernizr, View){
 
-
   var Donate = Backbone.View.extend({
     isShowing: false,
 

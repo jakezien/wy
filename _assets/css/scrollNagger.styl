@@ -1,0 +1,30 @@
+#scrollNagger 
+  position fixed
+  bottom -180px
+  left 50%
+  border-radius 50%
+  transform translateX(-50%)
+  width 88px
+  height 88px
+  background cloud
+  background-radius 50%
+  z-index 2
+  cursor pointer
+  transition background 0.2s ease
+  
+  &:hover
+    background hotPink
+    div svg *
+        stroke white
+
+  div
+    svg
+      width 36px
+      margin 0 auto
+      display block
+      margin-top 32px
+      transform rotate(90deg)
+
+      *
+        transition stroke 0.2s ease
+        stroke hotPink

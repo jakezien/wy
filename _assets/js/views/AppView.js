@@ -7,8 +7,9 @@ define([
   'view',
   'views/Menu',
   'views/Donate',
-  'pagemodel'
-], function($, _, Backbone, Modernizr, HiDpi, View, Menu, Donate, PageModel){
+  'pagemodel',
+  'views/ScrollNagger'
+], function($, _, Backbone, Modernizr, HiDpi, View, Menu, Donate, PageModel, ScrollNagger){
 
   var AppView = View.extend({
     el: 'body',
@@ -20,6 +21,7 @@ define([
         el: $('#donate'), 
         donateBtn:$('.donate-btn a')
       });
+      this.scrollNagger = new ScrollNagger({el: $('#scrollNagger'), });
 
       this.$contentEl = $(this.$el.children('#content'));
 
@@ -47,6 +49,7 @@ define([
       var currentScrollY = this.latestKnownScrollY;
       // tell subviews to render
       this.menu.render(currentScrollY);
+      this.scrollNagger.render(currentScrollY);
       this.currentPageView.render(currentScrollY);
     },
 
