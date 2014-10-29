@@ -1,5 +1,7 @@
 .about
   
+  background white
+  
   Garamond()
 
   section
@@ -18,15 +20,23 @@
           absolute100()
           background hotPink
           mix-blend-mode multiply
+      
       h3
         font-weight normal
         margin .5em 0
+      
+      p:nth-child(3)
+        font-style italic
+        margin-top -.5em
+        color clay
+
       div
         width 100%
+        max-width 220px
         position relative
         background-size 100% 100%
-        background-color hotPink
-        background-blend-mode multiply
+        // background-color hotPink
+        // background-blend-mode multiply
         transition background-color 0.33s ease
         &:hover
           background-color #fff
@@ -35,17 +45,39 @@
           display block
           padding-top 100%
 
+  h2
+    column(12)
+    font-weight 300
+    
+  .keyline
+    column(12)
+    height 1px
+    background-color brown
+    margin-top 1.5em
+    margin-bottom 1.5em
+
   #story .text
     column(10)
     push(1)
     clearfix()
+    
+  .col 
+    p:first-child
+      margin-top 
+
 
 
 @media only screen and (min-width: 768px) 
   .about
     .team, .advisors, .expedition-team, .allies
+      margin-top 10em
       li
         column(3)
-        min-height 200px
+        min-height 400px
       h3
         min-height 3em
+      
+
+    #story .text
+      .col
+        column(6)
