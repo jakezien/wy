@@ -14,7 +14,7 @@ define([
       this.opts = options;
       _.bindAll(this, 'createTimelines', 'snapScroll');
       this.isScrolling = false;
-
+      this.scrollNaggerEnabled = true;
     },
 
     beforeAppend: function() {

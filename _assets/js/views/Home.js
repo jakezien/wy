@@ -13,6 +13,7 @@ define([
         this.url = options.url;
       }
       _.bindAll(this, 'createTimelines');
+      this.scrollNaggerEnabled = true;
     },
 
     beforeAppend: function() {

@@ -11,6 +11,7 @@ define([
     initialize: function(){
       this.constructor.__super__.initialize.apply(this, arguments);
       _.bindAll(this, 'createTimelines');
+      this.scrollNaggerEnabled = true;
     },
 
     beforeAppend: function(){
