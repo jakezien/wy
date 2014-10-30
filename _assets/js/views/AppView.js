@@ -68,6 +68,7 @@ define([
         view.$el.addClass(view.page);
         this.currentPageView = view;
         this.currentPageView.transitionIn();
+        this.scrollNagger.startCountdown();
         window.scrollTo(0, 0);
         this.isTransitioning = false;
         return;
@@ -108,6 +109,7 @@ define([
       window.scrollTo(0, 0);
       document.title = this.currentPageModel.get('title');
       nextView.transitionIn();
+      this.scrollNagger.startCountdown();
       this.isTransitioning = false;
     },
 

@@ -9,8 +9,7 @@ define([
   var ScrollNagger = Backbone.View.extend({
 
     initialize: function(){
-      _.bindAll(this, 'show', 'hide', 'render');
-      this.showDelay = _.delay(this.show, 5000);
+      _.bindAll(this, 'show', 'hide', 'render', 'startCountdown');
       this.isWatchingScroll = true;
       this.isTransitioning = false;
     },
@@ -25,6 +24,10 @@ define([
       var scrollTop = $window.scrollTop() + $window.innerHeight() * 0.75;
       tl.to(window, 1, {scrollTo:scrollTop, ease:Sine.easeOut});
       this.hide();
+    },
+
+    startCountdown: function(){
+      this.showDelay = _.delay(this.show, 4500);
     },
 
     show: function() {
