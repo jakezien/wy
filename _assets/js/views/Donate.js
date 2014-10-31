@@ -22,11 +22,6 @@ define([
         this.donateBtn.click(this.show);
       }
 
-      $('#donate .half-r').bind('mousewheel', function(e){
-        var scrollTo = -1 * e.originalEvent.wheelDelta + $('#donate .half-l').scrollTop();
-        $("#donate .half-l").scrollTop(scrollTo);
-      });
-
       $('#donate .trigger').click(function(){
         $('#donate form')[0].submit();
       });
