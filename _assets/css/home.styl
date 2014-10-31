@@ -25,6 +25,7 @@
       position relative
       z-index 1
       left 0
+      margin-bottom 2em
       
       &.move-h
         div
@@ -50,9 +51,10 @@
       position relative
       padding 2em 2em 4em 2em
       backface-visibility hidden
+      margin-bottom 2em
       h2
         GaramondDisplay()
-        font-size 6em
+        font-size 5em
         line-height 1
         text-transform none
         letter-spacing -0.02em
@@ -67,7 +69,7 @@
       p
         margin 0
         max-width 80%
-        font-size 1.25em
+        font-size 1.5em
       a
         color clay
         text-decoration none
@@ -127,6 +129,12 @@
         top 50%
         margin-top -10px
         transition transform 0.3s ease
+        
+  #home-shop
+    .frame-img
+      div
+        background-size contain
+        height 100%
 
   .bg
     absolute100()
@@ -210,6 +218,9 @@
       .caption
         column(3)
         backface-visibility hidden
+
+      p
+        font-size 1.25em
         
     #top
       margin-bottom 0
@@ -306,3 +317,10 @@
         height 80%
         div
           background-position center center
+          
+@media only screen and (min-width: 959px)
+  .home, .page.index
+    section
+      .caption
+        h2
+          font-size 6em

@@ -30,6 +30,10 @@ define([
       this.showDelay = _.delay(this.show, 4500);
     },
 
+    stopCountdown: function(){
+      clearTimeout(this.showDelay);
+    },
+
     show: function() {
       var tl = new TimelineLite();
       this.isTransitioning = true;
@@ -61,7 +65,7 @@ define([
       if (st > this.lastScrollTop){
         this.hide();
       } 
-      clearTimeout(this.showDelay);
+      this.stopCountdown();
       this.lastScrollTop = st;
     }
 

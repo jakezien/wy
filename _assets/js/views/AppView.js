@@ -93,6 +93,7 @@ define([
       }.bind(this);
 
       if (previousView) {
+        this.scrollNagger.stopCountdown();
         this.scrollNagger.hide();
         previousView.transitionOut(function() {
           previousView.remove();
