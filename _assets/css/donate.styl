@@ -45,7 +45,9 @@ body.donate-show
     transition opacity 1s ease
     column(10)
     push(1)
-    padding-top 4em 
+    padding-top 8em 
+    overflow scroll
+    overflow-scrolling touch
 
     h2
       clear both
@@ -59,11 +61,10 @@ body.donate-show
       clear both
     
     .title
-      column(9)
-      pull(12)
+      column(12)
       display block
       color brown
-      margin 1em 0
+      margin 1em 0 3em 0
       padding 0
       position relative
       cursor pointer
@@ -71,6 +72,7 @@ body.donate-show
       svg *
         stroke brown
         transition stroke 0.3s ease
+
       &:hover
         .hover
           min-width 100%
@@ -112,6 +114,12 @@ body.donate-show
       margin-top -10px
       transition transform 0.3s ease
 
+    .callout
+      GaramondDisplay()
+      letter-spacing 0.01em
+      font-size 2em
+
+
   .multiply
     absolute100()
     background hotPink
@@ -130,10 +138,19 @@ body.donate-show
     background cloud
 
   .mail
+    clearfix()
+    color clay
+    margin-bottom 4em
+    a
+      color brown
+      transition color 0.1s
+      &:hover
+        color hotPink
     p
       font-size 1.1em
 
   .text
+    box-sizing border-box
     opacity 0
     transition opacity 0.5s ease-in
 
@@ -164,6 +181,33 @@ body.donate-show
 
   #donate
 
+    .text
+      column(8)
+      push(2)
+      
+      .details 
+        row()
+        div
+          column(6)
+          
+      .stats p
+        margin-top .5em
+        margin-bottom 0
+        font-size 1.25rem
+
+      .callout
+        font-size 2.5em
+        margin 0
+
     .hide-btn
       top 72px
       cursor pointer
+    
+    .mail
+      clear both
+      row()
+      color clay
+      p
+        column(6)
+        margin-top 4em
+        clear none
