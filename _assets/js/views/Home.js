@@ -92,14 +92,14 @@ define([
 
       this.timelines['top'] = createTopTL();
       
-      // if (Detectizr.device.type !== 'mobile') {
-      //   this.timelines['home-qeros'] = createQerosTL();
-      //   this.timelines['home-projects'] = createProjectsTL();
-      //   this.timelines['home-schools'] = createSchoolsTL();
-      //   this.timelines['home-about'] = createAboutTL();
-      //   this.timelines['home-shop'] = createShopTL();
-      //   this.timelines['home-donate'] = createDonateTL();
-      // }
+      if (Detectizr.device.type !== 'mobile') {
+        this.timelines['home-qeros'] = createQerosTL();
+        this.timelines['home-projects'] = createProjectsTL();
+        this.timelines['home-schools'] = createSchoolsTL();
+        this.timelines['home-about'] = createAboutTL();
+        this.timelines['home-shop'] = createShopTL();
+        this.timelines['home-donate'] = createDonateTL();
+      }
     },
 
     render: function(currentScrollY) {

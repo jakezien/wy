@@ -68,7 +68,7 @@ define([
         view.$el.addClass(view.page);
         this.currentPageView = view;
         this.currentPageView.transitionIn();
-        if (this.currentPageView.scrollNaggerEnabled) {
+        if (this.currentPageView.scrollNaggerEnabled && $(window).scrollTop() <= 50) {
           this.scrollNagger.startCountdown();
         }
         window.scrollTo(0, 0);
