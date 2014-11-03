@@ -19,7 +19,7 @@ define([
       this.menu = new Menu({el: $('#site-nav')});
       this.donate = new Donate({
         el: $('#donate'), 
-        donateBtn:$('.donate-btn a')
+        donateBtn:$('.donate-btn')
       });
       this.scrollNagger = new ScrollNagger({el: $('#scrollNagger'), });
 
