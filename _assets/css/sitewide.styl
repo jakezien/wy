@@ -251,6 +251,61 @@ section.cta
       Garamond()
       text-align center
       font-size 2em
+      
+  .arrow-link
+    display block
+    color brown
+    margin 1em 0
+    padding 0
+    position relative
+    overflow visible !important
+    text-decoration none
+    
+    &:hover
+      .hover
+        min-width 100% !important
+      .arrow-wrap
+        transform translateX(16px)
+        transition transform 0.3s ease-out 0.1s
+      svg *
+        stroke hotPink
+        
+    svg *
+      stroke brown
+      transition stroke 0.3s ease
+    
+    h2
+      GaramondDisplay()
+      font-size 5em
+      line-height 1
+      text-transform none
+      letter-spacing -0.02em
+      margin 1.5rem 0 1.25rem 0
+      position relative
+      left -0.2rem
+     
+    .arrow-link-inner
+      border-top 1px solid brown
+      border-bottom 1px solid brown
+      &.hover
+        absolute100()
+        width 0
+        min-width 0%
+        height auto
+        border-top 1px solid hotPink
+        border-bottom 1px solid hotPink
+        color hotPink
+        transition min-width 0.35s ease-in-out
+        overflow hidden
+        white-space nowrap
+
+    .arrow-wrap
+      position absolute
+      right 0
+      width 32px
+      top 50%
+      margin-top -10px
+      transition transform 0.3s ease
 
 @media only screen and (min-width: 768px)
   
