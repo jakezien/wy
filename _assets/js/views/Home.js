@@ -37,7 +37,7 @@ define([
       var createTopTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('.bg video'), 5, {opacity:0});
-        tl.to(this.$el.find('#intro .text'), 5, {color:'#F22E60'}, '-=5');
+        tl.to(this.$el.find('#intro .text'), 2.5, {color:'#F22E60'}, '-=5');
         tl.to(this.$el.find('#intro .keyline'), 5, {backgroundColor:'#F22E60'}, '-=5');
         // tl.set(this.$el.find('.bg video'), {display: 'block'});
         tl.call(function(){

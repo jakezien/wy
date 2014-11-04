@@ -52,6 +52,7 @@
       padding 2em 2em 4em 2em
       backface-visibility hidden
       margin-bottom 2em
+
       h3
         font-size 1.5em
         font-weight 400
@@ -113,6 +114,7 @@
 
   #top
     margin-top 60px
+    min-height 85vh
     color brown
     position relative
     z-index 1
@@ -141,6 +143,7 @@
 
   #intro
     min-height 10vh
+    margin-bottom 10vh
     .keyline
       column(10)
       push(1)
@@ -149,6 +152,12 @@
       push(1)
       color white
       font-size 1.25em
+
+@media only screen and (max-width: 768px)
+  .home, .page.index
+    section .caption
+      transform none !important
+
 
 @media only screen and (min-width: 768px)
   .home, .page.index
@@ -173,7 +182,6 @@
         
     #top
       margin-bottom 0
-      min-height 85vh
       
 
     #intro 
