@@ -198,16 +198,20 @@ body
       display block
 
 section.cta
-  text-align center
-  a 
+  min-height 0 !important
+  padding-bottom 8em
+  padding-top 8em
+  .wrapper
+    column(10)
+    push(1)
+    overflow visible
+  p, h3
     display inline-block
-    font-size 2.5em
-    GaramondDisplayBold()
-    text-decoration none
-    color hotPink
-    transition color 0.15s
-    &:hover
-      color #CC1A1E
+    margin 0
+    color brown
+  p
+    margin-right 0.5em
+  
 
 .page
   h1
@@ -310,7 +314,11 @@ section.cta
 @media only screen and (min-width: 768px)
   
   section.cta
-    font-size 1.2em
+    font-size 1.1rem !important
+    .wrapper
+      column(6)
+      push(3)
+      overflow visible
 
   #site-nav
     height auto
@@ -374,8 +382,8 @@ section.cta
         column(8)
         push(2)
   
-  .arrow-link h2
-    font-size 5em
+    .arrow-link h2
+      font-size 5em
 
 @media only screen and (min-width: 768px) and (max-width: 850px)
   #site-nav li
