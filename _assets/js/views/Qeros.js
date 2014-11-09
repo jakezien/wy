@@ -27,7 +27,23 @@ define([
       this.scrollNaggerEnabled = true;
     },
 
+
+    createTimelines: function() {
+      var createCtaTl = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.from( this.$el.find('#cta .wrapper'), 4, {x:'-33%', opacity:0, ease:Sine.easeOut}, 1 );
+        tl.from( this.$el.find('#cta .wrapper'), 5, {} );
+        return tl;
+      }.bind(this);
+
+      this.timelines['cta'] = createCtaTl();
+    },
+
+
     render: function(currentScrollY){
+
+      this.seekTimelines(currentScrollY);
+
       var pageHeight = $('#content').innerHeight();
       var pageWidth = $('#content').innerWidth();
       var windowHeight = $(window).innerHeight();

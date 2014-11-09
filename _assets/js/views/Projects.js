@@ -99,7 +99,15 @@ define([
         this.timelines[$el.attr('id')] = tl;
       }.bind(this);
 
+      var createCtaTl = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.from( this.$el.find('#cta .wrapper'), 4, {x:'-33%', opacity:0, ease:Sine.easeOut}, 1 );
+        tl.from( this.$el.find('#cta .wrapper'), 5, {} );
+        return tl;
+      }.bind(this);
+
       this.$el.find('section').not('#top, .cta').each(createTL);
+      this.timelines['cta'] = createCtaTl();
     },
 
     render: function(currentScrollY) {

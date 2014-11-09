@@ -1,11 +1,14 @@
 .schools
 
+  background white
+
   section
     color #302624
     width 100%
-    min-height 75vh
+    min-height 50vh
     overflow hidden
     position relative
+    z-index 1
     clearfix()
 
     &.cta
@@ -31,7 +34,7 @@
 
       &.move-h
         div
-          width 125%
+          width 115%
           height 100%
           background-size 100% auto
 
@@ -53,10 +56,19 @@
     
     .caption
       position relative
-      background #fff
+      background white
       padding 2em 2em 4em 2em
+      z-index 2
       p
         margin 0
+      h2
+        font-size 2.25em
+        letter-spacing 0.25em
+        margin 0
+        text-transform uppercase
+        border-bottom 2px solid
+        padding-bottom 1em
+        margin-bottom 1em
       .dropcap
         font-size 11em
         line-height 0.66em
@@ -80,8 +92,10 @@
       background-size cover
       background-position center center
       background-repeat no-repeat
+    h1
+      letter-spacing -0.025em
       
-  .preschool
+  #preschool
     .frame-img div
       background-position center bottom
 
@@ -97,26 +111,74 @@
       .frame-img
         position absolute
         height auto
-        z-index -1
+        z-index 0
       .caption
         column(3)
 
     #top h1
         margin-bottom 1em
 
-    .s-1
+    .title
+      GaramondDisplay()
+      font-size 3em
+      margin 0 0 8em 0
+      padding 0
+      overflow visible
+      color hotPink
+      z-index 0
+      // z-index 3
+      // mix-blend-mode multiply
+      text-align center
+      .wrapper
+        text-align left
+        display inline-block
+      h2
+        letter-spacing 0.15em
+
+        
+
+    #intro-1
       padding-top 15vh
       .frame-img
-        column(7)
-        push(4)
+        column(8)
+        push(3)
         height 70%        
       .caption
-        padding 0
+        padding-top 0
+        padding-left 0
         column(2.5)
         push(1)
         margin-bottom 20%
     
-    .s-2
+    #intro-2
+      padding-top 5vh
+      margin-bottom 10vh
+      .frame-img
+        column(7)
+        push(1)
+        height 60%        
+      .caption
+        push(8)
+        padding-top 0
+        margin-bottom 20%
+
+    #education-1
+      padding-top 5vh
+      .frame-img
+        column(8)
+        push(3)
+        height 80%        
+        top 0
+        div
+          background-size auto 70%
+          background-position left top
+
+      .caption
+        column(2.5)
+        push(1)
+        margin-bottom 50%
+    
+    #education-2
       padding-top 15vh
       .frame-img
         column(7)
@@ -127,30 +189,7 @@
         padding-top 0
         margin-bottom 20%
 
-    .s-3
-      padding-top 15vh
-      .frame-img
-        column(7)
-        push(4)
-        height 70%        
-      .caption
-        padding 0
-        column(2.5)
-        push(1)
-        margin-bottom 20%
-    
-    .s-4
-      padding-top 15vh
-      .frame-img
-        column(7)
-        push(1)
-        height 60%        
-      .caption
-        push(8)
-        padding-top 0
-        margin-bottom 20%
-
-    .preschool
+    #preschool
       padding-top 15vh
       .frame-img
         column(7)
@@ -162,7 +201,7 @@
         push(1)
         margin-bottom 20%
     
-    .high-school
+    #high-school
       padding-top 15vh
       .frame-img
         column(7)
@@ -173,7 +212,7 @@
         padding-top 0
         margin-bottom 20%
 
-    .math
+    #math
       padding-top 15vh
       .frame-img
         column(7)

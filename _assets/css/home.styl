@@ -119,16 +119,30 @@
     color brown
     position relative
     z-index 1
-
+    display table
+    
     .logotype
-      width 65%
+      width 55%
       margin 0 auto
       height auto
 
       svg 
-        margin 25vh auto 30vh auto
+        margin 0 auto
         *
           fill cloud
+
+    .keyline
+      width 66%
+      margin 6em auto
+      opacity 0.9
+
+    p
+      color cloud
+      GaramondDisplay()
+      // font-style italic
+      font-size 3em
+      margin-bottom 0.5em
+      letter-spacing 0.02em
 
     h1
       FreightBig()
@@ -137,17 +151,10 @@
       text-align center
       margin .5em 0 .25em 0
 
-    p
-      Freight()
-      text-align center
-      font-size 2em
-
   #intro
     min-height 10vh
     margin-bottom 10vh
-    .keyline
-      column(10)
-      push(1)
+    
     .text
       column(10)
       push(1)

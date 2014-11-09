@@ -45,7 +45,7 @@ define([
       var tl = new TimelineLite();
       this.isTransitioning = true;
       tl.to(this.$el, 0.5, {y: 0, ease:Sine.easeIn});
-      tl.call(function(){this.isTransitioning = true}.bind(this));
+      tl.call(function(){this.isTransitioning = false}.bind(this));
     }, 
 
     render: function(currentScrollY){
@@ -59,10 +59,13 @@ define([
       var windowHeight = $(window).innerHeight();
       var st = Math.max(0, currentScrollY);
 
-      if (st <= 30 ) return;    // always show at top and bottom
+      if (st <= 30 )  {
+        return;    // always show at top and bottom
+      }
 
       if (Math.abs(st - this.lastScrollTop) < 20) return;
-      if (st > this.lastScrollTop){
+      
+      if (st > this.lastScrollTop) {
         this.hide();
       } 
       this.stopCountdown();

@@ -41,11 +41,12 @@ body.donate-show
     absolute100()
     position relative
     margin-bottom 4em
-    color dkBrown
+    color brown
     transition opacity 1s ease
     column(10)
     push(1)
-    padding-top 8em 
+    overflow-x hidden
+    overflow-y scroll
     overflow-scrolling touch
 
     h2
@@ -118,6 +119,9 @@ body.donate-show
       letter-spacing 0.01em
       font-size 2em
 
+  .text-inner
+    padding-top 8em
+
 
   .multiply
     absolute100()
@@ -183,7 +187,9 @@ body.donate-show
     .text
       column(8)
       push(2)
-      overflow visible
+      overflow-x hidden
+      overflow-y scroll
+      padding-bottom 6em
 
       .details 
         row()
@@ -206,7 +212,7 @@ body.donate-show
     .mail
       clear both
       row()
-      color clay
+      color brown
       p
         column(6)
         margin-top 4em
