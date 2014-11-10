@@ -90,7 +90,7 @@ define([
       if (this.isShowing) {
         this.hide();
       }
-      console.log(e.target)
+
       if ($(e.target).attr('href').indexOf('donate') === -1) {
         this.trigger('nav-clicked');
       }

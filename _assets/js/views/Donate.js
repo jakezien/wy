@@ -45,7 +45,7 @@ define([
     },
 
     hide: function(){
-          console.log('hide')
+      console.log('hide')
 
       this.isTransitioning = true;
       this.$el.removeClass('show');
