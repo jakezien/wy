@@ -32,7 +32,7 @@ body
       pointer-events none    
     .page
       opacity 0
-  &.menu-show, &.donate-show
+  &.menu-mobile-show, &.donate-show
     overflow hidden
   &.stop-scroll
     height 100%
@@ -58,23 +58,6 @@ body
 #site-header
   width 100%
   clearfix()
-
-#menu-btn 
-  width 44px
-  height 44px
-  position fixed
-  cursor pointer
-  z-index 11
-  div
-    width 26px
-    height 3px
-    margin-left 9px
-    margin-bottom 7px
-    background-color #000
-    &:first-child
-      margin-top 11px
-    &:last-child
-      margin-bottom none
 
 #site-footer
   padding 10vh 0 6vh 0
@@ -127,76 +110,6 @@ body
     a
       text-decoration underline
 
-#site-nav
-  position fixed
-  z-index 10
-  width 100%
-  color brown
-  backface-visibility hidden
-  ul
-    height 100%
-    display none
-    list-style none
-    margin 0 auto
-    text-align center
-    background-color hotPink
-  li
-    FranklinBold()
-    text-transform uppercase
-    font-size 1.25em
-    letter-spacing 0.25em
-    line-height 4.25em
-
-    a
-      padding 1.5em 1em
-      color brown
-      text-decoration none
-      transition color 0.15s ease
-      &:hover, &.active
-        color hotPink
-
-  .logotype
-    float left
-    a
-      display block
-      width 80px
-      padding 0
-
-      &:hover
-        svg 
-          *
-            fill hotPink
-
-      svg
-        position relative
-        top 0.75em
-        height 36px
-        *
-          transition fill 0.15s ease
-          fill brown
-
-  .donate-btn
-    float right
-    a
-      border 1px solid
-      border-radius 1px
-      padding 0.75em 0.75em
-      margin 0.75em 1em 0.75em 0.25em
-      transition color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease
-      &:hover
-        color white !important
-        background-color hotPink
-        border-color hotPink
-
-      &.active
-        color hotPink
-      
-
-  &.show
-    height 100%
-    ul
-      display block
-
 section.cta
   min-height 0 !important
   padding-bottom 8em
@@ -212,7 +125,6 @@ section.cta
   p
     margin-right 0.5em
   
-
 .page
   h1
     GaramondDisplay()
@@ -277,6 +189,7 @@ section.cta
     svg *
       stroke brown
       transition stroke 0.3s ease
+      height
     
     h2
       GaramondDisplay()
@@ -307,6 +220,7 @@ section.cta
       position absolute
       right 0
       width 32px
+      height 32px
       top 50%
       margin-top -10px
       transition transform 0.3s ease
@@ -319,36 +233,6 @@ section.cta
       column(6)
       push(3)
       overflow visible
-
-  #site-nav
-    height auto
-    transition transform 0.33s ease-out, background-color 0.33s ease
-
-    &.scroll-hide
-      transition transform 0.25s ease-in
-      transform translateY(-120px)
-
-    &.transparent ul
-      background-color transparent
-
-    ul
-      margin 0 auto
-      text-align center
-      display block
-      background-color white
-
-    li
-      display inline-block
-      letter-spacing 0.275em
-      line-height 4.25em
-
-      a
-        padding 1.5em 1em
-        color brown
-        text-decoration none
-        transition color 0.15s ease
-        &:hover, &.active
-          color #F22E60
 
   #site-footer
     .email
@@ -364,10 +248,6 @@ section.cta
       column(4)
       text-align left
       font-size 0.75em
-    
-  #menu-btn
-    position static
-    display none
 
   .page
     h1
@@ -385,8 +265,3 @@ section.cta
     .arrow-link h2
       font-size 5em
 
-@media only screen and (min-width: 768px) and (max-width: 850px)
-  #site-nav li
-    letter-spacing 0.2em
-    a
-      padding 1.5em 0.75em

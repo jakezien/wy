@@ -1,15 +1,28 @@
 <header id="site-header">
   <div id="site-logo"></div>
   <nav id="site-nav">
-    <div id="menu-btn">
-      <div></div>
-      <div></div>
-      <div></div>
+
+    <div id="menu-mobile">  
+      <div id="menu-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="logotype">
+        <a href="/">
+          {% include logotype-h.svg %}
+        </a>
+      </div>
+      <div class="clearfix"></div>
     </div>
+
     <ul>
-      <li class="logotype"><a href="/" class="logotype">
-        {% include logotype-small.svg %}
-      </a></li>
+      <div class="logotype">
+        <a href="/">
+          {% include logotype-small.svg %}
+        </a>
+      </div>
+      <li class="mobile-show"><a href="/">Home</a></li>
       <li><a href="/projects">Projects</a></li>
       <li><a href="/schools">Schools</a></li>
       <li><a href="/qeros">Q&rsquo;eros</a></li>

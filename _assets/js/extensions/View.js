@@ -2,7 +2,8 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'modernizr'
+  'modernizr',
+  'util'
 ], function($, _, Backbone, Modernizr){
 
   var View = Backbone.View.extend({
@@ -36,7 +37,7 @@ define([
       var transitionIn = function() {
         view.render(window.scrollY);        
         view.$el.addClass('is-visible');
-        view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+        view.$el.one(whichTransitionEvent(), function(){
           view.transitionInCallback();
         });
       };
@@ -49,7 +50,7 @@ define([
     transitionOut: function(callback) {
       var view = this;
       view.$el.removeClass('is-visible');
-      view.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+      view.$el.one(whichTransitionEvent(), function(){
         if (_.isFunction(callback)) {
           callback();
         }

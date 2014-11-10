@@ -36,17 +36,20 @@ define([
 
       var createTopTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('.bg video'), 5, {opacity:0});
-        tl.to(this.$el.find('#intro .text'), 2.5, {color:'#F22E60'}, '-=5');
-        tl.to(this.$el.find('#intro .keyline'), 5, {backgroundColor:'#F22E60'}, '-=5');
-        // tl.set(this.$el.find('.bg video'), {display: 'block'});
         tl.call(function(){
           this.$el.find('.bg video')[0].play();
         }.bind(this));
-        // tl.set(this.$el.find('.bg video'), {display: 'none'});
+        tl.to(this.$el.find('.bg video'), 5, {opacity:0});
+        tl.to(this.$el.find('#intro .text'), 2.5, {color:'#F22E60'}, 0);
+        tl.to(this.$el.find('#intro .keyline'), 5, {backgroundColor:'#F22E60'}, 0);
+
+        tl.call(function(){
+          this.$el.find('.bg video')[0].play();
+        }, null, this, 5);
+
         tl.call(function(){
           this.$el.find('.bg video')[0].pause();
-        }.bind(this));
+        }, null, this, 5.1);
         
 
         return tl;

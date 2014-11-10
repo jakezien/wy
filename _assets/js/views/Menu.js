@@ -13,6 +13,7 @@ define([
       _.bindAll(this, 'show', 'hide', 'toggleMenu', 'navClicked');
       this.lastScrollTop = 0;
       this.isWatchingScroll = true;
+      this.menuBtn = this.$el.find('#menu-btn');
     },
     render : function(currentScrollY){
       if (!this.isWatchingScroll) return;
@@ -35,16 +36,36 @@ define([
       }
       this.lastScrollTop = st;
     },
+
     show: function(){
-      $(this.el).addClass('show');
-      $('body').addClass('menu-show');
+      if (this.isTransitioning)
+        return;
+
       this.isShowing = true;
+      this.$el.addClass('block');
+      this.menuBtn.addClass('active');
+      _.delay(function(){
+        this.$el.addClass('show');
+        $('body').addClass('menu-mobile-show');
+      }.bind(this));
     },
+
     hide: function(){
-      $(this.el).removeClass('show');
-      $('body').removeClass('menu-show');
-      this.isShowing = false;
+      console.log('hide')
+      this.isTransitioning = true;
+      this.$el.removeClass('show');
+      $('body').removeClass('menu-mobile-show');
+      this.menuBtn.removeClass('active');
+      this.$el.one(whichTransitionEvent(), function(){
+        _.delay(function(){
+          this.$el.removeClass('block');
+          this.isShowing = false;
+          this.isTransitioning = false;
+          console.log('reset')
+        }.bind(this), 600);
+      }.bind(this));
     },
+
     scrollHide: function(){
       $(this.el).addClass('scroll-hide');
     },
@@ -58,6 +79,7 @@ define([
       $(this.el).removeClass('transparent');
     },
     toggleMenu: function(){
+      console.log('toggle')
       if (this.isShowing) {
         this.hide();
       } else {

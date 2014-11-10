@@ -47,7 +47,7 @@ define([
       this.$el.removeClass('show');
       $('body').removeClass('donate-show');
       this.donateBtn.removeClass('active');
-      this.$el.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(){
+      this.$el.one(whichTransitionEvent(), function(){
         _.delay(function(){
           this.$el.removeClass('block');
           this.isShowing = false;

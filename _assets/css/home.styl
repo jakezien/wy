@@ -122,9 +122,10 @@
     display table
     
     .logotype
-      width 55%
-      margin 0 auto
       height auto
+      margin 0 auto
+      width 80%
+      min-height 50px
 
       svg 
         margin 0 auto
@@ -132,17 +133,19 @@
           fill cloud
 
     .keyline
-      width 66%
-      margin 6em auto
+      width 75%
+      margin 3em auto
       opacity 0.9
 
     p
       color cloud
       GaramondDisplay()
       // font-style italic
-      font-size 3em
+      font-size 2.5em
       margin-bottom 0.5em
       letter-spacing 0.02em
+      column(10)
+      push(1)
 
     h1
       FreightBig()
@@ -189,16 +192,24 @@
         font-size 1.25em
         
     #top
-      margin-bottom 0
-      
+      margin-bottom 0    
+      p
+        font-size 3em
+      .keyline
+        width 66%
+        margin 6em auto
+      .logotype
+        width 55%
+        min-height 100px
 
     #intro 
       padding-bottom 0
       margin-bottom 10vh
+      
       .text
         font-size 1.5em
         column(6)
-        push(1)
+        push(3)
 
 
     #home-qeros

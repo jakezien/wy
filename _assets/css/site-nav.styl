@@ -1,0 +1,180 @@
+#site-nav
+  position fixed
+  z-index 10
+  width 100%
+  color brown
+  backface-visibility hidden
+  transition background-color 0.5s ease-in
+  ul
+    height 100%
+    display none
+    list-style none
+    margin 0 auto
+    text-align center
+    overflow scroll
+    overflow-scrolling touch
+    .logotype 
+      display none
+      
+    
+  li
+    GaramondDisplay()
+    font-size 4.5em
+    margin .33em auto
+    transition padding 0.15s ease, letter-spacing 0.15s ease
+    &:first-of-type
+      margin-top 1.5em
+    a
+      color brown
+      text-decoration none
+      transition color 0.15s ease
+      &:hover, &.active
+        color hotPink
+
+  .donate-btn
+    margin-bottom 1em
+    a
+      transition color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease
+
+      &.active
+        color hotPink
+      
+  &.show
+    height 100%
+    background rgba(250,250,255,0.9)
+    transition background-color 0.5s ease-out
+
+    ul
+      display block
+      
+#menu-mobile
+  width 100%
+  background cloud
+  position fixed
+  z-index 11
+  text-align center
+  
+  .logotype
+    margin 1.1em auto 1em auto
+    display inline-block
+  
+    a:hover
+      svg *
+        fill hotPink
+
+    svg
+      height 28px
+      opacity 0.8
+      *
+        transition fill 0.15s ease
+        fill brown
+
+#menu-btn 
+  width 44px
+  height 44px
+  cursor pointer
+  position absolute
+  left 0.5em
+  top 6px
+  div
+    width 26px
+    height 2px
+    margin-left 9px
+    margin-bottom 6px
+    background-color #000
+    &:first-child
+      margin-top 14 px
+    &:last-child
+      margin-bottom none
+
+@media only screen and (max-width: 767px)
+
+  html.cssfilters 
+    body.menu-mobile-show
+      #content
+        filter blur(24px)
+        -webkit-filter blur(24px)
+      #site-nav.show
+        background rgba(250,250,255,0.55)
+      
+  body.menu-mobile-show
+    #scrollNagger
+      opacity 0
+      
+  #site-nav
+    &.show
+      height 100%
+      background rgba(250,250,255,0.9)
+
+@media only screen and (min-width: 768px)
+
+  #site-nav
+    height auto
+    transition transform 0.33s ease-out, background-color 0.33s ease
+
+    &.scroll-hide
+      transition transform 0.25s ease-in
+      transform translateY(-120px)
+
+    &.transparent ul
+      background-color transparent
+
+    ul
+      margin 0 auto
+      text-align center
+      display block
+      background-color white
+      overflow hidden
+      .logotype 
+        display block
+        float left
+        width 50px
+        margin-top 16px
+        margin-left 1.25em
+        svg *
+          fill brown
+          transition fill 0.15s ease
+        a:hover
+          svg *
+            fill hotPink
+
+
+    li
+      display inline-block
+      FranklinBold()
+      text-transform uppercase
+      font-size 1.25em
+      letter-spacing 0.275em
+      line-height 4em
+      margin 0
+      &:first-of-type
+        margin-top 0
+      a
+        padding 1.5em 1em
+        
+    .donate-btn
+      float right
+      margin-bottom 0
+      a
+        border 1px solid
+        border-radius 1px
+        padding 0.75em 0.75em
+        margin 0.75em 1em 0.75em 0.25em
+        &:hover
+          color white !important
+          background-color hotPink
+          border-color hotPink
+
+    .mobile-show
+      display none
+               
+  #menu-mobile
+    position static
+    display none
+    
+
+@media only screen and (min-width: 768px) and (max-width: 850px)
+  #site-nav li
+    letter-spacing 0.2em
+    a
+      padding 1.5em 0.75em

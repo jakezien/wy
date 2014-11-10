@@ -67,7 +67,8 @@ function whichTransitionEvent(){
       'transition':'transitionend',
       'OTransition':'oTransitionEnd',
       'MozTransition':'transitionend',
-      'WebkitTransition':'webkitTransitionEnd'
+      'WebkitTransition':'webkitTransitionEnd',
+      'MSTransition':'MSTransitionEnd'
     }
 
     for(t in transitions){

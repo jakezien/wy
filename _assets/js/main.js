@@ -5,6 +5,7 @@ require.config({
     backbone: 'vendor/backbone/backbone-min',
     modernizr: 'vendor/modernizr/modernizr.custom',
     detectizr: 'vendor/modernizr/detectizr.min',
+    util: 'util',
     view: 'extensions/View',
     pagemodel: 'models/PageModel'
   }, 
