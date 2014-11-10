@@ -30,6 +30,8 @@ define([
     },
 
     show: function(){
+          console.log('show')
+
       if (this.isTransitioning)
         return;
 
@@ -43,12 +45,15 @@ define([
     },
 
     hide: function(){
+          console.log('hide')
+
       this.isTransitioning = true;
       this.$el.removeClass('show');
       $('body').removeClass('donate-show');
       this.donateBtn.removeClass('active');
       this.$el.one(whichTransitionEvent(), function(){
         _.delay(function(){
+          console.log('reset')
           this.$el.removeClass('block');
           this.isShowing = false;
           this.isTransitioning = false;

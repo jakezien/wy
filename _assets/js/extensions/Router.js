@@ -16,8 +16,8 @@ define([
   
     initialize: function(opts) {
       this.last = null;
-      _.bindAll(this, 'storeRoute', 'previous');
-      this.on('all', this.storeRoute);
+      _.bindAll(this, 'storeRoute', 'previous', 'updateMenu', 'onAll', 'hideDonate');
+      this.bind('route', this.onAll);
       this.opts = opts;
     },
 
@@ -36,9 +36,23 @@ define([
       // '*default': 'blog'
     },
 
+    onAll: function(route) {
+      this.storeRoute();
+      this.updateMenu(route);
+      // this.hideDonate();
+    },
+
     storeRoute: function(){
       this.last = Backbone.history.fragment;
       // console.log('store ' + this.last)
+    },
+
+    updateMenu: function(route) {
+      this.opts.appView.updateMenu(route);
+    },
+
+    hideDonate: function(route) {
+      this.opts.appView.hideDonate();
     },
 
     previous: function() {

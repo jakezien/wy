@@ -14,7 +14,7 @@ define([
   var AppView = View.extend({
     el: 'body',
     initialize: function(opts){
-       _.bindAll(this, 'render', 'onScroll', 'onResize', 'hideDonate');
+       _.bindAll(this, 'render', 'onScroll', 'onResize', 'hideDonate', 'updateMenu');
 
       this.menu = new Menu({el: $('#site-nav')});
       this.donate = new Donate({
@@ -36,9 +36,7 @@ define([
       window.addEventListener('resize', this.onResize, false);
 
       this.menu.on('nav-clicked', function(){
-        if (this.donate.isShowing && !$('.donate-btn a').hasClass('active')) {
-          this.hideDonate();
-        }
+        this.hideDonate();
       }.bind(this));
     },
 
@@ -136,6 +134,10 @@ define([
 
     hideDonate: function(){
       this.donate.hide();
+    },
+
+    updateMenu: function(route){
+      this.menu.update(route);
     },
 
     requestTick: function() {

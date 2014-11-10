@@ -87,16 +87,26 @@ define([
       }
     },
     navClicked: function(e){
-      this.$el.find('a').removeClass('active');
-      $(e.target).addClass('active');
       if (this.isShowing) {
         this.hide();
       }
-      this.trigger('nav-clicked');
+      console.log(e.target)
+      if ($(e.target).attr('href').indexOf('donate') === -1) {
+        this.trigger('nav-clicked');
+      }
     },
+
+    update: function(route){
+      if (!route) return;
+
+      this.$el.find('a').removeClass('active');
+      this.$el.find('a[href*="'+ route + '"]').addClass('active');
+    },
+
     watchScroll: function(){
       this.isWatchingScroll = true;
     },
+
     ignoreScroll: function(){
       this.isWatchingScroll = false;
     }
