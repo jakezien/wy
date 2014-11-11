@@ -1,3 +1,5 @@
+if (!window.console) console = {log: function() {}}; // fix for IE console undefined
+
 require.config({
   paths: {
     jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min',

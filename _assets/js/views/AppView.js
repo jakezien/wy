@@ -122,7 +122,7 @@ define([
     }, 100),
     
     onScroll: function(){
-      this.latestKnownScrollY = window.scrollY;
+      this.latestKnownScrollY = window.pageYOffset;
       if (this.scrollEffects) {
         this.requestTick();
       }

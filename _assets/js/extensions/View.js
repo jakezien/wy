@@ -35,7 +35,7 @@ define([
     transitionIn: function() {
       var view = this, delay;
       var transitionIn = function() {
-        view.render(window.scrollY);        
+        view.render(window.pageYOffset);        
         view.$el.addClass('is-visible');
         view.$el.one(whichTransitionEvent(), function(){
           view.transitionInCallback();
