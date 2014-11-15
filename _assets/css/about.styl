@@ -48,19 +48,21 @@
   .allies 
     margin-bottom 15vh
     li p
-      font-size 2.5em
+      font-size 2.25em
       GaramondDisplay()
 
   h2
     column(12)
     font-weight 300
+    position relative
+    top 0.2em
     
   .keyline
     column(12)
     height 1px
     background-color brown
-    margin-top 1.5em
-    margin-bottom 1.5em
+    margin-top 2.5em
+    margin-bottom 2.5em
 
   #story .text
     column(10)
@@ -69,7 +71,7 @@
     
   .col 
     p:first-child
-      margin-top 
+      margin-top 0
 
   h3
     GaramondDisplay()
@@ -102,7 +104,10 @@
       min-height 400px
     .allies li
       column(6)
-      min-height 120px
+      min-height 4em
+      margin-top 1em
+      &:nth-child(1), &:nth-child(2)
+        margin-top 0
       p 
         margin 0
         width 90%
