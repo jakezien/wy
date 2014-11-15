@@ -26,8 +26,9 @@ define([
       this.hide();
     },
 
-    startCountdown: function(){
-      this.showDelay = _.delay(this.show, 4500);
+    startCountdown: function(duration){
+      console.log(duration)
+      this.showDelay = _.delay(this.show, duration ? duration : 3500);
     },
 
     stopCountdown: function(){
@@ -38,14 +39,14 @@ define([
       var tl = new TimelineLite();
       this.isTransitioning = true;
       tl.to(this.$el, 0.66, {y: -200, ease:Back.easeOut});
-      tl.call(function(){this.isTransitioning = false}.bind(this));
+      tl.call(function(){this.isTransitioning = false;}.bind(this));
     },
 
     hide: function() {
       var tl = new TimelineLite();
       this.isTransitioning = true;
       tl.to(this.$el, 0.5, {y: 0, ease:Sine.easeIn});
-      tl.call(function(){this.isTransitioning = false}.bind(this));
+      tl.call(function(){this.isTransitioning = false;}.bind(this));
     }, 
 
     render: function(currentScrollY){

@@ -67,7 +67,7 @@ define([
         this.currentPageView = view;
         this.currentPageView.transitionIn();
         if (this.currentPageView.scrollNaggerEnabled && $(window).scrollTop() <= 50) {
-          this.scrollNagger.startCountdown();
+          this.scrollNagger.startCountdown(this.currentPageView.scrollNaggerDelay);
         }
         window.scrollTo(0, 0);
         this.isTransitioning = false;
@@ -112,7 +112,7 @@ define([
       document.title = this.currentPageModel.get('title');
       nextView.transitionIn();
       if (this.currentPageView.scrollNaggerEnabled) {
-        this.scrollNagger.startCountdown();
+        this.scrollNagger.startCountdown(this.currentPageView.scrollNaggerDelay);
       }
       this.isTransitioning = false;
     },

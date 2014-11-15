@@ -14,6 +14,7 @@ define([
       }
       _.bindAll(this, 'createTimelines');
       this.scrollNaggerEnabled = true;
+      this.scrollNaggerDelay = 6000;
     },
 
     beforeAppend: function() {
@@ -39,8 +40,8 @@ define([
         tl.call(function(){
           this.$el.find('.bg video')[0].play();
         }.bind(this));
-        tl.to(this.$el.find('.bg video'), 5, {opacity:0});
-        tl.to(this.$el.find('#intro .text'), 2.5, {color:'#F22E60'}, 0);
+        tl.to(this.$el.find('.bg video'), 4, {opacity:0}, 0.5);
+        tl.to(this.$el.find('#intro .text'), 3.5, {color:'#F22E60'}, 1.5);
         tl.to(this.$el.find('#intro .keyline'), 5, {backgroundColor:'#F22E60'}, 0);
 
         tl.call(function(){
