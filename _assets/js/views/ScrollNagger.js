@@ -27,7 +27,6 @@ define([
     },
 
     startCountdown: function(duration){
-      console.log(duration)
       this.showDelay = _.delay(this.show, duration ? duration : 3500);
     },
 
