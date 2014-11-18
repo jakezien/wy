@@ -59,24 +59,37 @@ define([
       var createQerosTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('#home-qeros .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
+        tl.to(this.$el.find('#home-qeros .move-h div'), 5, {x:'-20%', ease:Linear.easeNone} );
+        tl.to(this.$el.find('#home-qeros .move-v div'), 5, {y:'10%'}, 0 );
+        tl.from(this.$el.find('#home-qeros .move-h div, .move-v div'), 1, {opacity:0}, 1 );
         return tl;
       }.bind(this);
+
 
       var createProjectsTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('#home-projects .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
+        tl.to(this.$el.find('#home-projects .move-h div'), 5, {x:'-20%', ease:Linear.easeNone} );
+        tl.to(this.$el.find('#home-projects .move-v div'), 5, {y:'10%'}, 0 );
+        tl.from(this.$el.find('#home-projects .move-h div, .move-v div'), 1, {opacity:0}, 1 );
         return tl;
       }.bind(this);
 
       var createSchoolsTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('#home-schools .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
+        tl.to(this.$el.find('#home-schools .move-h div'), 5, {x:'-20%', ease:Linear.easeNone} );
+        tl.to(this.$el.find('#home-schools .move-v div'), 5, {y:'10%'}, 0 );
+        tl.from(this.$el.find('#home-schools .move-h div, .move-v div'), 1, {opacity:0}, 1 );
         return tl;
       }.bind(this);
 
       var createAboutTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('#home-about .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
+        tl.to(this.$el.find('#home-about .move-h div'), 5, {x:'-20%', ease:Linear.easeNone} );
+        tl.to(this.$el.find('#home-about .move-v div'), 5, {y:'10%'}, 0 );
+        tl.from(this.$el.find('#home-about .move-h div, .move-v div'), 1, {opacity:0}, 1 );
         return tl;
       }.bind(this);
 
@@ -84,12 +97,16 @@ define([
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('#home-shop .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
         tl.fromTo(this.$el.find('#home-shop .frame-img'), 5, {rotation:5}, {rotation:-10}, Quad.easeInOut, 0);
+        tl.from(this.$el.find('#home-shop .frame-img div'), 1, {opacity:0}, 1 );
         return tl;
       }.bind(this);
 
       var createDonateTL = function(i, el) {
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('#home-donate .caption'), 5, {transform:'translateY(50vh)'}, Quint.easeInOut);
+        tl.to(this.$el.find('#home-donate .move-h div'), 5, {x:'-20%', ease:Linear.easeNone} );
+        tl.to(this.$el.find('#home-donate .move-v div'), 5, {y:'10%'}, 0 );
+        tl.from(this.$el.find('#home-donate .move-h div, .move-v div'), 1, {opacity:0}, 1 );
         return tl;
       }.bind(this);
 
