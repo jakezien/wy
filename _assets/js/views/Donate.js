@@ -45,8 +45,8 @@ define([
     },
 
     hide: function(){
+      if (!this.isShowing) return;
       console.log('hide')
-
       this.isTransitioning = true;
       this.$el.removeClass('show');
       $('body').removeClass('donate-show');
