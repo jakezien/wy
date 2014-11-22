@@ -6,6 +6,48 @@
 
   section
     clearfix()
+    position relative
+    z-index 0
+
+  .bg
+    absolute100()
+    position fixed
+    .frame-img
+      height 100%
+
+  .frame-img
+      column(12)
+      margin 0
+      width 100%
+      height 80vh
+      position relative
+      z-index 1
+      left 0
+      margin-bottom 2em
+      
+      &.move-h
+        div
+          width 125%
+          height 100%
+          background-size auto 100%
+
+      &.move-v
+        div
+          width 100%
+          height 120%
+          background-size auto 100% 
+
+      div
+        position absolute
+        height 110%
+        width 100%
+        background-size auto 100% 
+        background-position center center
+        backface-visibility hidden
+
+  #top
+    min-height 90vh
+    color white
 
   .team, .advisors, .expedition-team, .allies
     column(10)
