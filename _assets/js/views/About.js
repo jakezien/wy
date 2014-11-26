@@ -18,7 +18,7 @@ define([
     createTimelines: function() {
       this.timelines = {};
 
-      var createTopTL = function(i, el) {
+      var createTopTL = function() {
         var tl = new TimelineLite({paused: true});
         tl.to(this.$el.find('.bg .frame-img'), 4, {opacity:0}, 0.5);
         tl.to(this.$el.find('.bg .frame-img div'), 4.5, {y:'-5%'}, 0);

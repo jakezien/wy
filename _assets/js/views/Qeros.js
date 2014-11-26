@@ -21,29 +21,70 @@ define([
       $('body').on('touchend', function(){
         $('video')[0].play();
       });
-      this.$el.find('*[data-src]').each(function(i, el){
+      this.$el.find('div[data-src]').each(function(i, el){
         this.preloadImg(el);
       }.bind(this));
       this.scrollNaggerEnabled = true;
+      this.createTimelines();
     },
 
 
     createTimelines: function() {
-      var createCtaTl = function() {
+
+      var createTopTL = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.to(this.$el.find('.bg .frame-img'), 5, {opacity:0});
+        tl.to(this.$el.find('.bg .frame-img div'), 5, {y:'-5%'}, 0);
+        tl.to(this.$el.find('.bg .frame-img div'), 5, {});
+        // tl.to(this.$el.find('#intro .text'), 3.5, {color:'#F22E60'}, 1.5);
+        // tl.to(this.$el.find('#intro .keyline'), 5, {backgroundColor:'#F22E60'}, 0);
+        return tl;
+      }.bind(this);
+
+
+     var createSkywalkTL = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.call(function(){
+          this.preloadVideo($('.bg .offering video')[0]);
+        }.bind(this));
+        return tl;
+      }.bind(this);
+
+
+      var createOfferingTL = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.to(this.$el.find('.bg .offering'), 5, {opacity:1});
+        tl.fromTo(this.$el.find('#offering .cell p'), 2.5, {color:'#F22E60'}, {color:'#fafaff'}, 2.5);
+        tl.to(this.$el.find('.bg .offering'), 5, {});
+        return tl;
+      }.bind(this);
+
+     var createAyniTL = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.to(this.$el.find('.bg .offering'), 2.5, {opacity:0});
+        tl.to(this.$el.find('.bg .offering'), 7.5, {});
+        return tl;
+      }.bind(this);
+
+      var createCtaTL = function() {
         var tl = new TimelineLite({paused: true});
         tl.from( this.$el.find('#cta .wrapper'), 4, {x:'-33%', opacity:0, ease:Sine.easeOut}, 1 );
         tl.from( this.$el.find('#cta .wrapper'), 5, {} );
         return tl;
       }.bind(this);
 
-      this.timelines['cta'] = createCtaTl();
+      this.timelines['top'] = createTopTL();
+      this.timelines['skywalk'] = createSkywalkTL();
+      this.timelines['offering'] = createOfferingTL();
+      this.timelines['ayni'] = createAyniTL();
+      this.timelines['cta'] = createCtaTL();
     },
 
 
     render: function(currentScrollY){
 
       this.seekTimelines(currentScrollY);
-
+/*
       var pageHeight = $('#content').innerHeight();
       var pageWidth = $('#content').innerWidth();
       var windowHeight = $(window).innerHeight();
@@ -149,6 +190,7 @@ define([
 
 
       });
+*/
     }
   });
 
