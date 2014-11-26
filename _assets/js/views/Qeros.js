@@ -41,28 +41,104 @@ define([
         return tl;
       }.bind(this);
 
+      var createIntroTL = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.to( this.$el.find('#intro .move-h div'), 10, {x:'-10%', ease:Sine.easeIn} );
+        tl.to( this.$el.find('#intro .move-v div'), 10, {y:'-10%'}, 0 );
+        tl.from( this.$el.find('#intro .move-h div, #intro .move-v div'), 1, {opacity:0}, 1 );
+        return tl;
+      }.bind(this);
+
 
      var createSkywalkTL = function() {
         var tl = new TimelineLite({paused: true});
+        
         tl.call(function(){
           this.preloadVideo($('.bg .offering video')[0]);
         }.bind(this));
+        
+        tl.to( this.$el.find('#skywalk .move-h div'), 10, {x:'-10%', ease:Sine.easeIn} );
+        tl.to( this.$el.find('#skywalk .move-v div'), 10, {y:'-30%'}, 0 );
+        tl.from( this.$el.find('#skywalk .move-h div, #skywalk .move-v div'), 1, {opacity:0}, 1 );
+        
         return tl;
       }.bind(this);
 
 
       var createOfferingTL = function() {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('.bg .offering'), 5, {opacity:1});
-        tl.fromTo(this.$el.find('#offering .cell p'), 2.5, {color:'#F22E60'}, {color:'#fafaff'}, 2.5);
-        tl.to(this.$el.find('.bg .offering'), 5, {});
+
+        tl.to( this.$el.find('#offering .move-h div'), 10, {x:'-10%', ease:Sine.easeIn}, 0);
+        tl.to( this.$el.find('#offering .move-v div'), 10, {y:'-30%'}, 0 );
+        tl.from( this.$el.find('#offering .move-h div, #offering .move-v div'), 1, {opacity:0}, 1 );
+        
+        tl.to(this.$el.find('.bg .offering'), 2.5, {opacity:1}, 1.5);
+        tl.to(this.$el.find('#offering .big-text div'), 5, {y:'70%', ease:Sine.easeOut}, 1.5);
+        tl.fromTo(this.$el.find('#offering .big-text p'), 1.5, {color:'#F22E60'}, {color:'#fafaff'}, 2);
+
         return tl;
       }.bind(this);
 
      var createAyniTL = function() {
         var tl = new TimelineLite({paused: true});
-        tl.to(this.$el.find('.bg .offering'), 2.5, {opacity:0});
-        tl.to(this.$el.find('.bg .offering'), 7.5, {});
+
+        tl.to( this.$el.find('#ayni .move-h div'), 10, {x:'-10%', ease:Sine.easeIn}, 0);
+        tl.to( this.$el.find('#ayni .move-v div'), 10, {y:'-30%'}, 0 );
+
+        tl.to(this.$el.find('.bg .offering'), 2.5, {opacity:0}, 0);
+        return tl;
+      }.bind(this);
+
+     var createLoveTL = function() {
+        var tl = new TimelineLite({paused: true});
+
+        tl.call(function(){
+          this.preloadVideo($('.bg .where video')[0]);
+        }.bind(this));
+
+        tl.to( this.$el.find('#love .move-h div'), 10, {x:'-10%', ease:Sine.easeIn}, 0);
+        tl.to( this.$el.find('#love .move-v div'), 10, {y:'-30%'}, 0 );
+        tl.from( this.$el.find('#love .move-h div, #love .move-v div'), 1, {opacity:0}, 1 );
+        
+        return tl;
+      }.bind(this);
+
+      var createWhereTL = function() {
+        var tl = new TimelineLite({paused: true});
+
+        tl.to(this.$el.find('.bg .where'), 5, {opacity:1});
+        tl.to(this.$el.find('#where .big-text div'), 5, {y:'60%'}, 1);
+        tl.fromTo(this.$el.find('#where .big-text p, #where .big-text h2'), 2.5, {color:'#F22E60'}, {color:'#fafaff'}, 2.5);
+        tl.to(this.$el.find('.bg .offering'), 5, {});
+        
+        return tl;
+      }.bind(this);
+
+      var createTravelTL = function() {
+        var tl = new TimelineLite({paused: true});
+
+        tl.to(this.$el.find('.bg .where'), 2.5, {opacity:0}, 0);
+
+        tl.to( this.$el.find('#travel .move-h div'), 10, {x:'-10%', ease:Sine.easeIn}, 0);
+        tl.to( this.$el.find('#travel .move-v div'), 6, {y:'-15%'}, 3 );
+        tl.from( this.$el.find('#travel .move-h div, #travel .move-v div'), 1, {opacity:0}, 1 );
+
+        return tl;
+      }.bind(this);
+
+      var createLlamasTL = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.to( this.$el.find('#llamas .move-h div'), 10, {x:'-10%', ease:Sine.easeIn} );
+        tl.to( this.$el.find('#llamas .move-v div'), 10, {y:'-10%'}, 0 );
+        tl.from( this.$el.find('#llamas .move-h div, #llamas .move-v div'), 1, {opacity:0}, 1 );
+        return tl;
+      }.bind(this);
+
+      var createEndTL = function() {
+        var tl = new TimelineLite({paused: true});
+        tl.to( this.$el.find('#end .move-h div'), 10, {x:'-10%', ease:Sine.easeIn} );
+        tl.to( this.$el.find('#end .move-v div'), 10, {y:'-10%'}, 0 );
+        tl.from( this.$el.find('#end .move-h div, #end .move-v div'), 1, {opacity:0}, 1 );
         return tl;
       }.bind(this);
 
@@ -74,9 +150,15 @@ define([
       }.bind(this);
 
       this.timelines['top'] = createTopTL();
+      this.timelines['intro'] = createIntroTL();
       this.timelines['skywalk'] = createSkywalkTL();
       this.timelines['offering'] = createOfferingTL();
       this.timelines['ayni'] = createAyniTL();
+      this.timelines['love'] = createLoveTL();
+      this.timelines['where'] = createWhereTL();
+      this.timelines['travel'] = createTravelTL();
+      this.timelines['llamas'] = createLlamasTL();
+      this.timelines['end'] = createEndTL();
       this.timelines['cta'] = createCtaTL();
     },
 

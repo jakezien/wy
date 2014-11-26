@@ -174,14 +174,16 @@
             height 100%
             border 150px solid white
             box-sizing border-box
-      .cell
+      .big-text
         background transparent
-        display table-cell
-        vertical-align middle
-        height 100%
         div
           column(8)
           push(2)
+        h2
+          color white
+          letter-spacing .15em
+          font-size 3em
+          line-height 0.9
         p
           font-size 3em
           position relative
@@ -195,7 +197,7 @@
   
   .where.video
     font-size 0.833em
-    .cell h2
+    .big-text h2
       color white
       font-size 2.5em
       letter-spacing 0.1em
@@ -306,6 +308,7 @@
         push(4)
         height 80%        
       .caption
+        background transparent
         padding 0
         column(2.5)
         push(1)
@@ -334,7 +337,8 @@
             background white
 
     #love
-      padding-top 35vh
+      padding-top 25vh
+      padding-bottom 40vh
       .frame-img
         column(8)
         push(1)
