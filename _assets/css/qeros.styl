@@ -11,6 +11,8 @@
         background-size cover
     .offering, .where
       opacity 0
+      absolute100()
+      
     video
       pointer-events none
       absolute100()
@@ -23,6 +25,10 @@
       margin-left 50%
       z-index 0
       background white
+    .no-video
+      height 100%
+      background-size cover
+      background-position center center
 
   .frame-img
     column(12)
@@ -139,12 +145,12 @@
         background-repeat repeat-x
       .gradient-top
         top 0
-        height 30vh
-        background-image url('/images/gradient-top.png')
+        height 45vh
+        background-image url('/images/qeros/gradient-top.png')
       .gradient-bottom
         bottom 0
-        height 75vh
-        background-image url('/images/gradient-bottom.png')
+        height 45vh
+        background-image url('/images/qeros/gradient-bottom.png')
 
     .caption
       position relative
@@ -165,7 +171,7 @@
         margin 0 0 2em 0
 
     &.video 
-      height 160vh
+      height 180vh
       z-index 0
       display table
       .bg
@@ -212,7 +218,8 @@
     h1
       margin-top 0
       letter-spacing -0.015em
-      
+    h2
+      letter-spacing 0.175em
 
   .string
     backface-visibility hidden
@@ -261,10 +268,8 @@
       div
         background-size auto 100% !important
         background-position bottom left
-
-      
+  
   #love
-    padding-top 15vh
     .frame-img
       div
         width 120%
@@ -273,6 +278,8 @@
   #end
     margin-bottom 10vh
 
+  #skywalk, #ayni, #love, #travel
+    background white
 
 @media only screen and (min-width: 768px) 
   .qeros
@@ -341,7 +348,7 @@
 
     #love
       padding-top 25vh
-      padding-bottom 40vh
+      padding-bottom 0
       .frame-img
         column(8)
         push(1)
