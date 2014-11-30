@@ -1,4 +1,14 @@
 .projects    
+  &.fallback
+    section 
+      color brown
+      .keyline
+        background brown
+        height 1px
+        margin-top 1.5em
+        margin-bottom 1.75em
+      .text
+        padding 3em 0
 
   .bg
     absolute100()
@@ -30,9 +40,6 @@
           background -o-radial-gradient(right top, farthest-corner, rgba(27, 21, 21, 0) 0%, rgba(27, 21, 21, 0.5) 100%)
           background radial-gradient(farthest-corner at right top, rgba(27, 21, 21, 0) 0%, rgba(27, 21, 21, 0.5) 100%)
 
-        &.no-video
-          opacity 1
-
 
       video
         pointer-events none
@@ -58,7 +65,7 @@
     position relative
     clearfix()
     z-index 1   
-      
+
     h2
       font-smoothing antialiased
 
@@ -68,14 +75,17 @@
       i
         font-style italic
 
-    .photo
-      display none
-
     .text
+      column(10)
+      push(1)
       position relative
       z-index 1
       backface-visibility hidden
-      background gradien
+
+    .no-video
+      height 85vh
+      background-size cover
+      background-position center center
 
     .cta
       display block
@@ -123,6 +133,9 @@
     background-repeat no-repeat
     min-height 100vh
     color brown
+    p
+      column(10)
+      push(1)
 
   // #energy, #food, #cultural, #music
   //   margin-top 20vh
@@ -133,11 +146,33 @@
     .col
       p
         margin-top 2em
+        
+  #medicine .no-video
+    background-position 85% center
+
+  #music .no-video
+    background-position 75% center
+
 
 // Tablet portrait and above
 @media only screen and (min-width: 768px)
   .projects
-    
+    &.fallback
+      section 
+        .text, .col-wrap
+          position initial
+        .scrim 
+          display none
+        .no-video
+          height 100vh
+        p, h2
+          color brown
+        .col-wrap .keyline
+          margin-top 1.5em
+          margin-bottom 0.5em
+
+      
+
     &.scrolling
       pointer-events none
     
@@ -184,11 +219,6 @@
         clearfix()
         position relative
 
-      .photo
-        column(5)
-        push(1)
-        margin-bottom none
-
       .keyline
         background cloud
         height 2px
@@ -218,6 +248,9 @@
         push(2)
       
 
-    
-
-
+    #schools
+      .col-wrap
+        column(12)
+        overflow visible
+      .col
+        column(4)

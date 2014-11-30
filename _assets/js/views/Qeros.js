@@ -14,10 +14,8 @@ define([
     beforeAppend: function() {
       if (Modernizr.video && Detectizr.device.model !== "iphone") {
         this.$el.find('.no-video').remove();
-        // this.$el.find('video').remove();
       } else {
         this.$el.find('video').remove();
-        // this.$el.find('.no-video').remove();
       }
       $('body').on('touchend', function(){
         $('video').play();

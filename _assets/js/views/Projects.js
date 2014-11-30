@@ -16,13 +16,16 @@ define([
       this.isScrolling = false;
       this.scrollNaggerEnabled = true;
       this.scrollNaggerDelay = 1000;
+      this.fallback = !Modernizr.video || Detectizr.device.type === 'mobile' || Detectizr.device.type == 'tablet';
     },
 
     beforeAppend: function() {
-      if (Modernizr.video && Detectizr.device.model !== "iphone" && Detectizr.device.model !== "ipad") {
-        this.$el.find('.no-video').remove();
-      } else {
+
+      if (this.fallback) {
         this.$el.find('video').remove();
+        this.$el.addClass('fallback');
+      } else {
+        this.$el.find('.no-video').remove();
       }
 
       this.$el.find('div[data-src]').each(function(i, el){
@@ -118,7 +121,7 @@ define([
       if (this.snapScrollTimeout) {
         clearTimeout(this.snapScrollTimeout);
       }
-      if (Detectizr.device.type !== 'mobile' && Detectizr.device.type !== 'tablet') {
+      if (!this.fallback) {
         this.snapScrollTimeout = setTimeout(this.snapScroll, 100);
       }
     },
@@ -161,7 +164,6 @@ define([
           var tl = new TimelineLite();
 
           if (this.latestKnownScrollY <= 30) {
-            console.log('yep')
             tl.to(window, 1, {scrollTo:{y: 0}, ease:Back.easeOut});
           } else {
             $('body').addClass('stop-scroll');
