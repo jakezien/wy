@@ -5,6 +5,7 @@
     padding-top 4em
     padding-bottom 4em
     clearfix()
+    background-color white
     h2 
       padding 0 1rem
       font-size 2em
@@ -78,7 +79,11 @@
   #proceeds
     padding-top 0
     padding-bottom 8em
-
+    
+  #form
+    .wrapper
+      column(10)
+      push(1)
 
 @media only screen and (min-width: 768px)
   .expeditions
@@ -104,8 +109,3 @@
         column(3.33)
         &:first-child
           push(1)
-
-    #proceeds
-      p
-        column(10)
-        push(1)
