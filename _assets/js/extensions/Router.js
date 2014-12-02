@@ -57,7 +57,7 @@ define([
     },
 
     home: function() {
-      var view = new Home({page:'home', url:'index.html'});
+      var view = new Home({page:'home', url:'index.html', eventBus:this.opts.appView.eventBus});
       this.opts.appView.goto(view);
     },
 
@@ -111,9 +111,6 @@ define([
       this.opts.appView.goto(view);
     },
 
-    donate: function() {
-      this.opts.appView.showDonate();
-    }
   });
 
   return Router;

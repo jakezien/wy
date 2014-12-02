@@ -30,6 +30,9 @@ define([
       this.scrollEffects = true;
       this.firstLoad = true;
 
+      this.eventBus = _({}).extend(Backbone.Events);
+
+
       this.hiDpi = Modernizr.hidpi;
 
       window.addEventListener('scroll', this.onScroll, false);
@@ -39,6 +42,8 @@ define([
         console.log('click')
         this.hideDonate();
       }.bind(this));
+
+      this.listenTo(this.eventBus, 'donate-show', this.showDonate);
     },
 
     createTimelines: function() {},
@@ -134,6 +139,7 @@ define([
     },
 
     showDonate: function(){
+      console.log('yay')
       this.donate.show();
       this.menu.scrollShow();
     },

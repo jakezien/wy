@@ -12,6 +12,9 @@ define([
       if (options.url) {
         this.url = options.url;
       }
+      if (options.eventBus) {
+        this.eventBus = options.eventBus;
+      }
       _.bindAll(this, 'createTimelines');
       this.scrollNaggerEnabled = true;
       this.scrollNaggerDelay = 6000;
@@ -29,6 +32,10 @@ define([
       }.bind(this));
 
       this.createTimelines();
+
+      this.$el.find('.donate-btn').click(function(){
+        this.eventBus.trigger('donate-show');
+      }.bind(this));
     },
 
     createTimelines: function() {
