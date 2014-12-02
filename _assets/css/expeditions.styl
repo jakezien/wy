@@ -81,9 +81,11 @@
     padding-bottom 8em
     
   #form
+    padding-bottom 4em
     .wrapper
       column(10)
       push(1)
+      overflow visible
 
 @media only screen and (min-width: 768px)
   .expeditions
@@ -109,3 +111,9 @@
         column(3.33)
         &:first-child
           push(1)
+          
+    #form
+      .wrapper
+        column(8)
+        push(2)
+        overflow visible

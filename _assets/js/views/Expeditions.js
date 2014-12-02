@@ -10,7 +10,7 @@ define([
     page: 'expeditions',
     initialize: function(){
       this.constructor.__super__.initialize.apply(this, arguments);
-      _.bindAll(this, 'createTimelines');
+      _.bindAll(this, 'createTimelines', 'triggerForm');
       this.scrollNaggerEnabled = true;
     },
 
@@ -19,6 +19,7 @@ define([
         this.preloadImg(el);
       }.bind(this));
       this.createTimelines();
+      this.setupForm();
     },
 
     render: function(currentScrollY) {
@@ -42,11 +43,17 @@ define([
       }.bind(this);
 
       this.timelines.top = createTopTL();
-      console.log('expeditions create tl')
+    },
+
+    setupForm: function(){
+      this.$el.find('#form .form-trigger').click(this.triggerForm);
+    },
+
+    triggerForm: function() {
+      this.$el.find('#form .typeform-share').click();
     },
 
     onImgLoadCallback: function($el) {
-      console.log($el)
     }
   });
 
