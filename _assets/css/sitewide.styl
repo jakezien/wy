@@ -38,7 +38,6 @@ body
     height 100%
     overflow hidden
 
-
 #content
   transition filter 1s ease, -webkit-filter 1s ease
 
@@ -58,57 +57,6 @@ body
 #site-header
   width 100%
   clearfix()
-
-#site-footer
-  padding 10vh 0 6vh 0
-  width 100%
-  background-color dkBrown
-  color clay
-  clearfix()
-  text-align center
-  position relative
-
-  h2
-    margin-bottom 4em
-
-  .social a
-    display inline-block
-    margin 0
-    padding 0 .5em
-    vertical-align center
-
-  .email a
-    font-size 3.25em
-    display block
-
-  a 
-    Garamond()
-    color clay
-    text-decoration none
-    margin-bottom 1em
-    transition 0.15s ease   
-       
-    &:hover
-      color hotPink
-
-    svg
-      width 50px
-      height 50px
-      *
-        fill clay
-        transition 0.15s ease
-      &:hover
-        *
-          fill hotPink
-    
-  .copyright
-    margin-top 12em
-    font-size 1em
-    p
-      Garamond()
-      margin 0 0 .5em 0
-    a
-      text-decoration underline
 
 section.cta
   min-height 0 !important
@@ -233,21 +181,6 @@ section.cta
       column(6)
       push(3)
       overflow visible
-
-  #site-footer
-    .email
-      column(3)
-      push(1)
-      font-size 0.6em
-      text-align left
-
-    .social
-      column(4)
-
-    .copyright
-      column(4)
-      text-align left
-      font-size 0.75em
 
   .page
     h1

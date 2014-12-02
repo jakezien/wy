@@ -1,28 +1,47 @@
 <footer id="site-footer">
-  <h2>Contact Us</h2>
-  <div class="email">
-    <a href="mailto:info@willkayachay.org">info@willkayachay.org</a>
-    <a href="http://eepurl.com/tZlTP" target="_blank">Join our Mailing List</a>
+  <div class="mailchimp">
+    {% include mailchimp.html %}
   </div>
-  <div class="social">
-    <a href="http://www.twitter.com/willkayachay" class="twitter icon" target="_blank">
-      {% include twitter.svg %}
-    </a>
-    <a href="http://www.facebook.com/willkayachay" class="facebook icon" target="_blank">
-      {% include facebook.svg %}
-    </a>
-    <a href="http://www.instagram.com/willkayachay" class="instagram icon" target="_blank">
-      {% include instagram.svg %}
-    </a>
-  </div>
-  
-  {% include mailchimp.html %}
+  <div class="wrapper">
+    <h2>Contact Us</h2>
+    <div class="keyline"></div>
 
-  <div class="copyright">
-    <p>Willka Yachay is a legal Peruvian NGO.</p>
-    <p>&copy; 2014 Willka Yachay</p>
-    <p>Photographs by Hannah Porst.</p>
-    <p>Video courtesy of <a href="http://www.kidnectedworld.com" target="_blank">Kidnected World.</a></p>
-    <p>Website by Jake Zien.</p>
+    <div class="contact">
+
+
+      <div class="social">
+        <a href="http://www.twitter.com/willkayachay" class="twitter icon" target="_blank">
+          {% include twitter.svg %}
+        </a>
+        <a href="http://www.facebook.com/willkayachay" class="facebook icon" target="_blank">
+          {% include facebook.svg %}
+        </a>
+        <a href="http://www.instagram.com/willkayachay" class="instagram icon" target="_blank">
+          {% include instagram.svg %}
+        </a>
+      </div>
+
+      <a class="block" href="mailto:info@willkayachay.org">info@willkayachay.org</a>
+
+      <a class="block">Join our mailing list</a>
+    </div>
+
+    <div class="copyright">
+      <div>
+        <p>&copy; 2014 Willka Yachay</p>
+      </div>
+      <div>
+        <p>Willka Yachay is a legal Peruvian NGO.</p>
+      </div>
+      <div>
+        <p>Photographs by Hannah Porst.</p>
+        <p>Video courtesy of <a href="http://www.kidnectedworld.com" target="_blank">Kidnected World.</a></p>
+        <p>Website by Jake Zien.</p>
+      </div>
+    </div>
+  
+
   </div>
+
+
 </footer>
