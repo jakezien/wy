@@ -60,6 +60,7 @@ define([
 
       if (this.firstLoad) {
         this.firstLoad = false;
+        this.menu.ignoreScroll();
         view.$el = $('#content .page');
         view.hiDpi = this.hiDpi;
         view.beforeAppend();
@@ -69,8 +70,9 @@ define([
         if (this.currentPageView.scrollNaggerEnabled && $(window).scrollTop() <= 50) {
           this.scrollNagger.startCountdown(this.currentPageView.scrollNaggerDelay);
         }
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         this.isTransitioning = false;
+        this.menu.watchScroll();
         return;
       }
 
@@ -78,6 +80,7 @@ define([
       var nextView = view;
 
       previousView.willTransitionOut();
+      this.menu.ignoreScroll();
 
       this.currentPageModel = new PageModel();
       if (nextView.url) {
@@ -115,6 +118,7 @@ define([
         this.scrollNagger.startCountdown(this.currentPageView.scrollNaggerDelay);
       }
       this.isTransitioning = false;
+      this.menu.watchScroll();
     },
 
     onResize: _.debounce(function(e) {
@@ -130,6 +134,7 @@ define([
 
     showDonate: function(){
       this.donate.show();
+      this.menu.scrollShow();
     },
 
     hideDonate: function(){

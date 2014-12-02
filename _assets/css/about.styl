@@ -14,6 +14,8 @@
     position fixed
     .frame-img
       height 100%
+      div
+        background-size cover
 
   .frame-img
       column(12)
@@ -46,8 +48,11 @@
         backface-visibility hidden
 
   #top
-    min-height 90vh
+    min-height 70vh
     color white
+    h1
+      margin-bottom 0
+      margin-top .5em
 
   .team, .advisors, .expedition-team, .allies
     column(10)
@@ -106,10 +111,13 @@
     margin-top 2.5em
     margin-bottom 2.5em
 
-  #story .text
-    column(10)
-    push(1)
-    clearfix()
+  #story 
+    .keyline
+      background-color white
+    .text
+      column(10)
+      push(1)
+      clearfix()
     
   .col 
     p:first-child
@@ -126,6 +134,7 @@
     left -0.2rem
     
   .cta
+    padding-bottom 2em
     .arrow-link-inner
       padding 1.5em 0 .5em 0
       &.hover h3

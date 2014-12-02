@@ -16,7 +16,7 @@ define([
   
     initialize: function(opts) {
       this.last = null;
-      _.bindAll(this, 'storeRoute', 'previous', 'updateMenu', 'onAll', 'hideDonate');
+      _.bindAll(this, 'storeRoute', 'previous', 'updateMenu', 'onAll');
       this.bind('route', this.onAll);
       this.opts = opts;
     },
@@ -39,7 +39,6 @@ define([
     onAll: function(route) {
       this.storeRoute();
       this.updateMenu(route);
-      // this.hideDonate();
     },
 
     storeRoute: function(){
@@ -49,10 +48,6 @@ define([
 
     updateMenu: function(route) {
       this.opts.appView.updateMenu(route);
-    },
-
-    hideDonate: function(route) {
-      this.opts.appView.hideDonate();
     },
 
     previous: function() {

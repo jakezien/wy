@@ -27,7 +27,21 @@
     padding 0
     background-position center center
     color #fff
-    .bg
+
+    h1
+      position relative
+      z-index 0
+
+    p
+      Garamond()
+      font-size 1.5em
+      text-align center
+      column(10)
+      push(1)
+      position relative
+      z-index 2
+
+   .bg
       absolute100()
       .sky
         absolute100()
@@ -47,45 +61,36 @@
         img
           width 100%
           height auto
-    h1
-      position relative
-      z-index 0
-
-    p
-      Garamond()
-      font-size 1.5em
-      text-align center
-      column(8)
-      push(2)
-      position relative
-      z-index 2
 
 
   #intro
-    span
-      column(8)
-    .dropcap
-      column(3)
-      font-size 11em
-      line-height 0.66em
-      padding-bottom 0.1em
-      Franklin()
-      max-width .3em
+    p
+      margin-bottom 1em
+      clearfix()
 
   #activities
-    div
+    .wrapper div
       margin-bottom 4em
+      &:last-child
+        margin-bottom 0
 
   #proceeds
     padding-top 0
     padding-bottom 8em
     
   #form
+    padding-top 0
     padding-bottom 10em
-    .wrapper
-      column(10)
-      push(1)
-      overflow visible
+    .arrow-link
+      h2
+        padding-left 0  
+      span
+        display block
+  
+  .wrapper
+    column(10)
+    push(1)
+    overflow visible
 
 @media only screen and (min-width: 768px)
   .expeditions
@@ -96,24 +101,25 @@
         padding 0
         
     #top
+      p
+        column(8)
+        push(2)
       h1
         font-size 9em
 
     #intro 
       p
-        column(5)
-        &:first-child
-          push(1)
+        column(6)
+        clear none
 
     #activities
-      div
+      .wrapper div
         margin-bottom 0
-        column(3.33)
-        &:first-child
-          push(1)
+        column(4)
           
     #form
+      .arrow-link span
+        display inline
       .wrapper
         column(8)
         push(2)
-        overflow visible

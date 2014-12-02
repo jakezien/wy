@@ -7,7 +7,8 @@ define([
     isShowing: false,
     events: {
       'click #menu-btn': 'toggleMenu',
-      'click li': 'navClicked'
+      'click li': 'navClicked',
+      'click .logotype': 'navClicked'
     },
     initialize: function(){
       _.bindAll(this, 'show', 'hide', 'toggleMenu', 'navClicked');
@@ -86,6 +87,7 @@ define([
         this.show();
       }
     },
+    
     navClicked: function(e){
       if (this.isShowing) {
         this.hide();

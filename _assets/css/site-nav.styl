@@ -27,17 +27,18 @@
     a
       color brown
       text-decoration none
-      transition color 0.15s ease
+      transition color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease
       &:hover, &.active
         color hotPink
 
   .donate-btn
     margin-bottom 1em
+    &.active
+      a
+        color hotPink
     a
       transition color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease
 
-      &.active
-        color hotPink
       
   &.show
     height 100%
@@ -156,15 +157,43 @@
     .donate-btn
       float right
       margin-bottom 0
+      position relative
+      &.active
+        a
+          border-color white
+          &:hover
+            border-color white
+            background-color white
+        .close
+          opacity 1
+
+      .close
+        absolute100()
+        top -4px
+        left -4px
+        width 110%
+        height 110%
+        overflow visible
+        opacity 0
+        background white
+        transition opacity 0.15s ease
       a
+        position relative
         border 1px solid
         border-radius 1px
         padding 0.75em 0.75em
         margin 0.75em 1em 0.75em 0.25em
+
         &:hover
           color white !important
           background-color hotPink
           border-color hotPink
+          svg *
+            fill hotPink
+        
+        svg *
+            fill brown
+            transition fill 0.15s ease
 
     .mobile-show
       display none

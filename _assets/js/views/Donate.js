@@ -15,11 +15,11 @@ define([
         this.hide();
       }.bind(this));
 
-      _.bindAll(this, 'show', 'hide');
+      _.bindAll(this, 'show', 'hide', 'toggle');
 
       if (opts.donateBtn) {
         this.donateBtn = opts.donateBtn;
-        this.donateBtn.click(this.show);
+        this.donateBtn.click(this.toggle);
       }
 
       $('#donate .trigger').click(function(){
@@ -27,6 +27,14 @@ define([
       });
 
       $('#donate .hide-btn').click(this.hide);
+    },
+
+    toggle: function(){
+      if (this.isShowing) {
+        this.hide();
+      } else {
+        this.show();
+      }
     },
 
     show: function(){
