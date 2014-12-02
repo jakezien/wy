@@ -8,7 +8,7 @@ define([
     events: {
       'click #menu-btn': 'toggleMenu',
       'click li': 'navClicked',
-      'click .logotype': 'navClicked'
+      'click .logotype': 'navClicked',
     },
     initialize: function(){
       _.bindAll(this, 'show', 'hide', 'toggleMenu', 'navClicked');
@@ -92,10 +92,11 @@ define([
       if (this.isShowing) {
         this.hide();
       }
-
-      if ($(e.target).attr('href').indexOf('donate') === -1) {
-        this.trigger('nav-clicked');
+      if ( $(e.target).closest('a').attr('data-bypass') ) {
+        return;
       }
+
+      this.trigger('nav-clicked');
     },
 
     update: function(route){

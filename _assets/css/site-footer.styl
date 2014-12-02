@@ -1,0 +1,85 @@
+#site-footer
+  padding 5em 0 6em 0
+  width 100%
+  background-color dkBrown
+  color clay
+  clearfix()
+  position relative
+
+  h2
+    column(12)
+    text-align left
+    margin-bottom 2em
+    font-size 3em
+    letter-spacing 0.15em
+
+  .keyline
+    column(11.5)
+    height 2px
+    background clay
+    margin-top 1em
+    margin-bottom 3em
+    
+  .instagram svg
+    width 30px
+    height 30px
+
+  a 
+    Garamond()
+    color clay
+    text-decoration none
+    margin-bottom 1em
+    transition 0.15s ease
+       
+    &:hover
+      color hotPink
+
+    &.block
+      display block
+
+    svg
+      width 32px
+      height 32px
+      *
+        fill clay
+        transition 0.15s ease
+      &:hover
+        *
+          fill hotPink
+
+  .wrapper
+    column(10)
+    push(1)
+    
+  .mailchimp
+    display none
+
+  .copyright
+    font-size 0.75em
+    p
+      Garamond()
+      margin 0 0 .5em 0
+    a
+      text-decoration underline
+    div
+      margin 0 0 2em 0
+
+  .social a
+    display inline-block
+    padding 0 1em 0 0
+    vertical-align center
+
+  .contact 
+    margin-bottom 2em
+    a
+      font-size 2em
+
+
+@media only screen and (min-width: 768px)
+
+  #site-footer
+    .contact
+      column(6)
+      pull(2)
+    .copyright
+      column(4)

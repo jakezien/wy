@@ -10,11 +10,6 @@ define([
     isShowing: false,
 
     initialize: function(opts){
-      this.$el.find('h1').click(function(){
-        WY.appRouter.previous();
-        this.hide();
-      }.bind(this));
-
       _.bindAll(this, 'show', 'hide', 'toggle');
 
       if (opts.donateBtn) {
@@ -38,10 +33,9 @@ define([
     },
 
     show: function(){
-          console.log('show')
-
       if (this.isTransitioning)
         return;
+      console.log('show')
 
       this.isShowing = true;
       this.$el.addClass('block');
@@ -60,12 +54,13 @@ define([
       $('body').removeClass('donate-show');
       this.donateBtn.removeClass('active');
       this.$el.one(whichTransitionEvent(), function(){
+        this.$el.off(whichTransitionEvent())
         _.delay(function(){
           console.log('reset')
           this.$el.removeClass('block');
           this.isShowing = false;
           this.isTransitioning = false;
-        }.bind(this), 600)
+        }.bind(this), 1000)
       }.bind(this));
     }
   });

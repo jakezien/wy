@@ -36,6 +36,7 @@ define([
       window.addEventListener('resize', this.onResize, false);
 
       this.menu.on('nav-clicked', function(){
+        console.log('click')
         this.hideDonate();
       }.bind(this));
     },
