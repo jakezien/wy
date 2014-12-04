@@ -12,6 +12,9 @@
     .offering, .where
       opacity 0
       absolute100()
+    .scrim
+      absolute100()
+      background rgba(27, 21, 21, 0.3)
       
     video
       pointer-events none
@@ -185,15 +188,15 @@
       .big-text
         background transparent
         div
-          column(8)
-          push(2)
+          column(10)
+          push(1)
         h2
           color white
           letter-spacing .15em
-          font-size 3em
+          font-size 2em
           line-height 0.9
         p
-          font-size 3em
+          font-size 2em
           position relative
           color white
           padding-bottom 1em
@@ -291,6 +294,17 @@
         z-index -1
       .caption
         column(3)
+
+      &.video
+        height 180vh
+        .big-text
+          h2
+            font-size 3em     
+          p
+            font-size 3em       
+          div
+            column(8)
+            push(2)
 
     #intro
       padding-top 20%

@@ -75,7 +75,7 @@ define([
         tl.from( this.$el.find('#offering .move-h div, #offering .move-v div'), 1, {opacity:0}, 1 );
         
         tl.to(this.$el.find('.bg .offering'), 2.5, {opacity:1}, 1.5);
-        tl.to(this.$el.find('#offering .big-text div'), 10, {y:'180%', ease:Sine.easeOut}, 0);
+        tl.to(this.$el.find('#offering .big-text div'), 10, {y:'150%', ease:Sine.easeOut}, 0);
         tl.fromTo(this.$el.find('#offering .big-text p'), 1.5, {color:'#F22E60'}, {color:'#fafaff'}, 2);
 
         return tl;
