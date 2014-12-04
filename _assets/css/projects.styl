@@ -9,7 +9,11 @@
         margin-bottom 1.75em
       .text
         padding 3em 0
-
+      .col .arrow-link.white
+        color brown 
+        svg *
+          stroke brown 
+    
   .bg
     absolute100()
     position fixed
@@ -137,6 +141,17 @@
       column(10)
       push(1)
 
+  .col .arrow-link
+    GaramondDisplay()
+    font-size 0.75em
+    position relative
+    left .1em
+      
+    h2
+      margin-bottom 0.66em
+      margin-top 0.66em
+        
+
   // #energy, #food, #cultural, #music
   //   margin-top 20vh
 
@@ -188,7 +203,7 @@
         padding 5em 0 4em 0
         p
           transition color 0.25s ease
-        h2
+        >h2
           column(12)
           font-size 3.75em
           letter-spacing 0.12em
@@ -208,6 +223,8 @@
         &:hover
           p
             color brown
+          .arrow-link.white
+            color brown
           .cta .line
             background brown
           .scrim 
@@ -218,6 +235,7 @@
         column(6)
         clearfix()
         position relative
+        overflow visible
 
       .keyline
         background cloud
@@ -237,6 +255,13 @@
         opacity 0
         transition opacity 0.25s ease
 
+    .col .arrow-link 
+      margin-top 0
+      .arrow-link-inner
+        border-top-width 2px
+        border-bottom-width 2px
+        border-top-color transparent
+
 
     #top
       h1
@@ -254,3 +279,4 @@
         overflow visible
       .col
         column(4)
+        overflow visible
