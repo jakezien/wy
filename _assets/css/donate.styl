@@ -37,6 +37,12 @@ body.donate-show
       opacity 1
       transition opacity 0.5s ease 0.5s, background-color 0.15s ease
 
+  &.input-focus
+    .text 
+      .title-inner h2
+        transform translateX(-100%)
+        opacity 0
+
   .text
     absolute100()
     position relative
@@ -62,6 +68,7 @@ body.donate-show
     
     .title
       column(12)
+      text-decoration none
       display block
       color brown
       margin 1em 0 3em 0
@@ -85,16 +92,18 @@ body.donate-show
     .title-inner
       border-top 2px solid brown
       border-bottom 2px solid brown
-      h2
+      
+      h2, input
         GaramondDisplay()
         font-weight 300
-        font-size 10em
+        font-size 5em
         line-height 1
         text-transform none
         letter-spacing -0.04em
         margin 3rem 0 2.5rem 0
         position relative
         left -0.4rem
+        transition transform 0.5s ease, opacity 0.3s ease
       &.hover
         absolute100()
         width 0
@@ -105,13 +114,55 @@ body.donate-show
         color hotPink
         transition min-width 0.35s ease-in-out
         overflow hidden
- 
+        
+    .donate-input
+      absolute100()
+      top 0
+      left 0
+      transition transform 0.5s ease, opacity 0.3s
+      transform translateX(110%)
+      span
+        GaramondDisplay()
+        font-weight 300
+        line-height 1
+        letter-spacing -0.04em
+        color brown
+        font-size 6em
+        position absolute
+        bottom 2.5rem 
+        &:first-of-type
+          left 0
+        &:last-of-type
+          right 0
+              
+      input
+        width 100%
+        height 100%
+        background transparent
+        border none
+        GaramondDisplay()
+        font-weight 300
+        font-size 10em
+        line-height 1
+        letter-spacing -0.04em
+        color brown
+        border-top 2px solid 
+        border-bottom 2px solid 
+        margin 0rem 0 2.5rem 0
+        box-sizing border-box
+        transition color 0.15s ease, border-color 0.15s ease
+        padding-left 1.5em
+
+        &:focus
+          outline none
+          color hotPink
+
     .arrow-wrap
       position absolute
       right 0
-      width 64px
+      width 40px
       top 50%
-      margin-top -10px
+      margin-top -8px
       transition transform 0.3s ease
 
     .callout
@@ -204,11 +255,20 @@ body.donate-show
       .callout
         font-size 2.5em
         margin 0
+        
+      .title-inner h2
+          font-size 10em
+          
+      .arrow-wrap
+        width 64px
+        margin-top -10px
+
 
     .hide-btn
       top 72px
       cursor pointer
-    
+
+
     .mail
       clear both
       row()

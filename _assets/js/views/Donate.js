@@ -10,18 +10,24 @@ define([
     isShowing: false,
 
     initialize: function(opts){
-      _.bindAll(this, 'show', 'hide', 'toggle');
+      _.bindAll(this, 'show', 'hide', 'toggle', 'onInputFocus', 'onInputBlur', 'validateForm', 'submitForm', 'onInputKeyUp');
 
       if (opts.donateBtn) {
         this.donateBtn = opts.donateBtn;
         this.donateBtn.click(this.toggle);
       }
 
-      $('#donate .trigger').click(function(){
-        $('#donate form')[0].submit();
-      });
+      this.donateInput = $('#donate .donate-input input');
+      this.form = $('#donate form')[0];
 
+      $('#donate .trigger').click(function(){
+        this.donateInput.focus();
+      }.bind(this));
       $('#donate .hide-btn').click(this.hide);
+      this.donateInput.on('focus', this.onInputFocus);
+      this.donateInput.on('blur', this.onInputBlur);
+      this.donateInput.on('keyup', this.onInputKeyUp);
+
     },
 
     toggle: function(){
@@ -62,7 +68,34 @@ define([
           this.isTransitioning = false;
         }.bind(this), 1000)
       }.bind(this));
+    },
+
+    onInputFocus: function(){
+      this.$el.addClass('input-focus');
+    },
+
+    onInputBlur: function(){
+      this.$el.removeClass('input-focus');
+    },
+
+    validateForm: function(){
+
+    },
+
+    submitForm: function(){
+      $('#amount1')[0].value = this.donateInput[0].value;
+      debugger
+      this.form.submit();
+    },
+
+    onInputKeyUp: function(e){
+      if (e.keyCode === 13) {
+        this.submitForm();
+      }
     }
+
+
+
   });
 
   return Donate;
