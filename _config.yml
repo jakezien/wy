@@ -6,6 +6,6 @@ collections:
   blogposts:
     output: true
     permalink: /blog/:path/
-  shopitems:
+  shopItems:
     output: true
     permalink: /shop/:path/

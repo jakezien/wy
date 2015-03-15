@@ -23,6 +23,8 @@ name: shop
 
 </section>
 
-<!-- {% for item in site.shopitems %}
-  {% include shop-item.html %}
-{% endfor %} -->
+<section id="items">
+  {% for item in site.shopItems %}
+    {% include shop-item.html %}
+  {% endfor %}
+</section>
