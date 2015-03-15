@@ -1,0 +1,171 @@
+---
+  ###########
+  # Chullus #
+  ###########
+  - 
+    kind: chullu
+    size: toddler
+    condition: worn
+    fiber: blend
+    images: 
+      - 'chullu-0-0'
+      - 'chullu-0-1'
+  - 
+    kind: chullu
+    size: infant
+    condition: antique
+    fiber: blend
+    images: 
+      - 'chullu-1-0'
+      - 'chullu-1-1'
+  - 
+    kind: chullu
+    size: chil
+    condition: antique
+    fiber: natural alpaca llama blend
+    images: 
+      - 'chullu-2-0'
+      - 'chullu-2-1'
+  - 
+    kind: chullu
+    size: adult
+    condition: new
+    fiber: natural alpaca llama blend
+    images: 
+      - 'chullu-3-0'
+  - 
+    kind: chullu
+    size: adult
+    condition: new
+    fiber: natural alpaca llama blend
+    images: 
+      - 'chullu-4-0'
+  - 
+    kind: chullu
+    size: adult
+    condition: new
+    fiber: natural alpaca llama blend
+    images: 
+      - 'chullu-5-0'
+  - 
+    kind: chullu
+    size: adult
+    condition: new
+    fiber: blend
+    images: 
+      - 'chullu-6-0'
+  - 
+    kind: chullu
+    size: adult
+    condition: new
+    fiber: blend
+    images: 
+      - 'chullu-7-0'
+    desc: Ceremonial beaded chullu
+  - 
+    kind: chullu
+    size: adult
+    condition: new
+    fiber: blend
+    images: 
+      - 'chullu-8-0'
+    desc: Ceremonial beaded chullu
+
+  ###########
+  # Chumpis #
+  ###########
+  - 
+    kind: chumpi
+    size: 2" x 42"
+    condition: antique
+    fiber: "Natural alpaca llama blend, dyed with plants"
+    images: 
+      - 'chumpi-0-0'
+  - 
+    kind: chumpi
+    size: 3" x 52"
+    condition: antique
+    fiber: blend
+    images: 
+      - 'chumpi-0-0'
+  - 
+    kind: chumpi
+    size: 3.5" x 52"
+    condition: new
+    fiber: blend
+    images: 
+      - 'chumpi-0-0'
+  - 
+    kind: chumpi
+    size: 4" x 54"
+    condition: new
+    fiber: blend
+    images: 
+      - 'chumpi-0-0'
+  - 
+    kind: chumpi
+    size: 4" x 74"
+    condition: new
+    fiber: blend
+    images: 
+      - 'chumpi-0-0'
+  - 
+    kind: chumpi
+    size: 4.5" x 56"
+    condition: new
+    fiber: blend
+    images: 
+      - 'chumpi-0-0'
+
+  ########
+  # Soga #
+  ########
+  - 
+    kind: soga
+    size: 5'6"
+    condition: antique
+    fiber: Natural llama blend
+    images: 
+      - 'soga-0-0'
+  - 
+    kind: soga
+    size: 9'6"
+    condition: new
+    fiber: Natural llama blend
+    images: 
+      - 'soga-0-0'
+  - 
+    kind: soga
+    size: 9'6"
+    condition: antique
+    fiber: Natural llama blend
+    images: 
+      - 'soga-0-0'
+  - 
+    kind: soga
+    size: 11'
+    condition: new
+    fiber: Natural alpaca blend
+    images: 
+      - 'soga-0-0'
+  - 
+    kind: soga
+    size: 11'8"
+    condition: antique
+    fiber: Natural llama alpaca blend
+    images: 
+      - 'soga-0-0'
+  - 
+    kind: soga
+    size: 13'4"
+    condition: antique
+    fiber: Natural llama alpaca blend
+    images: 
+      - 'soga-0-0'
+  - 
+    kind: soga
+    size: 30'
+    condition: antique
+    fiber: Natural llama alpaca blend
+    images: 
+      - 'soga-0-0'

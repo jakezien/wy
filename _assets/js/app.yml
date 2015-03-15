@@ -12,6 +12,7 @@
 - vendor/underscore/underscore-min
 - vendor/backbone/backbone-min
 - vendor/jquery.history
+- vendor/js-yaml.min
 
 - vendor/chroma.min
 - vendor/greensock/TweenLite.min

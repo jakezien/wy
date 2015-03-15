@@ -89,9 +89,9 @@ define([
     shop: function(id) {
       var view;
       if (id) {
-        view = new Blog({page:'item-page', url:id});
+        view = new Shop({page:'item-page', url:id});
       } else {
-        view = new Blog({page:'shop'});
+        view = new Shop({page:'shop'});
       }
       this.opts.appView.goto(view);
     },
