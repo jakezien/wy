@@ -1,11 +1,13 @@
 <div class="shop-item">
   <header>
-    <h1><a href="{{ shopItem.url }}" class="post-title">{{ shopItem.title }}</a></h1>
+    <h1><a href="{{ shopItem.url }}" class="post-title"><%= kind %></a></h1>
     <div class="item-info">
-      <p class="price">{{ post.price }}</p>
+      <p class="price"><%= price %></p>
     </div>
   </header>
   <div class="post-content">  
-    {{ shopItem.content }} 
+    <%= size %> 
+    <%= condition %> 
+    <%= fiber %> 
   </div>
 </article>

@@ -25,6 +25,9 @@
 - extensions/View
 
 - models/PageModel
+- models/ShopItem
+
+- collections/ShopCollection
 
 - views/AppView
 - views/About

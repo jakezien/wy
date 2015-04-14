@@ -9,7 +9,9 @@ require.config({
     detectizr: 'vendor/modernizr/detectizr.min',
     util: 'util',
     view: 'extensions/View',
-    pagemodel: 'models/PageModel'
+    pagemodel: 'models/PageModel',
+    shopItem: 'models/ShopItem',
+    shopCollection: 'collections/ShopCollection'
   }, 
 
   shim: {
