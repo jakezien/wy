@@ -60,18 +60,34 @@
         z-index 1
 
   #items
+    max-width 1200px
+    margin 0 auto
     clearfix()
+    
     
   .shop-item
     column(10)
-    .img
-      height 300px
-      background-size contain
-      background-repeat no-repeat
-      background-position center center
+    push(1)
+    min-height 300px
+    box-sizing border-box
+    padding-top 1rem
     > a
       display block
       height 100%
+    .img
+      height 240px
+      background-size cover
+      background-repeat no-repeat
+      background-position center center
+      transition opacity 0.5s ease-out 0.5s
+      &.loading
+        opacity 0
+        transition none
+    .info
+      padding-top 1em
+      height 1em
+      overflow hidden
+    
       
   .pagination
     .page-prev, .page-next
@@ -81,12 +97,19 @@
       cursor pointer
     
 
+
+@media only screen and (min-width: 640px)
+  .shop .shop-item
+    column(4)
+
 @media only screen and (min-width: 768px)
-  .shop
-    .shop-item
-      column(3)
-      border 1px solid red
-      box-sizing border-box
-      padding-top 1rem
-      padding-bottom 1rem
-      min-height 240px
+  .shop .shop-item
+    column(3)
+
+@media only screen and (min-width: 1000px)
+  .shop .shop-item
+    column(2.4)
+
+@media only screen and (min-width: 1200px)
+  .shop .shop-item
+    column(2)

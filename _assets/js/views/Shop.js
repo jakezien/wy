@@ -31,8 +31,10 @@ define([
         'success': function (data) {
           try {
             var items = Yaml.safeLoad(data);
-            for (item in items) {
-              that.items.add( new ShopItem(items[item]) );
+            for (var i in items) {
+              var item = items[i];
+              item.images[0] = "https://placeimg.com/640/480/animals";
+              that.items.add( new ShopItem(items[i]) );
             }
             that.proxy = new Obscura(that.items, {perPage: 20});
             that.proxy.bind('change reset', that.onProxyChange)
@@ -56,6 +58,9 @@ define([
         var renderedContent = _.template(this.itemTemplate, item.attributes);
         $('#items').append(renderedContent);
       }, this);
+      this.$el.find('div[data-src]').each(function(i, el){
+        this.preloadImg(el, true);
+      }.bind(this));
       this.updatePagination();
       this.needsLayout = false;
     },

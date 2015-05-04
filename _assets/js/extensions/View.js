@@ -80,7 +80,7 @@ define([
       }
     },
 
-    preloadImg: function(el) {
+    preloadImg: function(el, disableHiDpi) {
       var $el;
       if (el.jquery) {
         $el = el;
@@ -91,7 +91,7 @@ define([
       var isImg = $el.is('img');
       var src = $el.data('src');
 
-      if (this.hiDpi && Detectizr.device.type !== 'mobile') {
+      if (!disableHiDpi && this.hiDpi && Detectizr.device.type !== 'mobile') {
         src = src.replace('.', '@2x.');
       }
 
