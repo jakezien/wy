@@ -11,6 +11,7 @@
 
 - vendor/underscore/underscore-min
 - vendor/backbone/backbone-min
+- vendor/backbone/backbone.obscura
 - vendor/jquery.history
 - vendor/js-yaml.min
 

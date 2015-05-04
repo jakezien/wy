@@ -1,13 +1,17 @@
 <div class="shop-item">
-  <header>
-    <h1><a href="{{ shopItem.url }}" class="post-title"><%= kind %></a></h1>
-    <div class="item-info">
-      <p class="price"><%= price %></p>
+  <a href="{{ shopItem.url }}">
+    <!-- <img data-src="/images/shop/<%=_.first(images)%>"> -->
+    <div class="img" data-src="http://lorempixel.com/640/480/animals"></div>
+    <header>
+      <h2><%= kind %></h2>
+      <div class="item-info">
+
+      </div>
+    </header>
+    <div class="post-content">  
+      <%= size %> 
+      <%= condition %> 
+      <%= fiber %> 
     </div>
-  </header>
-  <div class="post-content">  
-    <%= size %> 
-    <%= condition %> 
-    <%= fiber %> 
-  </div>
+  </a>
 </article>

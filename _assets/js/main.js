@@ -11,7 +11,8 @@ require.config({
     view: 'extensions/View',
     pagemodel: 'models/PageModel',
     shopItem: 'models/ShopItem',
-    shopCollection: 'collections/ShopCollection'
+    shopCollection: 'collections/ShopCollection',
+    obscura: 'vendor/backbone/backbone.obscura'
   }, 
 
   shim: {

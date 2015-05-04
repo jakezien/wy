@@ -7,13 +7,16 @@ define([
   'vendor/js-yaml.min',
   'shopItem',
   'shopCollection',
-], function($, _, Backbone, Modernizr, View, Yaml, ShopItem, ShopCollection){
+  'obscura',
+], function($, _, Backbone, Modernizr, View, Yaml, ShopItem, ShopCollection, Obscura){
 
   var Shop = View.extend({
     page: 'shop',
     beforeAppend: function(){
-      _.bindAll(this, 'loadItems', 'render');
-      this.itemTemplate = _.template(this.$el.find('#shopItem-template').html());
+      _.bindAll(this, 'loadItems', 'render', 'updateLayout', 'updatePagination', 'prevPage', 'nextPage', 'onProxyChange');
+      // this.itemTemplate = _.template(this.$el.find('#shopItem-template').html());
+      this.setupUI();
+      this.itemTemplate = this.$el.find('#shopItem-template').html();
       this.items = new ShopCollection();
       this.loadItems();
     },
@@ -31,7 +34,9 @@ define([
             for (item in items) {
               that.items.add( new ShopItem(items[item]) );
             }
-            console.log(that.items)
+            that.proxy = new Obscura(that.items, {perPage: 20});
+            $(that.proxy).change(that.onProxyChange)
+            that.needsLayout = true;
           } catch (e) {
             console.log(e);
           }
@@ -40,9 +45,56 @@ define([
     },
 
     render: function(){
-      var renderedContent = this.itemTemplate(this.items.toJSON());
-      this.$el.find('#items').html(renderedContent)
+      if (!this.proxy) return;
+      if (!this.needsLayout) return;
+      this.updateLayout();
+    },
+
+    updateLayout: function(){
+      $('items').html('');
+      this.proxy.each(function(item) {
+        var renderedContent = _.template(this.itemTemplate, item.attributes);
+        $('#items').append(renderedContent);
+      }, this);
+      this.updatePagination();
+      this.needsLayout = false;
+    },
+
+    updatePagination: function(){
+      $prevButtons = $('div.pagination a.page-prev');
+      $nextButtons = $('div.pagination a.page-next');
+      $currPage = $('div.pagination span.page-current');
+      $pageTotal = $('div.pagination span.page-total');
+
+      $currPage.html(this.proxy.getPage() + 1)
+      $pageTotal.html(this.proxy.getNumPages())
+
+      $prevButtons.toggleClass('disabled', !this.proxy.hasPrevPage());
+      $nextButtons.toggleClass('disabled', !this.proxy.hasNextPage());
+    },
+
+    setupUI: function() {
+      $('div.pagination').append('<span class="page-prev"><</span><span class="page-current"></span>&nbsp;of&nbsp;<span class="page-total"></span><span class="page-next">></span>')
+      $('div.pagination .page-prev').click(this.prevPage);
+      $('div.pagination .page-next').click(this.nextPage);
+    },
+
+    prevPage: function(){
+      this.proxy.prevPage();
+      console.log('prev')
+    },
+
+    nextPage: function(){
+      this.proxy.nextPage();
+      console.log('next')
+    },
+
+    onProxyChange: function(){
+      this.needsLayout = true;
+      this.render()
+      console.log('change')
     }
+
   });
 
   return Shop;

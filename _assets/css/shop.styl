@@ -1,5 +1,7 @@
 .shop
 
+  padding-top 6em
+
   #top 
     position relative
     min-height 100vh
@@ -57,6 +59,34 @@
         right 5vw
         z-index 1
 
+  #items
+    clearfix()
+    
+  .shop-item
+    column(10)
+    .img
+      height 300px
+      background-size contain
+      background-repeat no-repeat
+      background-position center center
+    > a
+      display block
+      height 100%
+      
+  .pagination
+    .page-prev, .page-next
+      display inline-block
+      width 2em
+      height 2em
+      cursor pointer
+    
 
-
-
+@media only screen and (min-width: 768px)
+  .shop
+    .shop-item
+      column(3)
+      border 1px solid red
+      box-sizing border-box
+      padding-top 1rem
+      padding-bottom 1rem
+      min-height 240px
