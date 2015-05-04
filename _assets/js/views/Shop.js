@@ -35,7 +35,7 @@ define([
               that.items.add( new ShopItem(items[item]) );
             }
             that.proxy = new Obscura(that.items, {perPage: 20});
-            $(that.proxy).change(that.onProxyChange)
+            that.proxy.bind('change reset', that.onProxyChange)
             that.needsLayout = true;
           } catch (e) {
             console.log(e);
@@ -51,7 +51,7 @@ define([
     },
 
     updateLayout: function(){
-      $('items').html('');
+      $('#items').html('');
       this.proxy.each(function(item) {
         var renderedContent = _.template(this.itemTemplate, item.attributes);
         $('#items').append(renderedContent);
@@ -81,12 +81,12 @@ define([
 
     prevPage: function(){
       this.proxy.prevPage();
-      console.log('prev')
+      console.log(this.proxy.models)
     },
 
     nextPage: function(){
       this.proxy.nextPage();
-      console.log('next')
+      console.log(this.proxy.models)
     },
 
     onProxyChange: function(){
