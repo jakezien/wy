@@ -52,7 +52,6 @@ define([
         // create list of categories
         if (_.findWhere(this.categories, item.category) == null) {
           this.categories.push(item.category);
-          console.log(this.categories)
         }
 
         item.images[0] = "https://placeimg.com/640/480/animals";
@@ -115,13 +114,15 @@ define([
     },
 
     prevPage: function(){
-      this.proxy.prevPage();
-      console.log(this.proxy.models)
+      if (this.proxy.hasPrevPage()) {
+        this.proxy.prevPage();
+      }
     },
 
     nextPage: function(){
-      this.proxy.nextPage();
-      console.log(this.proxy.models)
+      if (this.proxy.hasNextPage()) {
+        this.proxy.nextPage();
+      }
     },
 
     onProxyChange: function(){
