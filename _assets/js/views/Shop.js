@@ -12,10 +12,10 @@ define([
 
   var Shop = View.extend({
     page: 'shop',
+    categories: [],
     beforeAppend: function(){
-      _.bindAll(this, 'loadItems', 'render', 'updateLayout', 'updatePagination', 'prevPage', 'nextPage', 'onProxyChange');
-      // this.itemTemplate = _.template(this.$el.find('#shopItem-template').html());
-      this.setupUI();
+      _.bindAll(this, 'loadItems', 'render', 'onItemsLoaded', 'updateLayout', 'updateFilters',
+        'updatePagination', 'prevPage', 'nextPage', 'onProxyChange' );
       this.itemTemplate = this.$el.find('#shopItem-template').html();
       this.items = new ShopCollection();
       this.loadItems();
@@ -30,15 +30,7 @@ define([
         'url': "/shopItems.yml",
         'success': function (data) {
           try {
-            var items = Yaml.safeLoad(data);
-            for (var i in items) {
-              var item = items[i];
-              item.images[0] = "https://placeimg.com/640/480/animals";
-              that.items.add( new ShopItem(items[i]) );
-            }
-            that.proxy = new Obscura(that.items, {perPage: 20});
-            that.proxy.bind('change reset', that.onProxyChange)
-            that.needsLayout = true;
+            that.onItemsLoaded(data)
           } catch (e) {
             console.log(e);
           }
@@ -50,6 +42,44 @@ define([
       if (!this.proxy) return;
       if (!this.needsLayout) return;
       this.updateLayout();
+    },
+
+    onItemsLoaded: function(data) {
+      var items = Yaml.safeLoad(data);
+      for (var i in items) {
+        var item = items[i];
+
+        // create list of categories
+        if (_.findWhere(this.categories, item.category) == null) {
+          this.categories.push(item.category);
+          console.log(this.categories)
+        }
+
+        item.images[0] = "https://placeimg.com/640/480/animals";
+        this.items.add( new ShopItem(items[i]) );
+      }
+
+      this.proxy = new Obscura(this.items, {perPage: 20});
+      this.proxy.bind('change reset', this.onProxyChange)
+
+      this.setupUI();
+
+      this.needsLayout = true;
+    },
+
+    setupUI: function() {
+      this.$el.find('div.pagination').append('<span class="page-prev"><</span><span class="page-current"></span>&nbsp;of&nbsp;<span class="page-total"></span><span class="page-next">></span>')
+      this.$el.find('div.pagination .page-prev').click(this.prevPage);
+      this.$el.find('div.pagination .page-next').click(this.nextPage);
+
+      var $filter = this.$el.find('div.filter');
+      for (var i in this.categories) {
+        var $filterItem = $('<span class="filter-item">' + capitalize(this.categories[i]) + 's</span>');
+        $filter.append($filterItem);
+
+        $filterItem.data('category', this.categories[i]);
+        $filterItem.click(this.updateFilters)
+      }
     },
 
     updateLayout: function(){
@@ -78,10 +108,10 @@ define([
       $nextButtons.toggleClass('disabled', !this.proxy.hasNextPage());
     },
 
-    setupUI: function() {
-      $('div.pagination').append('<span class="page-prev"><</span><span class="page-current"></span>&nbsp;of&nbsp;<span class="page-total"></span><span class="page-next">></span>')
-      $('div.pagination .page-prev').click(this.prevPage);
-      $('div.pagination .page-next').click(this.nextPage);
+    updateFilters: function(e) {
+      var category = $(e.target).data('category');
+      this.proxy.resetFilters();
+      this.proxy.filterBy('', {category: category});
     },
 
     prevPage: function(){
@@ -96,8 +126,7 @@ define([
 
     onProxyChange: function(){
       this.needsLayout = true;
-      this.render()
-      console.log('change')
+      this.render();
     }
 
   });
