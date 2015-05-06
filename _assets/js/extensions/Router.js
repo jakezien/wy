@@ -37,6 +37,7 @@ define([
     },
 
     onAll: function(route) {
+      this.currentRoute = route;
       this.storeRoute();
       this.updateMenu(route);
     },
@@ -87,19 +88,23 @@ define([
     },
 
     shop: function(id) {
+      var view;
+      var appView = this.opts.appView;
 
-      if (this.opts.appView.shopView) {
-        view = this.opts.appView.shopView;
+      // create shopview if necessary
+      if (appView.shopView) {
+        view = appView.shopView;
       } else {
         view = new Shop({page:'shop'});
       }
 
-      // if (id) {
-      //   console.log('id '+ id)
-      //   view = new Shop({page:'item-page', url:'shop/id'});
-      // }
-      
-      this.opts.appView.goto(view);
+      appView.goto(view);
+
+      if (id) {
+        view.showItemPage(id);
+      } else {
+        view.hideItemPage();
+      }
     },
 
     schools: function() {

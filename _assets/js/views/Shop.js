@@ -15,9 +15,9 @@ define([
     categories: [],
     beforeAppend: function(){
       _.bindAll(this, 'loadItems', 'render', 'onItemsLoaded', 'updateLayout', 'updateFilters',
-        'updatePagination', 'prevPage', 'nextPage', 'onProxyChange' );
+        'updatePagination', 'prevPage', 'nextPage', 'onProxyChange', 'showItemPage', 'hideItemPage' );
       this.itemTemplate = this.$el.find('#shopItem-template').html();
-      console.log(this.items)
+      this.itemPageTemplate = this.$el.find('#shopItemPage-template').html();
       if (!this.items) {
         this.items = new ShopCollection();
         this.loadItems();
@@ -48,6 +48,17 @@ define([
       if (!this.proxy) return;
       if (!this.needsLayout) return;
       this.updateLayout();
+    },
+
+    showItemPage: function(id) {
+      var item = this.items.at(id);
+      $('#item-page').html('')
+      .append(_.template(this.itemPageTemplate, item.attributes))
+      .addClass('show');
+    },
+
+    hideItemPage: function() { 
+      this.$el.find('#item-page').removeClass('show');
     },
 
     onItemsLoaded: function(data) {

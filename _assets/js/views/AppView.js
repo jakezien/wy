@@ -39,7 +39,6 @@ define([
       window.addEventListener('resize', this.onResize, false);
 
       this.menu.on('nav-clicked', function(){
-        console.log('click')
         this.hideDonate();
       }.bind(this));
 
@@ -73,7 +72,6 @@ define([
         view.$el.addClass(view.page);
         if (view.page === 'shop') {
           this.shopView = view;
-          console.log('first shop')
         }
         this.currentPageView = view;
         this.currentPageView.transitionIn();
@@ -89,9 +87,10 @@ define([
       var previousView = this.currentPageView || null;
       var nextView = view;
 
+      if (previousView === nextView) return;
+
       if (view.page === 'shop' && !this.shopView) {
         this.shopView = view;
-        console.log('shopview')
       }
 
       previousView.willTransitionOut();
@@ -148,7 +147,6 @@ define([
     },
 
     showDonate: function(){
-      console.log('yay')
       this.donate.show();
       this.menu.scrollShow();
     },

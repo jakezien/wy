@@ -1,5 +1,4 @@
 .shop
-
   background white
   padding-top 6em
 
@@ -65,7 +64,6 @@
     margin 0 auto
     clearfix()
     
-    
   .shop-item
     column(10)
     push(1)
@@ -89,7 +87,16 @@
       height 1em
       overflow hidden
     
-      
+  #item-page
+    absolute100()
+    background clay
+    display none
+    box-sizing border-box
+    padding 10em
+    &.show
+      display block
+    
+  
   .pagination
     .page-prev, .page-next
       display inline-block
