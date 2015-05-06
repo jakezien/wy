@@ -17,8 +17,14 @@ define([
       _.bindAll(this, 'loadItems', 'render', 'onItemsLoaded', 'updateLayout', 'updateFilters',
         'updatePagination', 'prevPage', 'nextPage', 'onProxyChange' );
       this.itemTemplate = this.$el.find('#shopItem-template').html();
-      this.items = new ShopCollection();
-      this.loadItems();
+      console.log(this.items)
+      if (!this.items) {
+        this.items = new ShopCollection();
+        this.loadItems();
+      } else {
+        this.setupUI();
+        this.needsLayout = true;
+      }
     },
 
     loadItems: function(){
@@ -32,7 +38,7 @@ define([
           try {
             that.onItemsLoaded(data)
           } catch (e) {
-            console.log(e);
+            console.log('load' + e);
           }
         }
       })
@@ -54,10 +60,10 @@ define([
           this.categories.push(item.category);
         }
 
+        // placeholder image
         item.images[0] = "https://placeimg.com/640/480/animals";
         this.items.add( new ShopItem(items[i]) );
       }
-
       this.proxy = new Obscura(this.items, {perPage: 20});
       this.proxy.bind('change reset', this.onProxyChange)
 
@@ -84,7 +90,8 @@ define([
     updateLayout: function(){
       $('#items').html('');
       this.proxy.each(function(item) {
-        var renderedContent = _.template(this.itemTemplate, item.attributes);
+        var options = $.extend({}, item.attributes, {index: this.items.indexOf(item)});
+        var renderedContent = _.template(this.itemTemplate, options);
         $('#items').append(renderedContent);
       }, this);
       this.$el.find('div[data-src]').each(function(i, el){

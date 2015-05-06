@@ -87,12 +87,18 @@ define([
     },
 
     shop: function(id) {
-      var view;
-      if (id) {
-        view = new Shop({page:'item-page', url:id});
+
+      if (this.opts.appView.shopView) {
+        view = this.opts.appView.shopView;
       } else {
         view = new Shop({page:'shop'});
       }
+
+      // if (id) {
+      //   console.log('id '+ id)
+      //   view = new Shop({page:'item-page', url:'shop/id'});
+      // }
+      
       this.opts.appView.goto(view);
     },
 

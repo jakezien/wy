@@ -71,6 +71,10 @@ define([
         view.hiDpi = this.hiDpi;
         view.beforeAppend();
         view.$el.addClass(view.page);
+        if (view.page === 'shop') {
+          this.shopView = view;
+          console.log('first shop')
+        }
         this.currentPageView = view;
         this.currentPageView.transitionIn();
         if (this.currentPageView.scrollNaggerEnabled && $(window).scrollTop() <= 50) {
@@ -84,6 +88,11 @@ define([
 
       var previousView = this.currentPageView || null;
       var nextView = view;
+
+      if (view.page === 'shop' && !this.shopView) {
+        this.shopView = view;
+        console.log('shopview')
+      }
 
       previousView.willTransitionOut();
       this.menu.ignoreScroll();
