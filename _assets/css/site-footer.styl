@@ -1,5 +1,5 @@
 #site-footer
-  padding 5em 0 6em 0
+  padding 5em 0 4em 0
   width 100%
   background-color dkBrown
   color clay
@@ -12,6 +12,13 @@
     margin-bottom 2em
     font-size 3em
     letter-spacing 0.15em
+
+  .logotype
+    column(4)
+    pull(8)
+    margin-bottom 3em
+    svg *
+      fill clay
 
   .keyline
     column(11.5)
@@ -78,6 +85,9 @@
 @media only screen and (min-width: 768px)
 
   #site-footer
+    .logotype
+      column(2)
+      margin-bottom 6em
     .contact
       column(6)
       pull(2)

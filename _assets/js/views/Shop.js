@@ -51,17 +51,27 @@ define([
     },
 
     showItemPage: function(id) {
+      if (this.items.length === 0) {
+        this.shouldShowItem = id;
+        return;
+      }
+      if (this.shouldShowItem) {
+        this.shouldShowItem = null;
+      }
       var item = this.items.at(id);
       $('#item-page').html('')
       .append(_.template(this.itemPageTemplate, item.attributes))
       .addClass('show');
     },
 
-    hideItemPage: function() { 
+    hideItemPage: function() {
       this.$el.find('#item-page').removeClass('show');
+      this.needsLayout = true;
+      Backbone.history.navigate('/shop/');
     },
 
     onItemsLoaded: function(data) {
+      console.log('onItemsLoaded')
       var items = Yaml.safeLoad(data);
       for (var i in items) {
         var item = items[i];
@@ -80,6 +90,10 @@ define([
 
       this.setupUI();
 
+      if (this.shouldShowItem) {
+        this.showItemPage(this.shouldShowItem);
+      }
+
       this.needsLayout = true;
     },
 
@@ -87,6 +101,7 @@ define([
       this.$el.find('div.pagination').append('<span class="page-prev"><</span><span class="page-current"></span>&nbsp;of&nbsp;<span class="page-total"></span><span class="page-next">></span>')
       this.$el.find('div.pagination .page-prev').click(this.prevPage);
       this.$el.find('div.pagination .page-next').click(this.nextPage);
+      this.$el.find('#item-page').click(this.hideItemPage);
 
       var $filter = this.$el.find('div.filter');
       for (var i in this.categories) {

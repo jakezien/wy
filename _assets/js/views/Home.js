@@ -17,7 +17,7 @@ define([
       }
       _.bindAll(this, 'createTimelines');
       this.scrollNaggerEnabled = true;
-      this.scrollNaggerDelay = 6000;
+      this.scrollNaggerDelay = 7000;
     },
 
     beforeAppend: function() {

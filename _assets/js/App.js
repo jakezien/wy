@@ -15,7 +15,9 @@ define([
     appInstance = new AppView();
     appRouter = new Router({appView:appInstance});
 
-    Backbone.history.start({pushState: true, root: '/', hashChange: false});
+    if (!Backbone.history.start({pushState: true, root: '/', hashChange: false})) {
+      appRouter.navigate('', {trigger:true});
+    }
     
     if (Backbone.history.location.href.indexOf('#donate') > -1) {
       _.delay(function(){

@@ -30,7 +30,7 @@ define([
       'about(/)': 'about',
       'blog/*id': 'blog',
       'blog(/)': 'blog',
-      'shop/*id': 'shop',
+      'shop/:id': 'shop',
       'shop(/)': 'shop',
       '': 'home',
       // '*default': 'blog'
@@ -101,7 +101,7 @@ define([
       appView.goto(view);
 
       if (id) {
-        view.showItemPage(id);
+        view.showItemPage(Number(id) - 1);
       } else {
         view.hideItemPage();
       }
