@@ -104,11 +104,21 @@ define([
       this.$el.find('#item-page').click(this.hideItemPage);
 
       var $filter = this.$el.find('div.filter');
-      for (var i in this.categories) {
-        var $filterItem = $('<span class="filter-item">' + capitalize(this.categories[i]) + 's</span>');
-        $filter.append($filterItem);
 
-        $filterItem.data('category', this.categories[i]);
+      for (var i = -1; i < this.categories.length; i++) {
+        var category;
+        var categoryLabel;
+        if (i === -1) {
+          category = 'all'
+          categoryLabel = 'All'
+        } else {
+          category = this.categories[i];
+          categoryLabel = capitalize(category) + 's'
+        }
+
+        var $filterItem = $('<span class="filter-item">' + categoryLabel + '</span>');
+        $filter.append($filterItem);
+        $filterItem.data('category', category);
         $filterItem.click(this.updateFilters)
       }
     },
@@ -143,7 +153,9 @@ define([
     updateFilters: function(e) {
       var category = $(e.target).data('category');
       this.proxy.resetFilters();
-      this.proxy.filterBy('', {category: category});
+      if (category !== 'all') {
+        this.proxy.filterBy('', {category: category});
+      }
     },
 
     prevPage: function(){
