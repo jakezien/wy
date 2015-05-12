@@ -48,6 +48,7 @@ define([
       if (!this.proxy) return;
       if (!this.needsLayout) return;
       this.updateLayout();
+      console.log('render')
     },
 
     showItemPage: function(id) {
@@ -89,12 +90,15 @@ define([
       this.proxy.bind('change reset', this.onProxyChange)
 
       this.setupUI();
+      
+      this.needsLayout = true;
 
       if (this.shouldShowItem) {
         this.showItemPage(this.shouldShowItem);
+      } else {
+        this.render();
       }
 
-      this.needsLayout = true;
     },
 
     setupUI: function() {
