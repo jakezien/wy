@@ -1,171 +1,841 @@
----
-  ###########
-  # Chullus #
-  ###########
-  - 
-    category: chullu
-    size: toddler
-    condition: worn
-    fiber: blend
-    images: 
-      - 'chullu-0-0'
-      - 'chullu-0-1'
-  - 
-    category: chullu
-    size: infant
-    condition: antique
-    fiber: blend
-    images: 
-      - 'chullu-1-0'
-      - 'chullu-1-1'
-  - 
-    category: chullu
-    size: chil
-    condition: antique
-    fiber: natural alpaca llama blend
-    images: 
-      - 'chullu-2-0'
-      - 'chullu-2-1'
-  - 
-    category: chullu
-    size: adult
-    condition: new
-    fiber: natural alpaca llama blend
-    images: 
-      - 'chullu-3-0'
-  - 
-    category: chullu
-    size: adult
-    condition: new
-    fiber: natural alpaca llama blend
-    images: 
-      - 'chullu-4-0'
-  - 
-    category: chullu
-    size: adult
-    condition: new
-    fiber: natural alpaca llama blend
-    images: 
-      - 'chullu-5-0'
-  - 
-    category: chullu
-    size: adult
-    condition: new
-    fiber: blend
-    images: 
-      - 'chullu-6-0'
-  - 
-    category: chullu
-    size: adult
-    condition: new
-    fiber: blend
-    images: 
-      - 'chullu-7-0'
-    desc: Ceremonial beaded chullu
-  - 
-    category: chullu
-    size: adult
-    condition: new
-    fiber: blend
-    images: 
-      - 'chullu-8-0'
-    desc: Ceremonial beaded chullu
-
-  ###########
-  # Chumpis #
-  ###########
-  - 
-    category: chumpi
-    size: 2" x 42"
-    condition: antique
-    fiber: "Natural alpaca llama blend, dyed with plants"
-    images: 
-      - 'chumpi-0-0'
-  - 
-    category: chumpi
-    size: 3" x 52"
-    condition: antique
-    fiber: blend
-    images: 
-      - 'chumpi-0-0'
-  - 
-    category: chumpi
-    size: 3.5" x 52"
-    condition: new
-    fiber: blend
-    images: 
-      - 'chumpi-0-0'
-  - 
-    category: chumpi
-    size: 4" x 54"
-    condition: new
-    fiber: blend
-    images: 
-      - 'chumpi-0-0'
-  - 
-    category: chumpi
-    size: 4" x 74"
-    condition: new
-    fiber: blend
-    images: 
-      - 'chumpi-0-0'
-  - 
-    category: chumpi
-    size: 4.5" x 56"
-    condition: new
-    fiber: blend
-    images: 
-      - 'chumpi-0-0'
-
-  ########
-  # Soga #
-  ########
-  - 
-    category: soga
-    size: 5'6"
-    condition: antique
-    fiber: Natural llama blend
-    images: 
-      - 'soga-0-0'
-  - 
-    category: soga
-    size: 9'6"
-    condition: new
-    fiber: Natural llama blend
-    images: 
-      - 'soga-0-0'
-  - 
-    category: soga
-    size: 9'6"
-    condition: antique
-    fiber: Natural llama blend
-    images: 
-      - 'soga-0-0'
-  - 
-    category: soga
-    size: 11'
-    condition: new
-    fiber: Natural alpaca blend
-    images: 
-      - 'soga-0-0'
-  - 
-    category: soga
-    size: 11'8"
-    condition: antique
-    fiber: Natural llama alpaca blend
-    images: 
-      - 'soga-0-0'
-  - 
-    category: soga
-    size: 13'4"
-    condition: antique
-    fiber: Natural llama alpaca blend
-    images: 
-      - 'soga-0-0'
-  - 
-    category: soga
-    size: 30'
-    condition: antique
-    fiber: Natural llama alpaca blend
-    images: 
-      - 'soga-0-0'
+- 
+  category: chullu
+  size: toddler
+  condition: worn
+  fiber: blend
+  images: chullu_322_106
+- 
+  category: chullu
+  size: infant
+  condition: antique/collector
+  fiber: blend
+  images: Chullu_317_92
+- 
+  category: chullu
+  size: child
+  condition: antique/collector
+  fiber: natural alpaca llama blend
+  images: Chullu_309_102
+- 
+  category: chullu
+  size: adult
+  condition: new
+  fiber: natural alpaca llama blend
+  images: Chullu_298_100
+- 
+  category: chullu
+  size: adult
+  condition: new
+  fiber: natural alpaca llama blend
+  images: Chullu_302_01
+- 
+  category: chullu
+  size: adult
+  condition: new
+  fiber: natural alpaca llama blend
+  images: Chullu_303_70
+- 
+  category: chullu
+  size: adult
+  condition: new
+  fiber: blend
+  images: Chullu_296_104
+- 
+  category: chullu
+  size: adult
+  condition: new
+  fiber: blend
+  description: ceremonial beaded
+  images: Chullu_295_21
+- 
+  category: chullu
+  size: adult
+  condition: new
+  fiber: blend
+  description: ceremonial beaded
+  images: Chullu_299_20
+- 
+  category: chumpi
+  size: 2" x 42"
+  condition: antique
+  fiber: natural alpaca llama blend
+  description: dyed with plants
+  images: Belt_256_88
+- 
+  category: chumpi
+  size: 3" x 52"
+  condition: antique
+  fiber: blend
+  images: Belt_246_85
+- 
+  category: chumpi
+  size: 3.5" x 52"
+  condition: new
+  fiber: blend
+  images: Belt_0251
+- 
+  category: chumpi
+  size: 4" x 54"
+  condition: new
+  fiber: blend
+  images: Belt_0254
+- 
+  category: chumpi
+  size: 4" x 74" 
+  condition: new
+  fiber: blend
+  images: Belt_248_123
+- 
+  category: chumpi
+  size: 4.5" x 56"
+  condition: new
+  fiber: natural alpaca llama blend
+  images: Belt_249_62
+- 
+  category: soga
+  size: 5'6"
+  condition: antique
+  fiber: natural llama blend
+  images: Rope_394_90
+- 
+  category: soga
+  size: 9'6"
+  condition: new
+  fiber: natural llama blend
+  images: Rope_388_125
+- 
+  category: soga
+  size: 9'6"
+  condition: antique
+  fiber: natural llama blend
+  images: Rope_376_130
+- 
+  category: soga
+  size: 11'
+  condition: new
+  fiber: natural alpaca blend
+  images: Rope_392_89
+- 
+  category: soga
+  size: 11'8"
+  condition: antique
+  fiber: natural llama alpaca blend
+  images: Rope_385_128
+- 
+  category: soga
+  size: 13' 4"
+  condition: antique
+  fiber: natural llama alpaca blend
+  images: Rope_397_130
+- 
+  category: soga
+  size: 30'
+  condition: antique
+  fiber: natural llama alpaca blend
+  images: Rope_390_126
+- 
+  category: frasada
+  size: 49 x 55
+  condition: antique
+  fiber: natural llama alpaca blend
+  images: Blanket_421_
+- 
+  category: costal
+  size: 17.5 x 28
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Costal_371_111
+- 
+  category: costal
+  size: 18.5 x 40
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Costal_375_138
+- 
+  category: costal
+  size: 19 x 38.5
+  condition: antique
+  fiber: natural llama alpaca blend
+  images: Costal_366_110
+- 
+  category: costal
+  size: 19 x 41
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Costal_373_139
+- 
+  category: costal
+  size: 21 x 42
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Costal_365_87
+- 
+  category: hat band
+  size: 22
+  condition: new
+  fiber: blend
+  images: Hatband_408_91
+- 
+  category: hat band
+  size: 25
+  condition: new
+  fiber: blend
+  images: Hatband_410_135
+- 
+  category: hat band
+  size: 22
+  condition: new
+  fiber: blend
+  description: beaded
+  images: Hatband_405_41
+- 
+  category: hat band
+  size: 22
+  condition: new
+  fiber: blend
+  description: beaded
+  images: Hatband_400_51
+- 
+  category: bag
+  size:
+    - 4 x 5.5
+    - strap 18
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Bag_0230
+- 
+  category: bag
+  size:
+    - 6 x 7.5
+    - strap 17
+  condition: new
+  fiber: blend
+  images: Bag_221_103
+- 
+  category: bag
+  size:
+    - 6.5 x 9
+    - strap 18
+  condition: new
+  fiber: blend
+  images: Bag_227_22
+- 
+  category: bag
+  size:
+    - 7 x 7.5
+    - strap 24
+  condition: new
+  fiber: blend
+  images: Bag_169_60
+- 
+  category: bag
+  size:
+    - 10.5 x 11.4
+    - strap 15
+  condition: new 
+  fiber: blend
+  images: Bag_184_13
+- 
+  category: bag
+  size:
+    - 11.5 x 11.5
+    - strap 19
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Bag_177_18
+- 
+  category: bag
+  size:
+    - 11.5 x 13
+    - strap 19
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Bag_178_05
+- 
+  category: bag
+  size: 12 x 11.5 strap 21
+  condition: new
+  fiber: blend
+  images: Bag_190_140
+- 
+  category: bag
+  size:
+    - 12 x 11.5
+    - strap 22.5
+  condition: gently loved
+  fiber: blend
+  description: used as a school bag
+  images: Bag_193_82
+- 
+  category: bag
+  size:
+    - 12 x 13
+    - strap 19
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Bag_175_15
+- 
+  category: bag
+  size:
+    - 12.5 x 14
+    - strap 25
+  condition: new
+  fiber: blend
+  images: Bag_172_16
+- 
+  category: bag
+  size:
+    - 13 x 9.5
+    - strap 13.6
+  condition: new
+  fiber: blend
+  images: Bag_0189
+- 
+  category: bag
+  size:
+    - 13.5 x 13
+    - strap 20
+  condition: new
+  fiber: blend
+  images: Bag_186_66
+- 
+  category: bag
+  size:
+    - 14 x 10
+    - strap 18
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Bag_0183
+- 
+  category: bag
+  size:
+    - 14 x 12
+    - strap 20
+  condition: gently loved
+  fiber: natural llama alpaca blend
+  description: used as a school bag
+  images: Bag_181_137
+- 
+  category: bag
+  size: 11.5 x 12
+  condition: gently used
+  fiber: blend
+  description: horse saddle bag used in Qeros
+  images: Saddlebag_223_81
+- 
+  category: bag
+  size:
+    - 8 x 7
+    - fringe 13
+    - strap 22
+  condition:
+    - antique
+    - well loved
+  fiber:
+    - ceremonial bag
+    - natural llama alpaca blend
+    - plant dyes
+  images:
+    - Bagfront_216_44
+    - Bagback_219_44.tif
+- 
+  category: bag
+  size:
+    - 7 x 8
+    - fringe 15
+    - strap 22
+  condition: new
+  fiber: blend
+  description: ceremonial bag
+  images: Bag_210_112
+- 
+  category: bag
+  size:
+    - 7 x 8
+    - fringe 16
+    - strap 20
+  condition: new
+  fiber: blend
+  description: ceremonial bag
+  images:
+    - Bagfront_200_80
+    - Bag_201_80
+- 
+  category: bag
+  size:
+    - 7 x 8.5
+    - fringe 15
+    - strap 20
+  condition: new
+  fiber: blend
+  description: ceremonial bag
+  images: Bag_208_112
+- 
+  category: bag
+  size:
+    - 8 x 9.5
+    - fringe 15
+    - strap 23
+  condition: new
+  fiber: blend
+  description: ceremonial bag
+  images:
+    - Bag_0206
+    - Bag_0204
+- 
+  category: bag
+  size:
+    - 8 x 10
+    - fringe 18
+    - strap 23
+  condition: new
+  fiber: blend
+  description: ceremonial bag
+  images: Bag_198_78
+- 
+  category: bag
+  size:
+    - 9 x 10
+    - fringe 18
+    - strap 22
+  condition: new
+  fiber: blend
+  description: ceremonial bag
+  images: Bagfront_195_78
+- 
+  category: chuspa
+  size: 9 x 12
+  condition: antique
+  fiber: baby alpaca fur
+  description: for calling apus
+  images: PeltBag_0411
+- 
+  category: chuspa
+  size: 5 x 7
+  condition: well loved
+  fiber: blend
+  images: Chuspa_279_ 
+- 
+  category: chuspa
+  size: 5.5 x 8.5
+  condition: well loved
+  fiber: blend
+  images: Chuspa_277_17
+- 
+  category: chuspa
+  size: 5.5 x 9
+  condition: well loved
+  fiber: blend
+  images: Chuspa_414_03
+- 
+  category: chuspa
+  size: 6.5 x 9
+  condition: new
+  fiber: blend
+  images: Chuspa_413_02
+- 
+  category: chuspa
+  size: 6.5 x 10
+  condition: new
+  fiber: blend
+  images: Chuspa_415_10
+- 
+  category: chuspa
+  size: 8 x 9.5
+  condition: new
+  fiber: blend
+  images: Chuspa_275_107
+- 
+  category: chuspa
+  size: 8.5 x 10
+  condition: new
+  fiber: blend
+  images: Chuspa_284_101
+- 
+  category: chuspa
+  size: 9 x 10.5
+  condition: well loved
+  fiber: blend
+  images: Chuspa_286_23
+- 
+  category: chuspa
+  size: 12.5 x 13
+  condition: new
+  fiber: blend
+  images: Chuspa_288_71
+- 
+  category: chuspa
+  fiber:
+    - blend
+    - natural plant dyes
+  description:
+    - inkan coin bag
+    - framed
+  images: Chuspa_282_40
+- 
+  category: scarf
+  size: 5.5 x 47
+  condition: antique
+  fiber: blend
+  images: Scarf_259_97
+- 
+  category: scarf
+  size: 5.5 x 53
+  condition: new
+  fiber: blend
+  images: Scarf_244_09
+- 
+  category: scarf
+  size: 6.5 x 70
+  condition: new
+  fiber: blend
+  images: Scarf_232_35
+- 
+  category: scarf
+  size: 7.5 x 60
+  condition: antique
+  fiber: blend
+  images: Scarf_236_114
+- 
+  category: scarf
+  size: 8.5 x 58
+  condition: antique
+  fiber: blend
+  images: Scarf_242_04
+- 
+  category: unkuna
+  size: 8.5 x 12
+  condition: well loved
+  fiber: blend
+  images: Unkuna_0356
+- 
+  category: unkuna
+  size: 11 x 14
+  condition: new
+  fiber: blend
+  images: Unkuna_351_129
+- 
+  category: unkuna
+  size: 14 x 14
+  condition: loved
+  fiber: blend
+  images: Unkuna_353_74
+- 
+  category: unkuna
+  size: 14 x 15
+  condition: new
+  fiber:
+    - natural llama alpaca blend
+    - dyed with plants
+  images: Unkuna_359_73
+- 
+  category: unkuna
+  size: 14 x 15
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Unkuna_343_72
+- 
+  category: unkuna
+  size: 15 x 15
+  condition: new
+  fiber:
+    - natural llama alpaca blend
+    - dyed with plants
+  images: Unkuna_344_95
+- 
+  category: unkuna
+  size: 16 x 19
+  condition: new
+  fiber:
+    - natural llama alpaca blend
+    - dyed with plants
+  images: Unkuna_346_75
+- 
+  category: unkuna
+  size: 18.5 x 19
+  condition: new
+  fiber: blend
+  images: Unkuna_361_76
+- 
+  category: unkuna
+  size: 20.5 x 23
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Unkuna_330_57
+- 
+  category: unkuna
+  size: 21 x 20
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Unkuna_336_19
+- 
+  category: unkuna
+  size: 22.5 x 24
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Unkuna_325_58
+- 
+  category: unkuna
+  size: 23 x 24.5
+  condition: new
+  fiber: blend
+  images: Unkuna_337_109
+- 
+  category: unkuna
+  size: 23.5 x 25
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Unkuna_327_83
+- 
+  category: unkuna
+  size: 31.5 x 24
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Unkuna_334_38
+- 
+  category: unkuna
+  size: 24 x 24
+  condition: well loved
+  fiber: blend
+  images: Unkuna_339_67
+- 
+  category: prayer bundle
+  size:
+    - 2.5 x 6
+    - strap 14
+  condition: antique
+  fiber: blend
+  images: PrayerBundle_269_118
+- 
+  category: prayer bundle
+  size:
+    - 3 x 4
+    - strap 21
+  condition: antique
+  fiber: blend
+  images: PrayerBundle_271_119
+- 
+  category: prayer bundle
+  size:
+    - 3 x 5
+    - strap 16
+  condition: antique
+  fiber: blend
+  images:
+    - PrayerBundle_263_133
+    - PrayBundle_265_133
+- 
+  category: prayer bundle
+  size:
+    - 3 x 5
+    - strap 22
+  condition: antique
+  fiber: blend
+  images:
+    - PrayerBundle_260_117
+    - PrayerBundle_261_117
+- 
+  category: prayer bundle
+  size:
+    - 4 x 5
+    - strap 15
+  condition: antique
+  fiber: blend
+  images: PrayerBundle_266_42
+- 
+  category: prayer bundle
+  size:
+    - 4.5 x 6
+    - strap 18
+  condition: antique
+  fiber: blend
+  images: PrayerBundle_262_116
+- 
+  category: manta
+  size: 24 x 22
+  condition: new
+  fiber: blend
+  images: Manta_0100
+- 
+  category: manta
+  size: 25 x 21.5
+  condition: new
+  fiber: blend
+  images: Manta_094_96
+- 
+  category: manta
+  size: 25 x 23
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Manta_106_24
+- 
+  category: manta
+  size: 26.5 x 24
+  condition: new
+  fiber: blend
+  images: Manta_109_93
+- 
+  category: manta
+  size: 27.5 x 28
+  condition: new
+  fiber: blend
+  images: Manta_0093
+- 
+  category: manta
+  size: 29.5 x 25.5
+  condition: antique
+  fiber:
+    - natural llama alpaca blend
+    - natural plant dyes
+  images: Manta_098_141
+- 
+  category: manta
+  size: 30 x 24.5
+  condition: gently loved
+  fiber: blend
+  images: Manta_090_30
+- 
+  category: manta
+  size: 30 x 25
+  condition: new
+  fiber:
+    - natural llama alpaca blend
+    - natural plant dyes
+  images: Manta_123_46
+- 
+  category: manta
+  size: 30.5 x 23
+  condition: new
+  fiber: blend
+  images: Manta_096_95
+- 
+  category: manta
+  size: 31 x 26
+  condition: gently loved
+  fiber: blend
+  images: Manta_027_26
+- 
+  category: manta
+  size: 32 x 25.5
+  condition: new
+  fiber: blend
+  images: Manta_085_27
+- 
+  category: manta
+  size: 32 x 29
+  condition: new
+  fiber: blend
+  images: Manta_0074
+- 
+  category: manta
+  size: 32.5 x 42.5
+  condition: new
+  fiber: blend
+  images: Manta_092_50
+- 
+  category: manta
+  size: 33 x 24
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Manta_089_25
+- 
+  category: manta
+  size: 33 x 26
+  condition: new
+  fiber: blend
+  images: Manta_104_97
+- 
+  category: manta
+  size: 34 x 22
+  condition: gently loved
+  fiber: blend
+  images: Manta_083_36
+- 
+  category: manta
+  description: framed
+  images: Manta_107_59
+- 
+  category: woman shirt
+  size:
+    - 19 x 21
+    - sleeve 4.5 x 16
+  condition: antique
+  fiber:
+    - natural llama alpaca blend
+    - natural plant dyes
+  images: Shirt_121_43
+- 
+  category: woman shirt
+  size:
+    - 21 x 21
+    - sleeve 5.5 x 15
+  condition: antique
+  fiber:
+    - natural llama alpaca blend
+    - natural plant dyes
+  images: Shirt_113_131
+- 
+  category: poncho
+  size: adult
+  condition: new
+  fiber: blend
+  description: framed
+  images: Poncho_147_33
+- 
+  category: poncho
+  size:
+    - child
+    - 20 x 15.5
+  condition: gently loved
+  fiber: sheep alpaca blend
+  images: Panchochild_159_84
+- 
+  category: poncho
+  size:
+    - child
+    - 23 x 18
+  condition: gently loved
+  fiber: sheep
+  images: Ponchochild_158_115
+- 
+  category: poncho
+  size: 30 x 30
+  condition: new
+  fiber: natural llama alpaca blend
+  images: Poncho_133_32
+- 
+  category: poncho
+  size: 31 x 29
+  condition: gently loved
+  fiber: natural llama alpaca blend
+  images: Poncho_128_31
+- 
+  category: poncho
+  size: 31 x 30.5
+  condition: antique
+  fiber: natural llama alpaca blend
+  images: Poncho_150_98
+- 
+  category: poncho
+  size: 33 x 32
+  condition: new
+  fiber: blend
+  images: Poncho_142_99
+- 
+  category: poncho
+  size: 34 x 29
+  condition: new
+  fiber: blend
+  images: Poncho_139_56
+- 
+  category: unku
+  size: 27 x 33
+  condition: new
+  fiber: sheep
+  images: Unku_132_68
+- 
+  category: unku
+  size: 31 x 30
+  condition: new
+  fiber: alpaca
+  images: Unku_153_69

@@ -23,7 +23,6 @@ define([
       $('#donate .trigger').click(function(){
         this.donateInput.focus();
       }.bind(this));
-      $('#donate .hide-btn').click(this.hide);
       this.donateInput.on('focus', this.onInputFocus);
       this.donateInput.on('blur', this.onInputBlur);
       this.donateInput.on('keyup', this.onInputKeyUp);
@@ -32,7 +31,7 @@ define([
 
     toggle: function(){
       if (this.isShowing) {
-        this.hide();
+        this.hide(true);
       } else {
         this.show();
       }
@@ -52,8 +51,11 @@ define([
       }.bind(this));
     },
 
-    hide: function(){
+    hide: function(resetUrl){
       if (!this.isShowing) return;
+      if (resetUrl) {
+        // Backbone.history.navigate('');
+      }
       console.log('hide')
       this.isTransitioning = true;
       this.$el.removeClass('show');

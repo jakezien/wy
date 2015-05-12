@@ -42,6 +42,8 @@ define([
         this.hideDonate();
       }.bind(this));
 
+      $('#donate .hide-btn').click(this.hideDonate(true));
+
       this.listenTo(this.eventBus, 'donate-show', this.showDonate);
     },
 
@@ -151,8 +153,8 @@ define([
       this.menu.scrollShow();
     },
 
-    hideDonate: function(){
-      this.donate.hide();
+    hideDonate: function(resetUrl){
+      this.donate.hide(resetUrl);
     },
 
     updateMenu: function(route){

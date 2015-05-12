@@ -2,7 +2,11 @@
   <a href="/shop/?<%= index + 1%>">
     <!-- <img data-src="/images/shop/<%=_.first(images)%>"> -->
     <!-- <div class="img" data-src="https://placeimg.com/640/480/animals"></div> -->
-    <div class="img" data-src="<%=_.first(images)%>"></div>
+    <% if (typeof(images) === 'string') { %>
+      <div class="img" data-src="<%=images%>.jpg"></div>
+    <% } else { %>
+      <div class="img" data-src="<%=_.first(images)%>.jpg"></div>
+    <% } %>
     <div class="info">
       <%= category %>
       <%= size %> 
