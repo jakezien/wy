@@ -3,9 +3,9 @@
     <!-- <img data-src="/images/shop/<%=_.first(images)%>"> -->
     <!-- <div class="img" data-src="https://placeimg.com/640/480/animals"></div> -->
     <% if (typeof(images) === 'string') { %>
-      <div class="img" data-src="<%=images%>.jpg"></div>
+      <div class="img" data-src="/images/shop/<%=images%>.jpg"></div>
     <% } else { %>
-      <div class="img" data-src="<%=_.first(images)%>.jpg"></div>
+      <div class="img" data-src="/images/shop/<%=_.first(images)%>.jpg"></div>
     <% } %>
     <div class="info">
       <%= category %>
