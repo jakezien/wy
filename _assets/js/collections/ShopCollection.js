@@ -7,7 +7,8 @@ define([
 ], function($, _, Backbone, Modernizr, ShopItem){
 
   var ShopCollection = Backbone.Collection.extend({
-    model: ShopItem
+    model: ShopItem,
+    comparator: 'category'
   });
 
   return ShopCollection;

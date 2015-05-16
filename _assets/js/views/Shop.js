@@ -67,7 +67,9 @@ define([
 
     hideItemPage: function() {
       this.$el.find('#item-page').removeClass('show');
-      this.needsLayout = true;
+      if (!this.hasLayout) {
+        this.needsLayout = true;
+      }
       Backbone.history.navigate('/shop/');
     },
 
@@ -82,11 +84,13 @@ define([
           this.categories.push(item.category);
         }
 
-        // placeholder image
-        item.images[0] = "https://placeimg.com/640/480/animals";
-        this.items.add( new ShopItem(items[i]) );
+        this.items.add( item );
       }
-      this.proxy = new Obscura(this.items, {perPage: 20});
+
+      // sort category list alphabetically
+      this.categories = _.sortBy(this.categories, function(c) {return c});
+
+      this.proxy = new Obscura(this.items, {perPage: 35});
       this.proxy.bind('change reset', this.onProxyChange)
 
       this.setupUI();
@@ -98,7 +102,6 @@ define([
       } else {
         this.render();
       }
-
     },
 
     setupUI: function() {
@@ -107,23 +110,26 @@ define([
       this.$el.find('div.pagination .page-next').click(this.nextPage);
       this.$el.find('#item-page').click(this.hideItemPage);
 
-      var $filter = this.$el.find('div.filter');
+      var $filter = this.$el.find('div.filter ul');
 
       for (var i = -1; i < this.categories.length; i++) {
         var category;
         var categoryLabel;
+        var $filterItem = $('<li class="filter-item"></li>');
+
         if (i === -1) {
           category = 'all'
           categoryLabel = 'All'
+          $filterItem.addClass('active');
         } else {
           category = this.categories[i];
           categoryLabel = capitalize(category) + 's'
         }
 
-        var $filterItem = $('<span class="filter-item">' + categoryLabel + '</span>');
-        $filter.append($filterItem);
+        $filterItem.html(categoryLabel);
         $filterItem.data('category', category);
         $filterItem.click(this.updateFilters)
+        $filter.append($filterItem);
       }
     },
 
@@ -139,6 +145,7 @@ define([
       }.bind(this));
       this.updatePagination();
       this.needsLayout = false;
+      this.hasLayout = true;
     },
 
     updatePagination: function(){
@@ -155,7 +162,10 @@ define([
     },
 
     updateFilters: function(e) {
-      var category = $(e.target).data('category');
+      var $filterItem = $(e.target);
+      var category = $filterItem.data('category');
+      $filterItem.addClass('active').siblings().removeClass('active');
+
       this.proxy.resetFilters();
       if (category !== 'all') {
         this.proxy.filterBy('', {category: category});
@@ -177,8 +187,8 @@ define([
     onProxyChange: function(){
       this.needsLayout = true;
       this.render();
+      window.scrollTo(0,0);
     }
-
   });
 
   return Shop;
