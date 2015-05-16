@@ -120,11 +120,24 @@
     
   
   .pagination
+    column(12)
+    Garamond()
+    font-size (1.5em)
+    transition opacity 0.3s ease
+    opacity 0.5
+    &:hover
+      opacity 1
+    span
+      text-align center
+      transition color 0.15s ease
+      cursor default
     .page-prev, .page-next
       display inline-block
       width 2em
       height 2em
       cursor pointer
+      &:hover
+        color hotPink
     
 
 

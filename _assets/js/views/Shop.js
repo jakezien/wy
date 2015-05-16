@@ -105,7 +105,11 @@ define([
     },
 
     setupUI: function() {
-      this.$el.find('div.pagination').append('<span class="page-prev"><</span><span class="page-current"></span>&nbsp;of&nbsp;<span class="page-total"></span><span class="page-next">></span>')
+      this.$el.find('div.pagination').append(
+        '<span class="page-prev"><</span>' + 
+        'Page&nbsp;<span class="page-current"></span>' + 
+        '&nbsp;of&nbsp;<span class="page-total"></span>' + 
+        '<span class="page-next">></span>')
       this.$el.find('div.pagination .page-prev').click(this.prevPage);
       this.$el.find('div.pagination .page-next').click(this.nextPage);
       this.$el.find('#item-page').click(this.hideItemPage);
@@ -134,11 +138,12 @@ define([
     },
 
     updateLayout: function(){
-      $('#items').html('');
+      var $itemList = $('#items .item-list')
+      $itemList.html('');
       this.proxy.each(function(item) {
         var options = $.extend({}, item.attributes, {index: this.items.indexOf(item)});
         var renderedContent = _.template(this.itemTemplate, options);
-        $('#items').append(renderedContent);
+        $itemList.append(renderedContent);
       }, this);
       this.$el.find('div[data-src]').each(function(i, el){
         this.preloadImg(el, true);
