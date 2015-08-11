@@ -18,10 +18,12 @@ define([
       }
 
       this.donateInput = $('#donate .donate-input input');
-      this.form = $('#donate form')[0];
+      this.form = $('#donate #paypal');
 
       $('#donate .trigger').click(function(){
-        this.donateInput.focus();
+        // this.donateInput.focus();
+        this.form.submit();
+        $('#donate .trigger').addClass('clicked');
       }.bind(this));
       this.donateInput.on('focus', this.onInputFocus);
       this.donateInput.on('blur', this.onInputBlur);

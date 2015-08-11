@@ -1,9 +1,9 @@
 <div class="shop-item">
   <a href="/shop/?<%= index + 1%>">
     <% if (typeof(images) === 'string') { %>
-      <div class="img" data-src="/images/shop/<%=images%>.jpg"></div>
+      <div class="img" data-src="/images/shop/<%=images%>-thumb.jpg"></div>
     <% } else { %>
-      <div class="img" data-src="/images/shop/<%=_.first(images)%>.jpg"></div>
+      <div class="img" data-src="/images/shop/<%=_.first(images)%>-thumb.jpg"></div>
     <% } %>
     <div class="info">
       <%= category %>

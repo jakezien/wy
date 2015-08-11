@@ -63,6 +63,7 @@ define([
     timelines: {},
 
     seekTimelines: function(currentScrollY){
+      if (typeof currentScrollY === 'undefined') return;
       var windowHeight = window.innerHeight;
       if (!windowHeight) {
         windowHeight = document.documentElement.clientHeight;
@@ -76,6 +77,7 @@ define([
         var elTop = $el.offset().top;
         var elHeight = $el.outerHeight();
         var range = Math.max( 0, (currentScrollY - Math.max(0, elTop - windowHeight)) / (Math.min(windowHeight, elTop) + elHeight) );
+        console.log(range)
         timeline.seek(range * timeline.totalDuration(), false);
       }
     },
