@@ -77,7 +77,6 @@ define([
         var elTop = $el.offset().top;
         var elHeight = $el.outerHeight();
         var range = Math.max( 0, (currentScrollY - Math.max(0, elTop - windowHeight)) / (Math.min(windowHeight, elTop) + elHeight) );
-        console.log(range)
         timeline.seek(range * timeline.totalDuration(), false);
       }
     },

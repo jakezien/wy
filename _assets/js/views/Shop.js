@@ -21,10 +21,12 @@ define([
       }.bind(this));
       this.createTimelines();
       this.itemTemplate = this.$el.find('#shopItem-template').html();
+      this.categoryHeaderTemplates = this.$el.find('.shopCategoryHeader-template');
       this.itemPageTemplate = this.$el.find('#shopItemPage-template').html();
       this.itemPage = this.$el.find('#item-page');
       this.itemList = this.$el.find('#items .item-list');
       this.filter = this.$el.find('div.filter')
+      this.currentCategory = 'all'
       if (!this.items) {
         this.items = new ShopCollection();
         this.loadItems();
@@ -176,6 +178,11 @@ define([
 
     updateLayout: function(){
       this.itemList.html('');
+      if (this.currentCategory !== 'all') {
+        var template = $(this.categoryHeaderTemplates).filter('.' + this.currentCategory).html()
+        console.log(template)
+        this.itemList.append(template);
+      }
       this.proxy.each(function(item) {
         var options = $.extend({}, item.attributes, {index: this.items.indexOf(item)});
         var renderedContent = _.template(this.itemTemplate, options);
@@ -204,12 +211,12 @@ define([
 
     updateFilters: function(e) {
       var $filterItem = $(e.target);
-      var category = $filterItem.data('category');
+      this.currentCategory = $filterItem.data('category');
       $filterItem.addClass('active').siblings().removeClass('active');
 
       this.proxy.resetFilters();
-      if (category !== 'all') {
-        this.proxy.filterBy('', {category: category});
+      if (this.currentCategory !== 'all') {
+        this.proxy.filterBy('', {category: this.currentCategory});
       }
     },
 
