@@ -8,7 +8,8 @@ define([
   'shopItem',
   'shopCollection',
   'obscura',
-], function($, _, Backbone, Modernizr, View, Yaml, ShopItem, ShopCollection, Obscura){
+  'vendor/paypal-button'
+], function($, _, Backbone, Modernizr, View, Yaml, ShopItem, ShopCollection, Obscura, Paypal){
 
   var Shop = View.extend({
     page: 'shop',
@@ -27,6 +28,7 @@ define([
       this.itemList = this.$el.find('#items .item-list');
       this.filter = this.$el.find('div.filter')
       this.currentCategory = 'all'
+      this.paypalId = 'SF6MWPM36E8ZU'
       if (!this.items) {
         this.items = new ShopCollection();
         this.loadItems();
@@ -94,9 +96,20 @@ define([
       if (this.shouldShowItem) {
         this.shouldShowItem = null;
       }
+      
       var item = this.items.at(id);
+      var paypalData = {
+        name: { value: item.get('category') },
+        amount: { value: '100.00' },
+      }
+
+      var button = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
+      console.log(paypalData)
+      console.log(button)
+
       this.itemPage.html('')
       .append(_.template(this.itemPageTemplate, item.attributes))
+      .append(button)
       .addClass('show')
       .find('.close').click(this.hideItemPage);
 
