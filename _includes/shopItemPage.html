@@ -4,9 +4,16 @@
   <div class="img" data-src="/images/shop/<%=_.first(images)%>.jpg"></div>
 <% } %>
 <div class="info">
-  <%= category %>
-  <%= size %> 
-  <%= condition %> 
-  <%= fiber %> 
+  <p class="title-category"><%= category %></p>
+  <table>
+    <tr><td>Size</td><td><%= size %></td></tr>
+    <tr><td>Condition</td><td><%= condition %></td></tr>
+    <tr><td>Material</td><td><%= fiber %></td></tr>
+  </table>
+  <% if (typeof price === 'string' && price.indexOf('request') > -1) { %>
+    <p class="price">Price upon request</p>
+  <% } else { %>
+    <p class="price">$<%= price %></p>
+  <% } %>
 </div>
 <div class="close"></div>

@@ -98,18 +98,23 @@ define([
       }
       
       var item = this.items.at(id);
-      var paypalData = {
-        name: { value: item.get('category') },
-        amount: { value: '100.00' },
-      }
 
-      var button = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
-      console.log(paypalData)
-      console.log(button)
+      var paypalButton;
+      var itemPrice = item.get('price');
+
+      if ( typeof itemPrice === 'string' && itemPrice.indexOf('request') > -1 ) {
+        paypalButton = null;
+      } else {
+        var paypalData = {
+          name: { value: item.get('category') },
+          amount: { value: itemPrice },
+        }
+        paypalButton = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
+      }
 
       this.itemPage.html('')
       .append(_.template(this.itemPageTemplate, item.attributes))
-      .append(button)
+      .append(paypalButton)
       .addClass('show')
       .find('.close').click(this.hideItemPage);
 
@@ -127,7 +132,6 @@ define([
     },
 
     onItemsLoaded: function(data) {
-      console.log('onItemsLoaded')
       var items = Yaml.safeLoad(data);
       for (var i in items) {
         var item = items[i];
@@ -165,7 +169,6 @@ define([
         '<span class="page-next">></span>')
       this.$el.find('div.pagination .page-prev').click(this.prevPage);
       this.$el.find('div.pagination .page-next').click(this.nextPage);
-      console.log(this.$el.find('#item-page .close'))
       var $ul = this.filter.find('ul');
 
       for (var i = -1; i < this.categories.length; i++) {
@@ -193,7 +196,6 @@ define([
       this.itemList.html('');
       if (this.currentCategory !== 'all') {
         var template = $(this.categoryHeaderTemplates).filter('.' + this.currentCategory).html()
-        console.log(template)
         this.itemList.append(template);
       }
       this.proxy.each(function(item) {
