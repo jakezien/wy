@@ -106,8 +106,11 @@ define([
         paypalButton = null;
       } else {
         var paypalData = {
+          item_number: { value: item.get('item_number') },
           name: { value: item.get('category') },
           amount: { value: itemPrice },
+          shipping: { value: '15.00' },
+          currency_code: { value: 'USD' },
         }
         paypalButton = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
       }

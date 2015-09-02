@@ -6,6 +6,7 @@
   fiber: blend
   images: chullu_322_106
   price: request
+  item_number: 1
 - 
   category: hat
   size: infant
@@ -13,6 +14,7 @@
   fiber: blend
   images: Chullu_317_92
   price: request
+  item_number: 2
 - 
   category: hat
   size: child
@@ -20,6 +22,7 @@
   fiber: natural alpaca llama blend
   images: Chullu_309_102
   price: request
+  item_number: 3
 - 
   category: hat
   size: adult
@@ -27,6 +30,7 @@
   fiber: natural alpaca llama blend
   images: Chullu_298_100
   price: 85
+  item_number: 4
 - 
   category: hat
   size: adult
@@ -34,6 +38,7 @@
   fiber: natural alpaca llama blend
   images: Chullu_302_01
   price: 85
+  item_number: 5
 - 
   category: hat
   size: adult
@@ -41,6 +46,7 @@
   fiber: natural alpaca llama blend
   images: Chullu_303_70
   price: 85
+  item_number: 6
 - 
   category: hat
   size: adult
@@ -48,6 +54,7 @@
   fiber: blend
   images: Chullu_296_104
   price: 125
+  item_number: 7
 - 
   category: hat
   size: adult
@@ -56,6 +63,7 @@
   description: ceremonial beaded
   images: Chullu_295_21
   price: 185
+  item_number: 8
 - 
   category: hat
   size: adult
@@ -64,6 +72,7 @@
   description: ceremonial beaded
   images: Chullu_299_20
   price: 185
+  item_number: 9
 
 ### BELT
 - 
@@ -74,6 +83,7 @@
   description: dyed with plants
   images: Belt_256_88
   price:  request
+  item_number: 10
 - 
   category: belt
   size: 3" x 52"
@@ -81,6 +91,7 @@
   fiber: blend
   images: Belt_246_85
   price:  request
+  item_number: 11
 - 
   category: belt
   size: 3.5" x 52"
@@ -88,6 +99,7 @@
   fiber: blend
   images: Belt_0251
   price: 125
+  item_number: 12
 - 
   category: belt
   size: 4" x 54"
@@ -95,6 +107,7 @@
   fiber: blend
   images: Belt_0254
   price: 125
+  item_number: 13
 - 
   category: belt
   size: 4" x 74" 
@@ -102,6 +115,7 @@
   fiber: blend
   images: Belt_248_123
   price: 125
+  item_number: 14
 - 
   category: belt
   size: 4.5" x 56"
@@ -109,6 +123,7 @@
   fiber: natural alpaca llama blend
   images: Belt_249_62
   price: 125
+  item_number: 15
 
 ### ROPE 
 - 
@@ -118,6 +133,7 @@
   fiber: natural llama blend
   images: Rope_394_90
   price: 85
+  item_number: 16
 - 
   category: rope
   size: 9'6"
@@ -125,6 +141,7 @@
   fiber: natural llama blend
   images: Rope_388_125
   price: 85
+  item_number: 17
 - 
   category: rope
   size: 9'6"
@@ -132,6 +149,7 @@
   fiber: natural llama blend
   images: Rope_376_130
   price: 85
+  item_number: 18
 - 
   category: rope
   size: 11'
@@ -139,6 +157,7 @@
   fiber: natural alpaca blend
   images: Rope_392_89
   price: 115
+  item_number: 19
 - 
   category: rope
   size: 11'8"
@@ -146,6 +165,7 @@
   fiber: natural llama alpaca blend
   images: Rope_385_128
   price: 115
+  item_number: 20
 - 
   category: rope
   size: 13' 4"
@@ -153,6 +173,7 @@
   fiber: natural llama alpaca blend
   images: Rope_397_130
   price: 115
+  item_number: 21
 - 
   category: rope
   size: 30'
@@ -160,6 +181,7 @@
   fiber: natural llama alpaca blend
   images: Rope_390_126
   price: 165
+  item_number: 22
 
 
 ### BLANKET
@@ -170,6 +192,7 @@
   fiber: natural llama alpaca blend
   images: Blanket_421_
   price: 325
+  item_number: 23
 
 
 ### COSTAL
@@ -180,6 +203,7 @@
   fiber: natural llama alpaca blend
   images: Costal_371_111
   price: 0
+  item_number: 24
 - 
   category: costal
   size: 18.5 x 40
@@ -187,6 +211,7 @@
   fiber: natural llama alpaca blend
   images: Costal_375_138
   price: 0
+  item_number: 25
 - 
   category: costal
   size: 19 x 38.5
@@ -194,6 +219,7 @@
   fiber: natural llama alpaca blend
   images: Costal_366_110
   price: 0
+  item_number: 26
 - 
   category: costal
   size: 19 x 41
@@ -201,6 +227,7 @@
   fiber: natural llama alpaca blend
   images: Costal_373_139
   price: 0
+  item_number: 27
 - 
   category: costal
   size: 21 x 42
@@ -208,6 +235,7 @@
   fiber: natural llama alpaca blend
   images: Costal_365_87
   price: 0
+  item_number: 28
 
 
 ### HAT BAND
@@ -218,6 +246,7 @@
   fiber: blend
   images: Hatband_408_91
   price: 0
+  item_number: 29
 - 
   category: hat band
   size: 25
@@ -225,6 +254,7 @@
   fiber: blend
   images: Hatband_410_135
   price: 0
+  item_number: 30
 - 
   category: hat band
   size: 22
@@ -233,6 +263,7 @@
   description: beaded
   images: Hatband_405_41
   price: 0
+  item_number: 31
 - 
   category: hat band
   size: 22
@@ -241,6 +272,7 @@
   description: beaded
   images: Hatband_400_51
   price: 0
+  item_number: 32
 
 
 ### BAG
@@ -253,6 +285,7 @@
   fiber: natural llama alpaca blend
   images: Bag_0230
   price: 0
+  item_number: 33
 - 
   category: bag
   size:
@@ -262,6 +295,7 @@
   fiber: blend
   images: Bag_221_103
   price: 0
+  item_number: 34
 - 
   category: bag
   size:
@@ -271,6 +305,7 @@
   fiber: blend
   images: Bag_227_22
   price: 0
+  item_number: 35
 - 
   category: bag
   size:
@@ -280,6 +315,7 @@
   fiber: blend
   images: Bag_169_60
   price: 0
+  item_number: 36
 - 
   category: bag
   size:
@@ -289,6 +325,7 @@
   fiber: blend
   images: Bag_184_13
   price: 0
+  item_number: 37
 - 
   category: bag
   size:
@@ -298,6 +335,7 @@
   fiber: natural llama alpaca blend
   images: Bag_177_18
   price: 0
+  item_number: 38
 - 
   category: bag
   size:
@@ -307,6 +345,7 @@
   fiber: natural llama alpaca blend
   images: Bag_178_05
   price: 0
+  item_number: 39
 - 
   category: bag
   size: 12 x 11.5 strap 21
@@ -314,6 +353,7 @@
   fiber: blend
   images: Bag_190_140
   price: 0
+  item_number: 40
 - 
   category: bag
   size:
@@ -324,6 +364,7 @@
   description: used as a school bag
   images: Bag_193_82
   price: 0
+  item_number: 41
 - 
   category: bag
   size:
@@ -333,6 +374,7 @@
   fiber: natural llama alpaca blend
   images: Bag_175_15
   price: 0
+  item_number: 42
 - 
   category: bag
   size:
@@ -342,6 +384,7 @@
   fiber: blend
   images: Bag_172_16
   price: 0
+  item_number: 43
 - 
   category: bag
   size:
@@ -351,6 +394,7 @@
   fiber: blend
   images: Bag_0189
   price: 0
+  item_number: 44
 - 
   category: bag
   size:
@@ -360,6 +404,7 @@
   fiber: blend
   images: Bag_186_66
   price: 0
+  item_number: 45
 - 
   category: bag
   size:
@@ -369,6 +414,7 @@
   fiber: natural llama alpaca blend
   images: Bag_0183
   price: 0
+  item_number: 46
 - 
   category: bag
   size:
@@ -379,6 +425,7 @@
   description: used as a school bag
   images: Bag_181_137
   price: 0
+  item_number: 47
 - 
   category: bag
   size: 11.5 x 12
@@ -387,6 +434,7 @@
   description: horse saddle bag used in Qeros
   images: Saddlebag_223_81
   price: 0
+  item_number: 48
 - 
   category: bag
   size:
@@ -404,6 +452,7 @@
     - Bagfront_216_44
     - Bagback_219_44.tif
   price: 0
+  item_number: 49
 - 
   category: bag
   size:
@@ -415,6 +464,7 @@
   description: ceremonial bag
   images: Bag_210_112
   price: 0
+  item_number: 50
 - 
   category: bag
   size:
@@ -428,6 +478,7 @@
     - Bagfront_200_80
     - Bag_201_80
   price: 0
+  item_number: 51
 - 
   category: bag
   size:
@@ -439,6 +490,7 @@
   description: ceremonial bag
   images: Bag_208_112
   price: 0
+  item_number: 52
 - 
   category: bag
   size:
@@ -452,6 +504,7 @@
     - Bag_0206
     - Bag_0204
   price: 0
+  item_number: 53
 - 
   category: bag
   size:
@@ -463,6 +516,7 @@
   description: ceremonial bag
   images: Bag_198_78
   price: 0
+  item_number: 54
 - 
   category: bag
   size:
@@ -474,6 +528,7 @@
   description: ceremonial bag
   images: Bagfront_195_78
   price: 0
+  item_number: 55
 
 
 ### CHUSPA
@@ -485,6 +540,7 @@
   description: for calling apus
   images: PeltBag_0411
   price: 0
+  item_number: 56
 - 
   category: chuspa
   size: 5 x 7
@@ -492,6 +548,7 @@
   fiber: blend
   images: Chuspa_279
   price: 0
+  item_number: 57
 - 
   category: chuspa
   size: 5.5 x 8.5
@@ -499,6 +556,7 @@
   fiber: blend
   images: Chuspa_277_17
   price: 0
+  item_number: 58
 - 
   category: chuspa
   size: 5.5 x 9
@@ -506,6 +564,7 @@
   fiber: blend
   images: Chuspa_414_03
   price: 0
+  item_number: 59
 - 
   category: chuspa
   size: 6.5 x 9
@@ -513,6 +572,7 @@
   fiber: blend
   images: Chuspa_413_02
   price: 0
+  item_number: 60
 - 
   category: chuspa
   size: 6.5 x 10
@@ -520,6 +580,7 @@
   fiber: blend
   images: Chuspa_415_10
   price: 0
+  item_number: 61
 - 
   category: chuspa
   size: 8 x 9.5
@@ -527,6 +588,7 @@
   fiber: blend
   images: Chuspa_275_107
   price: 0
+  item_number: 62
 - 
   category: chuspa
   size: 8.5 x 10
@@ -534,6 +596,7 @@
   fiber: blend
   images: Chuspa_284_101
   price: 0
+  item_number: 63
 - 
   category: chuspa
   size: 9 x 10.5
@@ -541,6 +604,7 @@
   fiber: blend
   images: Chuspa_286_23
   price: 0
+  item_number: 64
 - 
   category: chuspa
   size: 12.5 x 13
@@ -548,6 +612,7 @@
   fiber: blend
   images: Chuspa_288_71
   price: 0
+  item_number: 65
 - 
   category: chuspa
   fiber:
@@ -558,6 +623,7 @@
     - framed
   images: Chuspa_282_40
   price: 0
+  item_number: 66
 
 
 ### SCARF
@@ -568,6 +634,7 @@
   fiber: blend
   images: Scarf_259_97
   price: 0
+  item_number: 67
 - 
   category: scarf
   size: 5.5 x 53
@@ -575,6 +642,7 @@
   fiber: blend
   images: Scarf_244_09
   price: 0
+  item_number: 68
 - 
   category: scarf
   size: 6.5 x 70
@@ -582,6 +650,7 @@
   fiber: blend
   images: Scarf_232_35
   price: 0
+  item_number: 69
 - 
   category: scarf
   size: 7.5 x 60
@@ -589,6 +658,7 @@
   fiber: blend
   images: Scarf_236_114
   price: 0
+  item_number: 70
 - 
   category: scarf
   size: 8.5 x 58
@@ -596,6 +666,7 @@
   fiber: blend
   images: Scarf_242_04
   price: 0
+  item_number: 71
 - 
   category: unkuna
   size: 8.5 x 12
@@ -603,6 +674,7 @@
   fiber: blend
   images: Unkuna_0356
   price: 0
+  item_number: 72
 
 
 ### UNKUNA
@@ -613,6 +685,7 @@
   fiber: blend
   images: Unkuna_351_129
   price: 0
+  item_number: 73
 - 
   category: unkuna
   size: 14 x 14
@@ -620,6 +693,7 @@
   fiber: blend
   images: Unkuna_353_74
   price: 0
+  item_number: 74
 - 
   category: unkuna
   size: 14 x 15
@@ -629,6 +703,7 @@
     - dyed with plants
   images: Unkuna_359_73
   price: 0
+  item_number: 75
 - 
   category: unkuna
   size: 14 x 15
@@ -636,6 +711,7 @@
   fiber: natural llama alpaca blend
   images: Unkuna_343_72
   price: 0
+  item_number: 76
 - 
   category: unkuna
   size: 15 x 15
@@ -645,6 +721,7 @@
     - dyed with plants
   images: Unkuna_344_95
   price: 0
+  item_number: 77
 - 
   category: unkuna
   size: 16 x 19
@@ -654,6 +731,7 @@
     - dyed with plants
   images: Unkuna_346_75
   price: 0
+  item_number: 78
 - 
   category: unkuna
   size: 18.5 x 19
@@ -661,6 +739,7 @@
   fiber: blend
   images: Unkuna_361_76
   price: 0
+  item_number: 79
 - 
   category: unkuna
   size: 20.5 x 23
@@ -668,6 +747,7 @@
   fiber: natural llama alpaca blend
   images: Unkuna_330_57
   price: 0
+  item_number: 80
 - 
   category: unkuna
   size: 21 x 20
@@ -675,6 +755,7 @@
   fiber: natural llama alpaca blend
   images: Unkuna_336_19
   price: 0
+  item_number: 81
 - 
   category: unkuna
   size: 22.5 x 24
@@ -682,6 +763,7 @@
   fiber: natural llama alpaca blend
   images: Unkuna_325_58
   price: 0
+  item_number: 82
 - 
   category: unkuna
   size: 23 x 24.5
@@ -689,6 +771,7 @@
   fiber: blend
   images: Unkuna_337_109
   price: 0
+  item_number: 83
 - 
   category: unkuna
   size: 23.5 x 25
@@ -696,6 +779,7 @@
   fiber: natural llama alpaca blend
   images: Unkuna_327_83
   price: 0
+  item_number: 84
 - 
   category: unkuna
   size: 31.5 x 24
@@ -703,6 +787,7 @@
   fiber: natural llama alpaca blend
   images: Unkuna_334_38
   price: 0
+  item_number: 85
 - 
   category: unkuna
   size: 24 x 24
@@ -710,6 +795,7 @@
   fiber: blend
   images: Unkuna_339_67
   price: 0
+  item_number: 86
 
 
 ### PRAYER BUNDLE
@@ -722,6 +808,7 @@
   fiber: blend
   images: PrayerBundle_269_118
   price: 0
+  item_number: 87
 - 
   category: prayer bundle
   size:
@@ -731,6 +818,7 @@
   fiber: blend
   images: PrayerBundle_271_119
   price: 0
+  item_number: 88
 - 
   category: prayer bundle
   size:
@@ -742,6 +830,7 @@
     - PrayerBundle_263_133
     - PrayBundle_265_133
   price: 0
+  item_number: 89
 - 
   category: prayer bundle
   size:
@@ -753,6 +842,7 @@
     - PrayerBundle_260_117
     - PrayerBundle_261_117
   price: 0
+  item_number: 90
 - 
   category: prayer bundle
   size:
@@ -762,6 +852,7 @@
   fiber: blend
   images: PrayerBundle_266_42
   price: 0
+  item_number: 91
 - 
   category: prayer bundle
   size:
@@ -771,6 +862,7 @@
   fiber: blend
   images: PrayerBundle_262_116
   price: 0
+  item_number: 92
 
 
 ### MANTA
@@ -781,6 +873,7 @@
   fiber: blend
   images: Manta_0100
   price: 0
+  item_number: 93
 - 
   category: manta
   size: 25 x 21.5
@@ -788,6 +881,7 @@
   fiber: blend
   images: Manta_094_96
   price: 0
+  item_number: 94
 - 
   category: manta
   size: 25 x 23
@@ -795,6 +889,7 @@
   fiber: natural llama alpaca blend
   images: Manta_106_24
   price: 0
+  item_number: 95
 - 
   category: manta
   size: 26.5 x 24
@@ -802,6 +897,7 @@
   fiber: blend
   images: Manta_109_93
   price: 0
+  item_number: 96
 - 
   category: manta
   size: 27.5 x 28
@@ -809,6 +905,7 @@
   fiber: blend
   images: Manta_0093
   price: 0
+  item_number: 97
 - 
   category: manta
   size: 29.5 x 25.5
@@ -818,6 +915,7 @@
     - natural plant dyes
   images: Manta_098_141
   price: 0
+  item_number: 98
 - 
   category: manta
   size: 30 x 24.5
@@ -825,6 +923,7 @@
   fiber: blend
   images: Manta_090_30
   price: 0
+  item_number: 99
 - 
   category: manta
   size: 30 x 25
@@ -834,6 +933,7 @@
     - natural plant dyes
   images: Manta_123_46
   price: 0
+  item_number: 100
 - 
   category: manta
   size: 30.5 x 23
@@ -841,6 +941,7 @@
   fiber: blend
   images: Manta_096_95
   price: 0
+  item_number: 101
 - 
   category: manta
   size: 31 x 26
@@ -848,6 +949,7 @@
   fiber: blend
   images: Manta_027_26
   price: 0
+  item_number: 102
 - 
   category: manta
   size: 32 x 25.5
@@ -855,6 +957,7 @@
   fiber: blend
   images: Manta_085_27
   price: 0
+  item_number: 103
 - 
   category: manta
   size: 32 x 29
@@ -862,6 +965,7 @@
   fiber: blend
   images: Manta_0074
   price: 0
+  item_number: 104
 - 
   category: manta
   size: 32.5 x 42.5
@@ -869,6 +973,7 @@
   fiber: blend
   images: Manta_092_50
   price: 0
+  item_number: 105
 - 
   category: manta
   size: 33 x 24
@@ -876,6 +981,7 @@
   fiber: natural llama alpaca blend
   images: Manta_089_25
   price: 0
+  item_number: 106
 - 
   category: manta
   size: 33 x 26
@@ -883,6 +989,7 @@
   fiber: blend
   images: Manta_104_97
   price: 0
+  item_number: 107
 - 
   category: manta
   size: 34 x 22
@@ -890,11 +997,13 @@
   fiber: blend
   images: Manta_083_36
   price: 0
+  item_number: 108
 - 
   category: manta
   description: framed
   images: Manta_107_59
   price: 0
+  item_number: 109
 
 
 ### WOMAN SHIRT
@@ -909,6 +1018,7 @@
     - natural plant dyes
   images: Shirt_121_43
   price: 0
+  item_number: 110
 - 
   category: woman shirt
   size:
@@ -920,6 +1030,7 @@
     - natural plant dyes
   images: Shirt_113_131
   price: 0
+  item_number: 111
 
 
 ### PONCHO
@@ -931,6 +1042,7 @@
   description: framed
   images: Poncho_147_33
   price: 0
+  item_number: 112
 - 
   category: poncho
   size:
@@ -940,6 +1052,7 @@
   fiber: sheep alpaca blend
   images: Panchochild_159_84
   price: 0
+  item_number: 113
 - 
   category: poncho
   size:
@@ -949,6 +1062,7 @@
   fiber: sheep
   images: Ponchochild_158_115
   price: 0
+  item_number: 114
 - 
   category: poncho
   size: 30 x 30
@@ -956,6 +1070,7 @@
   fiber: natural llama alpaca blend
   images: Poncho_133_32
   price: 0
+  item_number: 115
 - 
   category: poncho
   size: 31 x 29
@@ -963,6 +1078,7 @@
   fiber: natural llama alpaca blend
   images: Poncho_128_31
   price: 0
+  item_number: 116
 - 
   category: poncho
   size: 31 x 30.5
@@ -970,6 +1086,7 @@
   fiber: natural llama alpaca blend
   images: Poncho_150_98
   price: 0
+  item_number: 117
 - 
   category: poncho
   size: 33 x 32
@@ -977,6 +1094,7 @@
   fiber: blend
   images: Poncho_142_99
   price: 0
+  item_number: 118
 - 
   category: poncho
   size: 34 x 29
@@ -984,6 +1102,7 @@
   fiber: blend
   images: Poncho_139_56
   price: 0
+  item_number: 119
 
 
 ### UNKU
@@ -994,6 +1113,7 @@
   fiber: sheep
   images: Unku_132_68
   price: 0
+  item_number: 120
 - 
   category: unku
   size: 31 x 30
@@ -1001,3 +1121,4 @@
   fiber: alpaca
   images: Unku_153_69
   price: 0
+  item_number: 121
