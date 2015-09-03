@@ -106,19 +106,21 @@ define([
         paypalButton = null;
       } else {
         var paypalData = {
-          item_number: { value: item.get('item_number') },
           name: { value: item.get('category') },
           amount: { value: itemPrice },
           shipping: { value: '15.00' },
           currency_code: { value: 'USD' },
+          item_number: { value: item.get('item_number') },
         }
         paypalButton = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
+        $(paypalButton).removeClass('paypal-button').find('button').removeClass('paypal-button').html('Buy');
       }
 
       this.itemPage.html('')
       .append(_.template(this.itemPageTemplate, item.attributes))
-      .append(paypalButton)
-      .addClass('show')
+      .find('.info').append(paypalButton);
+
+      this.itemPage.addClass('show')
       .find('.close').click(this.hideItemPage);
 
       this.preloadImg(this.itemPage.find('div[data-src]'), true);

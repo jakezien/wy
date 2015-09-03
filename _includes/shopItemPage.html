@@ -1,19 +1,33 @@
-<% if (typeof(images) === 'string') { %>
-  <div class="img" data-src="/images/shop/<%=images%>.jpg"></div>
-<% } else { %>
-  <div class="img" data-src="/images/shop/<%=_.first(images)%>.jpg"></div>
-<% } %>
-<div class="info">
-  <p class="title-category"><%= category %></p>
-  <table>
-    <tr><td>Size</td><td><%= size %></td></tr>
-    <tr><td>Condition</td><td><%= condition %></td></tr>
-    <tr><td>Material</td><td><%= fiber %></td></tr>
-  </table>
-  <% if (typeof price === 'string' && price.indexOf('request') > -1) { %>
-    <p class="price">Price upon request</p>
-  <% } else { %>
-    <p class="price">$<%= price %></p>
-  <% } %>
+<div class="container">
+  <div class="images">
+    <% if (typeof(images) === 'string') { %>
+      <div class="img" data-src="/images/shop/<%=images%>.jpg"></div>
+    <% } else { %>
+      <div class="img" data-src="/images/shop/<%=_.first(images)%>.jpg"></div>
+    <% } %>
+  </div>
+  <div class="info">
+    <div class="close">&larr; Back to all items</div>
+    <p class="title-category"><%= toTitleCase(category) %></p>
+    <% if (typeof price === 'string' && price.indexOf('request') > -1) { %>
+      <p class="price request">Price upon request</p>
+    <% } else { %>
+      <p class="price"><span>$</span><%= price %></p>
+    <% } %>
+    <table>
+      <tr><td>Size</td><td><%= size %></td></tr>
+      <tr><td>Condition</td><td><%= toTitleCase(condition) %></td></tr>
+      <tr><td>Material</td><td><%= toTitleCase(fiber) %></td></tr>
+    </table>
+  </div>
 </div>
-<div class="close"></div>
+
+
+<% function toTitleCase(string) {
+    // \u00C0-\u00ff for a happy Latin-1
+    return string.toLowerCase().replace(/_/g, ' ').replace(/\b([a-z\u00C0-\u00ff])/g, function (_, initial) {
+        return initial.toUpperCase();
+    }).replace(/(\s(?:de|a|o|e|da|do|em|ou|[\u00C0-\u00ff]))\b/ig, function (_, match) {
+        return match.toLowerCase();
+    });
+} %>

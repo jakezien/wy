@@ -2,19 +2,74 @@
   absolute100()
   background white
   display none
-  box-sizing border-box
-  padding 6em 0
+  Garamond()
   &.show
     display block
     position fixed
-  .img
+  .container
+    height 100%
+    padding 6em 0
+    box-sizing border-box
+  .images
     height 100%
     column(5.5) 
     push(.5)
-    background-size contain
+    .img
+      height 100%
+      background-size contain
   .info
     column(4)
+    overflow visible
   .close
-    width 4rem
-    height 4rem
-    background clay
+    color clay
+    cursor pointer
+    font-size 1.25em
+    position relative
+    left -1.35em
+    transition all 0.15s ease
+    &:hover
+      color hotPink
+  .title-category
+    GaramondDisplay()
+    font-weight 600
+    font-size 3em
+    margin 1rem 0 0 0
+  .price
+    margin .5rem 0 1rem 0
+    font-size 2em
+    span 
+      font-size .75em
+      margin-right .1em
+    &.request
+      font-style italic
+  table
+    border-top 1px solid brown
+    font-size 1.25em
+    padding-top 1rem
+    margin-bottom 1.5rem
+    td
+      padding 0 1rem .5rem 0
+    td:first-child
+      Franklin()
+      font-size 0.8em
+      text-transform uppercase
+      letter-spacing 0.125em
+      font-weight 700
+    td:last-child
+      Garamond()
+  form button
+    GaramondDisplay()
+    padding 1rem 2.5rem;
+    color white
+    background brown
+    font-size 2em
+    outline none
+    border none
+    -webkit-appearance none
+    cursor pointer
+    transition all 0.2s ease
+    border-radius 2px
+    &:hover
+      background hotPink
+    &:active
+      background clay
