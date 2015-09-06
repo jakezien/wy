@@ -111,7 +111,7 @@ define([
           amount: { value: itemPrice },
           shipping: { value: '15.00' },
           currency_code: { value: 'USD' },
-          item_number: { value: item.get('item_number') },
+          item_number: { value: item.get('itemNumber') },
         }
         paypalButton = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
         $(paypalButton).removeClass('paypal-button').find('button').removeClass('paypal-button').html('Buy');

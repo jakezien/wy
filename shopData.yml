@@ -8,7 +8,7 @@ categories:
   - 
     name: 
       english: { singular: belt,  plural:  belts}
-      quechua: { singular: chumpi, plural: ''}
+      quechua: { singular: chumpi, plural: chumpikuna}
     description: 
       - 'Plain-weave belts (chumpi) are worn by Qeros men. They are also used to bind the swaddling cloths of infants.'
   - 
@@ -21,39 +21,52 @@ categories:
   - 
     name: 
       english: { singular: coca bag,  plural:  coca bags}
-      quechua: { singular: wayaqa, plural: ''}
+      quechua: { singular: wayaqa, plural: wayaqakuna}
     description: 
       - 'Wayaqa, or coca bags, have been used by Q’ero men since pre-Hispanic times on a daily basis, carried in their waistbands to transport any small item, not only coca. They typically have a patterned stripe down the center with plain stripes on each side. A wayaqa is often offered as a courting gift from a young woman to a young man to express interest.'
   - 
     name: 
       english: { singular: baby alpaca fur bag,  plural:  baby alpaca fur bags}
-      quechua: { singular: phukucho, plural: ''}
+      quechua: { singular: phukucho, plural: phukuchokuna}
     description: 
       - 'These bags have pre-Hispanic precedents and are uncommon today. Phukucho bags are used by paqos, medicine men and women, to call mountain spirits during ceremonies.'
   - 
     name: 
       english: { singular: sack,  plural:  sacks}
-      quechua: { singular: cutama, plural: ''}
+      quechua: { singular: cutama, plural: cutamakuna}
     description: 
       - '"Like most Andean herders, the Q’eros weave large sacks to transport goods on llama-back. In Q’ero these sacks are used to carry maize and potatoes to the household and to haul llama and alpaca dung down from the corrals to the potato fields for fertilizer. The bags are woven in stripes of natural colors of llama hair. Usually no two sacks have exactly the same stripe pattern. Empty bags may also be used as a ground cloth on which to lay out items for ritual use."'
       - 'John Cohen, Hidden Threads of Peru'
   - 
     name: 
       english: { singular: hat,  plural:  hats}
-      quechua: { singular: chullo, plural: ''}
+      quechua: { singular: chullo, plural: chullokuna}
+    description: 
+      - 'Q’eros men knit and bead intricate cullus, caps, proudly emblematic of their indigenous status.'
+  - 
+    name: 
+      english: { singular: hat band,  plural:  hat bands}
+      quechua: { singular: '', plural: ''}
     description: 
       - 'Q’eros men knit and bead intricate cullus, caps, proudly emblematic of their indigenous status.'
   - 
     name: 
       english: { singular: shawl,  plural:  shawls}
-      quechua: { singular: lliqlla, plural: ''}
+      quechua: { singular: lliqlla, plural: lliqllakuna}
     description:
       - '"The most important textile from an artistic standpoint is the woman’s shawl, or manta.”'
       - 'John Cohen, Hidden Threads of Peru'
   - 
     name: 
       english: { singular: tunic,  plural:  tunics}
-      quechua: { singular: unku, plural: ''}
+      quechua: { singular: unku, plural: unkukuna}
+    description: 
+      - '"Two different kinds of ponchos are woven in Q’ero, one relatively plain and one heavily patterned. The patterned ponchos are called pallay poncho, from the pickup technique (pallay) used for the patterns."'
+      - 'John Cohen, Hidden Threads of Peru'
+  - 
+    name: 
+      english: { singular: poncho,  plural:  ponchos}
+      quechua: { singular: poncho, plural: ponchokuna}
     description: 
       - '"Two different kinds of ponchos are woven in Q’ero, one relatively plain and one heavily patterned. The patterned ponchos are called pallay poncho, from the pickup technique (pallay) used for the patterns."'
       - 'John Cohen, Hidden Threads of Peru'
@@ -66,34 +79,34 @@ categories:
   - 
     name: 
       english: { singular: rope,  plural:  ropes}
-      quechua: { singular: waska, plural: ''}
+      quechua: { singular: waska, plural: waskakuna}
     description: 
       - '"Men braid ropes (washka) using coarse yarn spun from undyed llama hair in a variety of colors. They are used to tie loads to the backs of llamas as well as to secure larger loads to people. Men in Q’ero may also wrap a rope around the waist as a belt over their tunic or ponchos when they are working. In addition, women use them to tie the loom bars to the stakes to maintain the tension of the warp when weaving. A man gives a fine rope for a loom to a woman he is courting."'
       - 'John Cohen, Hidden Threads of Peru'
   - 
     name: 
       english: { singular: scarf,  plural:  scarves}
-      quechua: { singular: chalina, plural: ''}
+      quechua: { singular: chalina, plural: chalinakuna}
     description: 
       - '"Q’ero men wore scarves made predominantly of brown camelid fiber, with spin stripes and three evenly spaced groups of colored stripes. The scarves have four selvedges with a bright-red or pink wool fringe added to each end, of the kind typical on festival bags and dance slings."'
       - 'John Cohen, Hidden Threads of Peru'
   - 
     name: 
       english: { singular: carrying cloth,  plural:  carrying cloths}
-      quechua: { singular: unkuna, plural: ''}
+      quechua: { singular: unkuna, plural: unkunakuna}
     description: 
       - 'Unkunas, carrying cloths, have been used since pre-Hispanic times in Q’eros and range in size and function. Contents are placed at the center of the square cloth. The sides are then folded diagonally and the remaining corners are tied together to carry. Q’ero women will use either fur bags or small carrying cloths for holding coca. Medium-sized cloths are used to carry cold lunch to the fields. These square cloths are woven predominantly of undyed yarn, and consist of a single loom panel. Occasionally a quartered design is woven in the cloth through the use of a dovetailed-warp join through the center. This technique is called t’iklli in Q’ero and is mastered by relatively few weavers. Lastly, the largest carrying cloths are referred to as kana. They are woven out of llama hair and used to carry larger loads, like a baby!'
   - 
     name: 
       english: { singular: women's skirt,  plural:  women's skirts}
-      quechua: { singular: pollera, plural: ''}
+      quechua: { singular: pollera, plural: pollerakuna}
     description: 
       - '"The skirts are black, and have their lower edges trimmed either with purchase kolon or with a locally woven bang called luyru. Q’ero women wear the skirts to just below the knee in length. They wear two or three skirts at once, for warmth, and more for festivals."'
       - 'John Cohen, Hidden Threads of Peru'
   - 
     name: 
       english: { singular: women's shirt,  plural:  women's shirts}
-      quechua: { singular: aymilla, plural: ''}
+      quechua: { singular: aymilla, plural: aymillakuna}
     description: 
       - '“A simple style of shirt called aymilla is worn by men, women and children in Q’eros. Red is a common color to be worn, and the style consists of a pullover with a y-neck, no collar, and tape-trimmed sleeves.”'
       - 'John Cohen, Hidden Threads of Peru'
@@ -1016,7 +1029,7 @@ items:
     itemNumber: 100
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "24 x 22"
     condition: "New"
     fiber: "Wool blend "
@@ -1025,7 +1038,7 @@ items:
     itemNumber: 101
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "25 x 21.5"
     condition: "New"
     fiber: "Wool blend "
@@ -1034,7 +1047,7 @@ items:
     itemNumber: 102
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "25 x 23"
     condition: "New"
     fiber: "Alpaca llama blend "
@@ -1043,7 +1056,7 @@ items:
     itemNumber: 103
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "26.5 x 24"
     condition: "New"
     fiber: "Wool blend "
@@ -1052,7 +1065,7 @@ items:
     itemNumber: 104
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "27.5 x 28"
     condition: "New"
     fiber: "Wool blend "
@@ -1061,7 +1074,7 @@ items:
     itemNumber: 105
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "29.5 x 25.5"
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
@@ -1070,7 +1083,7 @@ items:
     itemNumber: 106
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "30 x 24.5"
     condition: "Gently loved "
     fiber: "Wool blend "
@@ -1079,7 +1092,7 @@ items:
     itemNumber: 107
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "30 x 25"
     condition: "New"
     fiber: "Alpaca llama blend "
@@ -1088,7 +1101,7 @@ items:
     itemNumber: 108
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "30.5 x 23"
     condition: "New"
     fiber: "Wool blend "
@@ -1097,7 +1110,7 @@ items:
     itemNumber: 109
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "31 x 26"
     condition: "Gently loved "
     fiber: "Wool blend "
@@ -1106,7 +1119,7 @@ items:
     itemNumber: 110
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "32 x 25.5"
     condition: "New "
     fiber: "Wool blend "
@@ -1115,7 +1128,7 @@ items:
     itemNumber: 111
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "32 x 29"
     condition: "New"
     fiber: "Wool blend "
@@ -1124,7 +1137,7 @@ items:
     itemNumber: 112
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "32.5 x 42.5"
     condition: "New"
     fiber: "Wool blend "
@@ -1133,7 +1146,7 @@ items:
     itemNumber: 113
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "33 x 24"
     condition: "New"
     fiber: "Alpaca llama blend "
@@ -1142,7 +1155,7 @@ items:
     itemNumber: 114
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "33 x 26"
     condition: "New"
     fiber: "Wool blend "
@@ -1151,7 +1164,7 @@ items:
     itemNumber: 115
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     size: "34 x 22"
     condition: "Gently loved "
     fiber: "Wool blend "
@@ -1160,7 +1173,7 @@ items:
     itemNumber: 116
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "shawl / mesa cloth"
+    category: "shawl"
     images: "Manta_107_59"
     price: "- "
     itemNumber: 117
