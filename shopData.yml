@@ -196,7 +196,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     description: "May photoshoot"
-    images: "#1"
+    images: "hat_infant_1"
     price: 65
     itemNumber: 11
   - 
@@ -206,7 +206,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     description: "May photoshoot"
-    images: "#9"
+    images: "hat_infant_2"
     price: 65
     itemNumber: 12
   - 
@@ -216,7 +216,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     description: "May photoshoot"
-    images: "#10"
+    images: "hat_infant_3"
     price: 65
     itemNumber: 13
   - 
@@ -226,7 +226,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     description: "May photoshoot"
-    images: "#11"
+    images: "hat_infant_4"
     price: 65
     itemNumber: 14
   - 
@@ -352,7 +352,7 @@ items:
     size: "49 x 55"
     condition: "Antique / collector"
     fiber: "Alpaca llama blend "
-    images: "Blanket_421_ "
+    images: "Blanket_421_"
     price: 325
     itemNumber: 28
   - 
@@ -361,7 +361,7 @@ items:
     size: "Dad - measure "
     condition: "New"
     fiber: "Alpaca llama blend "
-    images: "#21 and #22"
+    images: "blanket_21"
     price: 265
     itemNumber: 29
   - 
@@ -677,7 +677,7 @@ items:
     size: "5 x 7"
     condition: "Well loved "
     fiber: "Wool blend"
-    images: "Chuspa_279_ "
+    images: "Chuspa_279"
     price: 75
     itemNumber: 63
   - 
@@ -1020,7 +1020,7 @@ items:
     size: "24 x 22"
     condition: "New"
     fiber: "Wool blend "
-    images: "Manta_0100 "
+    images: "Manta_0100"
     price: 300
     itemNumber: 101
   - 
@@ -1101,7 +1101,7 @@ items:
     size: "31 x 26"
     condition: "Gently loved "
     fiber: "Wool blend "
-    images: "Manta_027_26 "
+    images: "Manta_027_26"
     price: 400
     itemNumber: 110
   - 
@@ -1261,7 +1261,7 @@ items:
     size: "Child "
     condition: "New"
     fiber: "Wool blend"
-    images: "#5 and # 26"
+    images: "poncho_5"
     price: 325
     itemNumber: 128
   - 
@@ -1270,7 +1270,7 @@ items:
     size: "Child"
     condition: "New"
     fiber: "Wool blend"
-    images: "#27"
+    images: "poncho_27"
     price: 325
     itemNumber: 129
   - 
@@ -1279,7 +1279,7 @@ items:
     size: "Child"
     condition: "New"
     fiber: "Wool blend"
-    images: "#30, #31, #32"
+    images: "poncho_32"
     price: 325
     itemNumber: 130
   - 
@@ -1288,7 +1288,7 @@ items:
     size: "Child"
     condition: "New"
     fiber: "Alpaca wool blend"
-    images: "#33"
+    images: "poncho_33"
     price: 600
     itemNumber: 131
   - 
@@ -1297,7 +1297,7 @@ items:
     size: "Child"
     condition: "New"
     fiber: "Alpaca wool blend"
-    images: "#34, #35"
+    images: "poncho_35"
     price: 600
     itemNumber: 132
   - 
@@ -1324,14 +1324,14 @@ items:
     size: "Child"
     condition: "New"
     fiber: "Wool blend"
-    images: "#29"
+    images: "poncho_29"
     price: 225
     itemNumber: 135
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
     category: "watana ties"
-    size: "Different lengths"
+    size: "Varying lengths"
     condition: "New"
-    images: "#2, 3, 4 "
+    images: [watana_2, watana_4]
     price: 30
     itemNumber: 136
