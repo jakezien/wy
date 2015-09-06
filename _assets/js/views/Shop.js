@@ -29,6 +29,7 @@ define([
       this.filter = this.$el.find('div.filter')
       this.currentCategory = 'all'
       this.paypalId = 'SF6MWPM36E8ZU'
+      this.categories = [];
       if (!this.items) {
         this.items = new ShopCollection();
         this.loadItems();
@@ -60,7 +61,7 @@ define([
       $.ajax({
         'async': true,
         'global': false,
-        'url': "/shopItems.yml",
+        'url': "/shopData.yml",
         'success': function (data) {
           try {
             that.onItemsLoaded(data)
@@ -106,7 +107,7 @@ define([
         paypalButton = null;
       } else {
         var paypalData = {
-          name: { value: item.get('category') },
+          name: { value: toTitleCase(item.get('category')) },
           amount: { value: itemPrice },
           shipping: { value: '15.00' },
           currency_code: { value: 'USD' },
@@ -137,20 +138,19 @@ define([
     },
 
     onItemsLoaded: function(data) {
-      var items = Yaml.safeLoad(data);
+      var shopData = Yaml.safeLoad(data);
+      var categories = shopData.categories;
+      var items = shopData.items;
+
+      for (var i in categories) {
+        this.categories.push( categories[i] );
+      }
       for (var i in items) {
-        var item = items[i];
-
-        // create list of categories
-        if (_.findWhere(this.categories, item.category) == null) {
-          this.categories.push(item.category);
-        }
-
-        this.items.add( item );
+        this.items.add( items[i] );
       }
 
       // sort category list alphabetically
-      this.categories = _.sortBy(this.categories, function(c) {return c});
+      this.categories = _.sortBy( this.categories, function(c) {return c.name.english.singular;} );
 
       this.proxy = new Obscura(this.items, {perPage: 36});
       this.proxy.bind('change reset', this.onProxyChange)
@@ -187,11 +187,11 @@ define([
           $filterItem.addClass('active');
         } else {
           category = this.categories[i];
-          categoryLabel = capitalize(category) + 's'
+          categoryLabel = toTitleCase(category.name.english.plural);
         }
 
         $filterItem.html(categoryLabel);
-        $filterItem.data('category', category);
+        $filterItem.data('category', i);
         $filterItem.click(this.updateFilters)
         $ul.append($filterItem);
       }
@@ -200,8 +200,8 @@ define([
     updateLayout: function(){
       this.itemList.html('');
       if (this.currentCategory !== 'all') {
-        var template = $(this.categoryHeaderTemplates).filter('.' + this.currentCategory).html()
-        this.itemList.append(template);
+        var template = $(this.categoryHeaderTemplates).filter('.' + this.categories[this.currentCategory].name.english.singular).html()
+        this.itemList.append('<header class="category-header">' + template + '</header>');
       }
       this.proxy.each(function(item) {
         var options = $.extend({}, item.attributes, {index: this.items.indexOf(item)});
@@ -235,8 +235,9 @@ define([
       $filterItem.addClass('active').siblings().removeClass('active');
 
       this.proxy.resetFilters();
-      if (this.currentCategory !== 'all') {
-        this.proxy.filterBy('', {category: this.currentCategory});
+      console.log(this.categories[this.currentCategory].name.english.singular)
+      if (this.currentCategory > -1) {
+        this.proxy.filterBy('', {category: this.categories[this.currentCategory].name.english.singular});
       }
     },
 
