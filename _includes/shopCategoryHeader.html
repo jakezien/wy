@@ -1,0 +1,16 @@
+<% var nameCleaned = name.english.singular.replace(/[',]+/g, '').replace(' ', '-') %>
+<header class="category-header <%= nameCleaned %>">
+  <div class="frame-img">
+    <div data-src="/images/shop/categories/<%= nameCleaned + '.jpg' %>"></div>
+  </div>
+  <div class="caption">
+    <header>
+      <h3><%= toTitleCase(name.quechua.singular) %></h3>
+      <h1><%= toTitleCase(name.english.plural) %></i></h1>
+    </header>
+    <% for ( p in description ) { %>
+      <p><%= description[p] %></p>
+    <% } %>
+  </div>
+  <div class="clearfix"></div>
+</header>

@@ -22,12 +22,13 @@ define([
       }.bind(this));
       this.createTimelines();
       this.itemTemplate = this.$el.find('#shopItem-template').html();
-      this.categoryHeaderTemplates = this.$el.find('.shopCategoryHeader-template');
+      this.categoryHeaderTemplate = this.$el.find('#shopCategoryHeader-template').html();
       this.itemPageTemplate = this.$el.find('#shopItemPage-template').html();
+      this.noItemsTemplate = this.$el.find('#shopNoItems-template').html();
       this.itemPage = this.$el.find('#item-page');
       this.itemList = this.$el.find('#items .item-list');
       this.filter = this.$el.find('div.filter')
-      this.currentCategory = 'all'
+      this.currentCategory = '-1'
       this.paypalId = 'SF6MWPM36E8ZU'
       this.categories = [];
       if (!this.items) {
@@ -199,18 +200,25 @@ define([
 
     updateLayout: function(){
       this.itemList.html('');
-      if (this.currentCategory !== 'all') {
-        var template = $(this.categoryHeaderTemplates).filter('.' + this.categories[this.currentCategory].name.english.singular).html()
-        this.itemList.append('<header class="category-header">' + template + '</header>');
+      if (this.currentCategory > -1) {
+        // Category header
+        this.itemList.append( _.template( this.categoryHeaderTemplate, this.categories[this.currentCategory] ) )
       }
-      this.proxy.each(function(item) {
-        var options = $.extend({}, item.attributes, {index: this.items.indexOf(item)});
-        var renderedContent = _.template(this.itemTemplate, options);
-        this.itemList.append(renderedContent);
-      }, this);
+      if (this.proxy.getFilteredLength() === 0) {
+        console.log( this.noItemsTemplate )
+        this.itemList.append( this.noItemsTemplate );
+      } else {      
+        this.proxy.each(function(item) {
+          var options = $.extend({}, item.attributes, {index: this.items.indexOf(item)});
+          var renderedContent = _.template(this.itemTemplate, options);
+          this.itemList.append(renderedContent);
+        }, this);
+      }
+
       this.$el.find('div[data-src]').each(function(i, el){
         this.preloadImg(el, true);
       }.bind(this));
+      
       this.updatePagination();
       this.needsLayout = false;
       this.hasLayout = true;
@@ -235,7 +243,6 @@ define([
       $filterItem.addClass('active').siblings().removeClass('active');
 
       this.proxy.resetFilters();
-      console.log(this.categories[this.currentCategory].name.english.singular)
       if (this.currentCategory > -1) {
         this.proxy.filterBy('', {category: this.categories[this.currentCategory].name.english.singular});
       }
