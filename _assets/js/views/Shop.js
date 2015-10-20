@@ -16,7 +16,7 @@ define([
     categories: [],
     beforeAppend: function(){
       _.bindAll(this, 'loadItems', 'render', 'onItemsLoaded', 'updateLayout', 'updateFilters',
-        'updatePagination', 'prevPage', 'nextPage', 'onProxyChange', 'showItemPage', 'hideItemPage' );
+        'updatePagination', 'prevPage', 'nextPage', 'onProxyChange', 'showItemPage', 'hideItemPage', 'prevItem', 'nextItem' );
       this.$el.find('*[data-src]').each(function(i, el){
         this.preloadImg(el);
       }.bind(this));
@@ -99,6 +99,7 @@ define([
         this.shouldShowItem = null;
       }
       
+      this.currentItem = id;
       var item = this.items.at(id);
 
       var paypalButton;
@@ -108,12 +109,14 @@ define([
         paypalButton = null;
       } else {
         var paypalData = {
-          name: { value: toTitleCase(item.get('category')) },
+          name: { value: 'Willka Yachay: ' + toTitleCase(item.get('category')) },
           amount: { value: itemPrice },
+          tax: { value: (itemPrice * 0.085).toFixed(2) },
           shipping: { value: '15.00' },
           currency_code: { value: 'USD' },
-          item_number: { value: item.get('itemNumber') },
+          item_number: { value: 'WY' + item.get('itemNumber') },
         }
+        console.log(paypalData)
         paypalButton = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
         $(paypalButton).removeClass('paypal-button').find('button').removeClass('paypal-button').html('Buy');
       }
@@ -124,9 +127,21 @@ define([
 
       this.itemPage.addClass('show')
       .find('.close').click(this.hideItemPage);
+      this.itemPage.find('nav .prev').click(this.prevItem);
+      this.itemPage.find('nav .next').click(this.nextItem);
 
       this.preloadImg(this.itemPage.find('div[data-src]'), true);
       $('body').addClass('stop-scroll');
+    },
+
+    nextItem: function () {
+      this.currentItem = this.currentItem++;
+      this.showItemPage(this.currentItem)
+    },
+
+    prevItem: function () {
+      this.currentItem = this.currentItem--;
+      this.showItemPage(this.currentItem)
     },
 
     hideItemPage: function() {
@@ -135,6 +150,7 @@ define([
       if (!this.hasLayout) {
         this.needsLayout = true;
       }
+      this.currentItem = null;
       Backbone.history.navigate('/shop/');
     },
 
@@ -204,8 +220,8 @@ define([
         // Category header
         this.itemList.append( _.template( this.categoryHeaderTemplate, this.categories[this.currentCategory] ) )
       }
-      if (this.proxy.getFilteredLength() === 0) {
-        console.log( this.noItemsTemplate )
+      if (this.proxy.getFilteredLength() === 0 && 
+        this.categories[this.currentCategory].name.english.singular.indexOf('custom') < 0) {
         this.itemList.append( this.noItemsTemplate );
       } else {      
         this.proxy.each(function(item) {
@@ -225,13 +241,20 @@ define([
     },
 
     updatePagination: function(){
+      $pagination = $('div.pagination')
       $prevButtons = $('div.pagination a.page-prev');
       $nextButtons = $('div.pagination a.page-next');
       $currPage = $('div.pagination span.page-current');
       $pageTotal = $('div.pagination span.page-total');
 
-      $currPage.html(this.proxy.getPage() + 1)
-      $pageTotal.html(this.proxy.getNumPages())
+      var numPages = this.proxy.getNumPages();
+      if (numPages) {
+        $currPage.html(this.proxy.getPage() + 1);
+        $pageTotal.html(this.proxy.getNumPages());
+        $pagination.show();
+      } else {
+        $pagination.hide();
+      }
 
       $prevButtons.toggleClass('disabled', !this.proxy.hasPrevPage());
       $nextButtons.toggleClass('disabled', !this.proxy.hasNextPage());

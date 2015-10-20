@@ -15,9 +15,13 @@
       <p class="price"><span>$</span><%= price %></p>
     <% } %>
     <table>
-      <tr><td>Size</td><td><%= _.first(size) + ' inches' %></td></tr>
+      <tr><td>Size</td><td><%= size %></td></tr>
       <tr><td>Condition</td><td><%= toTitleCase(condition) %></td></tr>
       <tr><td>Material</td><td><%= toTitleCase(fiber) %></td></tr>
     </table>
+<!--     <nav>
+      <span class="prev">Previous Item</span>
+      <span class="next">Next Item</span>
+    </nav> -->
   </div>
 </div>

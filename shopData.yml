@@ -48,7 +48,7 @@ categories:
       english: { singular: hat band,  plural:  hat bands}
       quechua: { singular: sentillo, plural: sentillokuna}
     description: 
-      - 'Q’eros men knit and bead intricate cullus, caps, proudly emblematic of their indigenous status.'
+      - 'Q&rsquo;eros women weave sentillos, hat bands, for men and womens&rsquo; every day and ceremonial hats."'
   - 
     name: 
       english: { singular: shawl,  plural:  shawls}
@@ -61,8 +61,7 @@ categories:
       english: { singular: tunic,  plural:  tunics}
       quechua: { singular: unku, plural: unkukuna}
     description: 
-      - '"Two different kinds of ponchos are woven in Q’ero, one relatively plain and one heavily patterned. The patterned ponchos are called pallay poncho, from the pickup technique (pallay) used for the patterns."'
-      - 'John Cohen, Hidden Threads of Peru'
+      - 'Q&rsquo;eros is one of the very few places where men still wear Unkus, the pre-hispanic tunic.'
   - 
     name: 
       english: { singular: poncho,  plural:  ponchos}
@@ -110,6 +109,12 @@ categories:
     description: 
       - '“A simple style of shirt called aymilla is worn by men, women and children in Q’eros. Red is a common color to be worn, and the style consists of a pullover with a y-neck, no collar, and tape-trimmed sleeves.”'
       - 'John Cohen, Hidden Threads of Peru'
+  -
+    name: 
+      english: { singular: custom order , plural: custom orders}
+    description: 
+      - 'Q&rsquo;ero artisans are happy to create custom pieces! <a href="mailto:info@willkayachay.org?Subject=Custom%20Order">Send us an email</a> detailing what you have in mind, and Willka Yachay will connect you with a master weaver.'
+
 
 items:
   - 
@@ -146,7 +151,7 @@ items:
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Chullu_298_100"
-    price: 85
+    price: 125
     itemNumber: 4
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -155,7 +160,7 @@ items:
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Chullu_302_01"
-    price: 85
+    price: 125
     itemNumber: 5
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -164,7 +169,7 @@ items:
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Chullu_303_70"
-    price: 85
+    price: 125
     itemNumber: 6
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -173,7 +178,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     images: "Chullu_296_104"
-    price: 125
+    price: 165
     itemNumber: 7
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -182,7 +187,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     images: "Chullu_295_21"
-    price: 185
+    price: 225
     itemNumber: 8
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -191,7 +196,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     images: "Chullu_299_20"
-    price: 185
+    price: 225
     itemNumber: 9
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
@@ -210,7 +215,7 @@ items:
     fiber: "Wool blend"
     description: "May photoshoot"
     images: "hat_infant_1"
-    price: 65
+    price: 85
     itemNumber: 11
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
@@ -220,7 +225,7 @@ items:
     fiber: "Wool blend"
     description: "May photoshoot"
     images: "hat_infant_2"
-    price: 65
+    price: 85
     itemNumber: 12
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
@@ -230,7 +235,7 @@ items:
     fiber: "Wool blend"
     description: "May photoshoot"
     images: "hat_infant_3"
-    price: 65
+    price: 85
     itemNumber: 13
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
@@ -240,7 +245,7 @@ items:
     fiber: "Wool blend"
     description: "May photoshoot"
     images: "hat_infant_4"
-    price: 65
+    price: 85
     itemNumber: 14
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -267,7 +272,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     images: "Belt_0251"
-    price: 125
+    price: 145
     itemNumber: 17
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -276,7 +281,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     images: "Belt_0254"
-    price: 125
+    price: 145
     itemNumber: 18
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -285,7 +290,7 @@ items:
     condition: "New"
     fiber: "Wool blend"
     images: "Belt_248_123"
-    price: 125
+    price: 145
     itemNumber: 19
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -294,7 +299,7 @@ items:
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Belt_249_62"
-    price: 125
+    price: 145
     itemNumber: 20
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -303,7 +308,7 @@ items:
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
     images: "Rope_394_90"
-    price: 85
+    price: 115
     itemNumber: 21
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -312,7 +317,7 @@ items:
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
     images: "Rope_388_125"
-    price: 85
+    price: 115
     itemNumber: 22
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -321,7 +326,7 @@ items:
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
     images: "Rope_376_130"
-    price: 85
+    price: 115
     itemNumber: 23
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -330,7 +335,7 @@ items:
     condition: "New"
     fiber: "Alpaca llama blend "
     images: "Rope_392_89"
-    price: 115
+    price: 145
     itemNumber: 24
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -339,7 +344,7 @@ items:
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
     images: "Rope_385_128"
-    price: 115
+    price: 145
     itemNumber: 25
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -348,7 +353,7 @@ items:
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
     images: "Rope_397_130"
-    price: 115
+    price: 145
     itemNumber: 26
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -357,12 +362,12 @@ items:
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
     images: "Rope_390_126"
-    price: 165
+    price: 180
     itemNumber: 27
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "blanket"
-    size: "49 x 55"
+    size: "49\" x 55\""
     condition: "Antique / collector"
     fiber: "Alpaca llama blend "
     images: "Blanket_421_"
@@ -371,7 +376,7 @@ items:
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
     category: "blanket"
-    size: "Dad - measure "
+    size: "48\" x 48\""
     condition: "New"
     fiber: "Alpaca llama blend "
     images: "blanket_21"
@@ -380,52 +385,52 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "sack"
-    size: "17.5 x 28"
+    size: "17.5\" x 28\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Costal_371_111"
-    price: 165
+    price: 280
     itemNumber: 30
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "sack"
-    size: "18.5 x 40"
+    size: "18.5\" x 40\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Costal_375_138"
-    price: 185
+    price: 300
     itemNumber: 31
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "sack"
-    size: "19 x 38.5"
+    size: "19\" x 38.5\""
     condition: "Antique / collector"
     fiber: "Alpaca llama blend"
     images: "Costal_366_110"
-    price: 225
+    price: 360
     itemNumber: 32
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "sack"
-    size: "19 x 41"
+    size: "19\" x 41\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Costal_373_139"
-    price: 185
+    price: 300
     itemNumber: 33
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "sack"
-    size: "21 x 42"
+    size: "21\" x 42\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Costal_365_87"
-    price: 165
+    price: 280
     itemNumber: 34
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "hat band"
-    size: 22
+    size: "22\""
     condition: "New"
     fiber: "Wool blend "
     images: "Hatband_408_91"
@@ -434,7 +439,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "hat band"
-    size: 25
+    size: "25\""
     condition: "New"
     fiber: "Wool blend "
     images: "Hatband_410_135"
@@ -443,97 +448,97 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "hat band"
-    size: 22
+    size: "22\""
     condition: "New"
     fiber: "Wool blend "
     images: "Hatband_405_41"
-    price: 85
+    price: 95
     itemNumber: 37
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "hat band"
-    size: 22
+    size: "22\""
     condition: "New"
     fiber: "Wool blend "
     images: "Hatband_400_51"
-    price: 85
+    price: 95
     itemNumber: 38
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "4 x 5.5, strap 18"
+    size: "4\" x 5.5\", strap 18\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Bag_0230"
-    price: 45
+    price: 55
     itemNumber: 39
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "6 x 7.5, strap 17"
+    size: "6\" x 7.5\", strap 17\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_221_103"
-    price: 55
+    price: 65
     itemNumber: 40
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "6.5 x 9, strap 18"
+    size: "6.5\" x 9\", strap 18\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_227_22"
-    price: 65
+    price: 75
     itemNumber: 41
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "7 x 7.5, strap 24"
+    size: "7\" x 7.5\", strap 24\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_169_60"
-    price: 55
+    price: 65
     itemNumber: 42
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "10.5 x 11.4, strap 15"
+    size: "10.5\" x 11.4\", strap 15\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_184_13"
-    price: 100
+    price: 125
     itemNumber: 43
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "11.5 x 11.5, strap 19"
+    size: "11.5\" x 11.5\", strap 19\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Bag_177_18"
-    price: 100
+    price: 125
     itemNumber: 44
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "11.5 x 13, strap 19"
+    size: "11.5\" x 13\", strap 19\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Bag_178_05"
-    price: 100
+    price: 125
     itemNumber: 45
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "12 x 11.5 strap 21"
+    size: "12\" x 11.5\" strap 21\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_190_140"
-    price: 100
+    price: 125
     itemNumber: 46
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "12 x 11.5, strap 22.5"
+    size: "12\" x 11.5\", strap 22.5\""
     condition: "Gently loved"
     fiber: "Wool blend"
     description: "Used as a school bag "
@@ -543,62 +548,62 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "12 x 13, strap 19"
+    size: "12\" x 13\", strap 19\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Bag_175_15"
-    price: 100
+    price: 125
     itemNumber: 48
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "12.5 x 14, strap 25"
+    size: "12.5\" x 14\", strap 25\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_172_16"
-    price: 100
+    price: 125
     itemNumber: 49
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "13 x 9.5, strap 13.6"
+    size: "13\" x 9.5\", strap 13.6\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_0189"
-    price: 100
+    price: 125
     itemNumber: 50
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "13.5 x 13, strap 20"
+    size: "13.5\" x 13\", strap 20\""
     condition: "New"
     fiber: "Wool blend"
     images: "Bag_186_66"
-    price: 100
+    price: 125
     itemNumber: 51
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "14 x 10, strap 18"
+    size: "14\" x 10\", strap 18\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Bag_0183"
-    price: 100
+    price: 125
     itemNumber: 52
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "14 x 12, strap 20"
+    size: "14\" x 12\", strap 20\""
     condition: "Gently loved "
     fiber: "Alpaca llama blend"
     description: "Used as a school bag "
     images: "Bag_181_137"
-    price: 100
+    price: 125
     itemNumber: 53
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "11.5 x 12"
+    size: "11.5\" x 12\""
     condition: "Gently loved "
     fiber: "Wool blend"
     description: "Horse saddle bag used in Q'eros "
@@ -608,7 +613,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "8 x 7, fringe 13, strap 22"
+    size: "8\" x 7\", fringe 13\", strap 22\""
     condition: "Antique / collector"
     fiber: "Alpaca llama blend"
     description: "Ceremonial bag"
@@ -618,27 +623,27 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "7 x 8, fringe 15, strap 22"
+    size: "7\" x 8\", fringe 15\", strap 22\""
     condition: "New"
     fiber: "Wool blend"
     description: "Ceremonial bag"
     images: "Bag_210_112"
-    price: 185
+    price: 200
     itemNumber: 56
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "7 x 8, fringe 16, strap 20"
+    size: "7\" x 8\", fringe 16\", strap 20\""
     condition: "New"
     fiber: "Wool blend"
     description: "Ceremonial bag"
     images: [Bagfront_200_80, Bag_201_80]
-    price: 125
+    price: 165
     itemNumber: 57
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "7 x 8.5, fringe 15, strap 20"
+    size: "7\" x 8.5\", fringe 15\", strap 20\""
     condition: "New"
     fiber: "Wool blend"
     description: "Ceremonial bag"
@@ -648,37 +653,37 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "8 x 9.5, fringe 15, strap 23"
+    size: "8\" x 9.5\", fringe 15\", strap 23\""
     condition: "New"
     fiber: "Wool blend"
     description: "Ceremonial bag"
     images: [Bag_0206, Bag_0204]
-    price: 155
+    price: 165
     itemNumber: 59
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "8 x 10, fringe 18, strap 23"
+    size: "8\" x 10\", fringe 18\", strap 23\""
     condition: "New"
     fiber: "Wool blend"
     description: "Ceremonial bag"
     images: "Bag_198_78"
-    price: 125
+    price: 145
     itemNumber: 60
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "bag"
-    size: "9 x 10, fringe 18, strap 22"
+    size: "9\" x 10\", fringe 18\", strap 22\""
     condition: "New"
     fiber: "Wool blend"
     description: "Ceremonial bag"
     images: "Bagfront_195_78"
-    price: 155
+    price: 165
     itemNumber: 61
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "9 x 12"
+    size: "9\" x 12\""
     condition: "Antique / collector"
     fiber: "Baby alpaca fur"
     images: "PeltBag_0411"
@@ -687,98 +692,98 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "5 x 7"
+    size: "5\" x 7\""
     condition: "Well loved "
     fiber: "Wool blend"
     images: "Chuspa_279"
-    price: 75
+    price: 85
     itemNumber: 63
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "5.5 x 8.5"
+    size: "5.5\" x 8.5\""
     condition: "Well loved "
     fiber: "Wool blend"
     images: "Chuspa_277_17"
-    price: 75
+    price: 85
     itemNumber: 64
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "5.5 x 9"
+    size: "5.5\" x 9\""
     condition: "Well loved "
     fiber: "Wool blend"
     images: "Chuspa_414_03"
-    price: 75
+    price: 85
     itemNumber: 65
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "6.5 x 9"
+    size: "6.5\" x 9\""
     condition: "New"
     fiber: "Wool blend"
     images: "Chuspa_413_02"
-    price: 75
+    price: 85
     itemNumber: 66
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "6.5 x 10"
+    size: "6.5\" x 10\""
     condition: "New"
     fiber: "Wool blend"
     images: "Chuspa_415_10"
-    price: 75
+    price: 85
     itemNumber: 67
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "8 x 9.5"
+    size: "8\" x 9.5\""
     condition: "New"
     fiber: "Wool blend"
     images: "Chuspa_275_107"
-    price: 75
+    price: 85
     itemNumber: 68
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "8.5 x 10"
+    size: "8.5\" x 10\""
     condition: "New"
     fiber: "Wool blend"
     images: "Chuspa_284_101"
-    price: 85
+    price: 95
     itemNumber: 69
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "9 x 10.5"
+    size: "9\" x 10.5\""
     condition: "Well loved "
     fiber: "Wool blend"
     images: "Chuspa_286_23"
-    price: 85
+    price: 95
     itemNumber: 70
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "12.5 x 13"
+    size: "12.5\" x 13\""
     condition: "New "
     fiber: "Wool blend"
     images: "Chuspa_288_71"
-    price: 125
+    price: 140
     itemNumber: 71
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
-    size: "Dad - measure "
+    size: "4\" x 8\""
     condition: "Antique / collector"
     fiber: "Wool blend, natural plant dyes "
     description: "Inkan coin bag "
     images: "Chuspa_282_40"
-    price: "Upon request"
+    price: 125
     itemNumber: 72
   - 
     dateAdded: "2015-08-20T04:00:00.000Z"
     category: "coca bag"
-    size: "Dad - measure "
+    size: "6.5\" x 8.5\""
     condition: "Well loved "
     fiber: "Wool blend"
     images: "Chuspa_276_136"
@@ -787,7 +792,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "scarf"
-    size: "5.5 x 47"
+    size: "5.5\" x 47\""
     condition: "antique"
     fiber: "Wool blend "
     images: "Scarf_259_97"
@@ -796,16 +801,16 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "scarf"
-    size: "5.5 x 53"
+    size: "5.5\" x 53\""
     condition: "new"
     fiber: "Wool blend "
     images: "Scarf_244_09"
-    price: 145
+    price: 165
     itemNumber: 75
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "scarf"
-    size: "6.5 x 70"
+    size: "6.5\" x 70\""
     condition: "new"
     fiber: "Wool blend "
     images: "Scarf_232_35"
@@ -814,7 +819,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "scarf"
-    size: "7.5 x 60"
+    size: "7.5\" x 60\""
     condition: "antique"
     fiber: "Wool blend "
     images: "Scarf_236_114"
@@ -823,7 +828,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "scarf"
-    size: "8.5 x 58"
+    size: "8.5\" x 58\""
     condition: "antique"
     fiber: "Wool blend "
     images: "Scarf_242_04"
@@ -832,7 +837,7 @@ items:
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
     category: "scarf"
-    size: "Dad - measure "
+    size: "6\" x 72\""
     condition: "New"
     fiber: "Wool blend "
     images: "Scarf_0239"
@@ -841,7 +846,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "8.5 x 12"
+    size: "8.5\" x 12\""
     condition: "Well loved"
     fiber: "Wool blend"
     images: "Unkuna_0356"
@@ -850,7 +855,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "11 x 14"
+    size: "11\" x 14\""
     condition: "New"
     fiber: "Wool blend"
     images: "Unkuna_351_129"
@@ -859,7 +864,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "14 x 14"
+    size: "14\" x 14\""
     condition: "Well loved "
     fiber: "Wool blend"
     images: "Unkuna_353_74"
@@ -868,7 +873,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "14 x 15"
+    size: "14\" x 15\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_359_73"
@@ -877,7 +882,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "14 x 15"
+    size: "14\" x 15\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_343_72"
@@ -886,7 +891,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "15 x 15"
+    size: "15\" x 15\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_344_95"
@@ -895,7 +900,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "16 x 19"
+    size: "16\" x 19\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_346_75"
@@ -904,7 +909,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "18.5 x 19"
+    size: "18.5\" x 19\""
     condition: "New"
     fiber: "Wool blend"
     images: "Unkuna_361_76"
@@ -913,7 +918,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "20.5 x 23"
+    size: "20.5\" x 23\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_330_57"
@@ -922,7 +927,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "21 x 20"
+    size: "21\" x 20\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_336_19"
@@ -931,7 +936,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "22.5 x 24"
+    size: "22.5\" x 24\""
     condition: "Loved"
     fiber: "Alpaca llama blend"
     images: "Unkuna_325_58"
@@ -940,7 +945,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "23 x 24.5"
+    size: "23\" x 24.5\""
     condition: "New"
     fiber: "Wool blend"
     images: "Unkuna_337_109"
@@ -949,7 +954,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "23.5 x 25"
+    size: "23.5\" x 25\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_327_83"
@@ -958,7 +963,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "31.5 x 24"
+    size: "31.5\" x 24\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Unkuna_334_38"
@@ -967,7 +972,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "carrying cloth"
-    size: "24 x 24"
+    size: "24\" x 24\""
     condition: "Well loved "
     fiber: "Wool blend"
     images: "Unkuna_339_67"
@@ -975,8 +980,8 @@ items:
     itemNumber: 94
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "prayer bundle "
-    size: "2.5 x 6, strap 14"
+    category: "prayer bundle"
+    size: "2.5\" x 6\", strap 14\""
     condition: "Antique / collector"
     fiber: "Wool blend "
     images: "PrayerBundle_269_118"
@@ -984,8 +989,8 @@ items:
     itemNumber: 95
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "prayer bundle "
-    size: "3 x 4, strap 21"
+    category: "prayer bundle"
+    size: "3\" x 4\", strap 21\""
     condition: "Antique / collector"
     fiber: "Wool blend "
     images: "PrayerBundle_271_119"
@@ -993,8 +998,8 @@ items:
     itemNumber: 96
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "prayer bundle "
-    size: "3 x 5, strap 16"
+    category: "prayer bundle"
+    size: "3\" x 5\", strap 16\""
     condition: "Antique / collector"
     fiber: "Wool blend "
     images: [PrayerBundle_263_133, PrayBundle_265_133]
@@ -1002,8 +1007,8 @@ items:
     itemNumber: 97
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "prayer bundle "
-    size: "3 x 5, strap 22"
+    category: "prayer bundle"
+    size: "3\" x 5\", strap 22\""
     condition: "Antique / collector"
     fiber: "Wool blend "
     images: [PrayerBundle_260_117, PrayerBundle_261_117]
@@ -1011,8 +1016,8 @@ items:
     itemNumber: 98
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "prayer bundle "
-    size: "4 x 5, strap 15"
+    category: "prayer bundle"
+    size: "4\" x 5\", strap 15\""
     condition: "Antique / collector"
     fiber: "Wool blend "
     images: "PrayerBundle_266_42"
@@ -1020,8 +1025,8 @@ items:
     itemNumber: 99
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "prayer bundle "
-    size: "4.5 x 6, strap 18"
+    category: "prayer bundle"
+    size: "4.5\" x 6\", strap 18\""
     condition: "Antique / collector"
     fiber: "Wool blend "
     images: "PrayerBundle_262_116"
@@ -1030,7 +1035,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "24 x 22"
+    size: "24\" x 22\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_0100"
@@ -1039,7 +1044,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "25 x 21.5"
+    size: "25\" x 21.5\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_094_96"
@@ -1048,7 +1053,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "25 x 23"
+    size: "25\" x 23\""
     condition: "New"
     fiber: "Alpaca llama blend "
     images: "Manta_106_24"
@@ -1057,7 +1062,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "26.5 x 24"
+    size: "26.5\" x 24\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_109_93"
@@ -1066,7 +1071,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "27.5 x 28"
+    size: "27.5\" x 28\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_0093"
@@ -1075,7 +1080,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "29.5 x 25.5"
+    size: "29.5\" x 25.5\""
     condition: "Antique / collector "
     fiber: "Alpaca llama blend "
     images: "Manta_098_141"
@@ -1084,7 +1089,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "30 x 24.5"
+    size: "30\" x 24.5\""
     condition: "Gently loved "
     fiber: "Wool blend "
     images: "Manta_090_30"
@@ -1093,7 +1098,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "30 x 25"
+    size: "30\" x 25\""
     condition: "New"
     fiber: "Alpaca llama blend "
     images: "Manta_123_46"
@@ -1102,7 +1107,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "30.5 x 23"
+    size: "30.5\" x 23\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_096_95"
@@ -1111,7 +1116,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "31 x 26"
+    size: "31\" x 26\""
     condition: "Gently loved "
     fiber: "Wool blend "
     images: "Manta_027_26"
@@ -1120,7 +1125,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "32 x 25.5"
+    size: "32\" x 25.5\""
     condition: "New "
     fiber: "Wool blend "
     images: "Manta_085_27"
@@ -1129,7 +1134,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "32 x 29"
+    size: "32\" x 29\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_0074"
@@ -1138,7 +1143,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "32.5 x 42.5"
+    size: "32.5\" x 42.5\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_092_50"
@@ -1147,7 +1152,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "33 x 24"
+    size: "33\" x 24\""
     condition: "New"
     fiber: "Alpaca llama blend "
     images: "Manta_089_25"
@@ -1156,7 +1161,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "33 x 26"
+    size: "33\" x 26\""
     condition: "New"
     fiber: "Wool blend "
     images: "Manta_104_97"
@@ -1165,7 +1170,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
-    size: "34 x 22"
+    size: "34\" x 22\""
     condition: "Gently loved "
     fiber: "Wool blend "
     images: "Manta_083_36"
@@ -1175,13 +1180,13 @@ items:
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "shawl"
     images: "Manta_107_59"
-    price: "- "
+    price: "-"
     itemNumber: 117
     sold: "LEAH"
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "woman shirt "
-    size: "19 x 21, sleeve 4.5 x 16"
+    category: "women's shirt"
+    size: "19\" x 21\", sleeve 4.5\" x 16\""
     condition: "Antique / collector"
     fiber: "Alpaca llama blend "
     images: "Shirt_121_43"
@@ -1189,8 +1194,8 @@ items:
     itemNumber: 118
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "woman shirt "
-    size: "21 x 21, sleeve 5.5 x 15"
+    category: "women's shirt"
+    size: "21\" x 21\", sleeve 5.5\" x 15\""
     condition: "Antique / collector"
     fiber: "Alpaca llama blend "
     images: "Shirt_113_131"
@@ -1199,7 +1204,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "Adult "
+    size: "Adult"
     condition: "New"
     fiber: "Wool blend"
     images: "Poncho_147_33"
@@ -1208,7 +1213,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "Child, 20 x 15.5"
+    size: "Child, 20\" x 15.5\""
     condition: "Gently loved"
     fiber: "Alpaca sheep blend"
     images: "Panchochild_159_84"
@@ -1217,7 +1222,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "Child, 23 x 18"
+    size: "Child, 23\" x 18\""
     condition: "Gently loved"
     fiber: "Sheep wool "
     images: "Ponchochild_158_115"
@@ -1226,7 +1231,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "30 x 30"
+    size: "30\" x 30\""
     condition: "New"
     fiber: "Alpaca llama blend"
     images: "Poncho_133_32"
@@ -1235,7 +1240,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "31 x 29"
+    size: "31\" x 29\""
     condition: "Gently loved"
     fiber: "Alpaca llama blend"
     images: "Poncho_128_31"
@@ -1244,7 +1249,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "31 x 30.5"
+    size: "31\" x 30.5\""
     condition: "Antique / collector"
     fiber: "Alpaca llama blend"
     images: "Poncho_150_98"
@@ -1253,7 +1258,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "33 x 32"
+    size: "33\" x 32\""
     condition: "New"
     fiber: "Wool blend"
     images: "Poncho_142_99"
@@ -1262,7 +1267,7 @@ items:
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "poncho"
-    size: "34 x 29"
+    size: "34\" x 29\""
     condition: "New "
     fiber: "Wool blend"
     images: "Poncho_139_56"
@@ -1271,7 +1276,7 @@ items:
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
     category: "poncho"
-    size: "Child "
+    size: "Child"
     condition: "New"
     fiber: "Wool blend"
     images: "poncho_5"
@@ -1316,7 +1321,7 @@ items:
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
     category: "tunic"
-    size: "27 x 33"
+    size: "27\" x 33\""
     condition: "New"
     fiber: "Wool blend"
     images: "Unku_132_68"
@@ -1325,7 +1330,7 @@ items:
   - 
     dateAdded: "2015-08-06T04:00:00.000Z"
     category: "tunic"
-    size: "31 x 30"
+    size: "31\" x 30\""
     condition: "New"
     fiber: "Alpaca "
     images: "Unku_153_69"
@@ -1348,3 +1353,11 @@ items:
     images: [watana_2, watana_4]
     price: 30
     itemNumber: 136
+  - 
+    dateAdded: "2015-10-19T04:00:00.000Z"
+    category: "bag"
+    size: "Test item!"
+    condition: "New"
+    images: [watana_2, watana_4]
+    price: 5
+    itemNumber: 137
