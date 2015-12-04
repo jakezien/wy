@@ -171,6 +171,7 @@ items:
     images: "Chullu_303_70"
     price: 125
     itemNumber: 6
+    sold: true
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "hat"
@@ -380,7 +381,7 @@ items:
     condition: "New"
     fiber: "Alpaca llama blend "
     images: "blanket_21"
-    price: 265
+    price: "Upon request"
     itemNumber: 29
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
@@ -682,7 +683,7 @@ items:
     itemNumber: 61
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
-    category: "coca bag"
+    category: "alpaca fur bag"
     size: "9\" x 12\""
     condition: "Antique / collector"
     fiber: "Baby alpaca fur"
@@ -1353,11 +1354,3 @@ items:
     images: [watana_2, watana_4]
     price: 30
     itemNumber: 136
-  - 
-    dateAdded: "2015-10-19T04:00:00.000Z"
-    category: "bag"
-    size: "Test item!"
-    condition: "New"
-    images: [watana_2, watana_4]
-    price: 5
-    itemNumber: 137

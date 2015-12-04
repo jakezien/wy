@@ -103,6 +103,7 @@ define([
       var item = this.items.at(id);
 
       var paypalButton;
+      var soldButton = $('<p class="sold">This item has been sold.</p>');
       var itemPrice = item.get('price');
 
       if ( typeof itemPrice === 'string' && itemPrice.indexOf('request') > -1 ) {
@@ -112,18 +113,17 @@ define([
           name: { value: 'Willka Yachay: ' + toTitleCase(item.get('category')) },
           amount: { value: itemPrice },
           tax: { value: (itemPrice * 0.085).toFixed(2) },
-          shipping: { value: '15.00' },
+          shipping: { value: '10.00' },
           currency_code: { value: 'USD' },
-          item_number: { value: 'WY' + item.get('itemNumber') },
+          item_number: { value: 'WillkaYachay' + item.get('itemNumber') },
         }
-        console.log(paypalData)
         paypalButton = PAYPAL.apps.ButtonFactory.create(this.paypalId, paypalData, 'buynow');
         $(paypalButton).removeClass('paypal-button').find('button').removeClass('paypal-button').html('Buy');
       }
 
       this.itemPage.html('')
       .append(_.template(this.itemPageTemplate, item.attributes))
-      .find('.info').append(paypalButton);
+      .find('.info').append(item.get('sold') ? soldButton : paypalButton);
 
       this.itemPage.addClass('show')
       .find('.close').click(this.hideItemPage);
@@ -269,6 +269,9 @@ define([
       if (this.currentCategory > -1) {
         this.proxy.filterBy('', {category: this.categories[this.currentCategory].name.english.singular});
       }
+      this.proxy.filterBy(function(item){
+        return !item.get('sold');
+      });
     },
 
     prevPage: function(){
