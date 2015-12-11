@@ -8,7 +8,7 @@ define([
 
   var ShopCollection = Backbone.Collection.extend({
     model: ShopItem,
-    comparator: 'category'
+    comparator: 'itemNumber'
   });
 
   return ShopCollection;
