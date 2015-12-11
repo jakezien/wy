@@ -100,7 +100,7 @@ define([
       }
       
       this.currentItem = id;
-      var item = this.items.at(id);
+      var item = this.items.findWhere({itemNumber: id});
 
       var paypalButton;
       var soldButton = $('<p class="sold">This item has been sold.</p>');
@@ -225,7 +225,7 @@ define([
         this.itemList.append( this.noItemsTemplate );
       } else {      
         this.proxy.each(function(item) {
-          var options = $.extend({}, item.attributes, {index: this.items.indexOf(item)});
+          var options = $.extend({}, item.attributes, {index: item.get('itemNumber')});
           var renderedContent = _.template(this.itemTemplate, options);
           this.itemList.append(renderedContent);
         }, this);

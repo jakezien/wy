@@ -101,7 +101,7 @@ define([
       appView.goto(view);
 
       if (id) {
-        view.showItemPage(Number(id) - 1);
+        view.showItemPage(Number(id));
       } else {
         view.hideItemPage();
       }

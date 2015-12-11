@@ -88,7 +88,6 @@ define([
 
     submitForm: function(){
       $('#amount1')[0].value = this.donateInput[0].value;
-      debugger
       this.form.submit();
     },
 
