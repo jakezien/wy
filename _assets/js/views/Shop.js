@@ -269,9 +269,10 @@ define([
       if (this.currentCategory > -1) {
         this.proxy.filterBy('', {category: this.categories[this.currentCategory].name.english.singular});
       }
-      this.proxy.filterBy(function(item){
-        return !item.get('sold');
-      });
+      // Filter out sold items
+      // this.proxy.filterBy(function(item){
+      //   return !item.get('sold');
+      // });
     },
 
     prevPage: function(){

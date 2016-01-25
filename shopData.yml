@@ -772,6 +772,7 @@ items:
     images: "Chuspa_288_71"
     price: 140
     itemNumber: 71
+    sold: true
   - 
     dateAdded: "2015-05-01T04:00:00.000Z"
     category: "coca bag"
